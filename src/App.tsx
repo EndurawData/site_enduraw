@@ -16,6 +16,10 @@ import EndurawDashboardPage from './pages/services/EndurawDashboardPage';
 import EndurawAPIPage from './pages/services/EndurawAPIPage';
 import AdminPage from './pages/AdminPage';
 import BookingSuccessPage from './pages/BookingSuccessPage';
+import MentionsLegalesPage from './pages/MentionsLegalesPage';
+import PolitiqueConfidentialitePage from './pages/PolitiqueConfidentialitePage';
+import CGUPage from './pages/CGUPage';
+import SousTraitantsPage from './pages/SousTraitantsPage';
 
 function App() {
   const [activeSection, setActiveSection] = useState<string>('');
@@ -52,6 +56,10 @@ function App() {
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/booking-success" element={<BookingSuccessPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+          <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
+          <Route path="/cgu" element={<CGUPage />} />
+          <Route path="/sous-traitants" element={<SousTraitantsPage />} />
         </Routes>
         <Footer />
       </div>

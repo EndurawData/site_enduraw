@@ -44,17 +44,19 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-28 relative z-10">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 group">
-            <Link 
-              to="/" 
-              className="text-white font-medium text-xl font-sans uppercase tracking-wide relative transform transition-all duration-300 hover:scale-110"
+            <Link
+              to="/"
+              className="flex items-center relative transform transition-all duration-300 hover:scale-110"
               onMouseEnter={() => setActiveHover('logo')}
               onMouseLeave={() => setActiveHover(null)}
             >
-              <span className="relative z-10 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
-                Enduraw
-              </span>
+              <img
+                src="/images/LOGO_ENDURAW_WHITE.png"
+                alt="Enduraw"
+                className="h-10 w-auto relative z-10"
+              />
               {activeHover === 'logo' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 blur-lg animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/30 to-gradient-blue-dark/30 blur-lg animate-pulse"></div>
               )}
             </Link>
           </div>
@@ -63,9 +65,9 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
             {/* Home */}
             <Link
               to="/"
-              className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 hover:shadow-lg group ${
-                location.pathname === '/' 
-                  ? 'text-white bg-gradient-to-r from-purple-500/20 to-pink-500/20 shadow-lg' 
+              className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 hover:shadow-lg group text-body-uppercase ${
+                location.pathname === '/'
+                  ? 'text-white bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 shadow-lg'
                   : 'text-gray-200 hover:text-white hover:bg-white/10'
               }`}
               onMouseEnter={() => setActiveHover('home')}
@@ -73,16 +75,16 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
             >
               <span className="relative z-10">Home</span>
               {activeHover === 'home' && location.pathname !== '/' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-sm"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
               )}
             </Link>
 
             {/* News */}
             <Link
               to="/news"
-              className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 hover:shadow-lg group ${
-                location.pathname === '/news' 
-                  ? 'text-white bg-gradient-to-r from-purple-500/20 to-pink-500/20 shadow-lg' 
+              className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 hover:shadow-lg group text-body-uppercase ${
+                location.pathname === '/news'
+                  ? 'text-white bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 shadow-lg'
                   : 'text-gray-200 hover:text-white hover:bg-white/10'
               }`}
               onMouseEnter={() => setActiveHover('news')}
@@ -90,7 +92,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
             >
               <span className="relative z-10">News</span>
               {activeHover === 'news' && location.pathname !== '/news' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-xl blur-sm"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
               )}
             </Link>
 
@@ -112,9 +114,9 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
             >
               <Link
                 to="/services"
-                className={`relative block px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 hover:shadow-lg ${
-                  location.pathname.startsWith('/services') 
-                    ? 'text-white bg-gradient-to-r from-purple-500/20 to-pink-500/20 shadow-lg' 
+                className={`relative block px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 hover:shadow-lg text-body-uppercase ${
+                  location.pathname.startsWith('/services')
+                    ? 'text-white bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 shadow-lg'
                     : 'text-gray-200 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -125,7 +127,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
                   </svg>
                 </span>
                 {activeHover === 'services' && !location.pathname.startsWith('/services') && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-xl blur-sm"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
                 )}
               </Link>
               
@@ -142,17 +144,12 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
                       key={service.id}
                       to={service.path}
                       onClick={() => setShowServicesSections(false)}
-                      className="block px-4 py-3 text-sm text-gray-200 hover:bg-white/10 hover:text-white transition-all duration-300 rounded-xl mb-1 last:mb-0 transform hover:scale-105 hover:translate-x-1 relative group"
+                      className="block px-4 py-3 text-sm text-gray-200 hover:bg-white/10 hover:text-white transition-all duration-300 rounded-xl mb-1 last:mb-0 transform hover:scale-105 hover:translate-x-1 relative group text-body-uppercase"
                       style={{ transitionDelay: `${index * 50}ms` }}
                     >
                       <div className="flex items-center gap-3">
-                        <div className={`w-2 h-2 rounded-full bg-gradient-to-r transition-all duration-300 ${
-                          index === 0 ? 'from-purple-400 to-pink-400' :
-                          index === 1 ? 'from-orange-400 to-red-400' :
-                          index === 2 ? 'from-blue-400 to-cyan-400' :
-                          index === 3 ? 'from-green-400 to-teal-400' :
-                          index === 4 ? 'from-yellow-400 to-amber-400' :
-                          'from-indigo-400 to-purple-400'
+                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index % 2 === 0 ? 'bg-gradient-blue-light' : 'bg-gradient-blue-dark'
                         } group-hover:scale-125`}></div>
                         <span>{service.name}</span>
                       </div>
@@ -165,9 +162,9 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
             {/* Contact */}
             <Link
               to="/contact"
-              className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 hover:shadow-lg ${
-                location.pathname === '/contact' 
-                  ? 'text-white bg-gradient-to-r from-purple-500/20 to-pink-500/20 shadow-lg' 
+              className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 hover:shadow-lg text-body-uppercase ${
+                location.pathname === '/contact'
+                  ? 'text-white bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 shadow-lg'
                   : 'text-gray-200 hover:text-white hover:bg-white/10'
               }`}
               onMouseEnter={() => setActiveHover('contact')}
@@ -175,7 +172,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
             >
               <span className="relative z-10">Contact</span>
               {activeHover === 'contact' && location.pathname !== '/contact' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-xl blur-sm"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
               )}
             </Link>
 

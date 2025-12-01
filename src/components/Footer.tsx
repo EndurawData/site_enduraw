@@ -105,12 +105,43 @@ const Footer: React.FC = () => {
           </a>
         </div>
 
+        {/* Legal Links */}
+        <div className="mt-8 mb-4 flex justify-center flex-wrap gap-4 text-sm">
+          <a
+            href="/mentions-legales"
+            className="text-white/70 hover:text-white transition-colors duration-300 text-body-uppercase"
+          >
+            Mentions Légales
+          </a>
+          <span className="text-white/30">|</span>
+          <a
+            href="/politique-confidentialite"
+            className="text-white/70 hover:text-white transition-colors duration-300 text-body-uppercase"
+          >
+            Politique de Confidentialité
+          </a>
+          <span className="text-white/30">|</span>
+          <a
+            href="/cgu"
+            className="text-white/70 hover:text-white transition-colors duration-300 text-body-uppercase"
+          >
+            CGU
+          </a>
+          <span className="text-white/30">|</span>
+          <a
+            href="/sous-traitants"
+            className="text-white/70 hover:text-white transition-colors duration-300 text-body-uppercase"
+          >
+            Sous-traitants
+          </a>
+        </div>
+
         {/* Copyright at bottom */}
-        <div className="mt-8 relative">
+        <div className="mt-4 relative">
           <div className="inline-block group">
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl px-6 py-3 border border-white/10 hover:border-white/20 transition-all duration-300 relative overflow-hidden group-hover:scale-105 transform">
               <div className="absolute inset-0 bg-gradient-to-r from-gray-500/10 to-gray-400/10 group-hover:from-gray-500/20 group-hover:to-gray-400/20 transition-all duration-500"></div>
-              <p className="text-sm font-medium bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent relative z-10" style={{ fontFamily: 'Montserrat' }}>
+              <p className="text-sm font-medium bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent relative z-10 text-body-uppercase">
                 © Enduraw 2025
               </p>
               {/* Floating sparkles */}

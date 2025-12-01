@@ -51,38 +51,38 @@ const EndurawDashboardPage: React.FC = () => {
     <div className="bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white min-h-screen pt-16 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-orange-500 to-red-500 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-40 right-20 w-96 h-96 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent tracking-tight">
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-6 uppercase tracking-tight">
             Enduraw Dashboard
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full"></div>
         </div>
         
         <div className="space-y-8">
           {/* 1. Strava Integration Section */}
           <section className="relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-10 shadow-2xl hover:bg-white/10 transition-all duration-500 group">
             {/* Decorative corner elements */}
-            <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-orange-500/20 to-transparent rounded-tl-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-red-500/20 to-transparent rounded-br-3xl"></div>
-            
+            <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-cyan-400/20 to-transparent rounded-tl-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-blue-400/20 to-transparent rounded-br-3xl"></div>
+
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center shadow-lg">
+                <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center shadow-lg">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.599h4.172L10.463 0l-7 13.828h4.917"/>
                   </svg>
                 </div>
                 <div>
-                  <h2 className="text-4xl font-black mb-2 bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+                  <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-2 uppercase">
                     Strava Integration
                   </h2>
-                  <h3 className="text-xl font-light text-gray-300 tracking-wide">
+                  <h3 className="text-subtitle text-gradient-blue-light tracking-wide">
                     A tool to better understand your training
                   </h3>
                 </div>
@@ -94,9 +94,9 @@ const EndurawDashboardPage: React.FC = () => {
                   href="https://enduraw-report-strava.onrender.com/dashboard"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 hover:from-orange-600 hover:via-red-600 hover:to-pink-600 text-white font-bold py-6 px-10 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-orange-500/25"
+                  className="btn-enduraw"
                 >
-                  <span className="text-lg tracking-wide">Activate Your Enduraw Report</span>
+                  <span>Activate Your Enduraw Report</span>
                   <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
@@ -105,7 +105,7 @@ const EndurawDashboardPage: React.FC = () => {
 
               {/* Statistics */}
               <div className="mb-16">
-                <h3 className="text-3xl font-bold mb-12 text-center bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                <h3 className="text-subtitle text-gradient-blue-light mb-12 text-center uppercase">
                   In Figures
                 </h3>
                 <div className="grid md:grid-cols-3 gap-8">
@@ -113,10 +113,10 @@ const EndurawDashboardPage: React.FC = () => {
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                       <span className="text-2xl">🌍</span>
                     </div>
-                    <div className="text-5xl font-black bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-6 tracking-tight">
+                    <div className="text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6 tracking-tight">
                       4,478
                     </div>
-                    <p className="text-gray-300 text-lg leading-relaxed">
+                    <p className="text-paragraph text-gray-300 leading-relaxed">
                       Enduraw report users worldwide
                     </p>
                   </div>
@@ -125,10 +125,10 @@ const EndurawDashboardPage: React.FC = () => {
                     <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                       <span className="text-2xl">👌</span>
                     </div>
-                    <div className="text-5xl font-black bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-6 tracking-tight">
+                    <div className="text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6 tracking-tight">
                       236,750
                     </div>
-                    <p className="text-gray-300 text-lg leading-relaxed">
+                    <p className="text-paragraph text-gray-300 leading-relaxed">
                       Activities processed and analyzed
                     </p>
                   </div>
@@ -137,10 +137,10 @@ const EndurawDashboardPage: React.FC = () => {
                     <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                       <span className="text-2xl">🌀</span>
                     </div>
-                    <div className="text-4xl font-black bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent mb-6 tracking-tight">
+                    <div className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6 tracking-tight">
                       2.9M km
                     </div>
-                    <p className="text-gray-300 text-lg leading-relaxed">
+                    <p className="text-paragraph text-gray-300 leading-relaxed">
                       Total distance (72× around the world)
                     </p>
                   </div>
@@ -148,20 +148,20 @@ const EndurawDashboardPage: React.FC = () => {
               </div>
 
             {/* Description Text */}
-            <div className="space-y-6 text-lg text-gray-200 mb-8">
-              <p className="italic">
+            <div className="space-y-6 text-gray-200 mb-8">
+              <p className="text-paragraph italic">
                 "Another tough session in the books ! But what a windy day... I'm sure I would have recorded my FKT without !"
               </p>
-              <p>
+              <p className="text-paragraph">
                 Every athlete knows that wind and heat can be powerful enemies in a training or a race.
               </p>
-              <p>
+              <p className="text-paragraph">
                 Ever trained at high altitude ? Oxygen deprecation is real !
               </p>
-              <p>
+              <p className="text-paragraph">
                 But how to quantify the impact of these parameters of your performance ?
               </p>
-              <p>
+              <p className="text-paragraph">
                 With Enduraw's Strava Integration, your pace can be adjusted according to
               </p>
               <ul className="space-y-2 ml-6">
@@ -170,7 +170,7 @@ const EndurawDashboardPage: React.FC = () => {
                 <li>• Altitude</li>
                 <li>• Elevation gain</li>
               </ul>
-              <p>
+              <p className="text-paragraph">
                 Giving you a full readibility of your session, it gives you keys to analyze your training under external conditions and adapt it.
               </p>
             </div>
@@ -181,7 +181,7 @@ const EndurawDashboardPage: React.FC = () => {
                 href="https://medium.com/@josephmestrallet/enduraw-report-api-a-powerful-tool-to-enhance-your-activity-interpretation-with-external-7273edbf9653"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+                className="btn-enduraw"
               >
                 Read more about the technology
               </a>
@@ -189,7 +189,7 @@ const EndurawDashboardPage: React.FC = () => {
 
             {/* Releases */}
             <div className="bg-white/10 p-6 rounded-lg border border-white/20">
-              <h3 className="text-xl font-bold mb-6 text-white">Releases</h3>
+              <h3 className="text-subtitle text-gradient-blue-light mb-6 uppercase">Releases</h3>
               <div className="space-y-3 text-gray-200">
                 <p>• 07/07/2023 : First idea of the project</p>
                 <p>• 16/11/2023 : Official launch</p>
@@ -201,7 +201,7 @@ const EndurawDashboardPage: React.FC = () => {
 
             {/* The Architects Section */}
             <div className="mt-12">
-              <h3 className="text-2xl font-bold mb-8 text-white text-center">The Architects</h3>
+              <h3 className="text-subtitle text-gradient-blue-light mb-8 text-center uppercase">The Architects</h3>
               
               <div className="relative overflow-hidden">
                 <div 
@@ -212,29 +212,29 @@ const EndurawDashboardPage: React.FC = () => {
                     <div key={slideIndex} className="w-full flex-shrink-0">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {architects.slice(slideIndex * 2, (slideIndex + 1) * 2).map((architect) => (
-                          <div key={architect.id} className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-orange-500/50 transition-all duration-300">
+                          <div key={architect.id} className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-cyan-400/50 transition-all duration-300">
                             <div className="text-center">
                               {/* Profile placeholder */}
-                              <div className="w-16 h-16 bg-orange-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg className="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <div className="w-16 h-16 bg-cyan-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg className="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
                               </div>
-                              
+
                               {/* Name */}
                               <h4 className="text-xl font-bold text-white mb-2">{architect.name}</h4>
-                              
+
                               {/* Country */}
                               <p className="text-gray-300 mb-2">{architect.country}</p>
-                              
+
                               {/* Education */}
-                              <p className="text-sm text-orange-400 font-medium mb-2">{architect.education}</p>
-                              
+                              <p className="text-sm text-cyan-400 font-medium mb-2">{architect.education}</p>
+
                               {/* Position */}
                               <p className="text-white font-semibold mb-1">{architect.position}</p>
-                              
+
                               {/* Company */}
-                              <p className="text-orange-400 font-medium">{architect.company}</p>
+                              <p className="text-cyan-400 font-medium">{architect.company}</p>
                             </div>
                           </div>
                         ))}
@@ -250,7 +250,7 @@ const EndurawDashboardPage: React.FC = () => {
                       key={index}
                       onClick={() => setCurrentArchitectSlide(index)}
                       className={`w-2 h-2 rounded-full transition-colors ${
-                        index === currentArchitectSlide ? 'bg-orange-500' : 'bg-gray-500'
+                        index === currentArchitectSlide ? 'bg-cyan-400' : 'bg-gray-500'
                       }`}
                     />
                   ))}

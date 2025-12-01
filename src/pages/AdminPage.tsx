@@ -202,10 +202,10 @@ const AdminPage: React.FC = () => {
         
         {/* Header */}
         <div className="glass-card p-8 mb-8">
-          <h1 className="text-4xl font-bold gradient-text-blue mb-4">
-            🎯 Administration - Testing Chamonix
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-4">
+            Administration - Testing Chamonix
           </h1>
-          <p className="text-gray-200">
+          <p className="text-paragraph">
             Gérez les créneaux de tests et suivez les réservations
           </p>
         </div>
@@ -221,10 +221,10 @@ const AdminPage: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                className={`text-body-uppercase transition-all duration-300 ${
                   activeTab === tab.id
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
-                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                    ? 'btn-enduraw'
+                    : 'text-gray-300 hover:text-white hover:bg-white/10 py-3 px-6 rounded-2xl'
                 }`}
               >
                 {tab.label}
@@ -240,19 +240,19 @@ const AdminPage: React.FC = () => {
             {stats && (
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div className="stat-card p-6">
-                  <h3 className="text-lg font-semibold text-white mb-2">💰 Revenus</h3>
-                  <p className="text-3xl font-bold gradient-text-blue">{stats.total_revenue}€</p>
+                  <h3 className="text-subtitle text-white mb-2">Revenus</h3>
+                  <p className="text-3xl font-bold text-gradient-blue-light">{stats.total_revenue}€</p>
                 </div>
                 <div className="stat-card p-6">
-                  <h3 className="text-lg font-semibold text-white mb-2">✅ Confirmées</h3>
+                  <h3 className="text-subtitle text-white mb-2">Confirmées</h3>
                   <p className="text-3xl font-bold text-green-400">{stats.confirmed_bookings}</p>
                 </div>
                 <div className="stat-card p-6">
-                  <h3 className="text-lg font-semibold text-white mb-2">⏳ En attente</h3>
+                  <h3 className="text-subtitle text-white mb-2">En attente</h3>
                   <p className="text-3xl font-bold text-yellow-400">{stats.pending_bookings}</p>
                 </div>
                 <div className="stat-card p-6">
-                  <h3 className="text-lg font-semibold text-white mb-2">📅 Créneaux libres</h3>
+                  <h3 className="text-subtitle text-white mb-2">Créneaux libres</h3>
                   <p className="text-3xl font-bold text-blue-400">{stats.available_slots}</p>
                 </div>
               </div>
@@ -265,7 +265,7 @@ const AdminPage: React.FC = () => {
           <div className="space-y-6">
             {/* Formulaire création créneau */}
             <div className="glass-card p-6">
-              <h2 className="text-2xl font-bold text-white mb-4">➕ Créer un nouveau créneau</h2>
+              <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-4">Créer un nouveau créneau</h2>
               <form onSubmit={handleCreateSlot} className="grid md:grid-cols-4 gap-4">
                 <div>
                   <label className="block text-white text-sm font-medium mb-1">Date</label>
@@ -313,9 +313,9 @@ const AdminPage: React.FC = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="btn-gradient px-6 py-2 rounded-lg disabled:opacity-50"
+                    className="btn-enduraw disabled:opacity-50"
                   >
-                    {loading ? 'Création...' : '➕ Créer le créneau'}
+                    {loading ? 'Création...' : 'Créer le créneau'}
                   </button>
                 </div>
               </form>
@@ -323,7 +323,7 @@ const AdminPage: React.FC = () => {
 
             {/* Liste des créneaux */}
             <div className="glass-card p-6">
-              <h2 className="text-2xl font-bold text-white mb-4">📅 Créneaux existants</h2>
+              <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-4">Créneaux existants</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-white">
                   <thead>
@@ -364,19 +364,19 @@ const AdminPage: React.FC = () => {
                           <div className="flex gap-2">
                             <button
                               onClick={() => toggleSlotAvailability(slot.id, slot.available)}
-                              className={`px-3 py-1 rounded text-xs ${
-                                slot.available 
-                                  ? 'bg-red-500/20 text-red-400 hover:bg-red-500/30' 
+                              className={`text-body-uppercase px-3 py-1 rounded-2xl text-xs transition-all duration-300 ${
+                                slot.available
+                                  ? 'bg-red-500/20 text-red-400 hover:bg-red-500/30'
                                   : 'bg-green-500/20 text-green-400 hover:bg-green-500/30'
                               }`}
                             >
-                              {slot.available ? '❌ Désactiver' : '✅ Activer'}
+                              {slot.available ? 'Désactiver' : 'Activer'}
                             </button>
                             <button
                               onClick={() => handleDeleteSlot(slot.id)}
-                              className="px-3 py-1 rounded text-xs bg-red-500/20 text-red-400 hover:bg-red-500/30"
+                              className="text-body-uppercase px-3 py-1 rounded-2xl text-xs bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-all duration-300"
                             >
-                              🗑️ Supprimer
+                              Supprimer
                             </button>
                           </div>
                         </td>
@@ -392,7 +392,7 @@ const AdminPage: React.FC = () => {
         {/* Bookings Tab */}
         {activeTab === 'bookings' && (
           <div className="glass-card p-6">
-            <h2 className="text-2xl font-bold text-white mb-4">🎫 Réservations</h2>
+            <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-4">Réservations</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-white text-sm">
                 <thead>

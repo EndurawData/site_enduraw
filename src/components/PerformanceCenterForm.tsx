@@ -16,29 +16,39 @@ const performanceCenterSchema = z.object({
 type PerformanceCenterFormData = z.infer<typeof performanceCenterSchema>;
 
 interface PerformanceCenterFormProps {
+  selectedStage?: string;
   onSubmitSuccess?: () => void;
 }
 
-const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitSuccess }) => {
+const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ selectedStage, onSubmitSuccess }) => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const trainingCampOptions = [
     { value: '', label: 'Select a training camp' },
-    { value: 'stage1', label: '1st IMMERSIVE STAGE (Oct 3rd-7th)' },
-    { value: 'stage2', label: '2nd IMMERSIVE STAGE (Oct 9th-12th)' },
-    { value: 'stage3', label: '3rd IMMERSIVE STAGE (Oct 15th-19th)' },
-    { value: 'stage4', label: '4th IMMERSIVE STAGE (Oct 20th-24th)' }
+    { value: 'stage1', label: '1st IMMERSIVE STAGE (May 9-12, 2025)' },
+    { value: 'stage2', label: '2nd IMMERSIVE STAGE (May 14-17, 2025)' }
   ];
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
+    setValue
   } = useForm<PerformanceCenterFormData>({
-    resolver: zodResolver(performanceCenterSchema)
+    resolver: zodResolver(performanceCenterSchema),
+    defaultValues: {
+      trainingCamp: selectedStage || ''
+    }
   });
+
+  // Update form when selectedStage changes
+  React.useEffect(() => {
+    if (selectedStage) {
+      setValue('trainingCamp', selectedStage);
+    }
+  }, [selectedStage, setValue]);
 
   const onSubmit = async (data: PerformanceCenterFormData) => {
     // Check honeypot field - if filled, it's likely spam
@@ -88,8 +98,8 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
   return (
     <div className="glass-card p-8 relative group overflow-hidden">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 group-hover:from-orange-500/20 group-hover:to-red-500/20 transition-all duration-500"></div>
-      <div className="absolute -inset-2 bg-gradient-to-r from-orange-600/20 to-red-600/20 blur-xl group-hover:blur-2xl transition-all duration-500 rounded-2xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#6CDCFF]/10 to-blue-500/10 group-hover:from-[#6CDCFF]/20 group-hover:to-blue-500/20 transition-all duration-500"></div>
+      <div className="absolute -inset-2 bg-gradient-to-r from-[#6CDCFF]/20 to-blue-600/20 blur-xl group-hover:blur-2xl transition-all duration-500 rounded-2xl"></div>
       
       {/* Floating Elements */}
       <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-full group-hover:scale-125 group-hover:rotate-45 transition-all duration-500"></div>
@@ -97,13 +107,13 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
       
       <div className="relative z-10">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-black mb-4 gradient-text-orange uppercase tracking-wide animate-float">
+          <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-4">
             <span className="relative z-10">Request Your Training Camp</span>
           </h2>
-          <p className="text-gray-300 text-lg leading-relaxed">
+          <p className="text-paragraph text-gray-300">
             Join elite athletes in the heart of Chamonix for the ultimate performance experience
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto rounded-full mt-4"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#6CDCFF] to-blue-500 mx-auto rounded-full mt-4"></div>
         </div>
         
         {submitStatus === 'success' && (
@@ -114,7 +124,7 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <p className="text-green-300 font-medium">
+              <p className="text-paragraph text-green-300">
                 Your training camp request has been sent successfully! We'll contact you within 24 hours.
               </p>
             </div>
@@ -129,7 +139,7 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </div>
-              <p className="text-red-300 font-medium">{errorMessage}</p>
+              <p className="text-paragraph text-red-300">{errorMessage}</p>
             </div>
           </div>
         )}
@@ -150,14 +160,14 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
           {/* Name Fields */}
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="firstName" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+              <label htmlFor="firstName" className="block text-body-uppercase text-gray-300">
                 First Name *
               </label>
               <input
                 type="text"
                 id="firstName"
                 {...register('firstName')}
-                className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 hover:bg-white/15"
+                className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6CDCFF] focus:border-transparent transition-all duration-300 hover:bg-white/15"
                 placeholder="Your first name"
               />
               {errors.firstName && (
@@ -171,14 +181,14 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="lastName" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+              <label htmlFor="lastName" className="block text-body-uppercase text-gray-300">
                 Last Name *
               </label>
               <input
                 type="text"
                 id="lastName"
                 {...register('lastName')}
-                className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 hover:bg-white/15"
+                className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6CDCFF] focus:border-transparent transition-all duration-300 hover:bg-white/15"
                 placeholder="Your last name"
               />
               {errors.lastName && (
@@ -195,14 +205,14 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
           {/* Contact Fields */}
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+              <label htmlFor="email" className="block text-body-uppercase text-gray-300">
                 Email *
               </label>
               <input
                 type="email"
                 id="email"
                 {...register('email')}
-                className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 hover:bg-white/15"
+                className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6CDCFF] focus:border-transparent transition-all duration-300 hover:bg-white/15"
                 placeholder="your.email@example.com"
               />
               {errors.email && (
@@ -216,14 +226,14 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="phone" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+              <label htmlFor="phone" className="block text-body-uppercase text-gray-300">
                 Phone *
               </label>
               <input
                 type="tel"
                 id="phone"
                 {...register('phone')}
-                className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 hover:bg-white/15"
+                className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6CDCFF] focus:border-transparent transition-all duration-300 hover:bg-white/15"
                 placeholder="+33 1 23 45 67 89"
               />
               {errors.phone && (
@@ -239,13 +249,13 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
 
           {/* Training Camp Selection */}
           <div className="space-y-2">
-            <label htmlFor="trainingCamp" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+            <label htmlFor="trainingCamp" className="block text-body-uppercase text-gray-300">
               Preferred Training Camp *
             </label>
             <select
               id="trainingCamp"
               {...register('trainingCamp')}
-              className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 hover:bg-white/15"
+              className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-[#6CDCFF] focus:border-transparent transition-all duration-300 hover:bg-white/15"
             >
               {trainingCampOptions.map((option) => (
                 <option key={option.value} value={option.value} className="bg-gray-900 text-white">
@@ -265,14 +275,14 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
 
           {/* Optional Message */}
           <div className="space-y-2">
-            <label htmlFor="message" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+            <label htmlFor="message" className="block text-body-uppercase text-gray-300">
               Additional Message <span className="text-gray-500">(Optional)</span>
             </label>
             <textarea
               id="message"
               rows={4}
               {...register('message')}
-              className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-300 hover:bg-white/15 resize-vertical"
+              className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#6CDCFF] focus:border-transparent transition-all duration-300 hover:bg-white/15 resize-vertical"
               placeholder="Tell us about your goals, experience level, or any special requirements..."
             />
           </div>
@@ -281,34 +291,31 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ onSubmitS
           <button
             type="submit"
             disabled={submitStatus === 'loading'}
-            className="w-full px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:ring-offset-transparent relative overflow-hidden group"
+            className="w-full btn-enduraw disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-            <span className="relative z-10 flex items-center justify-center space-x-3 uppercase tracking-wide">
-              {submitStatus === 'loading' ? (
-                <>
-                  <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                  </svg>
-                  <span>Sending Request...</span>
-                </>
-              ) : (
-                <>
-                  <span>Send Training Camp Request</span>
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </>
-              )}
-            </span>
+            {submitStatus === 'loading' ? (
+              <>
+                <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                <span>Sending Request...</span>
+              </>
+            ) : (
+              <>
+                <span>Send Training Camp Request</span>
+                <svg className="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </>
+            )}
           </button>
 
           {/* Additional Info */}
           <div className="text-center pt-4">
-            <p className="text-sm text-gray-400 leading-relaxed">
+            <p className="text-paragraph text-gray-400">
               By submitting this form, you agree to be contacted about the Enduraw Performance Center training camps.
               <br />
-              <span className="text-orange-400 font-medium">We'll respond within 24 hours!</span>
+              <span className="text-gradient-blue-light">We'll respond within 24 hours!</span>
             </p>
           </div>
         </form>

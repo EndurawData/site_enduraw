@@ -22,7 +22,7 @@ const SponsorsSlider: React.FC = () => {
   return (
     <div className="py-16 bg-gray-50 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12 text-black uppercase tracking-wide">
+        <h2 className="text-subtitle text-center mb-12 bg-clip-text text-transparent bg-custom-gradient text-body-uppercase">
           They trusted us
         </h2>
         <div className="relative">

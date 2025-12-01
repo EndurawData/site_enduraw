@@ -72,71 +72,71 @@ const ContactPage: React.FC = () => {
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-16">
-          <h1 className="text-6xl md:text-7xl font-black mb-8 gradient-text-orange uppercase tracking-tight animate-float">
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8 uppercase tracking-tight animate-float">
             Contact Us
           </h1>
-          <p className="text-2xl text-gray-200 mb-12 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-paragraph mb-12 leading-relaxed max-w-2xl mx-auto">
             Ready to optimize your performance? Let's discuss how Enduraw can help you achieve your goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center">
             <div className="glass-card p-6">
-              <div className="icon-container bg-gradient-to-br from-orange-500 to-red-500 mx-auto mb-4">
+              <div className="icon-container bg-gradient-blue-light mx-auto mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="font-bold gradient-text-orange mb-2">Email</h3>
-              <p className="text-gray-200">contact.enduraw@gmail.com</p>
+              <h3 className="text-subtitle text-gradient-blue-light mb-2">Email</h3>
+              <p className="text-paragraph">contact.enduraw@gmail.com</p>
             </div>
             <div className="glass-card p-6">
-              <div className="icon-container bg-gradient-to-br from-blue-500 to-purple-500 mx-auto mb-4">
+              <div className="icon-container bg-gradient-blue-light mx-auto mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
                 </svg>
               </div>
-              <h3 className="font-bold gradient-text-blue mb-2">Website</h3>
-              <p className="text-gray-200">enduraw-data.com</p>
+              <h3 className="text-subtitle text-gradient-blue-light mb-2">Website</h3>
+              <p className="text-paragraph">enduraw.co</p>
             </div>
           </div>
         </div>
         
         <div className="glass-card p-10 max-w-2xl mx-auto">
-          <h3 className="text-2xl font-bold mb-8 text-center gradient-text-purple">Send us a message</h3>
+          <h3 className="text-subtitle text-gradient-blue-light mb-8 text-center">Send us a message</h3>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-3 text-gray-200">Name</label>
-              <input 
-                type="text" 
-                id="name" 
+              <label htmlFor="name" className="block text-body-uppercase mb-3">Name</label>
+              <input
+                type="text"
+                id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className="w-full p-4 glass-card border-white/20 focus:border-orange-400/50 focus:outline-none text-white placeholder-gray-400 transition-all"
+                className="w-full p-4 glass-card border-white/20 focus:border-[#6CDCFF]/50 focus:outline-none text-white placeholder-gray-400 transition-all"
                 placeholder="Your name"
                 required
               />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-3 text-gray-200">Email</label>
-              <input 
-                type="email" 
-                id="email" 
+              <label htmlFor="email" className="block text-body-uppercase mb-3">Email</label>
+              <input
+                type="email"
+                id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full p-4 glass-card border-white/20 focus:border-orange-400/50 focus:outline-none text-white placeholder-gray-400 transition-all"
+                className="w-full p-4 glass-card border-white/20 focus:border-[#6CDCFF]/50 focus:outline-none text-white placeholder-gray-400 transition-all"
                 placeholder="your@email.com"
                 required
               />
             </div>
             <div>
-              <label htmlFor="reason" className="block text-sm font-medium mb-3 text-gray-200">Reason for Contact</label>
-              <select 
-                id="reason" 
+              <label htmlFor="reason" className="block text-body-uppercase mb-3">Reason for Contact</label>
+              <select
+                id="reason"
                 name="reason"
                 value={formData.reason}
                 onChange={handleInputChange}
-                className="w-full p-4 glass-card border-white/20 focus:border-orange-400/50 focus:outline-none text-white transition-all"
+                className="w-full p-4 glass-card border-white/20 focus:border-[#6CDCFF]/50 focus:outline-none text-white transition-all"
                 style={{
                   background: 'rgba(255, 255, 255, 0.1)',
                   backdropFilter: 'blur(10px)'
@@ -153,22 +153,22 @@ const ContactPage: React.FC = () => {
               </select>
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-3 text-gray-200">Message</label>
-              <textarea 
-                id="message" 
+              <label htmlFor="message" className="block text-body-uppercase mb-3">Message</label>
+              <textarea
+                id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
                 rows={5}
-                className="w-full p-4 glass-card border-white/20 focus:border-orange-400/50 focus:outline-none text-white placeholder-gray-400 transition-all resize-none"
+                className="w-full p-4 glass-card border-white/20 focus:border-[#6CDCFF]/50 focus:outline-none text-white placeholder-gray-400 transition-all resize-none"
                 placeholder="Tell us about your goals..."
                 required
               />
             </div>
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               disabled={isLoading}
-              className="btn-gradient w-full text-lg py-4 px-6 inline-flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="btn-enduraw w-full disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <>
@@ -194,7 +194,7 @@ const ContactPage: React.FC = () => {
                   </svg>
                   <span>Message envoyé avec succès !</span>
                 </div>
-                <p className="text-sm text-gray-300 mt-2">Nous vous répondrons dans les plus brefs délais.</p>
+                <p className="text-paragraph mt-2">Nous vous répondrons dans les plus brefs délais.</p>
               </div>
             )}
             
@@ -206,7 +206,7 @@ const ContactPage: React.FC = () => {
                   </svg>
                   <span>Erreur lors de l'envoi</span>
                 </div>
-                <p className="text-sm text-gray-300 mt-2">Veuillez réessayer ou nous contacter directement.</p>
+                <p className="text-paragraph mt-2">Veuillez réessayer ou nous contacter directement.</p>
               </div>
             )}
           </form>

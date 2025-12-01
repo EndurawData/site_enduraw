@@ -67,17 +67,17 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
 
   return (
     <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-      <h2 className="text-2xl font-bold text-white mb-6">Contact Us</h2>
+      <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-6">Contact Us</h2>
       
       {submitStatus === 'success' && (
         <div className="mb-6 p-4 bg-green-900 border border-green-700 rounded-md">
-          <p className="text-green-300">Your message has been sent successfully! We'll get back to you soon.</p>
+          <p className="text-paragraph text-green-300">Your message has been sent successfully! We'll get back to you soon.</p>
         </div>
       )}
 
       {submitStatus === 'error' && (
         <div className="mb-6 p-4 bg-red-900 border border-red-700 rounded-md">
-          <p className="text-red-300">{errorMessage}</p>
+          <p className="text-paragraph text-red-300">{errorMessage}</p>
         </div>
       )}
 
@@ -96,7 +96,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
 
         {/* Name field */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="name" className="block text-body-uppercase text-gray-300 mb-2">
             Name *
           </label>
           <input
@@ -113,7 +113,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
 
         {/* Email field */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="email" className="block text-body-uppercase text-gray-300 mb-2">
             Email *
           </label>
           <input
@@ -130,7 +130,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
 
         {/* Message field */}
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+          <label htmlFor="message" className="block text-body-uppercase text-gray-300 mb-2">
             Message *
           </label>
           <textarea
@@ -149,7 +149,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmitSuccess }) => {
         <button
           type="submit"
           disabled={submitStatus === 'loading'}
-          className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+          className="w-full btn-enduraw disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           {submitStatus === 'loading' ? 'Sending...' : 'Send Message'}
         </button>

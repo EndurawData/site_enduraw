@@ -14,7 +14,12 @@
       "Bash(cmd /c start /b ngrok:*)",
       "Bash(powershell:*)",
       "Bash(node server.js)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(findstr:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []

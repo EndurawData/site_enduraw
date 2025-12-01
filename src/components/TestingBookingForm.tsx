@@ -130,10 +130,10 @@ Please contact this person to schedule their testing session in Chamonix.
       
       <div className="relative z-10">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-black mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent uppercase tracking-wide">
-            <span className="relative z-10">🧪 Book Your Testing Session</span>
+          <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-4">
+            <span className="relative z-10">Book Your Testing Session</span>
           </h2>
-          <p className="text-gray-300 text-lg leading-relaxed">
+          <p className="text-paragraph text-gray-300">
             Professional physiological testing in the heart of Chamonix
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mt-4"></div>
@@ -147,7 +147,7 @@ Please contact this person to schedule their testing session in Chamonix.
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <p className="text-green-300 font-medium">
+              <p className="text-paragraph text-green-300">
                 Your testing session request has been sent! We'll contact you within 24 hours to confirm your appointment.
               </p>
             </div>
@@ -162,7 +162,7 @@ Please contact this person to schedule their testing session in Chamonix.
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </div>
-              <p className="text-red-300 font-medium">{errorMessage}</p>
+              <p className="text-paragraph text-red-300">{errorMessage}</p>
             </div>
           </div>
         )}
@@ -183,7 +183,7 @@ Please contact this person to schedule their testing session in Chamonix.
           {/* Personal Information */}
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+              <label htmlFor="name" className="block text-body-uppercase text-gray-300">
                 Full Name *
               </label>
               <input
@@ -204,7 +204,7 @@ Please contact this person to schedule their testing session in Chamonix.
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+              <label htmlFor="email" className="block text-body-uppercase text-gray-300">
                 Email *
               </label>
               <input
@@ -226,7 +226,7 @@ Please contact this person to schedule their testing session in Chamonix.
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="phone" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+            <label htmlFor="phone" className="block text-body-uppercase text-gray-300">
               Phone Number *
             </label>
             <input
@@ -249,7 +249,7 @@ Please contact this person to schedule their testing session in Chamonix.
           {/* Testing Details */}
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="testingType" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+              <label htmlFor="testingType" className="block text-body-uppercase text-gray-300">
                 Testing Protocol *
               </label>
               <select
@@ -274,7 +274,7 @@ Please contact this person to schedule their testing session in Chamonix.
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="experience" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+              <label htmlFor="experience" className="block text-body-uppercase text-gray-300">
                 Experience Level
               </label>
               <select
@@ -294,7 +294,7 @@ Please contact this person to schedule their testing session in Chamonix.
           {/* Scheduling Preferences */}
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="preferredDate" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+              <label htmlFor="preferredDate" className="block text-body-uppercase text-gray-300">
                 Preferred Date <span className="text-gray-500">(Wednesdays only)</span>
               </label>
               <input
@@ -306,7 +306,7 @@ Please contact this person to schedule their testing session in Chamonix.
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="preferredTime" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+              <label htmlFor="preferredTime" className="block text-body-uppercase text-gray-300">
                 Preferred Time
               </label>
               <select
@@ -325,7 +325,7 @@ Please contact this person to schedule their testing session in Chamonix.
 
           {/* Goals and Additional Info */}
           <div className="space-y-2">
-            <label htmlFor="goals" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+            <label htmlFor="goals" className="block text-body-uppercase text-gray-300">
               Training Goals & Objectives
             </label>
             <textarea
@@ -338,7 +338,7 @@ Please contact this person to schedule their testing session in Chamonix.
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="message" className="block text-sm font-bold text-gray-300 uppercase tracking-wide">
+            <label htmlFor="message" className="block text-body-uppercase text-gray-300">
               Additional Information
             </label>
             <textarea
@@ -354,34 +354,31 @@ Please contact this person to schedule their testing session in Chamonix.
           <button
             type="submit"
             disabled={submitStatus === 'loading'}
-            className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent relative overflow-hidden group"
+            className="w-full btn-enduraw disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-            <span className="relative z-10 flex items-center justify-center space-x-3 uppercase tracking-wide">
-              {submitStatus === 'loading' ? (
-                <>
-                  <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                  </svg>
-                  <span>Sending Request...</span>
-                </>
-              ) : (
-                <>
-                  <span>🧪 Book Testing Session</span>
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </>
-              )}
-            </span>
+            {submitStatus === 'loading' ? (
+              <>
+                <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                <span>Sending Request...</span>
+              </>
+            ) : (
+              <>
+                <span>Book Testing Session</span>
+                <svg className="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </>
+            )}
           </button>
 
           {/* Additional Info */}
           <div className="text-center pt-4">
-            <p className="text-sm text-gray-400 leading-relaxed">
+            <p className="text-paragraph text-gray-400">
               By submitting this form, you agree to be contacted about your testing session.
               <br />
-              <span className="text-blue-400 font-medium">We'll respond within 24 hours with availability and confirmation!</span>
+              <span className="text-gradient-blue-light">We'll respond within 24 hours with availability and confirmation!</span>
             </p>
             <div className="mt-4 inline-flex items-center space-x-4 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-400/20">
               <span className="text-blue-400 text-xs font-bold">📅 Wednesdays Only</span>

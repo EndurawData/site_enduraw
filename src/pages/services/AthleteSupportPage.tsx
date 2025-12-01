@@ -98,8 +98,8 @@ const AthleteSupportPage: React.FC = () => {
               : 'translate-y-10 opacity-0'
           }`}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-8 uppercase tracking-wide bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent animate-pulse text-center">
-            Athletes Support
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8 text-center">
+            ATHLETES SUPPORT
           </h1>
         </div>
         
@@ -113,11 +113,11 @@ const AthleteSupportPage: React.FC = () => {
           }`}
         >
           <div className="relative group inline-block">
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/30 to-red-500/30 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-blue-400/30 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
             <div className="bg-dark-secondary/80 backdrop-blur-sm p-8 rounded-2xl border border-white/10 shadow-2xl relative z-10 group-hover:scale-105 transition-transform duration-300">
-              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-                <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent font-bold">You have the fire</span>, <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-bold">we have the spark.</span><br />
-                <span className="text-2xl md:text-3xl bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-black">Unleash your potential.</span>
+              <p className="text-paragraph text-gray-300 leading-relaxed">
+                <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent font-bold">You have the fire</span>, <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-bold">we have the spark.</span><br />
+                <span className="text-subtitle bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent font-black">Unleash your potential.</span>
               </p>
             </div>
           </div>
@@ -137,7 +137,7 @@ const AthleteSupportPage: React.FC = () => {
             <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-full group-hover:scale-125 group-hover:rotate-45 transition-all duration-500"></div>
             <div className="absolute bottom-4 left-4 w-8 h-8 bg-gradient-to-br from-green-400/30 to-teal-500/30 rounded-full group-hover:scale-150 group-hover:-rotate-45 transition-all duration-700"></div>
             
-            <div className="text-lg text-gray-200 space-y-6 leading-relaxed relative z-10">
+            <div className="text-paragraph text-gray-200 space-y-6 leading-relaxed relative z-10">
               <p className="group-hover:text-white transition-colors duration-300">
                 Being an accomplished athlete does not only rely on a good training plan.
               </p>
@@ -147,7 +147,7 @@ const AthleteSupportPage: React.FC = () => {
               <p className="group-hover:text-white transition-colors duration-300">
                 Thanks to <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent font-bold">data-driven insights</span>, we hyper-personalize your training to bring you into a new dimension.
               </p>
-              <p className="text-xl font-semibold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
+              <p className="text-paragraph font-semibold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
                 No matter what you aim for, we know you want to do it at your best. And so do we!
               </p>
             </div>
@@ -164,8 +164,8 @@ const AthleteSupportPage: React.FC = () => {
           }`}
         >
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent uppercase tracking-wide relative">
-              The keys we can bring you
+            <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-4 relative">
+              THE KEYS WE CAN BRING YOU
             </h2>
             <div className="w-32 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
           </div>
@@ -194,7 +194,7 @@ const AthleteSupportPage: React.FC = () => {
                 title: "Nutrition Guidance",
                 content: "Nutrition over training and races alongside advices on best practice for endurance athletes",
                 icon: "🥗",
-                color: "from-orange-400 to-red-400"
+                color: "from-cyan-400 to-blue-400"
               },
               {
                 title: "Refueling Strategy",
@@ -233,11 +233,11 @@ const AthleteSupportPage: React.FC = () => {
                 
                 {/* Content */}
                 <div className="relative z-10 space-y-4">
-                  <h3 className={`text-xl font-bold bg-gradient-to-r ${service.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300`}>
+                  <h3 className={`text-subtitle text-gradient-blue-light group-hover:scale-105 transition-transform duration-300`}>
                     {service.title}
                   </h3>
                   <div className="h-px bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:via-white/60 transition-all duration-500"></div>
-                  <p className="text-lg text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-300">
+                  <p className="text-paragraph text-gray-200 leading-relaxed group-hover:text-white transition-colors duration-300">
                     {service.content}
                   </p>
                 </div>
@@ -258,61 +258,61 @@ const AthleteSupportPage: React.FC = () => {
               : 'translate-y-20 opacity-0 scale-95'
           }`}
         >
-          <div className="bg-gradient-to-br from-orange-500/20 via-red-500/20 to-pink-500/20 p-10 rounded-3xl border border-orange-400/30 backdrop-blur-sm relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-red-500/10 group-hover:from-orange-500/20 group-hover:to-red-500/20 transition-all duration-500"></div>
-            <div className="absolute top-8 right-8 w-20 h-20 bg-gradient-to-br from-orange-400/30 to-red-500/30 rounded-full blur-xl group-hover:scale-125 transition-all duration-500"></div>
+          <div className="bg-gradient-to-br from-cyan-400/20 via-blue-400/20 to-pink-500/20 p-10 rounded-3xl border border-cyan-400/30 backdrop-blur-sm relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-blue-400/10 group-hover:from-cyan-400/20 group-hover:to-blue-400/20 transition-all duration-500"></div>
+            <div className="absolute top-8 right-8 w-20 h-20 bg-gradient-to-br from-cyan-400/30 to-blue-400/30 rounded-full blur-xl group-hover:scale-125 transition-all duration-500"></div>
             <div className="absolute bottom-8 left-8 w-16 h-16 bg-gradient-to-br from-pink-400/30 to-purple-500/30 rounded-full blur-lg group-hover:scale-110 transition-all duration-700"></div>
-            
+
             <div className="relative z-10">
               <div className="text-center mb-12">
-                <h2 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text text-transparent uppercase tracking-wide">
-                  Ready to train like a pro?
+                <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-6">
+                  READY TO TRAIN LIKE A PRO?
                 </h2>
-                <div className="w-32 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto rounded-full"></div>
+                <div className="w-32 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full"></div>
               </div>
               
               <div className="grid lg:grid-cols-2 gap-12 mb-12">
                 {/* Left Column - Principles */}
                 <div className="space-y-8">
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-orange-400/20 group/principle hover:scale-105 transition-all duration-300">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-cyan-400/20 group/principle hover:scale-105 transition-all duration-300">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover/principle:scale-110 transition-transform duration-300">
+                      <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full flex items-center justify-center flex-shrink-0 group-hover/principle:scale-110 transition-transform duration-300">
                         <span className="text-2xl">🧠</span>
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-red-300 mb-3">"Smart Training"</h3>
-                        <p className="text-gray-200 leading-relaxed">
-                          <span className="font-bold text-red-400">"No pain no gain"</span> doesn't read as literally as we thought. 
+                        <h3 className="text-subtitle text-gradient-blue-light mb-3">"Smart Training"</h3>
+                        <p className="text-paragraph text-gray-200 leading-relaxed">
+                          <span className="font-bold text-cyan-400">"No pain no gain"</span> doesn't read as literally as we thought.
                           Evaluating training load via biological and mechanical markers, we analyze your training to give you a better understanding of your physiological responses.
                         </p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-orange-400/20 group/principle hover:scale-105 transition-all duration-300">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-cyan-400/20 group/principle hover:scale-105 transition-all duration-300">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover/principle:scale-110 transition-transform duration-300">
                         <span className="text-2xl">💤</span>
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-green-300 mb-3">"Recovery First"</h3>
-                        <p className="text-gray-200 leading-relaxed">
-                          <span className="font-bold text-green-400">Recovery matters</span> even more than training alone. 
+                        <h3 className="text-subtitle text-gradient-blue-light mb-3">"Recovery First"</h3>
+                        <p className="text-paragraph text-gray-200 leading-relaxed">
+                          <span className="font-bold text-green-400">Recovery matters</span> even more than training alone.
                           Adaptation drives progression, achieved through proper refueling and sleep that data can help master.
                         </p>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-orange-400/20 group/principle hover:scale-105 transition-all duration-300">
+                  <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-cyan-400/20 group/principle hover:scale-105 transition-all duration-300">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 group-hover/principle:scale-110 transition-transform duration-300">
                         <span className="text-2xl">🎯</span>
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-purple-300 mb-3">"Precision Pacing"</h3>
-                        <p className="text-gray-200 leading-relaxed">
-                          <span className="font-bold text-purple-400">Pacing Strategy</span> is unique and can be fine-tuned from your training data and past races. 
+                        <h3 className="text-subtitle text-gradient-blue-light mb-3">"Precision Pacing"</h3>
+                        <p className="text-paragraph text-gray-200 leading-relaxed">
+                          <span className="font-bold text-purple-400">Pacing Strategy</span> is unique and can be fine-tuned from your training data and past races.
                           Together, we'll find the best scenario: when to walk, when to eat, when to control, or when to push it!
                         </p>
                       </div>
@@ -325,7 +325,7 @@ const AthleteSupportPage: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 group-hover/form:from-white/10 group-hover/form:to-white/20 transition-all duration-500"></div>
                   
                   <div className="relative z-10">
-                    <h3 className="text-2xl font-bold mb-6 text-center bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                    <h3 className="text-subtitle text-gradient-blue-light mb-6 text-center">
                       Start Your Journey
                     </h3>
                     
@@ -383,7 +383,7 @@ const AthleteSupportPage: React.FC = () => {
                         <button
                           type="submit"
                           disabled={isLoading}
-                          className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/50 uppercase tracking-wide relative group/button overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="btn-enduraw relative group/button overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 transform scale-x-0 group-hover/button:scale-x-100 transition-transform duration-300 origin-left"></div>
                           <span className="relative z-10 flex items-center gap-2">
@@ -433,14 +433,14 @@ const AthleteSupportPage: React.FC = () => {
                 </div>
               </div>
               
-              <div className="text-center bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-orange-400/30">
-                <p className="text-lg text-gray-200 italic mb-4">
+              <div className="text-center bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-cyan-400/30">
+                <p className="text-paragraph text-gray-200 italic mb-4">
                   "There is consensus in the scientific community: pushing your body in training is not sufficient to perform at your peak."
                 </p>
                 <div className="inline-flex items-center space-x-4 text-sm">
-                  <span className="px-3 py-1 bg-orange-400/20 text-orange-400 rounded-full font-semibold">Data-Driven Approach</span>
+                  <span className="px-3 py-1 bg-cyan-400/20 text-cyan-400 rounded-full font-semibold">Data-Driven Approach</span>
                   <span className="text-gray-400">•</span>
-                  <span className="px-3 py-1 bg-red-400/20 text-red-400 rounded-full font-semibold">Personalized Plans</span>
+                  <span className="px-3 py-1 bg-blue-400/20 text-blue-400 rounded-full font-semibold">Personalized Plans</span>
                   <span className="text-gray-400">•</span>
                   <span className="px-3 py-1 bg-pink-400/20 text-pink-400 rounded-full font-semibold">Expert Support</span>
                 </div>

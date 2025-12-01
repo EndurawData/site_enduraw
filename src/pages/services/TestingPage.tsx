@@ -44,8 +44,8 @@ const TestingPage: React.FC = () => {
               : 'translate-y-10 opacity-0'
           }`}
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-8 uppercase tracking-wide bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent animate-pulse">
-            Testing Services
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
+            TESTING SERVICES
           </h1>
         </div>
 
@@ -58,7 +58,7 @@ const TestingPage: React.FC = () => {
               : 'translate-y-10 opacity-0'
           }`}
         >
-          <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
+          <p className="text-paragraph text-gray-300 leading-relaxed">
             Learn more about your physiology and what makes you a great athlete
           </p>
         </div>
@@ -75,7 +75,7 @@ const TestingPage: React.FC = () => {
           <div className="bg-dark-secondary/80 backdrop-blur-sm rounded-xl p-2 flex border border-white/10 shadow-2xl">
             <button
               onClick={() => setSelectedLocation('paris')}
-              className={`px-8 py-4 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 ${
+              className={`px-8 py-4 rounded-lg text-body-uppercase font-medium transition-all duration-300 transform hover:scale-105 ${
                 selectedLocation === 'paris'
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
                   : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -85,7 +85,7 @@ const TestingPage: React.FC = () => {
             </button>
             <button
               onClick={() => setSelectedLocation('chamonix')}
-              className={`px-8 py-4 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 ${
+              className={`px-8 py-4 rounded-lg text-body-uppercase font-medium transition-all duration-300 transform hover:scale-105 ${
                 selectedLocation === 'chamonix'
                   ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
                   : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -108,30 +108,30 @@ const TestingPage: React.FC = () => {
           >
             <div className="bg-dark-secondary/80 backdrop-blur-sm p-8 rounded-2xl text-center border border-white/10 shadow-2xl relative group overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all duration-500"></div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent relative z-10">Testing in Paris</h2>
-              <p className="text-xl text-gray-200 mb-8 relative z-10">
+              <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-6 relative z-10">TESTING IN PARIS</h2>
+              <p className="text-paragraph text-gray-200 mb-8 relative z-10">
                 Professional testing services available at our partner facility in Paris
               </p>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-8 border border-white/20 relative group overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 group-hover:from-cyan-500/20 group-hover:to-blue-500/20 transition-all duration-500"></div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent relative z-10">Harbat Running Lab Partnership</h3>
-                <p className="text-gray-300 mb-6 relative z-10">
-                  We partner with Harbat Running Lab, a state-of-the-art performance testing facility in Paris, 
+                <h3 className="text-subtitle text-gradient-blue-light mb-4 relative z-10">Harbat Running Lab Partnership</h3>
+                <p className="text-paragraph text-gray-300 mb-6 relative z-10">
+                  We partner with Harbat Running Lab, a state-of-the-art performance testing facility in Paris,
                   to provide you with comprehensive physiological assessments using the latest technology.
                 </p>
                 <div className="text-left space-y-4 text-gray-300 mb-8 relative z-10">
-                  <h4 className="text-xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent mb-4">Unlock Your Full Potential with VO₂max Testing</h4>
+                  <h4 className="text-subtitle text-gradient-blue-light mb-4">Unlock Your Full Potential with VO₂max Testing</h4>
                   
-                  <p className="leading-relaxed">
-                    <span className="text-lg">🏃‍♂️ Road Runners</span> – Find your exact training zones with our incremental test (flat or uphill). Add the fuel test (+€30) to see how your body burns carbs & fats—perfect for marathon nutrition.
+                  <p className="text-paragraph leading-relaxed">
+                    <span className="text-paragraph">🏃‍♂️ Road Runners</span> – Find your exact training zones with our incremental test (flat or uphill). Add the fuel test (+€30) to see how your body burns carbs & fats—perfect for marathon nutrition.
                   </p>
-                  
-                  <p className="leading-relaxed">
-                    <span className="text-lg">⛰️ Trail Runners</span> – Measure your running & hiking economy and discover how you really use energy on the climbs.
+
+                  <p className="text-paragraph leading-relaxed">
+                    <span className="text-paragraph">⛰️ Trail Runners</span> – Measure your running & hiking economy and discover how you really use energy on the climbs.
                   </p>
-                  
-                  <p className="leading-relaxed">
-                    <span className="text-lg">🔥</span> With our real-time oxidation analysis, you'll know exactly when your body taps into carbs or fats—so you can train smarter, fuel better, and race stronger.
+
+                  <p className="text-paragraph leading-relaxed">
+                    <span className="text-paragraph">🔥</span> With our real-time oxidation analysis, you'll know exactly when your body taps into carbs or fats—so you can train smarter, fuel better, and race stronger.
                   </p>
                 </div>
               </div>
@@ -139,7 +139,7 @@ const TestingPage: React.FC = () => {
                 href="https://runninglab.store/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 inline-block transform hover:scale-105 shadow-lg hover:shadow-xl relative z-10"
+                className="btn-enduraw relative z-10"
               >
                 Book at Harbat Running Lab →
               </a>
@@ -156,8 +156,8 @@ const TestingPage: React.FC = () => {
           {/* Simplified Chamonix Section */}
           <div className="bg-dark-secondary/80 backdrop-blur-sm p-8 rounded-2xl text-center border border-white/10 shadow-2xl relative group overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all duration-500"></div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent relative z-10">Testing in Chamonix</h2>
-            <p className="text-xl text-gray-200 mb-8 relative z-10">
+            <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-6 relative z-10">TESTING IN CHAMONIX</h2>
+            <p className="text-paragraph text-gray-200 mb-8 relative z-10">
               Professional testing services available at our Chamonix facility
             </p>
           </div>
@@ -168,11 +168,11 @@ const TestingPage: React.FC = () => {
             <div className="bg-dark-secondary/80 backdrop-blur-sm p-8 rounded-2xl border border-white/10 relative group overflow-hidden shadow-2xl hover:shadow-purple-500/20 transition-all duration-500 transform hover:scale-105 hover:-rotate-1">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-all duration-500"></div>
               <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent relative z-10">VO2Max Protocol</h3>
-              <p className="text-lg text-gray-300 mb-2 relative z-10">Testing at Chamonix or Paris</p>
-              <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent mb-6 relative z-10">From 150€</p>
+              <h3 className="text-subtitle text-gradient-blue-light mb-4 relative z-10">VO2Max Protocol</h3>
+              <p className="text-paragraph text-gray-300 mb-2 relative z-10">Testing at Chamonix or Paris</p>
+              <p className="text-subtitle text-gradient-blue-light mb-6 relative z-10">From 150€</p>
               
-              <ul className="space-y-3 text-gray-200 relative z-10">
+              <ul className="space-y-3 text-paragraph text-gray-200 relative z-10">
                 <li className="flex items-center group">
                   <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                   <span>FC max</span>
@@ -212,11 +212,11 @@ const TestingPage: React.FC = () => {
             <div className="bg-dark-secondary/80 backdrop-blur-sm p-8 rounded-2xl border border-white/10 relative group overflow-hidden shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 transform hover:scale-105 hover:rotate-1">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 group-hover:from-blue-500/20 group-hover:to-cyan-500/20 transition-all duration-500"></div>
               <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent relative z-10">Run/Walk Protocol</h3>
-              <p className="text-lg text-gray-300 mb-2 relative z-10">Testing at Chamonix or Paris</p>
-              <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent mb-6 relative z-10">From 50€</p>
-              
-              <ul className="space-y-3 text-gray-200 relative z-10">
+              <h3 className="text-subtitle text-gradient-blue-light mb-4 relative z-10">Run/Walk Protocol</h3>
+              <p className="text-paragraph text-gray-300 mb-2 relative z-10">Testing at Chamonix or Paris</p>
+              <p className="text-subtitle text-gradient-blue-light mb-6 relative z-10">From 50€</p>
+
+              <ul className="space-y-3 text-paragraph text-gray-200 relative z-10">
                 <li className="flex items-center group">
                   <span className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
                   <span>Running economy</span>
@@ -258,44 +258,44 @@ const TestingPage: React.FC = () => {
             id="animate-whats-included"
             className="bg-white/95 backdrop-blur-sm text-black p-8 rounded-2xl shadow-2xl"
           >
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent text-center">What's Included</h2>
+            <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-6 text-center">WHAT'S INCLUDED</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center group transform hover:scale-105 transition-all duration-300">
                 <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-purple-500/50 transition-all duration-300">
                   <span className="text-xl font-bold">1</span>
                 </div>
-                <h3 className="font-semibold mb-2 text-lg">Pre-Test Consultation</h3>
-                <p className="text-sm text-gray-700">Comprehensive health screening and goal assessment</p>
+                <h3 className="text-subtitle text-gradient-blue-light mb-2">Pre-Test Consultation</h3>
+                <p className="text-paragraph text-gray-700">Comprehensive health screening and goal assessment</p>
               </div>
               <div className="text-center group transform hover:scale-105 transition-all duration-300">
                 <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300">
                   <span className="text-xl font-bold">2</span>
                 </div>
-                <h3 className="font-semibold mb-2 text-lg">Laboratory Testing</h3>
-                <p className="text-sm text-gray-700">State-of-the-art equipment and protocols</p>
+                <h3 className="text-subtitle text-gradient-blue-light mb-2">Laboratory Testing</h3>
+                <p className="text-paragraph text-gray-700">State-of-the-art equipment and protocols</p>
               </div>
               <div className="text-center group transform hover:scale-105 transition-all duration-300">
                 <div className="bg-gradient-to-r from-green-500 to-teal-500 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:shadow-lg group-hover:shadow-green-500/50 transition-all duration-300">
                   <span className="text-xl font-bold">3</span>
                 </div>
-                <h3 className="font-semibold mb-2 text-lg">Detailed Report</h3>
-                <p className="text-sm text-gray-700">Comprehensive analysis with actionable recommendations</p>
+                <h3 className="text-subtitle text-gradient-blue-light mb-2">Detailed Report</h3>
+                <p className="text-paragraph text-gray-700">Comprehensive analysis with actionable recommendations</p>
               </div>
             </div>
           </div>
 
           {/* Système de réservation en ligne */}
           <div className="bg-gradient-to-br from-blue-600/10 to-purple-600/10 p-8 rounded-2xl border border-blue-400/20">
-            <h2 className="text-3xl font-bold mb-6 gradient-text-blue text-center">
-              Réservation en ligne 🚀
+            <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-6 text-center">
+              RÉSERVATION EN LIGNE 🚀
             </h2>
             <div className="glass-card p-8 text-center">
               <div className="mb-6">
                 <div className="text-6xl mb-4">📅</div>
-                <p className="text-xl text-gray-200 mb-6 leading-relaxed">
+                <p className="text-paragraph text-gray-200 mb-6 leading-relaxed">
                   Réservez votre test physiologique dès maintenant !
                 </p>
-                <p className="text-lg text-gray-300 mb-8">
+                <p className="text-paragraph text-gray-300 mb-8">
                   Sélectionnez votre créneau et protocole de test en quelques clics.
                 </p>
               </div>
@@ -305,7 +305,7 @@ const TestingPage: React.FC = () => {
                   href="https://hg1xgb-km.myshopify.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 inline-flex items-center justify-center gap-2 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="btn-enduraw"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4v10m6-10v10M5 7h14l-1 12H6L5 7z" />
@@ -341,15 +341,15 @@ const TestingPage: React.FC = () => {
 
           {/* Section contact alternative */}
           <div className="glass-card p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4 text-white">
+            <h3 className="text-subtitle text-gradient-blue-light mb-4">
               Besoin d'autres informations ?
             </h3>
-            <p className="text-gray-300 mb-6">
+            <p className="text-paragraph text-gray-300 mb-6">
               Pour des questions spécifiques ou des créneaux personnalisés, n'hésitez pas à nous contacter.
             </p>
             <a
               href="/contact"
-              className="btn-gradient inline-flex items-center gap-3 text-lg py-3 px-6 rounded-xl"
+              className="btn-enduraw"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />

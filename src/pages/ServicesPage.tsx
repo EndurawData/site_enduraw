@@ -31,8 +31,8 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
       <section ref={(el) => { sectionRefs.current['overview'] = el; }} className="pt-32 pb-32 relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
-            <h1 className="text-6xl font-black mb-12 gradient-text-orange tracking-tight animate-float">
-              What Enduraw Services are you looking for?
+            <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-12 tracking-tight animate-float uppercase">
+              What Enduraw Services are you looking for ?
             </h1>
           </div>
           
@@ -81,18 +81,18 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
               }
             ].map((service) => (
               <div key={service.id} className="h-80">
-                <Link 
+                <Link
                   to={service.link}
-                  className="glass-card p-8 text-center border-white/20 hover:border-orange-400/50 hover:scale-105 transition-all duration-300 group h-full flex flex-col justify-center"
+                  className="glass-card p-8 text-center border-white/20 hover:border-[#6CDCFF]/50 hover:scale-105 transition-all duration-300 group h-full flex flex-col justify-center"
                 >
                   <div className="mb-6">
-                    <div className="icon-container bg-gradient-to-br from-orange-500 to-red-500 mx-auto mb-6 group-hover:scale-110 transition-transform">
+                    <div className="icon-container bg-gradient-blue-light mx-auto mb-6 group-hover:scale-110 transition-transform">
                       <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={service.icon} />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-bold gradient-text-orange mb-4">{service.title}</h3>
-                    <p className="text-gray-200 leading-relaxed">{service.description}</p>
+                    <h3 className="text-subtitle text-gradient-blue-light mb-4">{service.title}</h3>
+                    <p className="text-paragraph leading-relaxed">{service.description}</p>
                   </div>
                 </Link>
               </div>
@@ -108,17 +108,17 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
           <div className="bg-orb-2"></div>
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-5xl font-black mb-12 gradient-text-blue uppercase tracking-wide animate-float">Get in Touch</h2>
+          <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-12 text-body-uppercase tracking-wide animate-float">Get in Touch</h2>
 
           {/* Contact Information */}
           <div className="glass-card p-12 max-w-3xl mx-auto">
-            <p className="text-xl text-gray-200 mb-12 leading-relaxed">
+            <p className="text-paragraph mb-12 leading-relaxed">
               Ready to optimize your performance? Let's discuss how data science can transform your training.
             </p>
             <div className="text-center">
               <Link
                 to="/contact"
-                className="btn-gradient text-lg px-10 py-4 inline-flex items-center gap-3"
+                className="btn-enduraw"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

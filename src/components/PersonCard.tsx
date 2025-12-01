@@ -30,7 +30,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
   if (variant === 'athlete') {
     return (
       <div className={`bg-dark-secondary rounded-lg p-4 max-w-sm mx-auto ${className}`}>
-        <h4 className="text-lg font-semibold mb-3">{fullName}</h4>
+        <h4 className="text-subtitle mb-3 text-gradient-blue-light">{fullName}</h4>
         <div className="grid grid-cols-2 gap-3 items-start">
           {imageUrl && (
             <img
@@ -40,7 +40,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
               loading="lazy"
             />
           )}
-          <div className="text-sm">
+          <div className="text-paragraph">
             <p className="text-gray-400 mb-1">
               {age ? `${age} yo • ${country}` : country}
             </p>
@@ -66,15 +66,15 @@ const PersonCard: React.FC<PersonCardProps> = ({
           loading="lazy"
         />
       )}
-      <h4 className="text-xl font-semibold">{fullName}</h4>
-      <p className="text-gray-400">
+      <h4 className="text-subtitle text-gradient-blue-light">{fullName}</h4>
+      <p className="text-paragraph text-gray-400">
         {age ? `${age} yo • ${country}` : country}
       </p>
-      {credentials && <p className="text-gray-400">{credentials}</p>}
-      {sports && <p className="text-gray-300">{sports}</p>}
-      {job && <p className="text-gray-300">{job}</p>}
+      {credentials && <p className="text-paragraph text-gray-400">{credentials}</p>}
+      {sports && <p className="text-paragraph text-gray-300">{sports}</p>}
+      {job && <p className="text-paragraph text-gray-300">{job}</p>}
       {achievements && (
-        <p className="text-gray-200 mt-2 text-sm">{achievements}</p>
+        <p className="text-paragraph text-gray-200 mt-2">{achievements}</p>
       )}
     </div>
   );

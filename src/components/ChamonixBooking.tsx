@@ -182,13 +182,13 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
   return (
     <div className="max-w-4xl mx-auto">
       <div className="glass-card p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 gradient-text-blue text-center">
+        <h2 className="text-title-h2 text-gradient-blue-light text-center mb-6">
           Réservez votre créneau à Chamonix
         </h2>
         
         {/* Sélection du protocole */}
         <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4 text-white">Choisissez votre protocole :</h3>
+          <h3 className="text-subtitle text-gradient-blue-light mb-4">Choisissez votre protocole :</h3>
           <div className="grid md:grid-cols-2 gap-4">
             {Object.entries(protocolInfo).map(([key, info]) => (
               <button
@@ -200,10 +200,10 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
                     : 'glass-card border-white/20 hover:border-white/40'
                 }`}
               >
-                <h4 className="text-xl font-bold text-white mb-2">{info.title}</h4>
-                <p className="text-2xl font-bold gradient-text-blue mb-2">{info.price}€</p>
-                <p className="text-sm text-gray-300 mb-2">Durée : {info.duration}</p>
-                <p className="text-sm text-gray-200">{info.description}</p>
+                <h4 className="text-subtitle text-white mb-2">{info.title}</h4>
+                <p className="text-subtitle text-gradient-blue-light mb-2">{info.price}€</p>
+                <p className="text-paragraph text-gray-300 mb-2">Durée : {info.duration}</p>
+                <p className="text-paragraph text-gray-200">{info.description}</p>
               </button>
             ))}
           </div>
@@ -211,18 +211,18 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
 
         {/* Créneaux disponibles */}
         <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4 text-white">
+          <h3 className="text-subtitle text-gradient-blue-light mb-4">
             Créneaux disponibles - {protocolInfo[selectedProtocol].title}
           </h3>
           
           {loadingSlots ? (
             <div className="text-center py-8">
               <div className="animate-spin h-8 w-8 border-4 border-blue-400 border-t-transparent rounded-full mx-auto mb-4"></div>
-              <p className="text-gray-300">Chargement des créneaux...</p>
+              <p className="text-paragraph text-gray-300">Chargement des créneaux...</p>
             </div>
           ) : slotsError ? (
             <div className="text-center py-8">
-              <p className="text-red-400 mb-2">❌ {slotsError}</p>
+              <p className="text-paragraph text-red-400 mb-2">{slotsError}</p>
               <button 
                 onClick={() => loadSlots(selectedProtocol)}
                 className="btn-gradient inline-block px-4 py-2 text-sm rounded-lg"
@@ -232,8 +232,8 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
             </div>
           ) : filteredSlots.length === 0 ? (
             <div className="text-center py-8">
-              <p className="text-gray-300">Aucun créneau disponible pour ce protocole.</p>
-              <p className="text-sm text-gray-400 mt-2">
+              <p className="text-paragraph text-gray-300">Aucun créneau disponible pour ce protocole.</p>
+              <p className="text-paragraph text-gray-400 mt-2">
                 Contactez-nous pour d'autres dates ou options.
               </p>
             </div>
@@ -265,7 +265,7 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="glass-card p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-white">Confirmer la réservation</h3>
+              <h3 className="text-subtitle text-gradient-blue-light">Confirmer la réservation</h3>
               <button
                 onClick={() => setIsBookingFormOpen(false)}
                 className="text-white hover:text-gray-300 text-2xl"
@@ -276,18 +276,18 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
 
             {/* Récapitulatif */}
             <div className="mb-6 p-4 bg-white/10 rounded-lg">
-              <h4 className="font-semibold text-white mb-2">Récapitulatif</h4>
-              <p className="text-gray-200">Protocol: {protocolInfo[selectedProtocol].title}</p>
-              <p className="text-gray-200">Date: {formatDate(selectedSlot.date)}</p>
-              <p className="text-gray-200">Heure: {selectedSlot.time}</p>
-              <p className="text-gray-200">Durée: {protocolInfo[selectedProtocol].duration}</p>
-              <p className="text-xl font-bold text-blue-400 mt-2">Prix: {selectedSlot.price}€</p>
+              <h4 className="text-body-uppercase text-white mb-2">Récapitulatif</h4>
+              <p className="text-paragraph text-gray-200">Protocol: {protocolInfo[selectedProtocol].title}</p>
+              <p className="text-paragraph text-gray-200">Date: {formatDate(selectedSlot.date)}</p>
+              <p className="text-paragraph text-gray-200">Heure: {selectedSlot.time}</p>
+              <p className="text-paragraph text-gray-200">Durée: {protocolInfo[selectedProtocol].duration}</p>
+              <p className="text-subtitle text-gradient-blue-light mt-2">Prix: {selectedSlot.price}€</p>
             </div>
 
             {/* Formulaire client */}
             <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
               <div>
-                <label className="block text-white text-sm font-medium mb-1">
+                <label className="block text-body-uppercase text-white mb-1">
                   Prénom *
                 </label>
                 <input
@@ -301,7 +301,7 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
               </div>
 
               <div>
-                <label className="block text-white text-sm font-medium mb-1">
+                <label className="block text-body-uppercase text-white mb-1">
                   Nom *
                 </label>
                 <input
@@ -315,7 +315,7 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
               </div>
 
               <div>
-                <label className="block text-white text-sm font-medium mb-1">
+                <label className="block text-body-uppercase text-white mb-1">
                   Email *
                 </label>
                 <input
@@ -329,7 +329,7 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
               </div>
 
               <div>
-                <label className="block text-white text-sm font-medium mb-1">
+                <label className="block text-body-uppercase text-white mb-1">
                   Téléphone
                 </label>
                 <input
@@ -352,14 +352,14 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
                 <button
                   onClick={handleStripePayment}
                   disabled={isLoading || !customerInfo.firstName || !customerInfo.lastName || !customerInfo.email}
-                  className="flex-1 btn-gradient py-3 px-6 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 btn-enduraw disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isLoading ? 'Redirection...' : `Payer ${selectedSlot.price}€`}
                 </button>
               </div>
             </form>
 
-            <p className="text-xs text-gray-400 text-center mt-4">
+            <p className="text-paragraph text-gray-400 text-center mt-4">
               Paiement sécurisé via Stripe. Vous serez redirigé vers la page de paiement.
             </p>
           </div>
