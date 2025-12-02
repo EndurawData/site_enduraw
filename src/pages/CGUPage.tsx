@@ -210,7 +210,7 @@ const CGUPage: React.FC = () => {
               <li>ou obligation légale ou judiciaire.</li>
             </ul>
             <p className="text-white/80 leading-relaxed">
-              L'utilisateur peut, de son côté, delier son compte Strqvq à tout moment depuis les paramètres de son espace personnel.
+              aL'utilisateur peut, de son côté, delier son compte Strava à tout moment depuis les paramètres de son espace personnel.
             </p>
           </section>
 
