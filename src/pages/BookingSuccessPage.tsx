@@ -1,30 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import '../styles/fancy.css';
 
-const API_BASE_URL = 'http://localhost:3001';
-
-interface BookingDetails {
-  id: string;
-  protocol: string;
-  customer: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone?: string;
-  };
-  date: string;
-  time: string;
-  price: number;
-  status: string;
-  created_at: string;
-}
-
 const BookingSuccessPage: React.FC = () => {
   const [searchParams] = useSearchParams();
-  const [booking, setBooking] = useState<BookingDetails | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
 
   const sessionId = searchParams.get('session_id');
 
@@ -49,15 +30,6 @@ const BookingSuccessPage: React.FC = () => {
 
     fetchBookingDetails();
   }, [sessionId]);
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
 
   if (loading) {
     return (
