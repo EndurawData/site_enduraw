@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import SponsorsSlider from '../components/SponsorsSlider';
 import '../styles/fancy.css';
 
@@ -83,24 +84,24 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
             A sport performance laboratory
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <a
-              href="/services"
+            <Link
+              to="/services"
               className="btn-enduraw"
             >
               <span>Discover Our Services</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </a>
-            <a
-              href="/contact"
+            </Link>
+            <Link
+              to="/contact"
               className="glass-card border-white/20 hover:border-white/40 text-gray-200 hover:text-white text-body-uppercase font-semibold py-4 px-8 rounded-2xl transition-all duration-300 inline-flex items-center gap-3 text-lg"
             >
               <span>Get Started</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -491,24 +492,24 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
             Take your performance to the next level with data-driven insights and personalized strategies.
           </p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="btn-enduraw"
             >
               <span>Get Started</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </a>
-            <a
-              href="/services"
+            </Link>
+            <Link
+              to="/services"
               className="glass-card border-white/20 hover:border-white/40 text-gray-200 hover:text-white text-body-uppercase font-semibold py-5 px-10 rounded-2xl transition-all duration-300 inline-flex items-center gap-3 text-lg"
             >
               <span>Explore Services</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
