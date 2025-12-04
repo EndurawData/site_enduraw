@@ -114,7 +114,7 @@ const EndurawDashboardPage: React.FC = () => {
                       <span className="text-2xl">🌍</span>
                     </div>
                     <div className="text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6 tracking-tight">
-                      4,478
+                      7,280
                     </div>
                     <p className="text-paragraph text-gray-300 leading-relaxed">
                       Enduraw report users worldwide
@@ -126,7 +126,7 @@ const EndurawDashboardPage: React.FC = () => {
                       <span className="text-2xl">👌</span>
                     </div>
                     <div className="text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6 tracking-tight">
-                      236,750
+                      362,911
                     </div>
                     <p className="text-paragraph text-gray-300 leading-relaxed">
                       Activities processed and analyzed
@@ -138,10 +138,10 @@ const EndurawDashboardPage: React.FC = () => {
                       <span className="text-2xl">🌀</span>
                     </div>
                     <div className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6 tracking-tight">
-                      2.9M km
+                      3.2M km
                     </div>
                     <p className="text-paragraph text-gray-300 leading-relaxed">
-                      Total distance (72× around the world)
+                      Total distance (81× around the world)
                     </p>
                   </div>
                 </div>
