@@ -11,7 +11,8 @@ const EndurawDashboardPage: React.FC = () => {
       country: "France 🇫🇷",
       education: "X - Cambridge",
       position: "Software Engineer",
-      company: "@Mistral AI"
+      company: "@Mistral AI",
+      image: "/images/alodie.png"
     },
     {
       id: 2,
@@ -19,7 +20,8 @@ const EndurawDashboardPage: React.FC = () => {
       country: "France 🇫🇷",
       education: "X - HEC Berkeley ENSEA",
       position: "Performance Scientist",
-      company: "@Enduraw"
+      company: "@Enduraw",
+      image: "/images/team/joseph.png"
     },
     {
       id: 3,
@@ -27,7 +29,8 @@ const EndurawDashboardPage: React.FC = () => {
       country: "France 🇫🇷",
       education: "X - Cambridge",
       position: "Project Lead - Agents",
-      company: "@Hugging Face"
+      company: "@Hugging Face",
+      image: "/images/aymeric.jpg"
     },
     {
       id: 4,
@@ -35,14 +38,17 @@ const EndurawDashboardPage: React.FC = () => {
       country: "France 🇫🇷",
       education: "ESILV Data science & IA",
       position: "Data Scientist Intern",
-      company: "@Enduraw"
+      company: "@Enduraw",
+      image: "/images/team/valentin.png"
     }
   ];
 
   // Auto-slide architects (2x2 grid)
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentArchitectSlide((prev) => (prev + 1) % Math.ceil(architects.length / 2));
+      setCurrentArchitectSlide(
+        (prev) => (prev + 1) % Math.ceil(architects.length / 2)
+      );
     }, 4000);
     return () => clearInterval(interval);
   }, [architects.length]);
@@ -51,9 +57,9 @@ const EndurawDashboardPage: React.FC = () => {
     <div className="bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white min-h-screen pt-16 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-40 right-20 w-96 h-96 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-40 right-20 w-96 h-96 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur-3xl animate-pulse delay-2000" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -61,21 +67,21 @@ const EndurawDashboardPage: React.FC = () => {
           <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-6 uppercase tracking-tight">
             Enduraw Dashboard
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full" />
         </div>
-        
+
         <div className="space-y-8">
           {/* 1. Strava Integration Section */}
           <section className="relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-10 shadow-2xl hover:bg-white/10 transition-all duration-500 group">
             {/* Decorative corner elements */}
-            <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-cyan-400/20 to-transparent rounded-tl-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-blue-400/20 to-transparent rounded-br-3xl"></div>
+            <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-cyan-400/20 to-transparent rounded-tl-3xl" />
+            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-blue-400/20 to-transparent rounded-br-3xl" />
 
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center shadow-lg">
                   <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.599h4.172L10.463 0l-7 13.828h4.917"/>
+                    <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.599h4.172L10.463 0l-7 13.828h4.917" />
                   </svg>
                 </div>
                 <div>
@@ -87,7 +93,7 @@ const EndurawDashboardPage: React.FC = () => {
                   </h3>
                 </div>
               </div>
-            
+
               {/* Call to Action */}
               <div className="text-center mb-16">
                 <a
@@ -97,8 +103,18 @@ const EndurawDashboardPage: React.FC = () => {
                   className="btn-enduraw"
                 >
                   <span>Activate Your Enduraw Report</span>
-                  <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  <svg
+                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7l5 5m0 0l-5 5m5-5H6"
+                    />
                   </svg>
                 </a>
               </div>
@@ -120,7 +136,7 @@ const EndurawDashboardPage: React.FC = () => {
                       Enduraw report users worldwide
                     </p>
                   </div>
-                  
+
                   <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2">
                     <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                       <span className="text-2xl">👌</span>
@@ -132,7 +148,7 @@ const EndurawDashboardPage: React.FC = () => {
                       Activities processed and analyzed
                     </p>
                   </div>
-                  
+
                   <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2">
                     <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                       <span className="text-2xl">🌀</span>
@@ -147,118 +163,145 @@ const EndurawDashboardPage: React.FC = () => {
                 </div>
               </div>
 
-            {/* Description Text */}
-            <div className="space-y-6 text-gray-200 mb-8">
-              <p className="text-paragraph italic">
-                "Another tough session in the books ! But what a windy day... I'm sure I would have recorded my FKT without !"
-              </p>
-              <p className="text-paragraph">
-                Every athlete knows that wind and heat can be powerful enemies in a training or a race.
-              </p>
-              <p className="text-paragraph">
-                Ever trained at high altitude ? Oxygen deprecation is real !
-              </p>
-              <p className="text-paragraph">
-                But how to quantify the impact of these parameters of your performance ?
-              </p>
-              <p className="text-paragraph">
-                With Enduraw's Strava Integration, your pace can be adjusted according to
-              </p>
-              <ul className="space-y-2 ml-6">
-                <li>• Heat</li>
-                <li>• Wind</li>
-                <li>• Altitude</li>
-                <li>• Elevation gain</li>
-              </ul>
-              <p className="text-paragraph">
-                Giving you a full readibility of your session, it gives you keys to analyze your training under external conditions and adapt it.
-              </p>
-            </div>
-
-            {/* Technology Link */}
-            <div className="text-center mb-12">
-              <a
-                href="https://medium.com/@josephmestrallet/enduraw-report-api-a-powerful-tool-to-enhance-your-activity-interpretation-with-external-7273edbf9653"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-enduraw"
-              >
-                Read more about the technology
-              </a>
-            </div>
-
-            {/* Releases */}
-            <div className="bg-white/10 p-6 rounded-lg border border-white/20">
-              <h3 className="text-subtitle text-gradient-blue-light mb-6 uppercase">Releases</h3>
-              <div className="space-y-3 text-gray-200">
-                <p>• 07/07/2023 : First idea of the project</p>
-                <p>• 16/11/2023 : Official launch</p>
-                <p>• 15/05/2024 : Temperature and wind formula fixs.</p>
-                <p>• 05/06/2024 : Launch of V2 : custom formula with your personalised data. Adding cycling and trail running</p>
+              {/* Description Text */}
+              <div className="space-y-6 text-gray-200 mb-8">
+                <p className="text-paragraph italic">
+                  "Another tough session in the books ! But what a windy day... I'm sure I would have recorded my FKT without !"
+                </p>
+                <p className="text-paragraph">
+                  Every athlete knows that wind and heat can be powerful enemies in a training or a race.
+                </p>
+                <p className="text-paragraph">
+                  Ever trained at high altitude ? Oxygen deprecation is real !
+                </p>
+                <p className="text-paragraph">
+                  But how to quantify the impact of these parameters of your performance ?
+                </p>
+                <p className="text-paragraph">
+                  With Enduraw&apos;s Strava Integration, your pace can be adjusted according to
+                </p>
+                <ul className="space-y-2 ml-6">
+                  <li>• Heat</li>
+                  <li>• Wind</li>
+                  <li>• Altitude</li>
+                  <li>• Elevation gain</li>
+                </ul>
+                <p className="text-paragraph">
+                  Giving you a full readibility of your session, it gives you keys to analyze your training under external conditions and adapt it.
+                </p>
               </div>
-            </div>
-          </div>
 
-            {/* The Architects Section */}
-            <div className="mt-12">
-              <h3 className="text-subtitle text-gradient-blue-light mb-8 text-center uppercase">The Architects</h3>
-              
-              <div className="relative overflow-hidden">
-                <div 
-                  className="flex transition-transform duration-500 ease-in-out"
-                  style={{ transform: `translateX(-${currentArchitectSlide * 100}%)` }}
+              {/* Technology Link */}
+              <div className="text-center mb-12">
+                <a
+                  href="https://medium.com/@josephmestrallet/enduraw-report-api-a-powerful-tool-to-enhance-your-activity-interpretation-with-external-7273edbf9653"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-enduraw"
                 >
-                  {Array.from({ length: Math.ceil(architects.length / 2) }).map((_, slideIndex) => (
-                    <div key={slideIndex} className="w-full flex-shrink-0">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {architects.slice(slideIndex * 2, (slideIndex + 1) * 2).map((architect) => (
-                          <div key={architect.id} className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-cyan-400/50 transition-all duration-300">
-                            <div className="text-center">
-                              {/* Profile placeholder */}
-                              <div className="w-16 h-16 bg-cyan-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg className="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                </svg>
-                              </div>
+                  Read more about the technology
+                </a>
+              </div>
 
-                              {/* Name */}
-                              <h4 className="text-xl font-bold text-white mb-2">{architect.name}</h4>
-
-                              {/* Country */}
-                              <p className="text-gray-300 mb-2">{architect.country}</p>
-
-                              {/* Education */}
-                              <p className="text-sm text-cyan-400 font-medium mb-2">{architect.education}</p>
-
-                              {/* Position */}
-                              <p className="text-white font-semibold mb-1">{architect.position}</p>
-
-                              {/* Company */}
-                              <p className="text-cyan-400 font-medium">{architect.company}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+              {/* Releases */}
+              <div className="bg-white/10 p-6 rounded-lg border border-white/20">
+                <h3 className="text-subtitle text-gradient-blue-light mb-6 uppercase">
+                  Releases
+                </h3>
+                <div className="space-y-3 text-gray-200">
+                  <p>• 07/07/2023 : First idea of the project</p>
+                  <p>• 16/11/2023 : Official launch</p>
+                  <p>• 15/05/2024 : Temperature and wind formula fixs.</p>
+                  <p>
+                    • 05/06/2024 : Launch of V2 : custom formula with your personalised
+                    data. Adding cycling and trail running
+                  </p>
                 </div>
-                
+              </div>
+
+              {/* The Architects Section */}
+              <div className="mt-12">
+                <h3 className="text-subtitle text-gradient-blue-light mb-8 text-center uppercase">
+                  The Architects
+                </h3>
+
+                <div className="relative overflow-hidden">
+                  <div
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentArchitectSlide * 100}%)` }}
+                  >
+                    {Array.from({ length: Math.ceil(architects.length / 2) }).map(
+                      (_, slideIndex) => (
+                        <div key={slideIndex} className="w-full flex-shrink-0">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {architects
+                              .slice(slideIndex * 2, (slideIndex + 1) * 2)
+                              .map((architect) => (
+                                <div
+                                  key={architect.id}
+                                  className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-cyan-400/50 transition-all duration-300"
+                                >
+                                  <div className="text-center">
+                                    {/* Profile image */}
+                                    <img
+                                      src={architect.image}
+                                      alt={architect.name}
+                                      className="w-16 h-16 rounded-full object-cover mx-auto mb-4"
+                                    />
+
+                                    {/* Name */}
+                                    <h4 className="text-xl font-bold text-white mb-2">
+                                      {architect.name}
+                                    </h4>
+
+                                    {/* Country */}
+                                    <p className="text-gray-300 mb-2">
+                                      {architect.country}
+                                    </p>
+
+                                    {/* Education */}
+                                    <p className="text-sm text-cyan-400 font-medium mb-2">
+                                      {architect.education}
+                                    </p>
+
+                                    {/* Position */}
+                                    <p className="text-white font-semibold mb-1">
+                                      {architect.position}
+                                    </p>
+
+                                    {/* Company */}
+                                    <p className="text-cyan-400 font-medium">
+                                      {architect.company}
+                                    </p>
+                                  </div>
+                                </div>
+                              ))}
+                          </div>
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+
                 {/* Navigation dots */}
                 <div className="flex justify-center mt-6 space-x-2">
-                  {Array.from({ length: Math.ceil(architects.length / 2) }).map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentArchitectSlide(index)}
-                      className={`w-2 h-2 rounded-full transition-colors ${
-                        index === currentArchitectSlide ? 'bg-cyan-400' : 'bg-gray-500'
-                      }`}
-                    />
-                  ))}
+                  {Array.from({ length: Math.ceil(architects.length / 2) }).map(
+                    (_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentArchitectSlide(index)}
+                        className={`w-2 h-2 rounded-full transition-colors ${
+                          index === currentArchitectSlide
+                            ? "bg-cyan-400"
+                            : "bg-gray-500"
+                        }`}
+                      />
+                    )
+                  )}
                 </div>
               </div>
             </div>
           </section>
-
         </div>
       </div>
 
