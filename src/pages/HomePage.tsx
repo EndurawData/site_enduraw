@@ -164,7 +164,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
         </div>
       </section>
 
-      {/* Athletes Section */}
+            {/* Athletes Section */}
       <section
         ref={(el) => { sectionRefs.current['athletes'] = el; }}
         className="py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative"
@@ -173,45 +173,55 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
           <div className="bg-orb-1"></div>
           <div className="bg-orb-2"></div>
         </div>
+
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-5xl text-title-h2 text-center mb-16 bg-clip-text text-transparent bg-custom-gradient tracking-wide">
             ELITE ATHLETES
           </h2>
+
+          {/* Slider container */}
           <div className="relative overflow-hidden glass-card p-8">
-            <div 
+            {/* Slides */}
+            <div
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentSlide * 100}%)` }}
             >
               {Array.from({ length: Math.ceil(athletes.length / 3) }).map((_, slideIndex) => (
-                <div key={slideIndex} className="w-full flex-shrink-0">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {athletes.slice(slideIndex * 3, (slideIndex + 1) * 3).map((athlete, index) => (
-                      <div key={index} className="text-center group">
-                        <div className="glass-card p-6 hover:scale-105 transition-all duration-300">
-                          <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">{athlete.name}</h3>
-                          <div className="mb-6 relative">
-                            <img
-                              src={athlete.image}
-                              alt={athlete.name}
-                              className="w-48 h-56 rounded-2xl object-cover object-top mx-auto shadow-2xl group-hover:shadow-[#6CDCFF]/20 transition-all duration-300"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.src = "/images/placeholder-athlete.jpg";
-                              }}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
+                <div key={slideIndex} className="w-full flex-shrink-0 px-4">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                    {athletes
+                      .slice(slideIndex * 3, (slideIndex + 1) * 3)
+                      .map((athlete, index) => (
+                        <div key={index} className="text-center group flex">
+                          <div className="glass-card p-6 hover:scale-105 transition-all duration-300 h-full flex flex-col w-full">
+                            <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">
+                              {athlete.name}
+                            </h3>
+
+                            <div className="mb-6 relative">
+                              <img
+                                src={athlete.image}
+                                alt={athlete.name}
+                                className="w-48 h-56 rounded-2xl object-cover object-top mx-auto shadow-2xl group-hover:shadow-[#6CDCFF]/20 transition-all duration-300"
+                                onError={(e) => {
+                                  (e.target as HTMLImageElement).src =
+                                    "/images/placeholder-athlete.jpg";
+                                }}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
+                            </div>
+
+                            <p className="mt-auto text-lg text-gray-200 leading-relaxed">
+                              {athlete.description}
+                            </p>
                           </div>
-                          <p className="text-lg text-paragraph text-gray-200 leading-relaxed">
-                            {athlete.description}
-                          </p>
                         </div>
-                      </div>
-                    ))}
+                      ))}
                   </div>
                 </div>
               ))}
             </div>
-            
+
             {/* Navigation dots */}
             <div className="flex justify-center mt-12 space-x-3">
               {Array.from({ length: Math.ceil(athletes.length / 3) }).map((_, index) => (
@@ -223,12 +233,14 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                       ? 'bg-gradient-blue-light scale-125'
                       : 'bg-white/30 hover:bg-white/50'
                   }`}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
           </div>
         </div>
       </section>
+
 
       {/* About Us Section */}
       <section
