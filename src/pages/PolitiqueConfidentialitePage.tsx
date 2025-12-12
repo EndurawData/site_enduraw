@@ -43,7 +43,7 @@ const PolitiqueConfidentialitePage: React.FC = () => {
               Directeur : Joseph Mestrallet
             </p>
             <p className="text-white/80 leading-relaxed mb-4">
-              Délégué à la protection des données (DPO) : Valentin Templé — contact via <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">privacy@enduraw.com</a> (ou l'adresse ci-dessus)
+              Délégué à la protection des données (DPO) : Valentin Templé — contact via <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a> (ou l'adresse ci-dessus)
             </p>
             <p className="text-white/80 leading-relaxed">
               Enduraw est responsable des traitements de données effectués dans le cadre de l'utilisation de ses services et applications.
