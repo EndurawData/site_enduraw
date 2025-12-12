@@ -127,13 +127,13 @@ const Footer: React.FC = () => {
           >
             CGU
           </a>
-          <span className="text-white/30">|</span>
+          {/* <span className="text-white/30">|</span> 
           <a
             href="/sous-traitants"
             className="text-white/70 hover:text-white transition-colors duration-300 text-body-uppercase"
           >
             Sous-traitants
-          </a>
+          </a> */}
         </div>
 
         {/* Copyright at bottom */}
