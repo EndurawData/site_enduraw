@@ -114,11 +114,6 @@ const TestingPage: React.FC = () => {
               </p>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 mb-8 border border-white/20 relative group overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 group-hover:from-cyan-500/20 group-hover:to-blue-500/20 transition-all duration-500"></div>
-                <h3 className="text-subtitle text-gradient-blue-light mb-4 relative z-10">Harbat Running Lab Partnership</h3>
-                <p className="text-paragraph text-gray-300 mb-6 relative z-10">
-                  We partner with Harbat Running Lab, a state-of-the-art performance testing facility in Paris,
-                  to provide you with comprehensive physiological assessments using the latest technology.
-                </p>
                 <div className="text-left space-y-4 text-gray-300 mb-8 relative z-10">
                   <h4 className="text-subtitle text-gradient-blue-light mb-4">Unlock Your Full Potential with VO₂max Testing</h4>
                   
@@ -141,7 +136,7 @@ const TestingPage: React.FC = () => {
                 rel="noopener noreferrer"
                 className="btn-enduraw relative z-10"
               >
-                Book at Harbat Running Lab →
+                Book Now →
               </a>
             </div>
           </div>
@@ -287,16 +282,16 @@ const TestingPage: React.FC = () => {
           {/* Système de réservation en ligne */}
           <div className="bg-gradient-to-br from-blue-600/10 to-purple-600/10 p-8 rounded-2xl border border-blue-400/20">
             <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-6 text-center">
-              RÉSERVATION EN LIGNE 🚀
+              ONLINE BOOKING 🚀
             </h2>
             <div className="glass-card p-8 text-center">
               <div className="mb-6">
                 <div className="text-6xl mb-4">📅</div>
                 <p className="text-paragraph text-gray-200 mb-6 leading-relaxed">
-                  Réservez votre test physiologique dès maintenant !
+                  Book your physiological test now!
                 </p>
                 <p className="text-paragraph text-gray-300 mb-8">
-                  Sélectionnez votre créneau et protocole de test en quelques clics.
+                  Select your time slot and test protocol in just a few clicks.
                 </p>
               </div>
 
@@ -310,7 +305,7 @@ const TestingPage: React.FC = () => {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4v10m6-10v10M5 7h14l-1 12H6L5 7z" />
                   </svg>
-                  <span>Réserver maintenant</span>
+                  <span>Book Now</span>
                 </a>
 
                 <a
@@ -320,7 +315,7 @@ const TestingPage: React.FC = () => {
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
-                  <span>Nous contacter</span>
+                  <span>Contact Us</span>
                 </a>
               </div>
             </div>
@@ -342,10 +337,10 @@ const TestingPage: React.FC = () => {
           {/* Section contact alternative */}
           <div className="glass-card p-8 text-center">
             <h3 className="text-subtitle text-gradient-blue-light mb-4">
-              Besoin d'autres informations ?
+              Need more information?
             </h3>
             <p className="text-paragraph text-gray-300 mb-6">
-              Pour des questions spécifiques ou des créneaux personnalisés, n'hésitez pas à nous contacter.
+              For specific questions or custom time slots, feel free to contact us.
             </p>
             <a
               href="/contact"
@@ -354,7 +349,7 @@ const TestingPage: React.FC = () => {
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
-              <span>Nous contacter</span>
+              <span>Contact Us</span>
             </a>
           </div>
         </div>

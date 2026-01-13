@@ -1,0 +1,27 @@
+# Redirection pour React Router (si utilisé)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Handle Angular and React requests
+  RewriteBase /
+  RewriteRule ^index.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+# Sécurité pour les fichiers sensibles
+<Files ".env">
+  Order allow,deny
+  Deny from all
+</Files>
+
+# Cache pour les assets statiques
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+</IfModule>
