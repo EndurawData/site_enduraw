@@ -33,8 +33,13 @@ const BookingSuccessPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen fancy-bg flex items-center justify-center">
-        <div className="glass-card p-8 text-center">
+      <div className="min-h-screen bg-dark-bg text-white flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        </div>
+        <div className="glass-card p-8 text-center relative z-10 animate-float">
           <div className="animate-spin h-12 w-12 border-4 border-blue-400 border-t-transparent rounded-full mx-auto mb-4"></div>
           <p className="text-paragraph">Vérification du paiement...</p>
         </div>
@@ -44,10 +49,15 @@ const BookingSuccessPage: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen fancy-bg flex items-center justify-center">
-        <div className="glass-card p-8 text-center max-w-md">
+      <div className="min-h-screen bg-dark-bg text-white flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        </div>
+        <div className="glass-card p-8 text-center max-w-md relative z-10 animate-float">
           <div className="text-6xl mb-4">❌</div>
-          <h1 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-4">Erreur</h1>
+          <h1 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-custom-gradient">Erreur</h1>
           <p className="text-paragraph mb-6">{error}</p>
           <Link
             to="/services/testing"
@@ -61,22 +71,23 @@ const BookingSuccessPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen fancy-bg pt-20">
+    <div className="min-h-screen bg-dark-bg text-white pt-20 relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
+      
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        
-        {/* Success Animation Background */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
 
         <div className="relative z-10">
           {/* Success Header */}
-          <div className="glass-card p-8 mb-8 text-center">
+          <div className="glass-card p-8 mb-8 text-center animate-float">
             <div className="mb-6">
               <div className="text-8xl mb-4 animate-bounce">✅</div>
-              <h1 className="text-title bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-4">
-                Paiement Confirmé
+              <h1 className="text-title bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-8">
+                PAIEMENT CONFIRMÉ
               </h1>
               <p className="text-paragraph">
                 Votre réservation a été enregistrée avec succès
@@ -85,7 +96,7 @@ const BookingSuccessPage: React.FC = () => {
 
             {/* Success Message */}
             <div className="bg-green-500/20 border border-green-500/30 rounded-xl p-6 mb-6">
-              <h2 className="text-subtitle text-green-400 mb-2">
+              <h2 className="text-2xl font-bold text-green-400 mb-2">
                 Félicitations
               </h2>
               <p className="text-paragraph">
@@ -108,7 +119,7 @@ const BookingSuccessPage: React.FC = () => {
           </div>
 
           {/* Next Steps */}
-          <div className="glass-card p-8 mb-8">
+          <div className="glass-card p-8 mb-8 animate-float-slow">
             <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-6 text-center">
               Prochaines étapes
             </h2>
@@ -147,7 +158,7 @@ const BookingSuccessPage: React.FC = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="glass-card p-8 mb-8">
+          <div className="glass-card p-8 mb-8 animate-float">
             <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-4 text-center">
               Besoin d'aide ?
             </h2>

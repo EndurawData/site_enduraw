@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/fancy.css';
 
 const NewsPage: React.FC = () => {
+  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimatedElements(prev => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elementsToObserve = document.querySelectorAll('[id^="animate-"]');
+    elementsToObserve.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   const latestContent = [
     {
       title: "What makes Paris 2024 a race to records",
@@ -24,18 +44,23 @@ const NewsPage: React.FC = () => {
   ];
 
   return (
-    <div className="fancy-bg text-white min-h-screen pt-16 relative">
-      {/* Animated background orbs */}
-      <div className="bg-orb-1"></div>
-      <div className="bg-orb-2"></div>
-      <div className="bg-orb-3"></div>
+    <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
       
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-20">
-          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8 uppercase tracking-tight animate-float">
-            Enduraw Media
+        <div 
+          id="animate-title"
+          className={`text-center mb-20 transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        >
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
+            ENDURAW MEDIA
           </h1>
-          <div className="glass-card p-8 max-w-3xl mx-auto">
+          <div className="glass-card p-8 max-w-3xl mx-auto animate-float">
             <p className="text-paragraph text-gray-200 leading-relaxed">
               Make data accessible and bring lisibility to our sports
             </p>
@@ -44,8 +69,8 @@ const NewsPage: React.FC = () => {
 
         {/* Instagram Section */}
         <section className="mb-20">
-          <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-12 animate-float-slow">Follow Our Latest Posts</h2>
-          <div className="glass-card p-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 bg-clip-text text-transparent bg-custom-gradient animate-float-slow">Follow Our Latest Posts</h2>
+          <div className="glass-card p-10 animate-float">
             <div className="icon-container bg-gradient-to-br from-pink-500 to-purple-500 mx-auto mb-6">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -107,7 +132,9 @@ const NewsPage: React.FC = () => {
           <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-12 animate-float-slow">Latest Content</h2>
           <div className="space-y-8">
             {latestContent.map((item, index) => (
-              <div key={index} className="glass-card p-8 hover:scale-105 transition-all duration-300 group">
+              <div key={index} className={`glass-card p-8 hover:scale-105 transition-all duration-300 group ${
+                index % 2 === 0 ? 'animate-float' : 'animate-float-slow'
+              }`}>
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                   <div className="flex-1">
                     <h3 className="text-subtitle text-gradient-blue-light mb-4 transition-all">{item.title}</h3>

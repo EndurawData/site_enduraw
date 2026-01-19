@@ -175,7 +175,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl text-title-h2 text-center mb-16 bg-clip-text text-transparent bg-custom-gradient tracking-wide">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-custom-gradient tracking-wide uppercase">
             ELITE ATHLETES
           </h2>
 
@@ -442,7 +442,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   }}
                 />
                 <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Antoine Figula</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">Tech & Data Intern</p>
+                <p className="text-lg text-body-uppercase text-gray-300 mb-6">Tech & Data Scientist</p>
               </div>
               <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
                 Belgian and passionate about performance analysis, he brings valuable experience from his time at Tudor Cycling.

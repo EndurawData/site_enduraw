@@ -1,35 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/fancy.css';
 
 const EndurawAPIPage: React.FC = () => {
+  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimatedElements(prev => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elementsToObserve = document.querySelectorAll('[id^="animate-"]');
+    elementsToObserve.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   return (
-    <div className="fancy-bg text-white min-h-screen pt-16 relative">
-      {/* Animated background orbs */}
-      <div className="bg-orb-1"></div>
-      <div className="bg-orb-2"></div>
-      <div className="bg-orb-3"></div>
+    <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl animate-float">
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-4 uppercase">
-            Enduraw API
+        <div 
+          id="animate-title"
+          className={`text-center mb-16 transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        >
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
+            ENDURAW API
           </h1>
-          <h2 className="text-subtitle text-gradient-blue-light tracking-wide mb-2">
+          <p className="text-xl text-gray-300 tracking-wide mb-2">
             Mathematics behind world best performances
-          </h2>
-          <div className="w-32 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+          </p>
         </div>
 
         {/* Main content */}
-        <div className="glass-card p-12 mb-12">
+        <div className="glass-card p-12 mb-12 animate-float">
           <div className="mb-12 text-center">
-            <h3 className="text-subtitle text-gradient-blue-light mb-6 text-center uppercase">
+            <h3 className="text-xl font-bold text-gray-100 mb-6 text-center uppercase">
               Data-Driven Enduraw Intelligence
             </h3>
             <p className="text-paragraph leading-relaxed text-gray-200 max-w-4xl mx-auto">
@@ -43,7 +61,7 @@ const EndurawAPIPage: React.FC = () => {
             {/* Weather-Adjusted Time Modeling */}
             <div className="group stat-card transform hover:-translate-y-2">
               <div className="absolute top-4 left-4 w-3 h-3 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse"></div>
-              <h4 className="text-subtitle text-gradient-blue-light mb-4 flex items-center gap-3">
+              <h4 className="text-xl font-bold text-gray-100 mb-4 flex items-center gap-3">
                 <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
                 Weather-Adjusted Time Modeling
               </h4>
@@ -64,7 +82,7 @@ const EndurawAPIPage: React.FC = () => {
             {/* Physiological Profiling */}
             <div className="group stat-card transform hover:-translate-y-2">
               <div className="absolute top-4 left-4 w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse"></div>
-              <h4 className="text-subtitle text-gradient-blue-light mb-4 flex items-center gap-3">
+              <h4 className="text-xl font-bold text-gray-100 mb-4 flex items-center gap-3">
                 <span className="w-2 h-2 bg-green-400 rounded-full"></span>
                 Physiological Profiling
               </h4>
@@ -81,7 +99,7 @@ const EndurawAPIPage: React.FC = () => {
             {/* Equipment & Morphometric Impact */}
             <div className="group stat-card transform hover:-translate-y-2">
               <div className="absolute top-4 left-4 w-3 h-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full animate-pulse"></div>
-              <h4 className="text-subtitle text-gradient-blue-light mb-4 flex items-center gap-3">
+              <h4 className="text-xl font-bold text-gray-100 mb-4 flex items-center gap-3">
                 <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
                 Equipment & Morphometric Impact
               </h4>
@@ -143,7 +161,7 @@ const EndurawAPIPage: React.FC = () => {
 
         {/* Additional Information Section */}
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="glass-card p-8">
+          <div className="glass-card p-8 animate-float-slow">
             <h3 className="text-subtitle text-gradient-blue-light mb-4 uppercase">
               Scientific Validation
             </h3>
@@ -159,7 +177,7 @@ const EndurawAPIPage: React.FC = () => {
             </ul>
           </div>
 
-          <div className="glass-card p-8">
+          <div className="glass-card p-8 animate-float">
             <h3 className="text-subtitle text-gradient-blue-light mb-4 uppercase">
               Technical Integration
             </h3>

@@ -1,7 +1,26 @@
 import React, { useState, useEffect } from 'react';
 
 const EndurawDashboardPage: React.FC = () => {
+  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
   const [currentArchitectSlide, setCurrentArchitectSlide] = useState(0);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimatedElements(prev => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elementsToObserve = document.querySelectorAll('[id^="animate-"]');
+    elementsToObserve.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   // Architect data
   const architects = [
@@ -54,20 +73,22 @@ const EndurawDashboardPage: React.FC = () => {
   }, [architects.length]);
 
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-gray-900 to-black text-white min-h-screen pt-16 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-40 right-20 w-96 h-96 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur-3xl animate-pulse delay-2000" />
+    <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-16">
-          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-6 uppercase tracking-tight">
-            Enduraw Dashboard
+        <div 
+          id="animate-title"
+          className={`text-center mb-16 transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        >
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
+            ENDURAW DASHBOARD
           </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 mx-auto rounded-full" />
         </div>
 
         <div className="space-y-8">
@@ -85,12 +106,12 @@ const EndurawDashboardPage: React.FC = () => {
                   </svg>
                 </div>
                 <div>
-                  <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-2 uppercase">
+                  <h2 className="text-3xl md:text-4xl font-bold mb-2 bg-clip-text text-transparent bg-custom-gradient uppercase">
                     Strava Integration
                   </h2>
-                  <h3 className="text-subtitle text-gradient-blue-light tracking-wide">
+                  <p className="text-xl text-gray-300 tracking-wide">
                     A tool to better understand your training
-                  </h3>
+                  </p>
                 </div>
               </div>
 
@@ -121,11 +142,11 @@ const EndurawDashboardPage: React.FC = () => {
 
               {/* Statistics */}
               <div className="mb-16">
-                <h3 className="text-subtitle text-gradient-blue-light mb-12 text-center uppercase">
+                <h3 className="text-xl font-bold text-gray-100 mb-12 text-center uppercase">
                   In Figures
                 </h3>
                 <div className="grid md:grid-cols-3 gap-8">
-                  <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2 animate-float">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                       <span className="text-2xl">🌍</span>
                     </div>
@@ -137,7 +158,7 @@ const EndurawDashboardPage: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2 animate-float-slow">
                     <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                       <span className="text-2xl">👌</span>
                     </div>
@@ -149,7 +170,7 @@ const EndurawDashboardPage: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2">
+                  <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2 animate-float-fast">
                     <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                       <span className="text-2xl">🌀</span>
                     </div>
@@ -204,8 +225,8 @@ const EndurawDashboardPage: React.FC = () => {
               </div>
 
               {/* Releases */}
-              <div className="bg-white/10 p-6 rounded-lg border border-white/20">
-                <h3 className="text-subtitle text-gradient-blue-light mb-6 uppercase">
+              <div className="bg-white/10 p-6 rounded-lg border border-white/20 animate-float">
+                <h3 className="text-xl font-bold text-gray-100 mb-6 uppercase">
                   Releases
                 </h3>
                 <div className="space-y-3 text-gray-200">
@@ -221,7 +242,7 @@ const EndurawDashboardPage: React.FC = () => {
 
               {/* The Architects Section */}
               <div className="mt-12">
-                <h3 className="text-subtitle text-gradient-blue-light mb-8 text-center uppercase">
+                <h3 className="text-xl font-bold text-gray-100 mb-8 text-center uppercase">
                   The Architects
                 </h3>
 

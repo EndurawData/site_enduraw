@@ -1,15 +1,22 @@
 import React from 'react';
+import '../styles/fancy.css';
 
 const CGUPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-dark-bg text-white pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
+      
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         {/* Header with gradient */}
         <div className="mb-12 text-center">
-          <h1 className="text-5xl md:text-6xl text-title mb-4 bg-clip-text text-transparent bg-custom-gradient uppercase">
-            Conditions Générales d'Utilisation
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
+            CONDITIONS GÉNÉRALES D'UTILISATION
           </h1>
-          <div className="h-1 w-32 bg-custom-gradient mx-auto"></div>
           <p className="text-white/60 text-sm mt-4 text-body-uppercase">
             Dernière mise à jour : 27 octobre 2025
           </p>

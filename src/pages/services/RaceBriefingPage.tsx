@@ -1,16 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PersonCard from '../../components/PersonCard';
 
 const RaceBriefingPage: React.FC = () => {
+  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimatedElements(prev => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elementsToObserve = document.querySelectorAll('[id^="animate-"]');
+    elementsToObserve.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
   return (
-    <div className="pt-24 pb-16 bg-dark-bg text-white font-sans">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-16 pb-16 bg-dark-bg text-white font-sans relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
+      
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="mb-4">
           <Link to="/services" className="inline-flex items-center text-accent hover:text-accent-light font-semibold">← Back to Services</Link>
         </div>
-        <header className="text-center mb-10 font-sans">
-          <h1 className="text-5xl font-bold mb-2">Race Briefing</h1>
+        <header 
+          id="animate-title"
+          className={`text-center mb-10 font-sans transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        >
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">RACE BRIEFING</h1>
           <p className="text-xl text-gray-300">Enduraw provides race briefings for the best athletes in the world.</p>
           <p className="text-lg text-gray-400">Why not you?</p>
         </header>

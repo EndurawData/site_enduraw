@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/fancy.css';
 
 const API_BASE_URL = 'http://localhost:3001';
 
 const ContactPage: React.FC = () => {
+  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -63,45 +64,69 @@ const ContactPage: React.FC = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimatedElements(prev => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elementsToObserve = document.querySelectorAll('[id^="animate-"]');
+    elementsToObserve.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="fancy-bg text-white min-h-screen pt-16 relative">
-      {/* Animated background orbs */}
-      <div className="bg-orb-1"></div>
-      <div className="bg-orb-2"></div>
-      <div className="bg-orb-3"></div>
+    <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
       
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-16">
-          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8 uppercase tracking-tight animate-float">
-            Contact Us
+        <div 
+          id="animate-title"
+          className={`text-center mb-16 transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+        >
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
+            CONTACT US
           </h1>
           <p className="text-paragraph mb-12 leading-relaxed max-w-2xl mx-auto">
             Ready to optimize your performance? Let's discuss how Enduraw can help you achieve your goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center">
-            <div className="glass-card p-6">
+            <div className="glass-card p-6 animate-float">
               <div className="icon-container bg-gradient-blue-light mx-auto mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-subtitle text-gradient-blue-light mb-2">Email</h3>
+              <h3 className="text-xl font-bold text-gray-100 mb-2">Email</h3>
               <p className="text-paragraph">contact.enduraw@gmail.com</p>
             </div>
-            <div className="glass-card p-6">
+            <div className="glass-card p-6 animate-float-slow">
               <div className="icon-container bg-gradient-blue-light mx-auto mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9" />
                 </svg>
               </div>
-              <h3 className="text-subtitle text-gradient-blue-light mb-2">Website</h3>
+              <h3 className="text-xl font-bold text-gray-100 mb-2">Website</h3>
               <p className="text-paragraph">enduraw.co</p>
             </div>
           </div>
         </div>
         
-        <div className="glass-card p-10 max-w-2xl mx-auto">
-          <h3 className="text-subtitle text-gradient-blue-light mb-8 text-center">Send us a message</h3>
+        <div className="glass-card p-10 max-w-2xl mx-auto animate-float">
+          <h3 className="text-xl font-bold text-gray-100 mb-8 text-center">Send us a message</h3>
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-body-uppercase mb-3">Name</label>

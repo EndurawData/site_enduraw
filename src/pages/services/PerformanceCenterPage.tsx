@@ -64,16 +64,17 @@ const PerformanceCenterPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-dark-bg text-white">
+    <div className="bg-dark-bg text-white min-h-screen relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
+      
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Animated background */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <section className="relative min-h-screen flex items-center justify-center pt-20 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           {/* Logo */}
           <div className="mb-8 animate-float">
             <img
@@ -84,7 +85,7 @@ const PerformanceCenterPage: React.FC = () => {
           </div>
 
           {/* Main Title */}
-          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-6">
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
             ENDURAW PERFORMANCE CENTER
           </h1>
 
@@ -127,7 +128,9 @@ const PerformanceCenterPage: React.FC = () => {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="glass-card p-8 text-center group hover:scale-105 transition-all duration-300"
+                className={`glass-card p-8 text-center group hover:scale-105 transition-all duration-300 ${
+                  index % 4 === 0 ? 'animate-float' : index % 4 === 1 ? 'animate-float-slow' : index % 4 === 2 ? 'animate-float-fast' : 'animate-float'
+                }`}
               >
                 <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                   <div className="text-white">
@@ -147,13 +150,7 @@ const PerformanceCenterPage: React.FC = () => {
       </section>
 
       {/* Stages Section */}
-      <section id="stages" className="py-32 bg-dark-bg relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-cyan-400 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-blue-500 rounded-full blur-3xl"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section id="stages" className="py-32 relative z-10">        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-title-h2 text-center mb-8 bg-clip-text text-transparent bg-custom-gradient">
             CHOOSE YOUR STAGE
           </h2>
@@ -166,6 +163,8 @@ const PerformanceCenterPage: React.FC = () => {
               <div
                 key={stage.id}
                 className={`glass-card p-10 relative overflow-hidden group cursor-pointer transition-all duration-500 ${
+                  index % 2 === 0 ? 'animate-float' : 'animate-float-slow'
+                } ${
                   selectedStage === stage.id
                     ? 'ring-4 ring-cyan-400 shadow-2xl shadow-cyan-400/50 scale-105'
                     : 'hover:scale-105'
@@ -240,7 +239,7 @@ const PerformanceCenterPage: React.FC = () => {
 
           <div className="grid md:grid-cols-2 gap-12">
             {/* Included */}
-            <div className="glass-card p-8">
+            <div className="glass-card p-8 animate-float">
               <div className="flex items-center mb-8">
                 <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center mr-4">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -272,7 +271,7 @@ const PerformanceCenterPage: React.FC = () => {
             </div>
 
             {/* Not Included */}
-            <div className="glass-card p-8">
+            <div className="glass-card p-8 animate-float-slow">
               <div className="flex items-center mb-8">
                 <div className="w-12 h-12 bg-gradient-to-br from-red-400 to-rose-500 rounded-xl flex items-center justify-center mr-4">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -305,13 +304,7 @@ const PerformanceCenterPage: React.FC = () => {
       </section>
 
       {/* Booking Form Section */}
-      <section id="booking-form" className="py-32 bg-dark-bg relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-400/10 to-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/10 to-cyan-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section id="booking-form" className="py-32 relative z-10">        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-title-h2 mb-6 bg-clip-text text-transparent bg-custom-gradient">
               BOOK YOUR SPOT NOW
@@ -336,7 +329,7 @@ const PerformanceCenterPage: React.FC = () => {
       {/* Social Proof / Trust Section */}
       <section className="py-20 bg-gradient-to-b from-dark-bg to-dark-secondary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="glass-card p-12">
+          <div className="glass-card p-12 animate-float">
             <h3 className="text-subtitle text-cyan-400 mb-6">
               Trusted by World Champions
             </h3>
