@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ProjectsPage: React.FC = () => {
+  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimatedElements(prev => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elementsToObserve = document.querySelectorAll('[id^="animate-"]');
+    elementsToObserve.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   // Projects data matching the original website structure
   const projects = [
     {
@@ -66,25 +86,28 @@ const ProjectsPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-dark-bg text-white min-h-screen pt-16">
+    <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
+      
       {/* Hero Section */}
-      <section
-        className="py-20 relative font-sans"
-        style={{
-          backgroundImage: "url('/images/IMG_6074-fi35655370x2000.JPG')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center bottom',
-          backgroundColor: 'rgba(255, 255, 255, 0)'
-        }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-26"></div>
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white uppercase tracking-wide font-sans">
-            Main Projects & Experience
-          </h1>
-          <p className="text-xl text-white mb-8 max-w-3xl mx-auto">
-            A comprehensive overview of Joseph Mestrallet's professional work in performance science and data analytics
-          </p>
+      <section className="py-20 relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div
+            id="animate-title"
+            className={`transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+          >
+            <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
+              MAIN PROJECTS & EXPERIENCE
+            </h1>
+            <p className="text-paragraph text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              A comprehensive overview of Joseph Mestrallet's professional work in performance science and data analytics
+            </p>
+          </div>
         </div>
       </section>
 

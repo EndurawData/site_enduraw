@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/fancy.css';
 
@@ -7,6 +7,7 @@ interface ServicesPageProps {
 }
 
 const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
+  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
   useEffect(() => {
@@ -18,21 +19,42 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
     }
   }, [activeSection]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimatedElements(prev => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
+    const elementsToObserve = document.querySelectorAll('[id^="animate-"]');
+    elementsToObserve.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="fancy-bg text-white relative">
-      {/* Animated background orbs */}
-      <div className="bg-orb-1"></div>
-      <div className="bg-orb-2"></div>
-      <div className="bg-orb-3"></div>
+    <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
       
       {/* Services Grid */}
-      <section ref={(el) => { sectionRefs.current['overview'] = el; }} className="pt-32 pb-32 relative z-10">
+      <section ref={(el) => { sectionRefs.current['overview'] = el; }} className="py-20 relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-12 tracking-tight animate-float uppercase">
-              What Enduraw Services are you looking for ?
+          <div 
+            id="animate-title"
+            className={`text-center mb-20 transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+          >
+            <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-12">
+              OUR SERVICES
             </h1>
           </div>
           
@@ -76,14 +98,15 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
                 title: "Enduraw API",
                 description: "Mathematics behind world best performances. Access our scientific models and data-driven intelligence.",
                 link: "/services/enduraw-api",
-                image: "/images/services/service5.png",
-                icon: "M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                image: "/images/services/service5.png"
               }
-            ].map((service) => (
+            ].map((service, index) => (
               <div key={service.id} className="h-80">
                 <Link
                   to={service.link}
-                  className="glass-card p-8 text-center border-white/20 hover:border-[#6CDCFF]/50 hover:scale-105 transition-all duration-300 group h-full flex flex-col justify-center"
+                  className={`glass-card p-8 text-center border-white/20 hover:border-[#6CDCFF]/50 hover:scale-105 transition-all duration-300 group h-full flex flex-col justify-center ${
+                    index % 3 === 0 ? 'animate-float' : index % 3 === 1 ? 'animate-float-slow' : 'animate-float-fast'
+                  }`}
                 >
                   <div className="mb-6">
                     <div className="icon-container bg-gradient-blue-light mx-auto mb-6 group-hover:scale-110 transition-transform">
@@ -111,7 +134,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
           <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-12 text-body-uppercase tracking-wide animate-float">Get in Touch</h2>
 
           {/* Contact Information */}
-          <div className="glass-card p-12 max-w-3xl mx-auto">
+          <div className="glass-card p-12 max-w-3xl mx-auto animate-float">
             <p className="text-paragraph mb-12 leading-relaxed">
               Ready to optimize your performance? Let's discuss how data science can transform your training.
             </p>

@@ -142,7 +142,7 @@ const Footer: React.FC = () => {
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl px-6 py-3 border border-white/10 hover:border-white/20 transition-all duration-300 relative overflow-hidden group-hover:scale-105 transform">
               <div className="absolute inset-0 bg-gradient-to-r from-gray-500/10 to-gray-400/10 group-hover:from-gray-500/20 group-hover:to-gray-400/20 transition-all duration-500"></div>
               <p className="text-sm font-medium bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent relative z-10 text-body-uppercase">
-                © Enduraw 2025
+                © Enduraw 2026
               </p>
               {/* Floating sparkles */}
               <div className="absolute top-1 right-1 w-2 h-2 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full opacity-0 group-hover:opacity-100 animate-ping transition-opacity duration-300"></div>

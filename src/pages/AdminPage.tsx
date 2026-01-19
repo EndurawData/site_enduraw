@@ -197,13 +197,20 @@ const AdminPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen fancy-bg pt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-28 py-8">
+    <div className="min-h-screen bg-dark-bg text-white pt-20 relative overflow-hidden">
+      {/* Modern animated background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
+      </div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-28 py-8">
         
         {/* Header */}
-        <div className="glass-card p-8 mb-8">
-          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-4">
-            Administration - Testing Chamonix
+        <div className="glass-card p-8 mb-8 animate-float">
+          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
+            ADMINISTRATION - TESTING CHAMONIX
           </h1>
           <p className="text-paragraph">
             Gérez les créneaux de tests et suivez les réservations
@@ -240,19 +247,19 @@ const AdminPage: React.FC = () => {
             {stats && (
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div className="stat-card p-6">
-                  <h3 className="text-subtitle text-white mb-2">Revenus</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Revenus</h3>
                   <p className="text-3xl font-bold text-gradient-blue-light">{stats.total_revenue}€</p>
                 </div>
                 <div className="stat-card p-6">
-                  <h3 className="text-subtitle text-white mb-2">Confirmées</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Confirmées</h3>
                   <p className="text-3xl font-bold text-green-400">{stats.confirmed_bookings}</p>
                 </div>
                 <div className="stat-card p-6">
-                  <h3 className="text-subtitle text-white mb-2">En attente</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">En attente</h3>
                   <p className="text-3xl font-bold text-yellow-400">{stats.pending_bookings}</p>
                 </div>
                 <div className="stat-card p-6">
-                  <h3 className="text-subtitle text-white mb-2">Créneaux libres</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">Créneaux libres</h3>
                   <p className="text-3xl font-bold text-blue-400">{stats.available_slots}</p>
                 </div>
               </div>
@@ -264,8 +271,8 @@ const AdminPage: React.FC = () => {
         {activeTab === 'slots' && (
           <div className="space-y-6">
             {/* Formulaire création créneau */}
-            <div className="glass-card p-6">
-              <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-4">Créer un nouveau créneau</h2>
+            <div className="glass-card p-6 animate-float-slow">
+              <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-custom-gradient">Créer un nouveau créneau</h2>
               <form onSubmit={handleCreateSlot} className="grid md:grid-cols-4 gap-4">
                 <div>
                   <label className="block text-white text-sm font-medium mb-1">Date</label>
@@ -323,7 +330,7 @@ const AdminPage: React.FC = () => {
 
             {/* Liste des créneaux */}
             <div className="glass-card p-6">
-              <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-4">Créneaux existants</h2>
+              <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-custom-gradient">Créneaux existants</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-white">
                   <thead>
@@ -392,7 +399,7 @@ const AdminPage: React.FC = () => {
         {/* Bookings Tab */}
         {activeTab === 'bookings' && (
           <div className="glass-card p-6">
-            <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-4">Réservations</h2>
+            <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-custom-gradient">Réservations</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-white text-sm">
                 <thead>
