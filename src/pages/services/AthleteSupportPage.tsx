@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../../styles/fancy.css';
 
 const API_BASE_URL = 'http://localhost:3001';
