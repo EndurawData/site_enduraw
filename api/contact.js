@@ -39,7 +39,7 @@ async function handler(req, res) {
     const SMTP_PORT = process.env.SMTP_PORT || 587;
     const SMTP_USER = process.env.SMTP_USER;
     const SMTP_PASS = process.env.SMTP_PASS;
-    const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'contact.enduraw@gmail.com';
+    const RECIPIENT_EMAIL = process.env.RECIPIENT_EMAIL || 'communication@enduraw.co';
 
     // Check if required env variables are set
     if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {

@@ -50,7 +50,7 @@ const CGUPage: React.FC = () => {
               RCS : 939290722 — TVA intracommunautaire : FR62939290722
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
-              Contact : <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a>
+              Contact : <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>
             </p>
             <p className="text-white/80 leading-relaxed">
               Directeur de la publication : Joseph Mestrallet
@@ -86,7 +86,7 @@ const CGUPage: React.FC = () => {
               Il est responsable de la confidentialité de son identifiant et de son mot de passe, ainsi que de toute activité effectuée sous son compte.
             </p>
             <p className="text-white/80 leading-relaxed">
-              En cas de suspicion d'utilisation frauduleuse, l'utilisateur doit informer immédiatement Enduraw à l'adresse <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a>.
+              En cas de suspicion d'utilisation frauduleuse, l'utilisateur doit informer immédiatement Enduraw à l'adresse <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>.
             </p>
           </section>
 
@@ -180,7 +180,7 @@ const CGUPage: React.FC = () => {
               Les services payants ou abonnements sont soumis à des conditions spécifiques présentées au moment de la souscription : durée, renouvellement, rétractation, modalités de paiement, résiliation.
             </p>
             <p className="text-white/80 leading-relaxed">
-              Toute résiliation devra être effectuée depuis le compte utilisateur ou par demande à <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a>.
+              Toute résiliation devra être effectuée depuis le compte utilisateur ou par demande à <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>.
             </p>
           </section>
 
@@ -268,7 +268,7 @@ const CGUPage: React.FC = () => {
               Pour toute question relative à ces conditions ou au service :
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
-              📧 <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a>
+              📧 <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>
             </p>
             <p className="text-white/80 leading-relaxed">
               📍 Enduraw — 330 Route du Plagnolet, 74400 Chamonix-Mont-Blanc

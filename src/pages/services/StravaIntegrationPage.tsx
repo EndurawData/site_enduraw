@@ -175,7 +175,19 @@ const StravaIntegrationPage: React.FC = () => {
           </div>
         </section>
 
-        
+        {/* Contact Section */}
+        <section className="mt-16">
+          <div className="glass-card p-8 rounded-2xl text-center">
+            <h2 className="text-3xl font-bold mb-4 text-gradient-blue-light">Want to Access Enduraw Report?</h2>
+            <p className="text-paragraph mb-6">Get in touch to integrate Enduraw's advanced analytics with your Strava data and elevate your training.</p>
+            <Link 
+              to="/contact" 
+              className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   );

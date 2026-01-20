@@ -35,7 +35,7 @@ const MentionsLegalesPage: React.FC = () => {
               RCS : 939290722 — TVA intracommunautaire : FR62939290722
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
-              Contact : <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a>
+              Contact : <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
               Directeur : Joseph Mestrallet
@@ -94,7 +94,7 @@ const MentionsLegalesPage: React.FC = () => {
               Signalement de vulnérabilités
             </h2>
             <p className="text-white/80 leading-relaxed">
-              Pour signaler une faille de sécurité : <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a>
+              Pour signaler une faille de sécurité : <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>
             </p>
           </section>
         </div>

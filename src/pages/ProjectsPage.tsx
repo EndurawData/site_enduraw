@@ -163,7 +163,7 @@ const ProjectsPage: React.FC = () => {
               Explore Services
             </a>
             <a
-              href="mailto:joseph@enduraw.com"
+              href="mailto:performance@enduraw.co"
               className="border border-gray-600 hover:border-gray-400 text-gray-300 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors"
             >
               Contact us

@@ -44,13 +44,13 @@ const PolitiqueConfidentialitePage: React.FC = () => {
               RCS : 939290722 — TVA intracommunautaire : FR62939290722
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
-              Contact : <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a>
+              Contact : <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
               Directeur : Joseph Mestrallet
             </p>
             <p className="text-white/80 leading-relaxed mb-4">
-              Délégué à la protection des données (DPO) : Valentin Templé — contact via <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a> (ou l'adresse ci-dessus)
+              Délégué à la protection des données (DPO) : Valentin Templé — contact via <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a> (ou l'adresse ci-dessus)
             </p>
             <p className="text-white/80 leading-relaxed">
               Enduraw est responsable des traitements de données effectués dans le cadre de l'utilisation de ses services et applications.
@@ -145,7 +145,7 @@ const PolitiqueConfidentialitePage: React.FC = () => {
             </p>
             <ul className="list-disc list-inside space-y-2 text-white/80 ml-4 mb-4">
               <li>les paramètres de confidentialité de votre compte Enduraw ;</li>
-              <li>ou un message à <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a></li>
+              <li>ou un message à <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a></li>
             </ul>
             <p className="text-white/80 leading-relaxed">
               La suppression ou le retrait du consentement peut limiter certaines fonctionnalités de nos services.
@@ -188,7 +188,7 @@ const PolitiqueConfidentialitePage: React.FC = () => {
               Aucun transfert à des tiers non autorisés n'est effectué sans votre accord explicite.
             </p>
             <p className="text-white/80 leading-relaxed">
-              La <strong>liste actualisée</strong> de nos sous-traitants est disponible sur demande à <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a>
+              La <strong>liste actualisée</strong> de nos sous-traitants est disponible sur demande à <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>
             </p>
           </section>
 
@@ -266,7 +266,7 @@ const PolitiqueConfidentialitePage: React.FC = () => {
               Vous pouvez exercer ces droits en contactant :
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
-              📧 <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a>
+              📧 <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>
             </p>
             <p className="text-white/80 leading-relaxed mb-4">
               ou par courrier à : Enduraw, 330 Route du Plagnolet, 74400 Chamonix-Mont-Blanc.
@@ -332,7 +332,7 @@ const PolitiqueConfidentialitePage: React.FC = () => {
               Pour toute question sur cette politique ou sur la gestion de vos données personnelles :
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
-              📧 <a href="mailto:contact.enduraw@gmail.com" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">contact.enduraw@gmail.com</a>
+              📧 <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
               📍 Enduraw — 330 Route du Plagnolet, 74400 Chamonix-Mont-Blanc

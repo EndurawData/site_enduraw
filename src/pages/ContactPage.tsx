@@ -23,6 +23,21 @@ const ContactPage: React.FC = () => {
     }));
   };
 
+  // Fonction pour déterminer l'email de destination selon la raison
+  const getRecipientEmail = (reason: string): string => {
+    const emailMap: { [key: string]: string } = {
+      'Dashboard': 'dashboard@enduraw.co',
+      'API': 'dashboard@enduraw.co',
+      'Pacing Plan': 'dashboard@enduraw.co',
+      'Enduraw Performance Center': 'performance@enduraw.co',
+      'Testing': 'performance@enduraw.co',
+      'Athlete Development': 'performance@enduraw.co',
+      'Media': 'communication@enduraw.co',
+      'Other': 'communication@enduraw.co'
+    };
+    return emailMap[reason] || 'communication@enduraw.co';
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -31,12 +46,17 @@ const ContactPage: React.FC = () => {
     try {
       console.log('Envoi du formulaire de contact:', formData);
       
+      const recipientEmail = getRecipientEmail(formData.reason);
+      
       const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          recipientEmail
+        }),
       });
 
       const result = await response.json();
@@ -54,9 +74,10 @@ const ContactPage: React.FC = () => {
       
       // Fallback vers mailto si l'API échoue
       console.log('Utilisation du fallback mailto');
+      const recipientEmail = getRecipientEmail(formData.reason);
       const subject = encodeURIComponent(`${formData.reason} - new request`);
       const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\nReason: ${formData.reason}\n\nMessage:\n${formData.message}`);
-      const mailtoLink = `mailto:contact.enduraw@gmail.com?subject=${subject}&body=${body}`;
+      const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
       window.location.href = mailtoLink;
       
       setSubmitStatus('error');
@@ -111,7 +132,7 @@ const ContactPage: React.FC = () => {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-100 mb-2">Email</h3>
-              <p className="text-paragraph">contact.enduraw@gmail.com</p>
+              <p className="text-paragraph">communication@enduraw.co</p>
             </div>
             <div className="glass-card p-6 animate-float-slow">
               <div className="icon-container bg-gradient-blue-light mx-auto mb-4">
@@ -171,6 +192,8 @@ const ContactPage: React.FC = () => {
                 <option value="" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>Select a reason</option>
                 <option value="Media" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>Media</option>
                 <option value="Pacing Plan" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>Pacing Plan</option>
+                <option value="Dashboard" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>Dashboard</option>
+                <option value="API" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>API</option>
                 <option value="Enduraw Performance Center" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>Enduraw Performance Center</option>
                 <option value="Testing" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>Testing</option>
                 <option value="Athlete Development" style={{ backgroundColor: '#1f2937', color: '#ffffff' }}>Athlete Development</option>
