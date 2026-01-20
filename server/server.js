@@ -360,9 +360,9 @@ app.get('/api/admin/slots', (req, res) => {
 // Route pour envoyer des emails de contact
 app.post('/api/contact', async (req, res) => {
   try {
-    const { name, email, reason, message } = req.body;
+    const { name, email, reason, message, recipientEmail } = req.body;
     
-    console.log('Données reçues pour contact:', { name, email, reason });
+    console.log('Données reçues pour contact:', { name, email, reason, recipientEmail });
     
     // Validation
     if (!name || !email || !reason || !message) {
@@ -372,9 +372,12 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
+    // Utiliser l'email de destination fourni ou communication@ par défaut
+    const destinationEmail = recipientEmail || 'communication@enduraw.co';
+
     // Créer l'email de contact
     const contactEmail = {
-      to: 'contact.enduraw@gmail.com',
+      to: destinationEmail,
       subject: `${reason} - Nouveau message de ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -453,7 +456,7 @@ app.post('/api/training-camp', async (req, res) => {
 
     // Créer l'email de demande de training camp
     const trainingCampEmail = {
-      to: 'contact.enduraw@gmail.com',
+      to: 'performance@enduraw.co',
       subject: `Training Camp Request - ${firstName} ${lastName} (${trainingCampLabel})`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -558,7 +561,7 @@ app.post('/api/athlete-support', async (req, res) => {
 
     // Créer l'email pour athlete support
     const athleteSupportEmail = {
-      to: 'contact.enduraw@gmail.com',
+      to: 'performance@enduraw.co',
       subject: `Athletes Support - Nouvelle demande de ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

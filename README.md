@@ -67,7 +67,7 @@ src/
 
 ## Deployment
 
-The website is configured to be deployed to `https://enduraw-data.com`
+The website is configured to be deployed to `https://enduraw.co`
 
 To create a production build:
 ```bash
@@ -78,4 +78,4 @@ npm run build
 
 For questions or support:
 - Email: enduraw.data@gmail.com
-- Website: enduraw-data.com
+- Website: enduraw.co

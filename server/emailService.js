@@ -104,7 +104,7 @@ function getConfirmationEmailTemplate(booking) {
               <li>Hydratez-vous normalement</li>
             </ul>
             
-            <p>En cas de question ou d'empêchement, contactez-nous à <a href="mailto:contact@enduraw.com">contact@enduraw.com</a></p>
+            <p>En cas de question ou d'empêchement, contactez-nous à <a href="mailto:contact@enduraw.co">contact@enduraw.co</a></p>
             
             <p>Nous avons hâte de vous accueillir !</p>
             
@@ -113,7 +113,7 @@ function getConfirmationEmailTemplate(booking) {
           
           <div class="footer">
             <p>Enduraw Performance Center - Chamonix</p>
-            <p>🌐 www.enduraw.com | 📧 contact@enduraw.com</p>
+            <p>🌐 www.enduraw.co | 📧 contact@enduraw.co</p>
           </div>
         </div>
       </body>

@@ -57,7 +57,7 @@ $smtp_host = $_ENV['SMTP_HOST'] ?? 'smtp.gmail.com';
 $smtp_port = $_ENV['SMTP_PORT'] ?? 587;
 $smtp_user = $_ENV['SMTP_USER'] ?? 'your-email@gmail.com';
 $smtp_pass = $_ENV['SMTP_PASS'] ?? 'your-app-password';
-$recipient_email = $_ENV['RECIPIENT_EMAIL'] ?? 'contact.enduraw@gmail.com';
+$recipient_email = $_ENV['RECIPIENT_EMAIL'] ?? 'communication@enduraw.co';
 
 // Check if using PHPMailer (recommended) or native mail()
 if (class_exists('PHPMailer\PHPMailer\PHPMailer')) {

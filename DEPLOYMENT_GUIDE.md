@@ -78,9 +78,9 @@ deploy/
 Édite `public_html/api/contact.php` directement sur Hostinger :
 
 ```php
-$smtp_user = 'contact.enduraw@gmail.com';
+$smtp_user = 'communication@enduraw.co';
 $smtp_pass = 'ton-mot-de-passe-app-gmail';
-$recipient_email = 'contact.enduraw@gmail.com';
+$recipient_email = 'communication@enduraw.co';
 ```
 
 #### B. Test du Site

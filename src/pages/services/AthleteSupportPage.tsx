@@ -53,7 +53,7 @@ const AthleteSupportPage: React.FC = () => {
       console.log('Utilisation du fallback mailto');
       const subject = encodeURIComponent(`Athletes Support - Nouvelle demande de ${formData.name}`);
       const body = encodeURIComponent(`Nom: ${formData.name}\nEmail: ${formData.email}\n\nObjectifs et demande:\n${formData.message}`);
-      const mailtoLink = `mailto:contact.enduraw@gmail.com?subject=${subject}&body=${body}`;
+      const mailtoLink = `mailto:performance@enduraw.co?subject=${subject}&body=${body}`;
       window.location.href = mailtoLink;
       
       setSubmitStatus('error');

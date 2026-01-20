@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const EndurawReportPage: React.FC = () => {
   return (
@@ -106,6 +107,18 @@ const EndurawReportPage: React.FC = () => {
                 </ul>
               </div>
             </div>
+          </div>
+
+          {/* Contact Section */}
+          <div className="bg-dark-secondary p-8 rounded-lg text-center mt-8">
+            <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-4">Get Your Enduraw Report</h2>
+            <p className="text-paragraph mb-6">Contact us to request your personalized performance report and unlock deeper insights into your training.</p>
+            <Link 
+              to="/contact" 
+              className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </div>

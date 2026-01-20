@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const EndurawDashboardPage: React.FC = () => {
   const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
@@ -368,6 +369,20 @@ const EndurawDashboardPage: React.FC = () => {
           box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
         }
       `}</style>
+
+      {/* Contact Section */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div className="glass-card p-8 rounded-2xl text-center">
+          <h2 className="text-3xl font-bold mb-4 text-gradient-blue-light">Interested in Enduraw Dashboard?</h2>
+          <p className="text-gray-300 mb-6">Contact us to learn more about accessing the dashboard and how it can help optimize your performance.</p>
+          <Link 
+            to="/contact" 
+            className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            Contact Us
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

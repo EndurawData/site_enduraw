@@ -33,7 +33,7 @@ $smtp_host = 'smtp.gmail.com';
 $smtp_port = 587;
 $smtp_user = 'your-email@gmail.com';
 $smtp_pass = 'your-app-password';  // Use Gmail App Password
-$recipient_email = 'contact.enduraw@gmail.com';
+$recipient_email = 'communication@enduraw.co';
 ```
 
 ### 3. Gmail Setup (Recommended)
