@@ -1,14 +1,42 @@
 const nodemailer = require('nodemailer');
 
+// Check if we're in development mode (no credentials)
+const isDevelopment = !process.env.EMAIL_USER || process.env.EMAIL_USER === 'your-gmail@gmail.com' || !process.env.EMAIL_PASS || process.env.EMAIL_PASS === 'your-16-char-app-password';
+
 // Configuration email (à adapter selon votre fournisseur)
-const transporter = nodemailer.createTransport({
-  // Gmail example - remplacer par vos paramètres
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER, // votre email
-    pass: process.env.EMAIL_PASS  // mot de passe d'application
-  }
-});
+let transporter;
+if (isDevelopment) {
+  // Mock transporter for development - just logs emails instead of sending them
+  console.log('⚠️  Mode développement : Les emails seront simulés (pas d\'envoi réel)');
+  transporter = {
+    sendMail: async (mailOptions) => {
+      console.log('\n📧 EMAIL SIMULÉ (Development Mode):');
+      console.log('━'.repeat(50));
+      console.log('To:', mailOptions.to);
+      console.log('Subject:', mailOptions.subject);
+      console.log('From:', mailOptions.from || 'noreply@enduraw.co');
+      console.log('Reply-To:', mailOptions.replyTo || 'N/A');
+      console.log('━'.repeat(50));
+      if (mailOptions.text) {
+        console.log(mailOptions.text);
+      } else {
+        console.log('(HTML email - view in browser)');
+      }
+      console.log('━'.repeat(50) + '\n');
+      return { messageId: 'mock-' + Date.now() };
+    }
+  };
+} else {
+  // Real transporter for production
+  console.log('✅ Mode production : Les emails seront envoyés via Gmail');
+  transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS
+    }
+  });
+}
 
 // Template email de confirmation
 function getConfirmationEmailTemplate(booking) {
@@ -314,18 +342,18 @@ async function sendDailyReminders() {
 async function sendContactEmail(emailData) {
   try {
     const mailOptions = {
-      from: `"Enduraw Contact" <${process.env.EMAIL_USER}>`,
+      from: `"Enduraw Contact" <${process.env.EMAIL_USER || 'noreply@enduraw.co'}>`,
       to: emailData.to,
       subject: emailData.subject,
       html: emailData.html,
-      replyTo: emailData.replyTo || process.env.EMAIL_USER
+      replyTo: emailData.replyTo || process.env.EMAIL_USER || 'noreply@enduraw.co'
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email de contact envoyé:', info.messageId);
+    console.log('✅ Email de contact envoyé:', info.messageId);
     return info;
   } catch (error) {
-    console.error('Erreur envoi email de contact:', error);
+    console.error('❌ Erreur envoi email de contact:', error);
     throw error;
   }
 }

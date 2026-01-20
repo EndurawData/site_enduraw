@@ -360,9 +360,9 @@ app.get('/api/admin/slots', (req, res) => {
 // Route pour envoyer des emails de contact
 app.post('/api/contact', async (req, res) => {
   try {
-    const { name, email, reason, message, recipientEmail } = req.body;
+    const { name, email, reason, message } = req.body;
     
-    console.log('Données reçues pour contact:', { name, email, reason, recipientEmail });
+    console.log('Données reçues pour contact:', { name, email, reason });
     
     // Validation
     if (!name || !email || !reason || !message) {
@@ -372,12 +372,9 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
-    // Utiliser l'email de destination fourni ou communication@ par défaut
-    const destinationEmail = recipientEmail || 'communication@enduraw.co';
-
     // Créer l'email de contact
     const contactEmail = {
-      to: destinationEmail,
+      to: 'communication@enduraw.co',
       subject: `${reason} - Nouveau message de ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
