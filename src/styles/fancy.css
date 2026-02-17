@@ -8,13 +8,13 @@
 
 /* Background gradients */
 .fancy-bg {
-  background: linear-gradient(135deg, #000000 0%, #0f0f0f 50%, #000000 100%);
+  background: rgba(0, 0, 0, 0.25);
   position: relative;
   overflow: hidden;
 }
 
 .fancy-bg-light {
-  background: linear-gradient(135deg, #000000 0%, #111111 50%, #000000 100%);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 /* Decorative background elements */
