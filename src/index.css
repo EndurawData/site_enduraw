@@ -20,46 +20,46 @@ html, body {
 .bg-dark-bg,
 .bg-dark-bg\/95,
 .bg-dark-bg\/80 {
-  background-color: rgba(0, 0, 0, 0.82) !important;
+  background-color: rgba(0, 0, 0, 0.76) !important;
 }
 
 .bg-dark-secondary {
-  background-color: rgba(26, 26, 26, 0.82) !important;
+  background-color: rgba(26, 26, 26, 0.76) !important;
 }
 
 .from-dark-bg {
-  --tw-gradient-from: rgba(0, 0, 0, 0.82) var(--tw-gradient-from-position) !important;
+  --tw-gradient-from: rgba(0, 0, 0, 0.76) var(--tw-gradient-from-position) !important;
   --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position) !important;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
 }
 
 .to-dark-bg {
-  --tw-gradient-to: rgba(0, 0, 0, 0.82) var(--tw-gradient-to-position) !important;
+  --tw-gradient-to: rgba(0, 0, 0, 0.76) var(--tw-gradient-to-position) !important;
 }
 
 .from-dark-secondary {
-  --tw-gradient-from: rgba(26, 26, 26, 0.82) var(--tw-gradient-from-position) !important;
+  --tw-gradient-from: rgba(26, 26, 26, 0.76) var(--tw-gradient-from-position) !important;
   --tw-gradient-to: rgba(26, 26, 26, 0) var(--tw-gradient-to-position) !important;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
 }
 
 .to-dark-secondary {
-  --tw-gradient-to: rgba(26, 26, 26, 0.82) var(--tw-gradient-to-position) !important;
+  --tw-gradient-to: rgba(26, 26, 26, 0.76) var(--tw-gradient-to-position) !important;
 }
 
 .from-slate-900 {
-  --tw-gradient-from: rgba(15, 23, 42, 0.82) var(--tw-gradient-from-position) !important;
+  --tw-gradient-from: rgba(15, 23, 42, 0.76) var(--tw-gradient-from-position) !important;
   --tw-gradient-to: rgba(15, 23, 42, 0) var(--tw-gradient-to-position) !important;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
 }
 
 .via-slate-800 {
   --tw-gradient-to: rgba(30, 41, 59, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), rgba(30, 41, 59, 0.82) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(30, 41, 59, 0.76) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
 }
 
 .to-slate-900 {
-  --tw-gradient-to: rgba(15, 23, 42, 0.82) var(--tw-gradient-to-position) !important;
+  --tw-gradient-to: rgba(15, 23, 42, 0.76) var(--tw-gradient-to-position) !important;
 }
 
 #root,
@@ -82,6 +82,10 @@ html, body {
 .site-content {
   position: relative;
   z-index: 1;
+}
+
+.site-content > div.bg-dark-bg {
+  background-color: rgba(0, 0, 0, 0.58) !important;
 }
 
 /* Typography Classes */
