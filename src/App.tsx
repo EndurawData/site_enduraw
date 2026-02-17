@@ -23,6 +23,13 @@ import SousTraitantsPage from './pages/SousTraitantsPage';
 
 function App() {
   const [activeSection, setActiveSection] = useState<string>('');
+  const siteBackgroundStyle: React.CSSProperties = {
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${process.env.PUBLIC_URL}/photo.jpg)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed'
+  };
 
   const handleScrollToSection = useCallback((sectionId: string) => {
     setActiveSection(sectionId);
@@ -33,35 +40,38 @@ function App() {
 
   return (
     <Router>
-      <div className="App min-h-screen bg-dark-bg">
-        <ScrollToTop />
-        <Navigation onScrollToSection={handleScrollToSection} />
-        <Routes>
-          <Route 
-            path="/" 
-            element={<HomePage activeSection={activeSection} />} 
-          />
-          <Route path="/news" element={<NewsPage />} />
-          <Route 
-            path="/services" 
-            element={<ServicesPage activeSection={activeSection} />} 
-          />
-          <Route path="/services/testing" element={<TestingPage />} />
-          <Route path="/endurawperformancecenter" element={<EndurawPerformanceCenterPage />} />
-          <Route path="/services/athlete-support" element={<AthleteSupportPage />} />
-          <Route path="/services/pacing-plan" element={<PacingPlanPage />} />
-          <Route path="/services/enduraw-report" element={<EndurawReportPage />} />
-          <Route path="/services/enduraw-dashboard" element={<EndurawDashboardPage />} />
-          <Route path="/services/enduraw-api" element={<EndurawAPIPage />} />
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="/booking-success" element={<BookingSuccessPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
-          <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
-          <Route path="/cgu" element={<CGUPage />} />
-          <Route path="/sous-traitants" element={<SousTraitantsPage />} />
-        </Routes>
-        <Footer />
+      <div className="App min-h-screen">
+        <div className="site-background" style={siteBackgroundStyle} aria-hidden="true" />
+        <div className="site-content">
+          <ScrollToTop />
+          <Navigation onScrollToSection={handleScrollToSection} />
+          <Routes>
+            <Route 
+              path="/" 
+              element={<HomePage activeSection={activeSection} />} 
+            />
+            <Route path="/news" element={<NewsPage />} />
+            <Route 
+              path="/services" 
+              element={<ServicesPage activeSection={activeSection} />} 
+            />
+            <Route path="/services/testing" element={<TestingPage />} />
+            <Route path="/endurawperformancecenter" element={<EndurawPerformanceCenterPage />} />
+            <Route path="/services/athlete-support" element={<AthleteSupportPage />} />
+            <Route path="/services/pacing-plan" element={<PacingPlanPage />} />
+            <Route path="/services/enduraw-report" element={<EndurawReportPage />} />
+            <Route path="/services/enduraw-dashboard" element={<EndurawDashboardPage />} />
+            <Route path="/services/enduraw-api" element={<EndurawAPIPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/booking-success" element={<BookingSuccessPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
+            <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
+            <Route path="/cgu" element={<CGUPage />} />
+            <Route path="/sous-traitants" element={<SousTraitantsPage />} />
+          </Routes>
+          <Footer />
+        </div>
       </div>
     </Router>
   );
