@@ -8,13 +8,13 @@
 
 /* Background gradients */
 .fancy-bg {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.58);
   position: relative;
   overflow: hidden;
 }
 
 .fancy-bg-light {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.58);
 }
 
 /* Decorative background elements */

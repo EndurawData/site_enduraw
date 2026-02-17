@@ -24,7 +24,7 @@ import SousTraitantsPage from './pages/SousTraitantsPage';
 function App() {
   const [activeSection, setActiveSection] = useState<string>('');
   const siteBackgroundStyle: React.CSSProperties = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(${process.env.PUBLIC_URL}/photo.jpg)`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.74)), url(${process.env.PUBLIC_URL}/photo.jpg)`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
