@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import NewsPage from './pages/NewsPage';
 import ContactPage from './pages/ContactPage';
+import RecrutementPage from './pages/RecrutementPage';
 import TestingPage from './pages/services/TestingPage';
 import EndurawPerformanceCenterPage from './pages/services/PerformanceCenterPage';
 import AthleteSupportPage from './pages/services/AthleteSupportPage';
@@ -65,6 +66,7 @@ function App() {
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/booking-success" element={<BookingSuccessPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/recruitment" element={<RecrutementPage />} />
             <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
             <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
             <Route path="/cgu" element={<CGUPage />} />
