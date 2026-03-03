@@ -1,67 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../styles/fancy.css';
 
-const API_BASE_URL = 'http://localhost:3001';
-
 const AthleteSupportPage: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setSubmitStatus('idle');
-
-    try {
-      console.log('Envoi du formulaire athlete support:', formData);
-      
-      const response = await fetch(`${API_BASE_URL}/api/athlete-support`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-      
-      if (response.ok) {
-        console.log('Demande athlete support envoyée avec succès');
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        console.error('Erreur serveur:', result);
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Erreur envoi demande athlete support:', error);
-      
-      // Fallback vers mailto si l'API échoue
-      console.log('Utilisation du fallback mailto');
-      const subject = encodeURIComponent(`Athletes Support - Nouvelle demande de ${formData.name}`);
-      const body = encodeURIComponent(`Nom: ${formData.name}\nEmail: ${formData.email}\n\nObjectifs et demande:\n${formData.message}`);
-      const mailtoLink = `mailto:performance@enduraw.co?subject=${subject}&body=${body}`;
-      window.location.href = mailtoLink;
-      
-      setSubmitStatus('error');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return (
     <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
       {/* Modern animated background */}
@@ -164,123 +104,91 @@ const AthleteSupportPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section className="mt-20">
+        <section className="mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-custom-gradient uppercase">
+            OUR OFFERS
+          </h2>
+
           <div className="glass-card p-10 border-white/20 animate-float-slow">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-custom-gradient uppercase">
-              READY TO TRAIN LIKE A PRO?
-            </h2>
-            
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Principles Cards */}
-              <div className="space-y-6">
-                <div className="glass-card p-6 border-white/20 animate-float">
-                  <h3 className="text-xl font-bold text-gradient-blue-light mb-3">🧠 "Smart Training"</h3>
-                  <p className="text-paragraph text-gray-200 leading-relaxed">
-                    "No pain no gain" doesn't read as literally as we thought. Evaluating training load via biological and mechanical markers, we analyze your training to give you a better understanding of your physiological responses.
-                  </p>
-                </div>
-                
-                <div className="glass-card p-6 border-white/20 animate-float-slow">
-                  <h3 className="text-xl font-bold text-gradient-blue-light mb-3">💤 "Recovery First"</h3>
-                  <p className="text-paragraph text-gray-200 leading-relaxed">
-                    Recovery matters even more than training alone. Adaptation drives progression, achieved through proper refueling and sleep that data can help master.
-                  </p>
-                </div>
-                
-                <div className="glass-card p-6 border-white/20 animate-float">
-                  <h3 className="text-xl font-bold text-gradient-blue-light mb-3">🎯 "Precision Pacing"</h3>
-                  <p className="text-paragraph text-gray-200 leading-relaxed">
-                    Pacing Strategy is unique and can be fine-tuned from your training data and past races. Together, we'll find the best scenario: when to walk, when to eat, when to control, or when to push it!
-                  </p>
-                </div>
+            <p className="text-paragraph text-gray-200 leading-relaxed mb-8">
+              As your partner on every adventure, we offer two coaching formats designed to match your goals, your racing calendar, and your expected level of support.
+            </p>
+
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div className="glass-card p-8 border-white/20 hover:border-white/40 hover:scale-[1.02] transition-all duration-300 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-gradient-blue-light/10 to-transparent pointer-events-none"></div>
+                <h3 className="text-2xl font-bold text-gradient-blue-light mb-4">Seasonal Support</h3>
+                <ul className="space-y-2 text-gray-200 leading-relaxed">
+                  <li>• Monthly planning tailored to your goals.</li>
+                  <li>• Scientific advice to optimize your training.</li>
+                  <li>• Training data feedback (once per week).</li>
+                  <li>• Phone and email support with replies within 48h.</li>
+                  <li>• Pacing strategies for your main competitions.</li>
+                  <li>• One monthly article on a topic of your choice (training optimization, race analysis, and more).</li>
+                </ul>
               </div>
-              
-              {/* Contact Form */}
-              <div className="glass-card p-8 border-white/20 animate-float-slow">
-                <h3 className="text-xl font-bold text-center text-gradient-blue-light mb-6">
-                  Start Your Journey
-                </h3>
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-200">
-                      Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-dark-secondary/80 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400"
-                      placeholder="Your full name"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-200">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-dark-secondary/80 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-200">
-                      Your Goals & Objectives *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={5}
-                      required
-                      className="w-full px-4 py-3 rounded-xl bg-dark-secondary/80 border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 resize-vertical"
-                      placeholder="Tell us about your athletic goals, current training, and how we can help you achieve peak performance..."
-                    />
-                  </div>
-                  
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="btn-enduraw w-full disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isLoading ? (
-                      <span className="flex items-center justify-center gap-2">
-                        <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full"></div>
-                        <span>Envoi en cours...</span>
-                      </span>
-                    ) : (
-                      <span>Submit Request</span>
-                    )}
-                  </button>
-                  
-                  {submitStatus === 'success' && (
-                    <div className="p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-center">
-                      <p className="text-green-400">Demande envoyée avec succès !</p>
-                      <p className="text-sm text-gray-300 mt-2">Nous vous répondrons dans les plus brefs délais.</p>
-                    </div>
-                  )}
-                  
-                  {submitStatus === 'error' && (
-                    <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-center">
-                      <p className="text-red-400">Erreur lors de l'envoi</p>
-                      <p className="text-sm text-gray-300 mt-2">Veuillez réessayer ou nous contacter directement.</p>
-                    </div>
-                  )}
-                </form>
+
+              <div className="glass-card p-8 border-white/20 hover:border-white/40 hover:scale-[1.02] transition-all duration-300 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-gradient-blue-dark/10 to-transparent pointer-events-none"></div>
+                <h3 className="text-2xl font-bold text-gradient-blue-light mb-4">High Performance</h3>
+                <ul className="space-y-2 text-gray-200 leading-relaxed">
+                  <li>• Monthly planning tailored to your goals.</li>
+                  <li>• Scientific advice to optimize your training.</li>
+                  <li>• Training data feedback (twice per week).</li>
+                  <li>• Phone and email support with replies within 24h.</li>
+                  <li>• Personalized pacing strategies for your competitions.</li>
+                  <li>• Two monthly articles on topics of your choice (training optimization, race analysis, and more).</li>
+                  <li>• A physiological model with quarterly updates.</li>
+                  <li>• One annual physiological test with detailed results analysis.</li>
+                </ul>
               </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6 mt-8">
+              <div className="glass-card p-6 border-white/20">
+                <h3 className="text-lg font-bold text-gradient-blue-light mb-3">🧠 Smart Training</h3>
+                <p className="text-paragraph text-gray-200 leading-relaxed">
+                  We analyze biological and mechanical load markers to turn your data into clear training decisions.
+                </p>
+              </div>
+
+              <div className="glass-card p-6 border-white/20">
+                <h3 className="text-lg font-bold text-gradient-blue-light mb-3">💤 Recovery First</h3>
+                <p className="text-paragraph text-gray-200 leading-relaxed">
+                  Progress comes from adaptation. We help you optimize recovery through refueling and sleep insights.
+                </p>
+              </div>
+
+              <div className="glass-card p-6 border-white/20">
+                <h3 className="text-lg font-bold text-gradient-blue-light mb-3">🎯 Precision Pacing</h3>
+                <p className="text-paragraph text-gray-200 leading-relaxed">
+                  We build race pacing strategies from your historical data to help you execute with confidence.
+                </p>
+              </div>
+            </div>
+
+            <p className="text-paragraph text-gray-200 leading-relaxed text-center mt-10 mb-6">
+              Want help choosing the right option for your profile? Reach out and we can schedule a call.
+            </p>
+
+            <div className="glass-card p-6 border-white/40 bg-gradient-to-r from-gradient-blue-light/10 to-gradient-blue-dark/10 mb-6 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-transparent to-cyan-500/10 animate-pulse pointer-events-none"></div>
+              <p className="text-center text-sm uppercase tracking-wide text-gradient-blue-light font-semibold mb-2">
+                ⭐ Elite Offer
+              </p>
+              <p className="text-paragraph text-gray-100 leading-relaxed text-center">
+                An elite athlete standing offer is available on demand, with highly limited capacity.
+              </p>
+            </div>
+
+            <div className="flex justify-center">
+              <a
+                href="mailto:performance@enduraw.co"
+                className="btn-enduraw inline-flex items-center justify-center text-center px-6 py-3 break-all shadow-2xl hover:scale-105 transition-all duration-300"
+              >
+                <span className="mr-2">✉️</span>
+                <span>Start your journey – performance@enduraw.co</span>
+              </a>
             </div>
           </div>
         </section>
