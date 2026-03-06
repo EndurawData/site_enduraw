@@ -177,17 +177,17 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
             </Link>
 
             <Link
-              to="/recruitment"
+              to="/jobs"
               className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 hover:shadow-lg text-body-uppercase ${
-                location.pathname === '/recruitment'
+                location.pathname === '/jobs'
                   ? 'text-white bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 shadow-lg'
                   : 'text-gray-200 hover:text-white hover:bg-white/10'
               }`}
-              onMouseEnter={() => setActiveHover('recruitment')}
+              onMouseEnter={() => setActiveHover('careers')}
               onMouseLeave={() => setActiveHover(null)}
             >
-              <span className="relative z-10">Recruitment</span>
-              {activeHover === 'recruitment' && location.pathname !== '/recruitment' && (
+              <span className="relative z-10">Careers</span>
+              {activeHover === 'careers' && location.pathname !== '/jobs' && (
                 <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
               )}
             </Link>

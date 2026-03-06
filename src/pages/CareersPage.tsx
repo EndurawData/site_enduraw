@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-type RecruitmentTab = 'job' | 'spontaneous';
+type CareersTab = 'job' | 'spontaneous';
 
-const RecrutementPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<RecruitmentTab>('job');
+const CareersPage: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<CareersTab>('job');
   const dataScienceFormUrl = 'https://docs.google.com/forms/u/1/d/1vGtTc_dDFTkP8vuGz2kBZAZNpN_sPA2z47_1z_Q92jE/preview';
   const spontaneousFormUrl = 'https://docs.google.com/forms/d/1nvT2NrAp1wQmAj2lbG1IzRkINIzbfZDWdz9Rahwx83M/preview';
 
@@ -17,7 +17,7 @@ const RecrutementPage: React.FC = () => {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-12">
           <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-6">
-            RECRUITMENT
+            CAREERS
           </h1>
           <p className="text-paragraph max-w-3xl mx-auto leading-relaxed">
             Join Enduraw to build high-impact tools for performance analysis.
@@ -127,4 +127,4 @@ const RecrutementPage: React.FC = () => {
   );
 };
 
-export default RecrutementPage;
+export default CareersPage;
