@@ -4,8 +4,8 @@ type CareersTab = 'job' | 'spontaneous';
 
 const CareersPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<CareersTab>('job');
-  const dataScienceFormUrl = 'https://docs.google.com/forms/u/1/d/1vGtTc_dDFTkP8vuGz2kBZAZNpN_sPA2z47_1z_Q92jE/preview';
-  const spontaneousFormUrl = 'https://docs.google.com/forms/d/1nvT2NrAp1wQmAj2lbG1IzRkINIzbfZDWdz9Rahwx83M/preview';
+  const dataScienceFormUrl = 'https://docs.google.com/forms/u/1/d/1vGtTc_dDFTkP8vuGz2kBZAZNpN_sPA2z47_1z_Q92jE';
+  const spontaneousFormUrl = 'https://docs.google.com/forms/d/1nvT2NrAp1wQmAj2lbG1IzRkINIzbfZDWdz9Rahwx83M';
 
   return (
     <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
