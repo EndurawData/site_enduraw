@@ -111,35 +111,21 @@ const AthleteSupportPage: React.FC = () => {
 
           <div className="glass-card p-10 border-white/20 animate-float-slow">
             <p className="text-paragraph text-gray-200 leading-relaxed mb-8">
-              As your partner on every adventure, we offer two coaching formats designed to match your goals, your racing calendar, and your expected level of support.
+              As your partner on every adventure, we offer a Seasonal Support coaching format designed to match your goals, your racing calendar, and your expected level of support.
             </p>
 
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="max-w-3xl mx-auto">
               <div className="glass-card p-8 border-white/20 hover:border-white/40 hover:scale-[1.02] transition-all duration-300 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-gradient-blue-light/10 to-transparent pointer-events-none"></div>
                 <h3 className="text-2xl font-bold text-gradient-blue-light mb-4">Seasonal Support</h3>
+                <p className="text-3xl font-bold text-gradient-blue-light mb-6">€350<span className="text-lg text-gray-300">/month</span></p>
                 <ul className="space-y-2 text-gray-200 leading-relaxed">
                   <li>• Monthly planning tailored to your goals.</li>
                   <li>• Scientific advice to optimize your training.</li>
                   <li>• Training data feedback (once per week).</li>
                   <li>• Phone and email support with replies within 48h.</li>
                   <li>• Pacing strategies for your main competitions.</li>
-                  <li>• One monthly article on a topic of your choice (training optimization, race analysis, and more).</li>
-                </ul>
-              </div>
-
-              <div className="glass-card p-8 border-white/20 hover:border-white/40 hover:scale-[1.02] transition-all duration-300 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-gradient-blue-dark/10 to-transparent pointer-events-none"></div>
-                <h3 className="text-2xl font-bold text-gradient-blue-light mb-4">High Performance</h3>
-                <ul className="space-y-2 text-gray-200 leading-relaxed">
-                  <li>• Monthly planning tailored to your goals.</li>
-                  <li>• Scientific advice to optimize your training.</li>
-                  <li>• Training data feedback (twice per week).</li>
-                  <li>• Phone and email support with replies within 24h.</li>
-                  <li>• Personalized pacing strategies for your competitions.</li>
-                  <li>• Two monthly articles on topics of your choice (training optimization, race analysis, and more).</li>
-                  <li>• A physiological model with quarterly updates.</li>
-                  <li>• One annual physiological test with detailed results analysis.</li>
+                  <li>• One monthly visioconference on a technical subject (training optimization, race analysis, and more).</li>
                 </ul>
               </div>
             </div>
