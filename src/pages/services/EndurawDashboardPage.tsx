@@ -123,6 +123,11 @@ const EndurawDashboardPage: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-enduraw"
+                  onClick={() => {
+                    if (typeof window !== 'undefined' && (window as any).fbq) {
+                      (window as any).fbq('track', 'Lead');
+                    }
+                  }}
                 >
                   <span>Activate Your Enduraw Report</span>
                   <svg
