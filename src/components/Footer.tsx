@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 // Temporary type shim for React 19 compatibility with react-icons
 const InstagramIcon = FaInstagram as unknown as React.FC<React.SVGProps<SVGSVGElement>>;
@@ -7,6 +8,7 @@ const TwitterIcon = FaTwitter as unknown as React.FC<React.SVGProps<SVGSVGElemen
 const LinkedinIcon = FaLinkedin as unknown as React.FC<React.SVGProps<SVGSVGElement>>;
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null);
   
   return (
@@ -111,21 +113,21 @@ const Footer: React.FC = () => {
             href="/mentions-legales"
             className="text-white/70 hover:text-white transition-colors duration-300 text-body-uppercase"
           >
-            Mentions Légales
+            {t('footer.mentions')}
           </a>
           <span className="text-white/30">|</span>
           <a
             href="/politique-confidentialite"
             className="text-white/70 hover:text-white transition-colors duration-300 text-body-uppercase"
           >
-            Politique de Confidentialité
+            {t('footer.privacy')}
           </a>
           <span className="text-white/30">|</span>
           <a
             href="/cgu"
             className="text-white/70 hover:text-white transition-colors duration-300 text-body-uppercase"
           >
-            CGU
+            {t('footer.cgu')}
           </a>
           {/* <span className="text-white/30">|</span> 
           <a

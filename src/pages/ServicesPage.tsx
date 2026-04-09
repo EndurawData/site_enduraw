@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import '../styles/fancy.css';
 
 interface ServicesPageProps {
@@ -7,6 +8,7 @@ interface ServicesPageProps {
 }
 
 const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
+  const { t } = useTranslation();
   const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
@@ -54,7 +56,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
             className={`text-center mb-20 transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
           >
             <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-12">
-              OUR SERVICES
+              {t('services.ourServices')}
             </h1>
           </div>
           
@@ -64,7 +66,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
               {
                 id: 0,
                 title: "Enduraw Dashboard",
-                description: "Analyze your Strava data with our advanced algorithms and get detailed insights on every run.",
+                description: t('services.dashboard_desc'),
                 link: "/services/enduraw-dashboard",
                 image: "/images/services/service1.png",
                 icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
@@ -72,7 +74,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
               {
                 id: 1,
                 title: "Testing",
-                description: "Complete physiological testing protocols to understand your body and optimize your training zones.",
+                description: t('services.testing_desc'),
                 link: "/services/testing",
                 image: "/images/services/service2.png",
                 icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
@@ -80,7 +82,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
               {
                 id: 2,
                 title: "Athletes Support",
-                description: "Personalized coaching and race strategy support for competitive athletes seeking peak performance.",
+                description: t('services.athleteSupport_desc'),
                 link: "/services/athlete-support",
                 image: "/images/services/service3.png",
                 icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
@@ -88,7 +90,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
               {
                 id: 3,
                 title: "Enduraw Performance Center",
-                description: "Elite training camps in Chamonix with world-class facilities and expert coaching staff.",
+                description: t('services.performanceCenter_desc'),
                 link: "/endurawperformancecenter",
                 image: "/images/services/service4.png",
                 icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
@@ -96,7 +98,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
               {
                 id: 4,
                 title: "Enduraw API",
-                description: "Mathematics behind world best performances. Access our scientific models and data-driven intelligence.",
+                description: t('services.api_desc'),
                 link: "/services/enduraw-api",
                 image: "/images/services/service5.png"
               }
@@ -131,12 +133,12 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
           <div className="bg-orb-2"></div>
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-12 text-body-uppercase tracking-wide animate-float">Get in Touch</h2>
+          <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-12 text-body-uppercase tracking-wide animate-float">{t('services.getInTouch')}</h2>
 
           {/* Contact Information */}
           <div className="glass-card p-12 max-w-3xl mx-auto animate-float">
             <p className="text-paragraph mb-12 leading-relaxed">
-              Ready to optimize your performance? Let's discuss how data science can transform your training.
+              {t('services.getInTouch_p')}
             </p>
             <div className="text-center">
               <Link
@@ -146,7 +148,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span>Contact us</span>
+                <span>{t('services.contactUs')}</span>
               </Link>
             </div>
           </div>

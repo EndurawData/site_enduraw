@@ -1,11 +1,23 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+const LANGUAGES = [
+  { code: 'en', label: 'EN', name: 'English' },
+  { code: 'fr', label: 'FR', name: 'Français' },
+  { code: 'es', label: 'ES', name: 'Español' },
+  { code: 'de', label: 'DE', name: 'Deutsch' },
+  { code: 'ja', label: 'JA', name: '日本語' },
+];
 
 interface NavigationProps {
   onScrollToSection?: (sectionId: string) => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
+const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToSection }) => {
+  const { t, i18n } = useTranslation();
+  const [showLangMenu, setShowLangMenu] = useState(false);
+  const langMenuTimer = useRef<number | null>(null);
   const [showServicesSections, setShowServicesSections] = useState(false);
   const servicesHideTimer = useRef<number | null>(null);
   const location = useLocation();
@@ -34,13 +46,13 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-      scrolled 
-        ? 'bg-dark-bg/95 backdrop-blur-xl border-b border-white/20 shadow-2xl' 
+      scrolled
+        ? 'bg-dark-bg/95 backdrop-blur-xl border-b border-white/20 shadow-2xl'
         : 'bg-dark-bg/80 backdrop-blur-sm border-b border-gray-800/50'
     }`}>
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 via-transparent to-blue-900/10 animate-pulse"></div>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-28 relative z-10">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 group">
@@ -61,7 +73,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
             </Link>
           </div>
 
-          <div className="flex space-x-2">
+          <div className="flex space-x-2 items-center">
             {/* Home */}
             <Link
               to="/"
@@ -73,7 +85,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
               onMouseEnter={() => setActiveHover('home')}
               onMouseLeave={() => setActiveHover(null)}
             >
-              <span className="relative z-10">Home</span>
+              <span className="relative z-10">{t('nav.home')}</span>
               {activeHover === 'home' && location.pathname !== '/' && (
                 <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
               )}
@@ -90,7 +102,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
               onMouseEnter={() => setActiveHover('news')}
               onMouseLeave={() => setActiveHover(null)}
             >
-              <span className="relative z-10">News</span>
+              <span className="relative z-10">{t('nav.news')}</span>
               {activeHover === 'news' && location.pathname !== '/news' && (
                 <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
               )}
@@ -121,7 +133,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
                 }`}
               >
                 <span className="relative z-10 flex items-center gap-1">
-                  Services
+                  {t('nav.services')}
                   <svg className={`w-4 h-4 transition-transform duration-300 ${showServicesSections ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
@@ -130,11 +142,11 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
                   <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
                 )}
               </Link>
-              
+
               {/* Services Dropdown */}
               <div className={`absolute left-0 top-full mt-2 w-56 bg-gray-800/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl transition-all duration-300 transform origin-top ${
-                showServicesSections 
-                  ? 'opacity-100 visible scale-100 translate-y-0' 
+                showServicesSections
+                  ? 'opacity-100 visible scale-100 translate-y-0'
                   : 'opacity-0 invisible scale-95 -translate-y-2'
               }`}>
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-2xl"></div>
@@ -170,7 +182,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
               onMouseEnter={() => setActiveHover('contact')}
               onMouseLeave={() => setActiveHover(null)}
             >
-              <span className="relative z-10">Contact</span>
+              <span className="relative z-10">{t('nav.contact')}</span>
               {activeHover === 'contact' && location.pathname !== '/contact' && (
                 <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
               )}
@@ -186,11 +198,59 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
               onMouseEnter={() => setActiveHover('careers')}
               onMouseLeave={() => setActiveHover(null)}
             >
-              <span className="relative z-10">Careers</span>
+              <span className="relative z-10">{t('nav.careers')}</span>
               {activeHover === 'careers' && location.pathname !== '/careers' && (
                 <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
               )}
             </Link>
+
+            {/* Language Switcher */}
+            <div
+              className="relative"
+              onMouseEnter={() => {
+                if (langMenuTimer.current) window.clearTimeout(langMenuTimer.current);
+                setShowLangMenu(true);
+              }}
+              onMouseLeave={() => {
+                langMenuTimer.current = window.setTimeout(() => setShowLangMenu(false), 150);
+              }}
+            >
+              <button
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold text-gray-200 hover:text-white hover:bg-white/10 transition-all duration-300"
+                aria-label="Select language"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                </svg>
+                <span>{LANGUAGES.find(l => i18n.language.startsWith(l.code))?.label ?? 'EN'}</span>
+                <svg className={`w-3 h-3 transition-transform duration-200 ${showLangMenu ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Dropdown */}
+              <div className={`absolute right-0 top-full mt-2 w-36 bg-gray-800/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl transition-all duration-300 transform origin-top ${
+                showLangMenu ? 'opacity-100 visible scale-100 translate-y-0' : 'opacity-0 invisible scale-95 -translate-y-2'
+              }`}>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-2xl pointer-events-none"></div>
+                <div className="relative z-10 p-1.5">
+                  {LANGUAGES.map(lang => (
+                    <button
+                      key={lang.code}
+                      onClick={() => { i18n.changeLanguage(lang.code); setShowLangMenu(false); }}
+                      className={`w-full text-left px-3 py-2 rounded-xl text-sm transition-all duration-200 flex items-center gap-2 ${
+                        i18n.language.startsWith(lang.code)
+                          ? 'text-white bg-white/15 font-semibold'
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <span className="font-mono text-xs w-5">{lang.label}</span>
+                      <span>{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             {/* DataPlayers Logo */}
             <a
@@ -213,8 +273,6 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection }) => {
           </div>
         </div>
       </div>
-
-      {/* Fixed width, no measurement clones */}
     </nav>
   );
 };

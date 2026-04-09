@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import SponsorsSlider from '../components/SponsorsSlider';
 import '../styles/fancy.css';
 
@@ -8,6 +9,7 @@ interface HomePageProps {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
+  const { t } = useTranslation();
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -66,7 +68,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       <div className="bg-orb-1"></div>
       <div className="bg-orb-2"></div>
       <div className="bg-orb-3"></div>
-      
+
       {/* Hero Section */}
       <section
         ref={(el) => { sectionRefs.current['hero'] = el; }}
@@ -81,14 +83,14 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
             />
           </div>
           <p className="text-2xl md:text-3xl text-paragraph text-gray-200 mb-12 tracking-wide">
-            A sport performance laboratory
+            {t('home.tagline')}
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
               to="/services"
               className="btn-enduraw"
             >
-              <span>Discover Our Services</span>
+              <span>{t('home.discoverServices')}</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -97,7 +99,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
               to="/contact"
               className="glass-card border-white/20 hover:border-white/40 text-gray-200 hover:text-white text-body-uppercase font-semibold py-4 px-8 rounded-2xl transition-all duration-300 inline-flex items-center gap-3 text-lg"
             >
-              <span>Get Started</span>
+              <span>{t('home.getStarted')}</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
@@ -105,10 +107,6 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
           </div>
         </div>
       </section>
-
-
-
-
 
       {/* About Section */}
       <section
@@ -123,12 +121,12 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">Science-based</h3>
+              <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">{t('home.scienceBased')}</h3>
               <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                All our technologies and models are based on scientific literature i.e. experimented and field-validated.
+                {t('home.scienceBased_p1')}
               </p>
               <p className="text-paragraph text-gray-300">
-                With strong literature reviews and financed field studies (up to 13k).
+                {t('home.scienceBased_p2')}
               </p>
             </div>
             <div className="glass-card p-8 text-center animate-float-slow">
@@ -137,13 +135,12 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">Elite exigence</h3>
+              <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">{t('home.eliteExigence')}</h3>
               <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                Race briefing of elite athletes (Ruth Croft, Tom Evans, Petter Engdhal...).
+                {t('home.eliteExigence_p1')}
               </p>
               <p className="text-paragraph text-gray-300">
-                From world best athletes to your hands!
-                Minutious work must benefit to everyone.
+                {t('home.eliteExigence_p2')}
               </p>
             </div>
             <div className="glass-card p-8 text-center animate-float-fast">
@@ -152,19 +149,19 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
               </div>
-              <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">Communication</h3>
+              <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">{t('home.communication')}</h3>
               <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                An expertise shared to sponsors and mass audience: make data readable and accessible.
+                {t('home.communication_p1')}
               </p>
               <p className="text-paragraph text-gray-300">
-                Technical studies and race statistics over many worldwide events.
+                {t('home.communication_p2')}
               </p>
             </div>
           </div>
         </div>
       </section>
 
-            {/* Athletes Section */}
+      {/* Athletes Section */}
       <section
         ref={(el) => { sectionRefs.current['athletes'] = el; }}
         className="py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative"
@@ -176,7 +173,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-custom-gradient tracking-wide uppercase">
-            ELITE ATHLETES
+            {t('home.eliteAthletes')}
           </h2>
 
           {/* Slider container */}
@@ -241,14 +238,13 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
         </div>
       </section>
 
-
       {/* About Us Section */}
       <section
         ref={(el) => { sectionRefs.current['aboutus'] = el; }}
         className="py-32 fancy-bg relative"
       >
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl text-title-h2 text-center mb-16 bg-clip-text text-transparent bg-custom-gradient tracking-wide">ABOUT US</h2>
+          <h2 className="text-5xl text-title-h2 text-center mb-16 bg-clip-text text-transparent bg-custom-gradient tracking-wide">{t('home.aboutUs')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Joseph Mestrallet */}
             <div className="glass-card p-8 animate-float group">
@@ -263,24 +259,18 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   }}
                 />
                 <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Joseph Mestrallet</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">Founder of Enduraw and Performance Scientist</p>
+                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.joseph_role')}</p>
               </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                From his bedroom in Chamonix, Joseph spent night to build the perfect pacing plans by analyzing race profile and environmental conditions.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                As an athlete, he dedicated his Master Thesis to optimization of performance in endurance sport.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">
-                Team Manager at Nutripure, he works with multiple elite athletes with a deep conviction: mathematics are they keys to reach the latest percents of performance.
-              </p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.joseph_p1')}</p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.joseph_p2')}</p>
+              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.joseph_p3')}</p>
               <a
                 href="https://www.linkedin.com/in/joseph-mestrallet-770279a7/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-enduraw"
               >
-                LinkedIn Profile →
+                {t('home.linkedinProfile')}
               </a>
             </div>
 
@@ -297,21 +287,17 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   }}
                 />
                 <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Anthony Saliou</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">Media and Performance Data Scientist</p>
+                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.anthony_role')}</p>
               </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                Deeply interested in training sciences, trickling down problematics as physiology, nutrition and psychology, Anthony is quite inquisive.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">
-                With a Ph.D in physics, he plays with the data to guide athletes to their goals and light up many insights on running through many angles!
-              </p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.anthony_p1')}</p>
+              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.anthony_p2')}</p>
               <a
                 href="https://www.linkedin.com/in/anthony-saliou-085286158/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-enduraw"
               >
-                LinkedIn Profile →
+                {t('home.linkedinProfile')}
               </a>
             </div>
 
@@ -328,21 +314,17 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   }}
                 />
                 <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Justine Alves Gomes</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">Community Manager</p>
+                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.justine_role')}</p>
               </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                After stuyding sports management in Grenoble, Justine joined the team in work-study contract with the Win Sport School.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">
-                Justine thrives in content creation. Her curiosity leads her to share on very different subjects, races statistics or athletes palmares on Instagram.
-              </p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.justine_p1')}</p>
+              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.justine_p2')}</p>
               <a
                 href="https://www.linkedin.com/in/justine-alves-gomes-71831a233/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-enduraw"
               >
-                LinkedIn Profile →
+                {t('home.linkedinProfile')}
               </a>
             </div>
 
@@ -359,21 +341,17 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   }}
                 />
                 <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Valentin Templé</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">Intern Performance Data Scientist</p>
+                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.valentin_role')}</p>
               </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                Studying Data Sciences, Valentin is deeply involved in his training in Parisian woods, looking for elevation gain!
-              </p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">
-                Focusing on environmental factors, he deals with their influence on the performance for mass runners and help them how to deal with them.
-              </p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.valentin_p1')}</p>
+              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.valentin_p2')}</p>
               <a
                 href="https://www.linkedin.com/in/valentin-templ%C3%A9/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-enduraw"
               >
-                LinkedIn Profile →
+                {t('home.linkedinProfile')}
               </a>
             </div>
 
@@ -390,17 +368,11 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   }}
                 />
                 <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Thibaut Hue</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">Physiological Testing Specialist</p>
+                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.thibaut_role')}</p>
               </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                Currently completing a STAPS work-study program, he brings his expertise in physiological testing, training methodologies, and endurance performance.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                With a strong background as an experienced runner, he combines field knowledge with a deep passion for scientific research.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">
-                His analytical mindset and coaching experience allow him to translate complex data into clear, actionable insights for athletes.
-              </p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.thibaut_p1')}</p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.thibaut_p2')}</p>
+              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.thibaut_p3')}</p>
             </div>
 
             {/* Charline Batel */}
@@ -416,17 +388,11 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   }}
                 />
                 <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Charline Batel</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">Tech & Data Intern</p>
+                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.charline_role')}</p>
               </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                With a background as a nutrition engineer, she brings strong expertise in sports nutrition and energy optimization during effort.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                At Enduraw, she contributes to the design and modeling of performance-driven algorithms, combining scientific rigor with technical skills.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">
-                Her analytical approach and passion for data allow her to transform complex physiological insights into smart, actionable tools for athletes.
-              </p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.charline_p1')}</p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.charline_p2')}</p>
+              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.charline_p3')}</p>
             </div>
 
             {/* Antoine Figula */}
@@ -442,17 +408,11 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   }}
                 />
                 <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Antoine Figula</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">Tech & Data Scientist</p>
+                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.antoine_role')}</p>
               </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                Belgian and passionate about performance analysis, he brings valuable experience from his time at Tudor Cycling.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                Specialized in data modeling, he transforms cycling, trail, and running performance into precise, actionable equations.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">
-                At Enduraw, he contributes to building advanced tools that translate real-world effort into meaningful metrics, helping athletes understand and optimize their progression.
-              </p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.antoine_p1')}</p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.antoine_p2')}</p>
+              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.antoine_p3')}</p>
             </div>
 
             {/* Alex Pichon */}
@@ -468,17 +428,11 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                   }}
                 />
                 <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Alex Pichon</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">Sports Photographer</p>
+                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.alex_role')}</p>
               </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                Dedicated to creating professional and impactful visuals, he captures the essence of Enduraw, its athletes, and its events through high-quality photography.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                Whether on competitions, training sessions, or brand productions, he brings a sharp eye for detail and storytelling.
-              </p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">
-                His work enhances our communication by showcasing the energy, authenticity, and performance at the heart of endurance sports.
-              </p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.alex_p1')}</p>
+              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.alex_p2')}</p>
+              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.alex_p3')}</p>
             </div>
           </div>
         </div>
@@ -486,7 +440,6 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
 
       {/* Sponsors Slider */}
       <SponsorsSlider />
-
 
       {/* Contact Section */}
       <section
@@ -499,16 +452,16 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
           <div className="bg-orb-3"></div>
         </div>
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-5xl text-title-h2 mb-8 bg-clip-text text-transparent bg-custom-gradient tracking-wide animate-float">READY TO OPTIMIZE ?</h2>
+          <h2 className="text-5xl text-title-h2 mb-8 bg-clip-text text-transparent bg-custom-gradient tracking-wide animate-float">{t('home.readyToOptimize')}</h2>
           <p className="text-xl text-paragraph text-gray-200 mb-16 max-w-2xl mx-auto leading-relaxed">
-            Take your performance to the next level with data-driven insights and personalized strategies.
+            {t('home.readyToOptimize_p')}
           </p>
           <div className="flex flex-col sm:flex-row gap-8 justify-center">
             <Link
               to="/contact"
               className="btn-enduraw"
             >
-              <span>Get Started</span>
+              <span>{t('home.getStarted')}</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -517,7 +470,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
               to="/services"
               className="glass-card border-white/20 hover:border-white/40 text-gray-200 hover:text-white text-body-uppercase font-semibold py-5 px-10 rounded-2xl transition-all duration-300 inline-flex items-center gap-3 text-lg"
             >
-              <span>Explore Services</span>
+              <span>{t('home.exploreServices')}</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>

@@ -8,7 +8,10 @@
       "Bash(cat:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(python3 -c \":*)",
+      "Bash(node -e \"fetch\\('https://translate.argosopentech.com/translate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify\\({q:'Hello',source:'en',target:'fr',format:'text'}\\)}\\).then\\(r=>r.json\\(\\)\\).then\\(console.log\\).catch\\(console.error\\)\")",
+      "Bash(node -e \"fetch\\('https://libretranslate.de/translate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify\\({q:'Hello',source:'en',target:'fr',format:'text'}\\)}\\).then\\(r=>r.json\\(\\)\\).then\\(console.log\\).catch\\(console.error\\)\")"
     ],
     "deny": [],
     "ask": []
