@@ -1,25 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import PerformanceCenterForm from '../../components/PerformanceCenterForm';
 import '../../styles/fancy.css';
 
 const PerformanceCenterPage: React.FC = () => {
+  const { t } = useTranslation();
   const [selectedStage, setSelectedStage] = useState<string>('');
+  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setAnimatedElements(prev => new Set(prev).add(entry.target.id));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elementsToObserve = document.querySelectorAll('[id^="animate-"]');
+    elementsToObserve.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   const stages = [
     {
       id: 'stage1',
       title: "1st IMMERSIVE STAGE",
       dates: "May 9-12, 2025",
-      duration: "4 Days",
-      slots: "8 slots available",
+      duration: t('servicePages.performanceCenter.days'),
+      slots: t('servicePages.performanceCenter.slots'),
       color: "from-cyan-400 to-blue-500"
     },
     {
       id: 'stage2',
       title: "2nd IMMERSIVE STAGE",
       dates: "May 14-17, 2025",
-      duration: "4 Days",
-      slots: "8 slots available",
+      duration: t('servicePages.performanceCenter.days'),
+      slots: t('servicePages.performanceCenter.slots'),
       color: "from-blue-400 to-cyan-500"
     }
   ];
@@ -31,8 +52,8 @@ const PerformanceCenterPage: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
-      title: "Elite Coaching",
-      description: "Train with world-class coaches who work with Tom Evans and Ruth Croft"
+      title: t('servicePages.performanceCenter.eliteCoaching_title'),
+      description: t('servicePages.performanceCenter.eliteCoaching_desc')
     },
     {
       icon: (
@@ -40,8 +61,8 @@ const PerformanceCenterPage: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       ),
-      title: "Performance Testing",
-      description: "Complete VO₂max and biomechanical analysis by Belgian Biathlon Team experts"
+      title: t('servicePages.performanceCenter.performanceTesting_title'),
+      description: t('servicePages.performanceCenter.performanceTesting_desc')
     },
     {
       icon: (
@@ -49,8 +70,8 @@ const PerformanceCenterPage: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      title: "UTMB Trails",
-      description: "Train on legendary UTMB routes in the heart of the Alps"
+      title: t('servicePages.performanceCenter.utmbTrails_title'),
+      description: t('servicePages.performanceCenter.utmbTrails_desc')
     },
     {
       icon: (
@@ -58,8 +79,8 @@ const PerformanceCenterPage: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
         </svg>
       ),
-      title: "Luxury Accommodation",
-      description: "Stay in a premium alpine chalet with gourmet meals by INEOS chef"
+      title: t('servicePages.performanceCenter.luxuryAccommodation_title'),
+      description: t('servicePages.performanceCenter.luxuryAccommodation_desc')
     }
   ];
 
@@ -85,24 +106,29 @@ const PerformanceCenterPage: React.FC = () => {
           </div>
 
           {/* Main Title */}
-          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
-            ENDURAW PERFORMANCE CENTER
-          </h1>
+          <div
+            id="animate-title"
+            className={`transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+          >
+            <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
+              ENDURAW PERFORMANCE CENTER
+            </h1>
 
-          <p className="text-2xl text-paragraph text-cyan-400 mb-4 font-light">
-            Chamonix-Mont-Blanc, France
-          </p>
+            <p className="text-2xl text-paragraph text-cyan-400 mb-4 font-light">
+              {t('servicePages.performanceCenter.location')}
+            </p>
 
-          <p className="text-xl text-paragraph text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Elite training camps in the heart of the Alps with world-class facilities, expert coaching staff, and legendary UTMB trails
-          </p>
+            <p className="text-xl text-paragraph text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+              {t('servicePages.performanceCenter.subtitle')}
+            </p>
+          </div>
 
           {/* CTA Button */}
           <button
             onClick={() => document.getElementById('stages')?.scrollIntoView({ behavior: 'smooth' })}
             className="btn-enduraw text-lg"
           >
-            <span>Discover Our Training Camps</span>
+            <span>{t('servicePages.performanceCenter.discoverCamps')}</span>
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
@@ -121,7 +147,7 @@ const PerformanceCenterPage: React.FC = () => {
       <section className="py-32 bg-gradient-to-b from-dark-bg to-dark-secondary relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-title-h2 text-center mb-20 bg-clip-text text-transparent bg-custom-gradient">
-            WHY CHOOSE ENDURAW ?
+            {t('servicePages.performanceCenter.whyChoose')}
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -152,10 +178,10 @@ const PerformanceCenterPage: React.FC = () => {
       {/* Stages Section */}
       <section id="stages" className="py-32 relative z-10">        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-title-h2 text-center mb-8 bg-clip-text text-transparent bg-custom-gradient">
-            CHOOSE YOUR STAGE
+            {t('servicePages.performanceCenter.chooseStage')}
           </h2>
           <p className="text-paragraph text-center text-gray-300 mb-16 max-w-2xl mx-auto">
-            Two exclusive training camps in May 2025. Limited spots available.
+            {t('servicePages.performanceCenter.limitedSpots')}
           </p>
 
           <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -210,7 +236,7 @@ const PerformanceCenterPage: React.FC = () => {
                       ? 'bg-cyan-400 text-black scale-110'
                       : 'bg-white/10 text-white hover:bg-white/20'
                   }`}>
-                    {selectedStage === stage.id ? 'Selected ✓' : 'Select This Stage'}
+                    {selectedStage === stage.id ? t('servicePages.performanceCenter.selectedStage') : t('servicePages.performanceCenter.selectStage')}
                   </button>
                 </div>
 
@@ -234,7 +260,7 @@ const PerformanceCenterPage: React.FC = () => {
       <section className="py-32 bg-gradient-to-b from-dark-secondary to-dark-bg">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-title-h2 text-center mb-20 bg-clip-text text-transparent bg-custom-gradient">
-            WHAT'S INCLUDED ?
+            {t('servicePages.performanceCenter.whatsIncluded')}
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12">
@@ -246,21 +272,21 @@ const PerformanceCenterPage: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-subtitle text-cyan-400">All-Inclusive Package</h3>
+                <h3 className="text-subtitle text-cyan-400">{t('servicePages.performanceCenter.allInclusive')}</h3>
               </div>
 
               <div className="space-y-4">
                 {[
-                  "4 nights luxury chalet accommodation",
-                  "All gourmet meals by INEOS chef",
-                  "VO₂max & biomechanical testing",
-                  "Personalized coaching sessions",
-                  "UTMB trail runs with experts",
-                  "Recovery & physiotherapy",
-                  "Nutrition workshops",
-                  "Equipment testing partners",
-                  "Professional photo/video",
-                  "Tom Evans insights session"
+                  t('servicePages.performanceCenter.included_li1'),
+                  t('servicePages.performanceCenter.included_li2'),
+                  t('servicePages.performanceCenter.included_li3'),
+                  t('servicePages.performanceCenter.included_li4'),
+                  t('servicePages.performanceCenter.included_li5'),
+                  t('servicePages.performanceCenter.included_li6'),
+                  t('servicePages.performanceCenter.included_li7'),
+                  t('servicePages.performanceCenter.included_li8'),
+                  t('servicePages.performanceCenter.included_li9'),
+                  t('servicePages.performanceCenter.included_li10'),
                 ].map((item, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
@@ -278,15 +304,15 @@ const PerformanceCenterPage: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </div>
-                <h3 className="text-subtitle text-gray-400">Not Included</h3>
+                <h3 className="text-subtitle text-gray-400">{t('servicePages.performanceCenter.notIncluded_title')}</h3>
               </div>
 
               <div className="space-y-4">
                 {[
-                  "Travel to/from Chamonix",
-                  "Personal expenses",
-                  "Travel insurance",
-                  "Optional activities outside program"
+                  t('servicePages.performanceCenter.notincluded_li1'),
+                  t('servicePages.performanceCenter.notincluded_li2'),
+                  t('servicePages.performanceCenter.notincluded_li3'),
+                  t('servicePages.performanceCenter.notincluded_li4'),
                 ].map((item, index) => (
                   <div key={index} className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-red-400 rounded-full mt-2 flex-shrink-0"></div>
@@ -296,7 +322,7 @@ const PerformanceCenterPage: React.FC = () => {
               </div>
 
               <p className="text-paragraph text-gray-500 mt-8 italic">
-                * Airport shuttle available on request
+                {t('servicePages.performanceCenter.shuttleNote')}
               </p>
             </div>
           </div>
@@ -307,12 +333,12 @@ const PerformanceCenterPage: React.FC = () => {
       <section id="booking-form" className="py-32 relative z-10">        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-title-h2 mb-6 bg-clip-text text-transparent bg-custom-gradient">
-              BOOK YOUR SPOT NOW
+              {t('servicePages.performanceCenter.bookSpot')}
             </h2>
             <p className="text-paragraph text-gray-300 max-w-2xl mx-auto">
               {selectedStage
-                ? `You selected ${stages.find(s => s.id === selectedStage)?.title}. Fill in the form below to reserve your spot.`
-                : 'Select a stage above and fill in the form to reserve your spot in this exclusive training camp.'
+                ? t('servicePages.performanceCenter.bookSelected', { stage: stages.find(s => s.id === selectedStage)?.title })
+                : t('servicePages.performanceCenter.bookGeneric')
               }
             </p>
           </div>
@@ -331,27 +357,25 @@ const PerformanceCenterPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="glass-card p-12 animate-float">
             <h3 className="text-subtitle text-cyan-400 mb-6">
-              Trusted by World Champions
+              {t('servicePages.performanceCenter.trustedTitle')}
             </h3>
             <p className="text-paragraph text-gray-300 mb-8 leading-relaxed">
-              Our coaching staff has worked with UTMB champions Tom Evans and Ruth Croft,
-              Belgian Biathlon Team athletes, and INEOS Grenadiers cyclists.
-              Now it's your turn to train like a pro.
+              {t('servicePages.performanceCenter.trusted_p')}
             </p>
             <div className="flex justify-center items-center space-x-8 text-gray-400">
               <div className="text-center">
                 <p className="text-3xl font-bold text-cyan-400">7+</p>
-                <p className="text-sm text-paragraph">Expert Coaches</p>
+                <p className="text-sm text-paragraph">{t('servicePages.performanceCenter.expertCoaches')}</p>
               </div>
               <div className="h-12 w-px bg-gray-600"></div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-cyan-400">16</p>
-                <p className="text-sm text-paragraph">Total Spots</p>
+                <p className="text-sm text-paragraph">{t('servicePages.performanceCenter.totalSpots')}</p>
               </div>
               <div className="h-12 w-px bg-gray-600"></div>
               <div className="text-center">
                 <p className="text-3xl font-bold text-cyan-400">4</p>
-                <p className="text-sm text-paragraph">Days Intensive</p>
+                <p className="text-sm text-paragraph">{t('servicePages.performanceCenter.daysIntensive')}</p>
               </div>
             </div>
           </div>
