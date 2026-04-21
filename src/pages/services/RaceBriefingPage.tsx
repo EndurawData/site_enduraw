@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import PersonCard from '../../components/PersonCard';
 
 const RaceBriefingPage: React.FC = () => {
+  const { t } = useTranslation();
   const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -30,86 +32,74 @@ const RaceBriefingPage: React.FC = () => {
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
         <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
       </div>
-      
+
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="mb-4">
-          <Link to="/services" className="inline-flex items-center text-accent hover:text-accent-light font-semibold">← Back to Services</Link>
+          <Link to="/services" className="inline-flex items-center text-accent hover:text-accent-light font-semibold">{t('servicePages.backToServices')}</Link>
         </div>
-        <header 
+        <header
           id="animate-title"
           className={`text-center mb-10 font-sans transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
           <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">RACE BRIEFING</h1>
-          <p className="text-xl text-gray-300">Enduraw provides race briefings for the best athletes in the world.</p>
-          <p className="text-lg text-gray-400">Why not you?</p>
+          <p className="text-xl text-gray-300">{t('servicePages.raceBriefing.subtitle')}</p>
+          <p className="text-lg text-gray-400">{t('servicePages.raceBriefing.subtitle2')}</p>
         </header>
 
         <section className="mb-8 space-y-4 text-gray-200">
-          <p>
-            Race day is a leap into the unknown! You don't control the weather like you do in
-            training. You don't know the race route and its elevation gain by heart. You're
-            wondering about your nutrition.
-          </p>
-          <p>Enduraw is there for you!</p>
-          <p>
-            Over the past two years, we've developed a unique expertise in working with elite
-            athletes to provide them with the best possible briefing and enable them to optimize
-            their performances. In top-level sport, every second counts, every heartbeat is
-            important. You need to adapt your pace precisely to get the best energy expenditure.
-          </p>
-          <p>
-            We are convinced that you need these algorithms to perform, whether you want to run a
-            marathon in under 3h30 or finish a trail race. To each his own challenge.
-          </p>
+          <p>{t('servicePages.raceBriefing.p1')}</p>
+          <p>{t('servicePages.raceBriefing.p2')}</p>
+          <p>{t('servicePages.raceBriefing.p3')}</p>
+          <p>{t('servicePages.raceBriefing.p4')}</p>
         </section>
 
         <section className="mb-8 grid md:grid-cols-2 gap-6">
           <div className="bg-dark-secondary rounded-lg p-6">
-            <h3 className="text-2xl font-semibold mb-2">🗼 Road Race</h3>
-            <p className="text-gray-300 mb-2">We take into account:</p>
+            <h3 className="text-2xl font-semibold mb-2">{t('servicePages.raceBriefing.roadRace_title')}</h3>
+            <p className="text-gray-300 mb-2">{t('servicePages.raceBriefing.takeIntoAccount')}</p>
             <ul className="list-disc list-inside text-gray-200 space-y-1">
-              <li>Your level</li>
-              <li>The course elevation gain</li>
-              <li>The wind</li>
-              <li>The temperature</li>
-              <li>Your race strategy</li>
+              <li>{t('servicePages.raceBriefing.level')}</li>
+              <li>{t('servicePages.raceBriefing.courseElevation')}</li>
+              <li>{t('servicePages.raceBriefing.wind')}</li>
+              <li>{t('servicePages.raceBriefing.temperature')}</li>
+              <li>{t('servicePages.raceBriefing.raceStrategy')}</li>
             </ul>
-            <p className="mt-3 text-gray-300">To calculate:</p>
+            <p className="mt-3 text-gray-300">{t('servicePages.raceBriefing.toCalculate')}</p>
             <ul className="list-disc list-inside text-gray-200 space-y-1">
-              <li>Your final time</li>
-              <li>Your split pace kilometer by kilometer</li>
-              <li>A nutrition plan</li>
+              <li>{t('servicePages.raceBriefing.finalTime')}</li>
+              <li>{t('servicePages.raceBriefing.splitPace')}</li>
+              <li>{t('servicePages.raceBriefing.nutritionPlan')}</li>
             </ul>
           </div>
           <div className="bg-dark-secondary rounded-lg p-6">
-            <h3 className="text-2xl font-semibold mb-2">🏔 Trail Race</h3>
-            <p className="text-gray-300 mb-2">We take into account:</p>
+            <h3 className="text-2xl font-semibold mb-2">{t('servicePages.raceBriefing.trailRace_title')}</h3>
+            <p className="text-gray-300 mb-2">{t('servicePages.raceBriefing.takeIntoAccount')}</p>
             <ul className="list-disc list-inside text-gray-200 space-y-1">
-              <li>Your UTMB/ITRA INDEX</li>
-              <li>The course elevation gain</li>
-              <li>The wind</li>
-              <li>The temperature</li>
-              <li>The technicality</li>
-              <li>The speed drift</li>
-              <li>Your race strategy</li>
+              <li>{t('servicePages.raceBriefing.utmbIndex')}</li>
+              <li>{t('servicePages.raceBriefing.courseElevation')}</li>
+              <li>{t('servicePages.raceBriefing.wind')}</li>
+              <li>{t('servicePages.raceBriefing.temperature')}</li>
+              <li>{t('servicePages.raceBriefing.technicality')}</li>
+              <li>{t('servicePages.raceBriefing.speedDrift')}</li>
+              <li>{t('servicePages.raceBriefing.raceStrategy')}</li>
             </ul>
-            <p className="mt-3 text-gray-300">To calculate:</p>
+            <p className="mt-3 text-gray-300">{t('servicePages.raceBriefing.toCalculate')}</p>
             <ul className="list-disc list-inside text-gray-200 space-y-1">
-              <li>Your final time</li>
-              <li>Your split pace kilometer by kilometer</li>
-              <li>A nutrition plan</li>
-              <li>Where to walk</li>
+              <li>{t('servicePages.raceBriefing.finalTime')}</li>
+              <li>{t('servicePages.raceBriefing.splitPace')}</li>
+              <li>{t('servicePages.raceBriefing.nutritionPlan')}</li>
+              <li>{t('servicePages.raceBriefing.whereToWalk')}</li>
             </ul>
           </div>
         </section>
 
         <section className="mb-8 text-center">
-          <button className="inline-block bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold">Discover the product</button>
-          <p className="text-gray-400 mt-2">Available in English, Spanish, French • Discounts for 3 or more briefing plans</p>
+          <button className="inline-block bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold">{t('servicePages.raceBriefing.discoverProduct')}</button>
+          <p className="text-gray-400 mt-2">{t('servicePages.raceBriefing.availability')}</p>
         </section>
 
         <section className="mb-8">
-          <h3 className="text-2xl font-semibold mb-3">They trust us!</h3>
+          <h3 className="text-2xl font-semibold mb-3">{t('servicePages.raceBriefing.trustUs')}</h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-gray-200">
             <PersonCard
               fullName="Petter Engdahl"
@@ -151,26 +141,26 @@ const RaceBriefingPage: React.FC = () => {
         </section>
 
         <section className="mb-8">
-          <h3 className="text-2xl font-bold mb-2">To go further!</h3>
-          <p className="text-gray-300 mb-3">For top-athletes aiming for international titles or world records we have a tailor made solution.</p>
-          <p className="text-gray-200 font-semibold mb-2">The future of sport is all about hyper-customization</p>
-          <p className="text-gray-200 mb-3">That's why we're using several premium features to help you reach the top:</p>
+          <h3 className="text-2xl font-bold mb-2">{t('servicePages.raceBriefing.goFurther_title')}</h3>
+          <p className="text-gray-300 mb-3">{t('servicePages.raceBriefing.goFurther_p1')}</p>
+          <p className="text-gray-200 font-semibold mb-2">{t('servicePages.raceBriefing.hyperCustomization')}</p>
+          <p className="text-gray-200 mb-3">{t('servicePages.raceBriefing.premiumFeatures')}</p>
           <ul className="list-disc list-inside text-gray-200 space-y-1">
-            <li>Your Strava analysis to fine-tune the algorithms</li>
-            <li>Physiological protocol (walking/running, use of poles)</li>
-            <li>Heart rate response prediction during exercise (WIP)</li>
-            <li>Estimation of your sweat profile to adapt hydration</li>
-            <li>Gram-by-gram nutritional strategy</li>
-            <li>Competitors analysis and matchmaking with pace groups (marathon)</li>
-            <li>Race strategy</li>
-            <li>Real-time monitoring of physiological constants</li>
-            <li>FKT preparation</li>
+            <li>{t('servicePages.raceBriefing.stravaAnalysis')}</li>
+            <li>{t('servicePages.raceBriefing.physiologicalProtocol')}</li>
+            <li>{t('servicePages.raceBriefing.heartRatePrediction')}</li>
+            <li>{t('servicePages.raceBriefing.sweatProfile')}</li>
+            <li>{t('servicePages.raceBriefing.nutritionStrategy')}</li>
+            <li>{t('servicePages.raceBriefing.competitorsAnalysis')}</li>
+            <li>{t('servicePages.raceBriefing.raceStrategyItem')}</li>
+            <li>{t('servicePages.raceBriefing.realTimeMonitoring')}</li>
+            <li>{t('servicePages.raceBriefing.fktPreparation')}</li>
           </ul>
-          <p className="text-gray-300 mt-3">Our job is to give you the data you need to make trade-offs.</p>
-          <p className="text-accent mt-2">If you are interested, drop me a message here.</p>
+          <p className="text-gray-300 mt-3">{t('servicePages.raceBriefing.dataTradeoffs')}</p>
+          <p className="text-accent mt-2">{t('servicePages.raceBriefing.contactCta')}</p>
         </section>
 
-        
+
       </div>
     </div>
   );

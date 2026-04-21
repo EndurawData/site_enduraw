@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import PersonCard from '../../components/PersonCard';
 import '../../styles/fancy.css';
 
 const StravaIntegrationPage: React.FC = () => {
+  const { t } = useTranslation();
   const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -38,8 +40,8 @@ const StravaIntegrationPage: React.FC = () => {
           className={`text-center mb-16 transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
         >
           <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">ENDURAW REPORT</h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-2">A Strava Integration</p>
-          <p className="text-lg text-gray-300">The best sports algorithms for all your runs!</p>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-2">{t('servicePages.stravaIntegration.subtitle')}</p>
+          <p className="text-lg text-gray-300">{t('servicePages.stravaIntegration.subtitle2')}</p>
         </header>
 
         <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
@@ -71,40 +73,23 @@ const StravaIntegrationPage: React.FC = () => {
 
           {/* Right: text */}
           <div className="order-1 md:order-2 space-y-6 text-paragraph text-gray-200 leading-relaxed">
-            <p>
-              You can't accelerate under 29 degrees? You thought you had a good pace, but with that
-              100-meter bump, it's impossible to know? How much speed has the wind taken away from you
-              on this race?
-            </p>
-            <p>That's to be expected. Outside conditions reduce your pace. 🥵 💨</p>
-            <p>
-              But it's impossible to know how much. Whether it's the wind, the elevation gain, the
-              temperature or the altitude, it's impossible to know your true state of fitness.
-            </p>
-            <p>
-              Enduraw has the solution! We're putting at your disposal the formulas we've developed
-              with elite athletes to enable you to compare your training and more accurately estimate
-              the intensity of your session. 📈
-            </p>
-            <p>
-              After each outing, our integration will automatically update your activity with the
-              paces adjusted to the conditions. Our API calls retrieve wind strength, outside
-              temperature and your pace and altitude data a few seconds after the end of your run!
-            </p>
-            <p>
-              So you get an instant report and the time you would have saved in normal conditions 🎉
-            </p>
+            <p>{t('servicePages.stravaIntegration.p1')}</p>
+            <p>{t('servicePages.stravaIntegration.p2')}</p>
+            <p>{t('servicePages.stravaIntegration.p3')}</p>
+            <p>{t('servicePages.stravaIntegration.p4')}</p>
+            <p>{t('servicePages.stravaIntegration.p5')}</p>
+            <p>{t('servicePages.stravaIntegration.p6')}</p>
           </div>
         </section>
 
         <section className="mb-12 grid gap-8 sm:grid-cols-2">
           <div className="glass-card p-8 text-center border-white/20 animate-float">
             <p className="text-5xl font-extrabold text-gradient-blue-light mb-2">1047</p>
-            <p className="text-paragraph text-gray-300">users</p>
+            <p className="text-paragraph text-gray-300">{t('servicePages.stravaIntegration.users')}</p>
           </div>
           <div className="glass-card p-8 text-center border-white/20 animate-float-slow">
             <p className="text-5xl font-extrabold text-gradient-blue-light mb-2">72,861</p>
-            <p className="text-paragraph text-gray-300">activities analyzed</p>
+            <p className="text-paragraph text-gray-300">{t('servicePages.stravaIntegration.activitiesAnalyzed')}</p>
           </div>
         </section>
 
@@ -115,7 +100,7 @@ const StravaIntegrationPage: React.FC = () => {
             rel="noopener noreferrer"
             className="btn-enduraw"
           >
-            <span>Click here for Enduraw Report!</span>
+            <span>{t('servicePages.stravaIntegration.cta')}</span>
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -123,38 +108,35 @@ const StravaIntegrationPage: React.FC = () => {
         </div>
 
         <section className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-custom-gradient mb-8">How does it work?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-custom-gradient mb-8">{t('servicePages.stravaIntegration.howItWorks')}</h2>
           <div className="glass-card p-8 border-white/20 animate-float">
             <ol className="list-decimal list-inside space-y-4 text-paragraph text-gray-200 leading-relaxed">
-              <li>Click on the link above to go to the home page</li>
-              <li>Create your Enduraw account</li>
-              <li>Log in with your username and password</li>
-              <li>You'll be taken to the Strava login page</li>
-              <li>Log in using their secure page, which gives us access to your activities</li>
-              <li>Once logged in, you will receive a validation e-mail</li>
-              <li>
-                On your first run, upload your activity to Strava; the Enduraw report magically
-                appears!
-              </li>
-              <li className="text-yellow-300">⚠️ Don't change your description before the report updates</li>
-              <li>Enjoy your runs ;)</li>
+              <li>{t('servicePages.stravaIntegration.step1')}</li>
+              <li>{t('servicePages.stravaIntegration.step2')}</li>
+              <li>{t('servicePages.stravaIntegration.step3')}</li>
+              <li>{t('servicePages.stravaIntegration.step4')}</li>
+              <li>{t('servicePages.stravaIntegration.step5')}</li>
+              <li>{t('servicePages.stravaIntegration.step6')}</li>
+              <li>{t('servicePages.stravaIntegration.step7')}</li>
+              <li className="text-yellow-300">{t('servicePages.stravaIntegration.step8')}</li>
+              <li>{t('servicePages.stravaIntegration.step9')}</li>
             </ol>
-            <p className="text-sm text-gray-400 mt-6">PS: you can disable the report anytime</p>
+            <p className="text-sm text-gray-400 mt-6">{t('servicePages.stravaIntegration.ps')}</p>
           </div>
         </section>
 
         <section className="mb-10">
-          <h3 className="text-2xl font-semibold">The tech behind</h3>
-          <p className="text-gray-400">FAQ, feedbacks</p>
+          <h3 className="text-2xl font-semibold">{t('servicePages.stravaIntegration.techBehind')}</h3>
+          <p className="text-gray-400">{t('servicePages.stravaIntegration.techBehindSub')}</p>
         </section>
 
         <section className="mb-10">
-          <h3 className="text-2xl font-semibold">Sponsors</h3>
-          <p className="text-gray-400">Support us!</p>
+          <h3 className="text-2xl font-semibold">{t('servicePages.stravaIntegration.sponsors')}</h3>
+          <p className="text-gray-400">{t('servicePages.stravaIntegration.sponsorsSub')}</p>
         </section>
 
         <section className="mb-4">
-          <h3 className="text-2xl font-bold mb-4">The builders</h3>
+          <h3 className="text-2xl font-bold mb-4">{t('servicePages.stravaIntegration.builders')}</h3>
           <div className="grid sm:grid-cols-2 gap-6">
             <PersonCard
               fullName="Alodie Boissonnet"
@@ -178,13 +160,13 @@ const StravaIntegrationPage: React.FC = () => {
         {/* Contact Section */}
         <section className="mt-16">
           <div className="glass-card p-8 rounded-2xl text-center">
-            <h2 className="text-3xl font-bold mb-4 text-gradient-blue-light">Want to Access Enduraw Report?</h2>
-            <p className="text-paragraph mb-6">Get in touch to integrate Enduraw's advanced analytics with your Strava data and elevate your training.</p>
-            <Link 
-              to="/contact" 
+            <h2 className="text-3xl font-bold mb-4 text-gradient-blue-light">{t('servicePages.stravaIntegration.wantAccess_title')}</h2>
+            <p className="text-paragraph mb-6">{t('servicePages.stravaIntegration.wantAccess_p')}</p>
+            <Link
+              to="/contact"
               className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              Contact Us
+              {t('servicePages.stravaIntegration.contactUs')}
             </Link>
           </div>
         </section>

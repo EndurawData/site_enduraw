@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const EndurawDashboardPage: React.FC = () => {
+  const { t } = useTranslation();
   const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
   const [currentArchitectSlide, setCurrentArchitectSlide] = useState(0);
 
@@ -108,10 +110,10 @@ const EndurawDashboardPage: React.FC = () => {
                 </div>
                 <div>
                   <h2 className="text-3xl md:text-4xl font-bold mb-2 bg-clip-text text-transparent bg-custom-gradient uppercase">
-                    Strava Integration
+                    {t('servicePages.endurawDashboard.stravaIntegration_title')}
                   </h2>
                   <p className="text-xl text-gray-300 tracking-wide">
-                    A tool to better understand your training
+                    {t('servicePages.endurawDashboard.stravaIntegration_sub')}
                   </p>
                 </div>
               </div>
@@ -129,7 +131,7 @@ const EndurawDashboardPage: React.FC = () => {
                     }
                   }}
                 >
-                  <span>Activate Your Enduraw Report</span>
+                  <span>{t('servicePages.endurawDashboard.activateReport')}</span>
                   <svg
                     className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
                     fill="none"
@@ -149,7 +151,7 @@ const EndurawDashboardPage: React.FC = () => {
               {/* Statistics */}
               <div className="mb-16">
                 <h3 className="text-xl font-bold text-gray-100 mb-12 text-center uppercase">
-                  In Figures
+                  {t('servicePages.endurawDashboard.inFigures')}
                 </h3>
                 <div className="grid md:grid-cols-3 gap-8">
                   <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2 animate-float">
@@ -160,7 +162,7 @@ const EndurawDashboardPage: React.FC = () => {
                       7,280
                     </div>
                     <p className="text-paragraph text-gray-300 leading-relaxed">
-                      Enduraw report users worldwide
+                      {t('servicePages.endurawDashboard.users_p')}
                     </p>
                   </div>
 
@@ -172,7 +174,7 @@ const EndurawDashboardPage: React.FC = () => {
                       362,911
                     </div>
                     <p className="text-paragraph text-gray-300 leading-relaxed">
-                      Activities processed and analyzed
+                      {t('servicePages.endurawDashboard.activities_p')}
                     </p>
                   </div>
 
@@ -184,7 +186,7 @@ const EndurawDashboardPage: React.FC = () => {
                       3.2M km
                     </div>
                     <p className="text-paragraph text-gray-300 leading-relaxed">
-                      Total distance (81× around the world)
+                      {t('servicePages.endurawDashboard.distance_p')}
                     </p>
                   </div>
                 </div>
@@ -192,30 +194,18 @@ const EndurawDashboardPage: React.FC = () => {
 
               {/* Description Text */}
               <div className="space-y-6 text-gray-200 mb-8">
-                <p className="text-paragraph italic">
-                  "Another tough session in the books ! But what a windy day... I'm sure I would have recorded my FKT without !"
-                </p>
-                <p className="text-paragraph">
-                  Every athlete knows that wind and heat can be powerful enemies in a training or a race.
-                </p>
-                <p className="text-paragraph">
-                  Ever trained at high altitude ? Oxygen deprecation is real !
-                </p>
-                <p className="text-paragraph">
-                  But how to quantify the impact of these parameters of your performance ?
-                </p>
-                <p className="text-paragraph">
-                  With Enduraw&apos;s Strava Integration, your pace can be adjusted according to
-                </p>
+                <p className="text-paragraph italic">{t('servicePages.endurawDashboard.quote')}</p>
+                <p className="text-paragraph">{t('servicePages.endurawDashboard.p1')}</p>
+                <p className="text-paragraph">{t('servicePages.endurawDashboard.p2')}</p>
+                <p className="text-paragraph">{t('servicePages.endurawDashboard.p3')}</p>
+                <p className="text-paragraph">{t('servicePages.endurawDashboard.p4')}</p>
                 <ul className="space-y-2 ml-6">
-                  <li>• Heat</li>
-                  <li>• Wind</li>
-                  <li>• Altitude</li>
-                  <li>• Elevation gain</li>
+                  <li>• {t('servicePages.endurawDashboard.heat')}</li>
+                  <li>• {t('servicePages.endurawDashboard.wind')}</li>
+                  <li>• {t('servicePages.endurawDashboard.altitude')}</li>
+                  <li>• {t('servicePages.endurawDashboard.elevationGain')}</li>
                 </ul>
-                <p className="text-paragraph">
-                  Giving you a full readibility of your session, it gives you keys to analyze your training under external conditions and adapt it.
-                </p>
+                <p className="text-paragraph">{t('servicePages.endurawDashboard.p5')}</p>
               </div>
 
               {/* Technology Link */}
@@ -226,14 +216,14 @@ const EndurawDashboardPage: React.FC = () => {
                   rel="noopener noreferrer"
                   className="btn-enduraw"
                 >
-                  Read more about the technology
+                  {t('servicePages.endurawDashboard.readMoreTech')}
                 </a>
               </div>
 
               {/* Releases */}
               <div className="bg-white/10 p-6 rounded-lg border border-white/20 animate-float">
                 <h3 className="text-xl font-bold text-gray-100 mb-6 uppercase">
-                  Releases
+                  {t('servicePages.endurawDashboard.releases')}
                 </h3>
                 <div className="space-y-3 text-gray-200">
                   <p>• 07/07/2023 : First idea of the project</p>
@@ -249,7 +239,7 @@ const EndurawDashboardPage: React.FC = () => {
               {/* The Architects Section */}
               <div className="mt-12">
                 <h3 className="text-xl font-bold text-gray-100 mb-8 text-center uppercase">
-                  The Architects
+                  {t('servicePages.endurawDashboard.architects')}
                 </h3>
 
                 <div className="relative overflow-hidden">
@@ -378,13 +368,13 @@ const EndurawDashboardPage: React.FC = () => {
       {/* Contact Section */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="glass-card p-8 rounded-2xl text-center">
-          <h2 className="text-3xl font-bold mb-4 text-gradient-blue-light">Interested in Enduraw Dashboard?</h2>
-          <p className="text-gray-300 mb-6">Contact us to learn more about accessing the dashboard and how it can help optimize your performance.</p>
-          <Link 
-            to="/contact" 
+          <h2 className="text-3xl font-bold mb-4 text-gradient-blue-light">{t('servicePages.endurawDashboard.interested_title')}</h2>
+          <p className="text-gray-300 mb-6">{t('servicePages.endurawDashboard.interested_p')}</p>
+          <Link
+            to="/contact"
             className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
-            Contact Us
+            {t('servicePages.endurawDashboard.contactUs')}
           </Link>
         </div>
       </div>
