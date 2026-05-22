@@ -65,41 +65,40 @@ const TestingPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 group-hover:from-purple-500/20 group-hover:to-pink-500/20 transition-all duration-500"></div>
               <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
               <h3 className="text-subtitle text-gradient-blue-light mb-4 relative z-10">{t('servicePages.testing.vo2max_title')}</h3>
-              <p className="text-paragraph text-gray-300 mb-2 relative z-10">{t('servicePages.testing.vo2max_location')}</p>
-              <p className="text-subtitle text-gradient-blue-light mb-6 relative z-10">{t('servicePages.testing.vo2max_price')}</p>
-              
+              <p className="text-paragraph text-gray-300 mb-6 relative z-10">{t('servicePages.testing.vo2max_location')}</p>
+
               <ul className="space-y-3 text-paragraph text-gray-200 relative z-10">
                 <li className="flex items-center group">
                   <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                  <span>FC max</span>
+                  <span>{t('servicePages.testing.vo2max_fcMax')}</span>
                 </li>
                 <li className="flex items-center group">
                   <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                  <span>VO2max</span>
+                  <span>{t('servicePages.testing.vo2max_vo2max')}</span>
                 </li>
                 <li className="flex items-center group">
                   <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                  <span>Ventilatory thresholds 1 & 2</span>
+                  <span>{t('servicePages.testing.vo2max_ventilatoryThresholds')}</span>
                 </li>
                 <li className="flex items-center group">
                   <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                  <span>MAS (Maximum Aerobic speed - VMA)</span>
+                  <span>{t('servicePages.testing.vo2max_mas')}</span>
                 </li>
                 <li className="flex items-center group">
                   <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                  <span>Training zones</span>
+                  <span>{t('servicePages.testing.vo2max_trainingZones')}</span>
                 </li>
                 <li className="flex items-center group">
                   <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                  <span>Muscle oxygen</span>
+                  <span>{t('servicePages.testing.vo2max_muscleOxygen')}</span>
                 </li>
                 <li className="flex items-center group">
                   <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                  <span>Core Body</span>
+                  <span>{t('servicePages.testing.vo2max_coreBody')}</span>
                 </li>
                 <li className="flex items-center group">
                   <span className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></span>
-                  <span>TempLactate testing (optional)</span>
+                  <span>{t('servicePages.testing.vo2max_lactateTesting')}</span>
                 </li>
               </ul>
             </div>
@@ -109,8 +108,7 @@ const TestingPage: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 group-hover:from-blue-500/20 group-hover:to-cyan-500/20 transition-all duration-500"></div>
               <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
               <h3 className="text-subtitle text-gradient-blue-light mb-4 relative z-10">{t('servicePages.testing.walkRun_title')}</h3>
-              <p className="text-paragraph text-gray-300 mb-2 relative z-10">{t('servicePages.testing.walkRun_location')}</p>
-              <p className="text-subtitle text-gradient-blue-light mb-6 relative z-10">{t('servicePages.testing.walkRun_price')}</p>
+              <p className="text-paragraph text-gray-300 mb-6 relative z-10">{t('servicePages.testing.walkRun_location')}</p>
 
               <ul className="space-y-3 text-paragraph text-gray-200 relative z-10">
                 <li className="flex items-center group">
@@ -148,9 +146,23 @@ const TestingPage: React.FC = () => {
               </ul>
             </div>
           </div>
-          
 
-          <div 
+          {/* Global offer link */}
+          <div className="text-center">
+            <a
+              href="https://juvenile-tennis-62a.notion.site/Offre-Profilage-Enduraw-33cd97cda6d380b0965ac7beef5a53ca?pvs=74"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-enduraw inline-flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span>{t('servicePages.testing.seeFullOffer')}</span>
+            </a>
+          </div>
+
+          <div
             id="animate-whats-included"
             className="bg-dark-secondary/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/10 relative overflow-hidden"
           >
