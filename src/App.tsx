@@ -25,11 +25,7 @@ import SousTraitantsPage from './pages/SousTraitantsPage';
 function App() {
   const [activeSection, setActiveSection] = useState<string>('');
   const siteBackgroundStyle: React.CSSProperties = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.74), rgba(0, 0, 0, 0.74)), url(${process.env.PUBLIC_URL}/photo.jpg)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed'
+    background: 'radial-gradient(120% 60% at 50% 120%, #6CDCFF 0%, #2054A8 30%, #0a0f1a 50%, #020617 65%)',
   };
 
   const handleScrollToSection = useCallback((sectionId: string) => {

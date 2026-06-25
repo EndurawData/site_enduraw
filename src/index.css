@@ -11,55 +11,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Ensure over-scroll rubber band shows dark background instead of white */
 html, body {
-  background-color: #000000; /* matches theme dark-bg */
+  background-color: #020617;
   color-scheme: dark;
-}
-
-.bg-dark-bg,
-.bg-dark-bg\/95,
-.bg-dark-bg\/80 {
-  background-color: rgba(0, 0, 0, 0.76) !important;
-}
-
-.bg-dark-secondary {
-  background-color: rgba(26, 26, 26, 0.76) !important;
-}
-
-.from-dark-bg {
-  --tw-gradient-from: rgba(0, 0, 0, 0.76) var(--tw-gradient-from-position) !important;
-  --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-}
-
-.to-dark-bg {
-  --tw-gradient-to: rgba(0, 0, 0, 0.76) var(--tw-gradient-to-position) !important;
-}
-
-.from-dark-secondary {
-  --tw-gradient-from: rgba(26, 26, 26, 0.76) var(--tw-gradient-from-position) !important;
-  --tw-gradient-to: rgba(26, 26, 26, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-}
-
-.to-dark-secondary {
-  --tw-gradient-to: rgba(26, 26, 26, 0.76) var(--tw-gradient-to-position) !important;
-}
-
-.from-slate-900 {
-  --tw-gradient-from: rgba(15, 23, 42, 0.76) var(--tw-gradient-from-position) !important;
-  --tw-gradient-to: rgba(15, 23, 42, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
-}
-
-.via-slate-800 {
-  --tw-gradient-to: rgba(30, 41, 59, 0) var(--tw-gradient-to-position) !important;
-  --tw-gradient-stops: var(--tw-gradient-from), rgba(30, 41, 59, 0.76) var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
-}
-
-.to-slate-900 {
-  --tw-gradient-to: rgba(15, 23, 42, 0.76) var(--tw-gradient-to-position) !important;
 }
 
 #root,
@@ -84,70 +38,74 @@ html, body {
   z-index: 1;
 }
 
-.site-content > div.bg-dark-bg {
-  background-color: rgba(0, 0, 0, 0.58) !important;
-}
-
 /* Typography Classes */
 @layer components {
-  /* Titres H1 - INTER TIGHT BOLD ITALIC - TRÈS GROS */
+  /* Titres H1 - INTER TIGHT BOLD ITALIC */
   .text-title {
     font-family: 'Inter Tight', sans-serif;
     font-weight: 700;
     font-style: italic;
-    font-size: 4rem;
+    font-size: 1.75rem;
+    line-height: 1.1;
   }
 
   @media (min-width: 768px) {
     .text-title {
-      font-size: 5.5rem;
+      font-size: 2.125rem;
     }
   }
 
   @media (min-width: 1024px) {
     .text-title {
-      font-size: 7rem;
+      font-size: 2.5rem;
     }
   }
 
-  /* Titres H2 - INTER TIGHT BOLD ITALIC - MOYEN */
+  /* Titres H2 - INTER TIGHT BOLD ITALIC */
   .text-title-h2 {
     font-family: 'Inter Tight', sans-serif;
     font-weight: 700;
     font-style: italic;
-    font-size: 2.5rem;
+    font-size: 1.25rem;
+    line-height: 1.2;
   }
 
   @media (min-width: 768px) {
     .text-title-h2 {
-      font-size: 3rem;
+      font-size: 1.5rem;
     }
   }
 
   @media (min-width: 1024px) {
     .text-title-h2 {
-      font-size: 3.5rem;
+      font-size: 1.75rem;
     }
   }
 
-  /* Sous-titres - SPACE GROTESK MEDIUM MAJ */
+  /* Sous-titres - SPACE GROTESK SEMIBOLD MAJ */
   .text-subtitle {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.875rem;
     text-transform: uppercase;
+    letter-spacing: 0.04em;
   }
 
-  /* Textes courants - SPACE GROTESK LIGHT MAJ */
+  /* Textes courants - SPACE GROTESK REGULAR MAJ */
   .text-body-uppercase {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
+    font-size: 0.75rem;
     text-transform: uppercase;
+    letter-spacing: 0.08em;
   }
 
-  /* Textes de paragraphe - Space Grotesk Light */
+  /* Textes de paragraphe - Space Grotesk Regular */
   .text-paragraph {
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.7;
   }
 
   /* Gradient background utilities */
@@ -159,27 +117,25 @@ html, body {
     background: linear-gradient(to bottom, #ffffff 0%, #6CDCFF 33%, #2054A8 66%, #000000 100%);
   }
 
-  /* Bouton bleu ciel uniforme */
+  /* Bouton principal */
   .btn-enduraw {
     background-color: #6CDCFF;
     color: #000000;
     font-family: 'Space Grotesk', sans-serif;
-    font-weight: 300;
-    text-transform: uppercase;
     font-weight: 600;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
-    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    padding: 0.5rem 1.125rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.15s ease;
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    box-shadow: 0 10px 15px -3px rgba(108, 220, 255, 0.3);
+    gap: 0.5rem;
+    font-size: 0.75rem;
   }
 
   .btn-enduraw:hover {
     background-color: #5ACCEF;
-    transform: scale(1.05);
-    box-shadow: 0 20px 25px -5px rgba(108, 220, 255, 0.4);
   }
 }
 
@@ -206,7 +162,7 @@ html, body {
   .animate-scroll-left, .animate-scroll-right { animation: none; }
 }
 
-/* Flip + shuffle interaction for testimonial cards */
+/* Flip interaction for cards */
 .flip {
   perspective: 1200px;
 }
@@ -227,13 +183,4 @@ html, body {
 }
 .flip-back {
   transform: rotateY(180deg);
-}
-.flip:hover {
-  animation: shuffle-flash 300ms ease;
-}
-@keyframes shuffle-flash {
-  0% { transform: rotateZ(0deg) translateY(0); }
-  30% { transform: rotateZ(-2deg) translateY(-2px); }
-  60% { transform: rotateZ(2deg) translateY(1px); }
-  100% { transform: rotateZ(0deg) translateY(0); }
 }

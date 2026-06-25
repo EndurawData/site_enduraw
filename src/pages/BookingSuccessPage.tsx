@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import '../styles/fancy.css';
 
 const BookingSuccessPage: React.FC = () => {
+  const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
@@ -12,36 +14,29 @@ const BookingSuccessPage: React.FC = () => {
   useEffect(() => {
     const fetchBookingDetails = async () => {
       if (!sessionId) {
-        setError('Aucune session de paiement trouvée');
+        setError(t('booking_success.noSession'));
         setLoading(false);
         return;
       }
 
       try {
-        // Ici, on pourrait avoir une API pour récupérer les détails de la réservation
-        // via l'ID de session Stripe, mais pour simplifier, on va juste confirmer le succès
         setLoading(false);
       } catch (err) {
         console.error('Erreur récupération détails:', err);
-        setError('Erreur lors de la récupération des détails');
+        setError(t('booking_success.fetchError'));
         setLoading(false);
       }
     };
 
     fetchBookingDetails();
-  }, [sessionId]);
+  }, [sessionId, t]);
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-dark-bg text-white flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
-        </div>
-        <div className="glass-card p-8 text-center relative z-10 animate-float">
-          <div className="animate-spin h-12 w-12 border-4 border-blue-400 border-t-transparent rounded-full mx-auto mb-4"></div>
-          <p className="text-paragraph">Vérification du paiement...</p>
+      <div className="min-h-screen text-white flex items-center justify-center relative overflow-hidden">
+        <div className="glass-card p-8 text-center relative z-10">
+          <div className="animate-spin h-10 w-10 border-2 border-[#6CDCFF] border-t-transparent rounded-full mx-auto mb-4"></div>
+          <p className="text-paragraph text-gray-300">{t('booking_success.loading')}</p>
         </div>
       </div>
     );
@@ -49,21 +44,17 @@ const BookingSuccessPage: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-dark-bg text-white flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
-        </div>
-        <div className="glass-card p-8 text-center max-w-md relative z-10 animate-float">
-          <div className="text-6xl mb-4">❌</div>
-          <h1 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-custom-gradient">Erreur</h1>
-          <p className="text-paragraph mb-6">{error}</p>
-          <Link
-            to="/services/testing"
-            className="btn-enduraw"
-          >
-            Retour aux tests
+      <div className="min-h-screen text-white flex items-center justify-center relative overflow-hidden">
+        <div className="glass-card p-8 text-center max-w-md relative z-10">
+          <div className="icon-container bg-[#2054A8] mx-auto mb-6">
+            <svg className="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
+          <h1 className="text-title-h2 text-white mb-4">{t('booking_success.error')}</h1>
+          <p className="text-paragraph text-gray-300 mb-6">{error}</p>
+          <Link to="/services/testing" className="btn-enduraw">
+            {t('booking_success.backToTests')}
           </Link>
         </div>
       </div>
@@ -71,137 +62,122 @@ const BookingSuccessPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-dark-bg text-white pt-20 relative overflow-hidden">
-      {/* Modern animated background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
-      </div>
-      
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div className="min-h-screen text-white pt-20 relative overflow-hidden">
 
-        <div className="relative z-10">
+      <div className="max-w-5xl mx-auto px-6 sm:px-8 py-20">
+        <div className="relative z-10 space-y-8">
+
           {/* Success Header */}
-          <div className="glass-card p-8 mb-8 text-center animate-float">
-            <div className="mb-6">
-              <div className="text-8xl mb-4 animate-bounce">✅</div>
-              <h1 className="text-title bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-8">
-                PAIEMENT CONFIRMÉ
-              </h1>
-              <p className="text-paragraph">
-                Votre réservation a été enregistrée avec succès
-              </p>
+          <div className="glass-card p-8 text-center">
+            <div className="icon-container bg-[#2054A8] mx-auto mb-6">
+              <svg className="w-6 h-6 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
             </div>
-
-            {/* Success Message */}
-            <div className="bg-green-500/20 border border-green-500/30 rounded-xl p-6 mb-6">
-              <h2 className="text-2xl font-bold text-green-400 mb-2">
-                Félicitations
-              </h2>
-              <p className="text-paragraph">
-                Votre paiement a été traité avec succès. Un email de confirmation
-                vous a été envoyé avec tous les détails de votre réservation.
-              </p>
-            </div>
-
-            {/* Session ID for reference */}
-            {sessionId && (
-              <div className="bg-blue-500/20 border border-blue-500/30 rounded-xl p-4 mb-6">
-                <p className="text-sm text-gray-300">
-                  <span className="font-medium">Référence de paiement :</span>
-                </p>
-                <p className="font-mono text-blue-400 text-xs break-all">
-                  {sessionId}
-                </p>
-              </div>
-            )}
+            <h1 className="text-title text-white mb-4">
+              {t('booking_success.title')}
+            </h1>
+            <p className="text-paragraph text-gray-300">
+              {t('booking_success.subtitle')}
+            </p>
           </div>
+
+          {/* Success Message */}
+          <div className="glass-card p-6">
+            <h2 className="text-title-h2 text-[#6CDCFF] mb-2">
+              {t('booking_success.congrats')}
+            </h2>
+            <p className="text-paragraph text-white/80">
+              {t('booking_success.paymentProcessed')}
+            </p>
+          </div>
+
+          {/* Session ID */}
+          {sessionId && (
+            <div className="glass-card p-4">
+              <p className="text-body-uppercase text-gray-300 mb-1">{t('booking_success.paymentRef')}</p>
+              <p className="font-mono text-[#6CDCFF] text-xs break-all">{sessionId}</p>
+            </div>
+          )}
 
           {/* Next Steps */}
-          <div className="glass-card p-8 mb-8 animate-float-slow">
-            <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-6 text-center">
-              Prochaines étapes
+          <div className="glass-card p-8">
+            <h2 className="text-subtitle text-white mb-8 text-center">
+              {t('booking_success.nextSteps')}
             </h2>
-            
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center group">
-                <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-xl">📧</span>
+              <div className="text-center">
+                <div className="icon-container bg-[#2054A8] mx-auto mb-4">
+                  <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
                 </div>
-                <h3 className="text-body-uppercase font-bold text-white mb-2">Vérifiez vos emails</h3>
-                <p className="text-paragraph text-sm">
-                  Un email de confirmation avec tous les détails vous a été envoyé
+                <h3 className="text-body-uppercase text-white mb-2">{t('booking_success.checkEmail')}</h3>
+                <p className="text-paragraph text-gray-300 text-sm">
+                  {t('booking_success.checkEmail_p')}
                 </p>
               </div>
 
-              <div className="text-center group">
-                <div className="bg-gradient-to-r from-green-500 to-teal-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-xl">🏃‍♂️</span>
+              <div className="text-center">
+                <div className="icon-container bg-[#2054A8] mx-auto mb-4">
+                  <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
                 </div>
-                <h3 className="text-body-uppercase font-bold text-white mb-2">Préparez-vous</h3>
-                <p className="text-paragraph text-sm">
-                  Portez des vêtements de sport confortables et évitez les repas lourds
+                <h3 className="text-body-uppercase text-white mb-2">{t('booking_success.prepare')}</h3>
+                <p className="text-paragraph text-gray-300 text-sm">
+                  {t('booking_success.prepare_p')}
                 </p>
               </div>
 
-              <div className="text-center group">
-                <div className="bg-gradient-to-r from-purple-500 to-pink-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-xl">📍</span>
+              <div className="text-center">
+                <div className="icon-container bg-[#2054A8] mx-auto mb-4">
+                  <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
                 </div>
-                <h3 className="text-body-uppercase font-bold text-white mb-2">Rendez-vous</h3>
-                <p className="text-paragraph text-sm">
-                  Présentez-vous 15 minutes avant l'heure prévue à Chamonix
+                <h3 className="text-body-uppercase text-white mb-2">{t('booking_success.location')}</h3>
+                <p className="text-paragraph text-gray-300 text-sm">
+                  {t('booking_success.location_p')}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Contact Info */}
-          <div className="glass-card p-8 mb-8 animate-float">
-            <h2 className="text-subtitle bg-clip-text text-transparent bg-custom-gradient mb-4 text-center">
-              Besoin d'aide ?
+          {/* Contact */}
+          <div className="glass-card p-8 text-center">
+            <h2 className="text-subtitle text-white mb-4">
+              {t('booking_success.needHelp')}
             </h2>
-            <div className="text-center">
-              <p className="text-paragraph mb-4">
-                Si vous avez des questions ou besoin de modifier votre réservation,
-                n'hésitez pas à nous contacter.
-              </p>
-              <Link
-                to="/contact"
-                className="btn-enduraw"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-                Nous contacter
-              </Link>
-            </div>
+            <p className="text-paragraph text-gray-300 mb-6">
+              {t('booking_success.needHelp_p')}
+            </p>
+            <Link to="/contact" className="btn-enduraw">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              {t('booking_success.contact')}
+            </Link>
           </div>
 
           {/* Action Buttons */}
-          <div className="text-center space-y-4">
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/services/testing"
-                className="btn-enduraw"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                Réserver un autre test
-              </Link>
-
-              <Link
-                to="/"
-                className="text-body-uppercase px-8 py-3 rounded-2xl border border-white/40 text-white hover:bg-white/10 transition-all duration-300 inline-flex items-center justify-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-                Retour à l'accueil
-              </Link>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link to="/services/testing" className="btn-enduraw">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              {t('booking_success.bookAnother')}
+            </Link>
+            <Link
+              to="/"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+              {t('booking_success.backHome')}
+            </Link>
           </div>
 
         </div>

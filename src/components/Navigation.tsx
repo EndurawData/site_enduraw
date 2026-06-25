@@ -22,15 +22,9 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
   const servicesHideTimer = useRef<number | null>(null);
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
-  const [activeHover, setActiveHover] = useState<string | null>(null);
 
-  // Scroll effect for navbar background
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled(isScrolled);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -44,164 +38,86 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
     { id: 'performance-center', name: 'Performance Center', path: '/endurawperformancecenter' }
   ];
 
+  const navLinkClass = (path: string) => {
+    const isActive = path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
+    return `inline-flex items-center gap-1 px-3 py-1.5 text-sm transition-all duration-150 text-body-uppercase ${
+      isActive
+        ? 'border-b-2 border-white/60 text-white font-medium'
+        : 'border-b-2 border-transparent text-white/45 hover:text-white/75 hover:border-white/20'
+    }`;
+  };
+
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-xl border-b ${
       scrolled
-        ? 'bg-dark-bg/95 backdrop-blur-xl border-b border-white/20 shadow-2xl'
-        : 'bg-dark-bg/80 backdrop-blur-sm border-b border-gray-800/50'
+        ? 'bg-white/[0.06] border-white/[0.09] shadow-sm'
+        : 'bg-white/[0.03] border-white/[0.06]'
     }`}>
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 via-transparent to-blue-900/10 animate-pulse"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-28 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-28">
         <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0 group">
-            <Link
-              to="/"
-              className="flex items-center relative transform transition-all duration-300 hover:scale-110"
-              onMouseEnter={() => setActiveHover('logo')}
-              onMouseLeave={() => setActiveHover(null)}
-            >
-              <img
-                src="/images/LOGO_ENDURAW_WHITE.png"
-                alt="Enduraw"
-                className="h-10 w-auto relative z-10"
-              />
-              {activeHover === 'logo' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/30 to-gradient-blue-dark/30 blur-lg animate-pulse"></div>
-              )}
-            </Link>
-          </div>
+          <Link to="/" className="flex-shrink-0">
+            <img
+              src="/images/LOGO_ENDURAW_WHITE.png"
+              alt="Enduraw"
+              className="h-9 w-auto"
+            />
+          </Link>
 
-          <div className="flex space-x-2 items-center">
-            {/* Home */}
-            <Link
-              to="/"
-              className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 hover:shadow-lg group text-body-uppercase ${
-                location.pathname === '/'
-                  ? 'text-white bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 shadow-lg'
-                  : 'text-gray-200 hover:text-white hover:bg-white/10'
-              }`}
-              onMouseEnter={() => setActiveHover('home')}
-              onMouseLeave={() => setActiveHover(null)}
-            >
-              <span className="relative z-10">{t('nav.home')}</span>
-              {activeHover === 'home' && location.pathname !== '/' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
-              )}
+          <div className="flex items-center gap-1">
+            <Link to="/" className={navLinkClass('/')}>
+              {t('nav.home')}
             </Link>
 
-            {/* News */}
-            <Link
-              to="/news"
-              className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 hover:shadow-lg group text-body-uppercase ${
-                location.pathname === '/news'
-                  ? 'text-white bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 shadow-lg'
-                  : 'text-gray-200 hover:text-white hover:bg-white/10'
-              }`}
-              onMouseEnter={() => setActiveHover('news')}
-              onMouseLeave={() => setActiveHover(null)}
-            >
-              <span className="relative z-10">{t('nav.news')}</span>
-              {activeHover === 'news' && location.pathname !== '/news' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
-              )}
+            <Link to="/news" className={navLinkClass('/news')}>
+              {t('nav.news')}
             </Link>
 
             {/* Services with Dropdown */}
             <div
-              className="relative group"
+              className="relative"
               onMouseEnter={() => {
                 if (servicesHideTimer.current) window.clearTimeout(servicesHideTimer.current);
                 setShowServicesSections(true);
-                setActiveHover('services');
               }}
               onMouseLeave={() => {
                 if (servicesHideTimer.current) window.clearTimeout(servicesHideTimer.current);
-                servicesHideTimer.current = window.setTimeout(() => {
-                  setShowServicesSections(false);
-                  setActiveHover(null);
-                }, 150);
+                servicesHideTimer.current = window.setTimeout(() => setShowServicesSections(false), 150);
               }}
             >
-              <Link
-                to="/services"
-                className={`relative block px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 hover:shadow-lg text-body-uppercase ${
-                  location.pathname.startsWith('/services')
-                    ? 'text-white bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 shadow-lg'
-                    : 'text-gray-200 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                <span className="relative z-10 flex items-center gap-1">
-                  {t('nav.services')}
-                  <svg className={`w-4 h-4 transition-transform duration-300 ${showServicesSections ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </span>
-                {activeHover === 'services' && !location.pathname.startsWith('/services') && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
-                )}
+              <Link to="/services" className={navLinkClass('/services')}>
+                {t('nav.services')}
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform duration-200 ${showServicesSections ? 'rotate-180' : ''}`}
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </Link>
 
-              {/* Services Dropdown */}
-              <div className={`absolute left-0 top-full mt-2 w-56 bg-gray-800/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl transition-all duration-300 transform origin-top ${
-                showServicesSections
-                  ? 'opacity-100 visible scale-100 translate-y-0'
-                  : 'opacity-0 invisible scale-95 -translate-y-2'
+              <div className={`absolute left-0 top-full mt-1.5 w-52 bg-[#0c1222]/95 border border-white/[0.08] rounded-xl shadow-lg transition-all duration-200 origin-top ${
+                showServicesSections ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95'
               }`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-2xl"></div>
-                <div className="relative z-10 p-2">
-                  {servicesSections.map((service, index) => (
+                <div className="p-1">
+                  {servicesSections.map((service) => (
                     <Link
                       key={service.id}
                       to={service.path}
                       onClick={() => setShowServicesSections(false)}
-                      className="block px-4 py-3 text-sm text-gray-200 hover:bg-white/10 hover:text-white transition-all duration-300 rounded-xl mb-1 last:mb-0 transform hover:scale-105 hover:translate-x-1 relative group text-body-uppercase"
-                      style={{ transitionDelay: `${index * 50}ms` }}
+                      className="block px-4 py-2.5 text-sm text-white/60 hover:text-white/90 hover:bg-white/[0.08] transition-colors duration-150 rounded-lg text-body-uppercase"
                     >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                          index % 2 === 0 ? 'bg-gradient-blue-light' : 'bg-gradient-blue-dark'
-                        } group-hover:scale-125`}></div>
-                        <span>{service.name}</span>
-                      </div>
+                      {service.name}
                     </Link>
                   ))}
                 </div>
               </div>
             </div>
 
-            {/* Contact */}
-            <Link
-              to="/contact"
-              className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 hover:shadow-lg text-body-uppercase ${
-                location.pathname === '/contact'
-                  ? 'text-white bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 shadow-lg'
-                  : 'text-gray-200 hover:text-white hover:bg-white/10'
-              }`}
-              onMouseEnter={() => setActiveHover('contact')}
-              onMouseLeave={() => setActiveHover(null)}
-            >
-              <span className="relative z-10">{t('nav.contact')}</span>
-              {activeHover === 'contact' && location.pathname !== '/contact' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
-              )}
+            <Link to="/contact" className={navLinkClass('/contact')}>
+              {t('nav.contact')}
             </Link>
 
-            <Link
-              to="/careers"
-              className={`relative px-4 py-2 rounded-xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 hover:shadow-lg text-body-uppercase ${
-                location.pathname === '/careers'
-                  ? 'text-white bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 shadow-lg'
-                  : 'text-gray-200 hover:text-white hover:bg-white/10'
-              }`}
-              onMouseEnter={() => setActiveHover('careers')}
-              onMouseLeave={() => setActiveHover(null)}
-            >
-              <span className="relative z-10">{t('nav.careers')}</span>
-              {activeHover === 'careers' && location.pathname !== '/careers' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-gradient-blue-light/20 to-gradient-blue-dark/20 rounded-xl blur-sm"></div>
-              )}
+            <Link to="/careers" className={navLinkClass('/careers')}>
+              {t('nav.careers')}
             </Link>
 
             {/* Language Switcher */}
@@ -216,7 +132,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
               }}
             >
               <button
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold text-gray-200 hover:text-white hover:bg-white/10 transition-all duration-300"
+                className="flex items-center gap-1.5 px-3 py-2 text-sm text-white/45 hover:text-white/75 transition-colors duration-150"
                 aria-label="Select language"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -228,20 +144,18 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
                 </svg>
               </button>
 
-              {/* Dropdown */}
-              <div className={`absolute right-0 top-full mt-2 w-36 bg-gray-800/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl transition-all duration-300 transform origin-top ${
-                showLangMenu ? 'opacity-100 visible scale-100 translate-y-0' : 'opacity-0 invisible scale-95 -translate-y-2'
+              <div className={`absolute right-0 top-full mt-1.5 w-36 bg-[#0c1222]/95 border border-white/[0.08] rounded-xl shadow-lg transition-all duration-200 origin-top ${
+                showLangMenu ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95'
               }`}>
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-2xl pointer-events-none"></div>
-                <div className="relative z-10 p-1.5">
+                <div className="p-1">
                   {LANGUAGES.map(lang => (
                     <button
                       key={lang.code}
                       onClick={() => { i18n.changeLanguage(lang.code); setShowLangMenu(false); }}
-                      className={`w-full text-left px-3 py-2 rounded-xl text-sm transition-all duration-200 flex items-center gap-2 ${
+                      className={`w-full text-left px-3 py-2 text-sm rounded-lg transition-colors duration-150 flex items-center gap-2 ${
                         i18n.language.startsWith(lang.code)
-                          ? 'text-white bg-white/15 font-semibold'
-                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                          ? 'text-white bg-white/[0.10]'
+                          : 'text-white/60 hover:text-white/90 hover:bg-white/[0.08]'
                       }`}
                     >
                       <span className="font-mono text-xs w-5">{lang.label}</span>
@@ -257,18 +171,9 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
               href="https://www.dataplayers.fr/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center px-3 py-2 rounded-xl transition-all duration-300 transform hover:scale-110 hover:-rotate-2 hover:shadow-lg relative group"
-              onMouseEnter={() => setActiveHover('dataplayers')}
-              onMouseLeave={() => setActiveHover(null)}
+              className="flex items-center px-3 py-2 opacity-70 hover:opacity-100 transition-opacity duration-200"
             >
-              <img
-                src="/images/dataplayers.png"
-                alt="DataPlayers"
-                className="h-8 w-auto relative z-10 transition-all duration-300 group-hover:brightness-110"
-              />
-              {activeHover === 'dataplayers' && (
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-xl blur-lg"></div>
-              )}
+              <img src="/images/dataplayers.png" alt="DataPlayers" className="h-7 w-auto" />
             </a>
           </div>
         </div>

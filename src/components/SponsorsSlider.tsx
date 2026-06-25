@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 const SponsorsSlider: React.FC = () => {
   const sponsors = [
@@ -41,7 +41,7 @@ const SponsorsSlider: React.FC = () => {
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
-                      target.parentElement!.innerHTML = `<span class="text-gray-500 text-sm font-medium">${sponsor.name}</span>`;
+                      target.parentElement!.innerHTML = `<span class="text-gray-300 text-sm font-medium">${sponsor.name}</span>`;
                     }}
                   />
                 </div>
@@ -59,7 +59,7 @@ const SponsorsSlider: React.FC = () => {
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
-                      target.parentElement!.innerHTML = `<span class="text-gray-500 text-sm font-medium">${sponsor.name}</span>`;
+                      target.parentElement!.innerHTML = `<span class="text-gray-300 text-sm font-medium">${sponsor.name}</span>`;
                     }}
                   />
                 </div>

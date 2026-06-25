@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import '../styles/fancy.css';
 
@@ -180,7 +180,7 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
   };
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-5xl mx-auto">
       <div className="glass-card p-8 mb-8">
         <h2 className="text-title-h2 text-gradient-blue-light text-center mb-6">
           Réservez votre créneau à Chamonix
@@ -233,7 +233,7 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
           ) : filteredSlots.length === 0 ? (
             <div className="text-center py-8">
               <p className="text-paragraph text-gray-300">Aucun créneau disponible pour ce protocole.</p>
-              <p className="text-paragraph text-gray-400 mt-2">
+              <p className="text-paragraph text-gray-300 mt-2">
                 Contactez-nous pour d'autres dates ou options.
               </p>
             </div>
@@ -359,7 +359,7 @@ const ChamonixBooking: React.FC<ChamonixBookingProps> = ({ onBookingSuccess }) =
               </div>
             </form>
 
-            <p className="text-paragraph text-gray-400 text-center mt-4">
+            <p className="text-paragraph text-gray-300 text-center mt-4">
               Paiement sécurisé via Stripe. Vous serez redirigé vers la page de paiement.
             </p>
           </div>
