@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SponsorsSlider from '../components/SponsorsSlider';
@@ -11,473 +11,380 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
   const { t } = useTranslation();
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentAthleteSlide, setCurrentAthleteSlide] = useState(0);
+  const [currentTeamSlide, setCurrentTeamSlide] = useState(0);
+
+  useEffect(() => {
+    if (activeSection && sectionRefs.current[activeSection]) {
+      sectionRefs.current[activeSection]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [activeSection]);
+
+  const products = [
+    {
+      num: '01',
+      name: 'Enduraw Dashboard',
+      desc: t('services.dashboard_desc'),
+      link: '/services/enduraw-dashboard',
+      tag: t('home.product_tag_analysis'),
+    },
+    {
+      num: '02',
+      name: 'Testing',
+      desc: t('services.testing_desc'),
+      link: '/services/testing',
+      tag: t('home.product_tag_physiology'),
+    },
+    {
+      num: '03',
+      name: 'Pacing Plan',
+      desc: t('services.pacingPlan_desc'),
+      link: '/services/pacing-plan',
+      tag: t('home.product_tag_strategy'),
+    },
+    {
+      num: '04',
+      name: 'Athletes Support',
+      desc: t('services.athleteSupport_desc'),
+      link: '/services/athlete-support',
+      tag: t('home.product_tag_coaching'),
+    },
+  ];
 
   const athletes = [
+    { name: 'Tom Evans', title: t('home.tom_title'), img: '/images/athletes/tomevans.png' },
+    { name: 'Ruth Croft', title: t('home.ruth_title'), img: '/images/athletes/ruthcroft.png' },
+    { name: 'Nicolas Navarro', title: t('home.nicolas_title'), img: '/images/athletes/niconavarro.png' },
+    { name: 'Meline Rollin', title: t('home.meline_title'), img: '/images/athletes/meline.png' },
+    { name: 'Petter Engdahl', title: t('home.petter_title'), img: '/images/athletes/petterengdahl.png' },
+    { name: 'Duncan Perrillat', title: t('home.duncan_title'), img: '/images/athletes/duncan.png' },
+  ];
+
+  const team = [
     {
-      name: "Tom Evans",
-      image: "/images/athletes/tomevans.png",
-      description: "UTMB and Western States winner"
+      name: 'Joseph Mestrallet',
+      img: '/images/team/joseph.png',
+      role: t('home.joseph_role'),
+      bio: t('home.joseph_p1'),
+      linkedin: 'https://www.linkedin.com/in/joseph-mestrallet-770279a7/',
     },
     {
-      name: "Ruth Croft",
-      image: "/images/athletes/ruthcroft.png",
-      description: "OCC, CCC and UTMB winner"
+      name: 'Anthony Saliou',
+      img: '/images/team/anthony.png',
+      role: t('home.anthony_role'),
+      bio: t('home.anthony_p1'),
+      linkedin: 'https://www.linkedin.com/in/anthony-saliou-085286158/',
     },
     {
-      name: "Nicolas Navarro",
-      image: "/images/athletes/niconavarro.png",
-      description: "16th olympic marathon PR: 2h06'45\""
+      name: 'Justine',
+      img: '/images/team/justine.png',
+      role: t('home.justine_role'),
+      bio: t('home.justine_p1'),
+      linkedin: null,
     },
     {
-      name: "Meline Rollin",
-      image: "/images/athletes/meline.png",
-      description: "French record holder marathon 2h24'12\""
+      name: 'Valentin Templé',
+      img: '/images/team/valentin.png',
+      role: t('home.valentin_role'),
+      bio: t('home.valentin_p1'),
+      linkedin: null,
     },
     {
-      name: "Petter Engdhal",
-      image: "/images/athletes/petterengdahl.png",
-      description: "CCC Winner"
+      name: 'Charline',
+      img: '/images/charline-removebg-preview.png',
+      role: t('home.charline_role'),
+      bio: t('home.charline_p1'),
+      linkedin: null,
     },
     {
-      name: "Duncan Perrillat",
-      image: "/images/athletes/duncan.png",
-      description: "French Marathoner"
-    }
+      name: 'Antoine',
+      img: '/images/antoine-removebg-preview.png',
+      role: t('home.antoine_role'),
+      bio: t('home.antoine_p1'),
+      linkedin: null,
+    },
+    {
+      name: 'Thibaut',
+      img: '/images/thibaut-removebg-preview.png',
+      role: t('home.thibaut_role'),
+      bio: t('home.thibaut_p1'),
+      linkedin: null,
+    },
+    {
+      name: 'Alex',
+      img: '/images/alex-removebg-preview.png',
+      role: t('home.alex_role'),
+      bio: t('home.alex_p1'),
+      linkedin: null,
+    },
+  ];
+
+  const ecosystem = [
+    {
+      step: 'Testing',
+      desc: t('home.eco_testing'),
+      icon: (
+        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+    },
+    {
+      step: 'Dashboard',
+      desc: t('home.eco_dashboard'),
+      icon: (
+        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+      ),
+    },
+    {
+      step: 'Pacing Plan',
+      desc: t('home.eco_pacing'),
+      icon: (
+        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+        </svg>
+      ),
+    },
+    {
+      step: 'Athletes Support',
+      desc: t('home.eco_support'),
+      icon: (
+        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
+    },
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % Math.ceil(athletes.length / 3));
+      setCurrentAthleteSlide((prev) => (prev + 1) % Math.ceil(athletes.length / 3));
     }, 4000);
     return () => clearInterval(interval);
   }, [athletes.length]);
 
   useEffect(() => {
-    if (activeSection && sectionRefs.current[activeSection]) {
-      sectionRefs.current[activeSection]?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  }, [activeSection]);
+    const interval = setInterval(() => {
+      setCurrentTeamSlide((prev) => (prev + 1) % Math.ceil(team.length / 4));
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [team.length]);
 
   return (
-    <div className="fancy-bg text-white relative">
-      {/* Animated background orbs */}
-      <div className="bg-orb-1"></div>
-      <div className="bg-orb-2"></div>
-      <div className="bg-orb-3"></div>
+    <div className="text-white min-h-screen">
 
-      {/* Hero Section */}
+      {/* ── HERO ── */}
       <section
         ref={(el) => { sectionRefs.current['hero'] = el; }}
-        className="min-h-screen flex items-center justify-center pt-16 relative z-10"
+        className="min-h-screen flex flex-col items-center justify-center pt-16 px-6 text-center relative"
       >
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-12 animate-float">
-            <img
-              src="/images/LOGO_ENDURAW_WHITE.png"
-              alt="Enduraw Logo"
-              className="h-40 mx-auto mb-8 opacity-95 drop-shadow-2xl"
-            />
-          </div>
-          <p className="text-2xl md:text-3xl text-paragraph text-gray-200 mb-12 tracking-wide">
-            {t('home.tagline')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link
-              to="/services"
-              className="btn-enduraw"
-            >
-              <span>{t('home.discoverServices')}</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-            <Link
-              to="/contact"
-              className="glass-card border-white/20 hover:border-white/40 text-gray-200 hover:text-white text-body-uppercase font-semibold py-4 px-8 rounded-2xl transition-all duration-300 inline-flex items-center gap-3 text-lg"
-            >
-              <span>{t('home.getStarted')}</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-              </svg>
-            </Link>
-          </div>
+        <img
+          src="/images/LOGO_ENDURAW_WHITE.png"
+          alt="Enduraw"
+          className="h-16 mx-auto mb-14 opacity-95"
+        />
+        <h1 className="text-title text-white mb-5 max-w-xl leading-tight">
+          {t('home.tagline')}
+        </h1>
+        <p className="text-paragraph text-gray-300 max-w-sm mb-10 leading-relaxed">
+          {t('home.hero_sub')}
+        </p>
+        <div className="flex flex-wrap gap-3 justify-center">
+          <Link to="/services" className="btn-enduraw">
+            {t('home.discoverServices')}
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Link>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
+          >
+            {t('home.getStarted')}
+          </Link>
+        </div>
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+          <div className="w-px h-10 bg-gradient-to-b from-transparent to-white/20 mx-auto" />
         </div>
       </section>
 
-      {/* About Section */}
+      {/* ── PRODUCTS ── */}
       <section
         ref={(el) => { sectionRefs.current['about'] = el; }}
-        className="py-32 fancy-bg relative"
+        className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]"
       >
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="glass-card p-8 text-center animate-float">
-              <div className="icon-container bg-gradient-blue-light mx-auto mb-6">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">{t('home.scienceBased')}</h3>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                {t('home.scienceBased_p1')}
-              </p>
-              <p className="text-paragraph text-gray-300">
-                {t('home.scienceBased_p2')}
-              </p>
-            </div>
-            <div className="glass-card p-8 text-center animate-float-slow">
-              <div className="icon-container bg-gradient-to-br from-purple-500 to-pink-500 mx-auto mb-6">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">{t('home.eliteExigence')}</h3>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                {t('home.eliteExigence_p1')}
-              </p>
-              <p className="text-paragraph text-gray-300">
-                {t('home.eliteExigence_p2')}
-              </p>
-            </div>
-            <div className="glass-card p-8 text-center animate-float-fast">
-              <div className="icon-container bg-gradient-to-br from-cyan-500 to-blue-500 mx-auto mb-6">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">{t('home.communication')}</h3>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">
-                {t('home.communication_p1')}
-              </p>
-              <p className="text-paragraph text-gray-300">
-                {t('home.communication_p2')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Athletes Section */}
-      <section
-        ref={(el) => { sectionRefs.current['athletes'] = el; }}
-        className="py-32 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative"
-      >
-        <div className="absolute inset-0 opacity-10">
-          <div className="bg-orb-1"></div>
-          <div className="bg-orb-2"></div>
-        </div>
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 bg-clip-text text-transparent bg-custom-gradient tracking-wide uppercase">
-            {t('home.eliteAthletes')}
-          </h2>
-
-          {/* Slider container */}
-          <div className="relative overflow-hidden glass-card p-8">
-            {/* Slides */}
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {Array.from({ length: Math.ceil(athletes.length / 3) }).map((_, slideIndex) => (
-                <div key={slideIndex} className="w-full flex-shrink-0 px-4">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                    {athletes
-                      .slice(slideIndex * 3, (slideIndex + 1) * 3)
-                      .map((athlete, index) => (
-                        <div key={index} className="text-center group flex">
-                          <div className="glass-card p-6 hover:scale-105 transition-all duration-300 h-full flex flex-col w-full">
-                            <h3 className="text-2xl text-subtitle mb-6 text-gradient-blue-light">
-                              {athlete.name}
-                            </h3>
-
-                            <div className="mb-6 relative">
-                              <img
-                                src={athlete.image}
-                                alt={athlete.name}
-                                className="w-48 h-56 rounded-2xl object-cover object-top mx-auto shadow-2xl group-hover:shadow-[#6CDCFF]/20 transition-all duration-300"
-                                onError={(e) => {
-                                  (e.target as HTMLImageElement).src =
-                                    "/images/placeholder-athlete.jpg";
-                                }}
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl"></div>
-                            </div>
-
-                            <p className="mt-auto text-lg text-gray-200 leading-relaxed">
-                              {athlete.description}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Navigation dots */}
-            <div className="flex justify-center mt-12 space-x-3">
-              {Array.from({ length: Math.ceil(athletes.length / 3) }).map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                    index === currentSlide
-                      ? 'bg-gradient-blue-light scale-125'
-                      : 'bg-white/30 hover:bg-white/50'
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Us Section */}
-      <section
-        ref={(el) => { sectionRefs.current['aboutus'] = el; }}
-        className="py-32 fancy-bg relative"
-      >
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl text-title-h2 text-center mb-16 bg-clip-text text-transparent bg-custom-gradient tracking-wide">{t('home.aboutUs')}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Joseph Mestrallet */}
-            <div className="glass-card p-8 animate-float group">
-              <div className="text-center mb-8">
-                <img
-                  src="/images/team/joseph.png"
-                  alt="Joseph Mestrallet"
-                  className="w-32 h-32 rounded-full object-cover mx-auto mb-6 shadow-2xl group-hover:shadow-[#6CDCFF]/20 transition-all duration-300 ring-4 ring-white/20"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/placeholder-person.jpg";
-                  }}
-                />
-                <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Joseph Mestrallet</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.joseph_role')}</p>
-              </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.joseph_p1')}</p>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.joseph_p2')}</p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.joseph_p3')}</p>
-              <a
-                href="https://www.linkedin.com/in/joseph-mestrallet-770279a7/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-enduraw"
-              >
-                {t('home.linkedinProfile')}
-              </a>
-            </div>
-
-            {/* Anthony Saliou */}
-            <div className="glass-card p-8 animate-float-slow group">
-              <div className="text-center mb-8">
-                <img
-                  src="/images/team/anthony.png"
-                  alt="Anthony Saliou"
-                  className="w-32 h-32 rounded-full object-cover mx-auto mb-6 shadow-2xl group-hover:shadow-purple-500/20 transition-all duration-300 ring-4 ring-white/20"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/placeholder-person.jpg";
-                  }}
-                />
-                <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Anthony Saliou</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.anthony_role')}</p>
-              </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.anthony_p1')}</p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.anthony_p2')}</p>
-              <a
-                href="https://www.linkedin.com/in/anthony-saliou-085286158/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-enduraw"
-              >
-                {t('home.linkedinProfile')}
-              </a>
-            </div>
-
-            {/* Justine Alves Gomes */}
-            <div className="glass-card p-8 animate-float-fast group">
-              <div className="text-center mb-8">
-                <img
-                  src="/images/team/justine.png"
-                  alt="Justine Alves Gomes"
-                  className="w-32 h-32 rounded-full object-cover mx-auto mb-6 shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-300 ring-4 ring-white/20"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/placeholder-person.jpg";
-                  }}
-                />
-                <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Justine Alves Gomes</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.justine_role')}</p>
-              </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.justine_p1')}</p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.justine_p2')}</p>
-              <a
-                href="https://www.linkedin.com/in/justine-alves-gomes-71831a233/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-enduraw"
-              >
-                {t('home.linkedinProfile')}
-              </a>
-            </div>
-
-            {/* Valentin Templé */}
-            <div className="glass-card p-8 animate-float group">
-              <div className="text-center mb-8">
-                <img
-                  src="/images/team/valentin.png"
-                  alt="Valentin Templé"
-                  className="w-32 h-32 rounded-full object-cover mx-auto mb-6 shadow-2xl group-hover:shadow-cyan-500/20 transition-all duration-300 ring-4 ring-white/20"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/placeholder-person.jpg";
-                  }}
-                />
-                <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Valentin Templé</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.valentin_role')}</p>
-              </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.valentin_p1')}</p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.valentin_p2')}</p>
-              <a
-                href="https://www.linkedin.com/in/valentin-templ%C3%A9/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-enduraw"
-              >
-                {t('home.linkedinProfile')}
-              </a>
-            </div>
-
-            {/* Thibaut Hue */}
-            <div className="glass-card p-8 animate-float-slow group">
-              <div className="text-center mb-8">
-                <img
-                  src="/images/thibaut-removebg-preview.png"
-                  alt="Thibaut Hue"
-                  className="w-32 h-32 rounded-full object-cover mx-auto mb-6 shadow-2xl group-hover:shadow-[#6CDCFF]/20 transition-all duration-300 ring-4 ring-white/20"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/placeholder-person.jpg";
-                  }}
-                />
-                <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Thibaut Hue</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.thibaut_role')}</p>
-              </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.thibaut_p1')}</p>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.thibaut_p2')}</p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.thibaut_p3')}</p>
-            </div>
-
-            {/* Charline Batel */}
-            <div className="glass-card p-8 animate-float-fast group">
-              <div className="text-center mb-8">
-                <img
-                  src="/images/charline-removebg-preview.png"
-                  alt="Charline Batel"
-                  className="w-32 h-32 rounded-full object-cover mx-auto mb-6 shadow-2xl group-hover:shadow-purple-500/20 transition-all duration-300 ring-4 ring-white/20"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/placeholder-person.jpg";
-                  }}
-                />
-                <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Charline Batel</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.charline_role')}</p>
-              </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.charline_p1')}</p>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.charline_p2')}</p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.charline_p3')}</p>
-            </div>
-
-            {/* Antoine Figula */}
-            <div className="glass-card p-8 animate-float group">
-              <div className="text-center mb-8">
-                <img
-                  src="/images/antoine-removebg-preview.png"
-                  alt="Antoine Figula"
-                  className="w-32 h-32 rounded-full object-cover mx-auto mb-6 shadow-2xl group-hover:shadow-blue-500/20 transition-all duration-300 ring-4 ring-white/20"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/placeholder-person.jpg";
-                  }}
-                />
-                <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Antoine Figula</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.antoine_role')}</p>
-              </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.antoine_p1')}</p>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.antoine_p2')}</p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.antoine_p3')}</p>
-            </div>
-
-            {/* Alex Pichon */}
-            <div className="glass-card p-8 animate-float-slow group">
-              <div className="text-center mb-8">
-                <img
-                  src="/images/alex-removebg-preview.png"
-                  alt="Alex Pichon"
-                  className="w-32 h-32 rounded-full object-cover mx-auto mb-6 shadow-2xl group-hover:shadow-cyan-500/20 transition-all duration-300 ring-4 ring-white/20"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/placeholder-person.jpg";
-                  }}
-                />
-                <h3 className="text-2xl text-subtitle mb-3 text-gradient-blue-light">Alex Pichon</h3>
-                <p className="text-lg text-body-uppercase text-gray-300 mb-6">{t('home.alex_role')}</p>
-              </div>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.alex_p1')}</p>
-              <p className="text-paragraph text-gray-200 mb-4 leading-relaxed">{t('home.alex_p2')}</p>
-              <p className="text-paragraph text-gray-200 mb-8 leading-relaxed">{t('home.alex_p3')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sponsors Slider */}
-      <SponsorsSlider />
-
-      {/* Contact Section */}
-      <section
-        ref={(el) => { sectionRefs.current['contact'] = el; }}
-        className="py-32 bg-gradient-to-br from-slate-900 to-black relative overflow-hidden"
-      >
-        <div className="absolute inset-0">
-          <div className="bg-orb-1"></div>
-          <div className="bg-orb-2"></div>
-          <div className="bg-orb-3"></div>
-        </div>
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-5xl text-title-h2 mb-8 bg-clip-text text-transparent bg-custom-gradient tracking-wide animate-float">{t('home.readyToOptimize')}</h2>
-          <p className="text-xl text-paragraph text-gray-200 mb-16 max-w-2xl mx-auto leading-relaxed">
-            {t('home.readyToOptimize_p')}
+        <div className="mb-12">
+          <p className="text-body-uppercase text-[#6CDCFF] tracking-widest mb-3">
+            {t('home.products_label')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-8 justify-center">
+          <p className="text-paragraph text-gray-300 max-w-md leading-relaxed">
+            {t('home.products_intro')}
+          </p>
+        </div>
+
+        <div>
+          {products.map((p) => (
             <Link
-              to="/contact"
-              className="btn-enduraw"
+              key={p.num}
+              to={p.link}
+              className="flex items-center gap-5 sm:gap-8 py-5 border-b border-white/[0.06] hover:border-white/[0.18] group transition-all duration-150"
             >
-              <span>{t('home.getStarted')}</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-            <Link
-              to="/services"
-              className="glass-card border-white/20 hover:border-white/40 text-gray-200 hover:text-white text-body-uppercase font-semibold py-5 px-10 rounded-2xl transition-all duration-300 inline-flex items-center gap-3 text-lg"
-            >
-              <span>{t('home.exploreServices')}</span>
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span className="text-xs text-gray-500 font-mono w-5 flex-shrink-0">{p.num}</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-subtitle text-white mb-0.5">{p.name}</p>
+                <p className="text-paragraph text-gray-300 text-xs truncate">{p.desc}</p>
+              </div>
+              <span className="hidden md:inline-flex text-xs text-gray-500 border border-white/[0.08] rounded px-2 py-0.5 group-hover:border-white/[0.18] group-hover:text-gray-300 transition-all duration-150 flex-shrink-0">
+                {p.tag}
+              </span>
+              <svg className="w-3.5 h-3.5 text-white/20 group-hover:text-white/60 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
-          </div>
+          ))}
         </div>
       </section>
+
+      {/* ── ECOSYSTEM ── */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-16 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-300 tracking-widest mb-10">
+          {t('home.ecosystem_label')}
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
+          {ecosystem.map((item, i) => (
+            <div key={i} className="bg-[#020617] p-5 md:p-6 relative hover:bg-white/[0.015] transition-colors duration-150">
+              <div className="mb-3">{item.icon}</div>
+              <p className="text-subtitle text-white mb-1.5">{item.step}</p>
+              <p className="text-paragraph text-gray-300 text-xs leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── ATHLETES ── */}
+      <section
+        ref={(el) => { sectionRefs.current['athletes'] = el; }}
+        className="max-w-5xl mx-auto px-6 sm:px-8 py-16 border-t border-white/[0.06]"
+      >
+        <p className="text-body-uppercase text-gray-300 tracking-widest mb-10">
+          {t('home.eliteAthletes')}
+        </p>
+
+        <div className="relative overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentAthleteSlide * 100}%)` }}
+          >
+            {Array.from({ length: Math.ceil(athletes.length / 3) }).map((_, slideIndex) => (
+              <div key={slideIndex} className="w-full flex-shrink-0">
+                <div className="grid grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
+                  {athletes.slice(slideIndex * 3, (slideIndex + 1) * 3).map((a, i) => (
+                    <div key={i} className="bg-[#020617] hover:bg-white/[0.02] transition-colors duration-150">
+                      <div className="w-full h-44 bg-[#020617] flex items-end justify-center overflow-hidden">
+                        <img
+                          src={a.img}
+                          alt={a.name}
+                          className="h-full w-auto object-contain opacity-90"
+                          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                        />
+                      </div>
+                      <div className="p-4">
+                        <p className="text-subtitle text-white mb-0.5">{a.name}</p>
+                        <p className="text-paragraph text-gray-300 text-xs leading-relaxed">{a.title}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex justify-center mt-6 space-x-2">
+          {Array.from({ length: Math.ceil(athletes.length / 3) }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentAthleteSlide(index)}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                index === currentAthleteSlide ? 'bg-[#6CDCFF]' : 'bg-gray-500'
+              }`}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* ── TEAM ── */}
+      <section
+        ref={(el) => { sectionRefs.current['aboutus'] = el; }}
+        className="max-w-5xl mx-auto px-6 sm:px-8 py-16 border-t border-white/[0.06]"
+      >
+        <p className="text-body-uppercase text-gray-300 tracking-widest mb-10">
+          {t('home.aboutUs')}
+        </p>
+
+        <div className="relative overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentTeamSlide * 100}%)` }}
+          >
+            {Array.from({ length: Math.ceil(team.length / 4) }).map((_, slideIndex) => (
+              <div key={slideIndex} className="w-full flex-shrink-0">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
+                  {team.slice(slideIndex * 4, (slideIndex + 1) * 4).map((member) => (
+                    <div key={member.name} className="bg-[#020617] hover:bg-white/[0.015] transition-colors">
+                      <div className="w-full h-44 bg-[#020617] flex items-end justify-center overflow-hidden">
+                        <img
+                          src={member.img}
+                          alt={member.name}
+                          className="h-full w-auto object-contain opacity-90"
+                          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                        />
+                      </div>
+                      <div className="p-4">
+                        <p className="text-subtitle text-white mb-0.5">{member.name}</p>
+                        <p className="text-body-uppercase text-gray-400 mb-3">{member.role}</p>
+                        <p className="text-paragraph text-gray-300 text-xs leading-relaxed mb-3">{member.bio}</p>
+                        {member.linkedin && (
+                          <a
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-body-uppercase text-[#6CDCFF] hover:text-white transition-colors"
+                          >
+                            LinkedIn
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex justify-center mt-6 space-x-2">
+          {Array.from({ length: Math.ceil(team.length / 4) }).map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentTeamSlide(index)}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                index === currentTeamSlide ? 'bg-[#6CDCFF]' : 'bg-gray-500'
+              }`}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* ── SPONSORS ── */}
+      <div className="border-t border-white/[0.06]">
+        <SponsorsSlider />
+      </div>
 
     </div>
   );

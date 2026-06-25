@@ -1,31 +1,12 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import '../../styles/fancy.css';
 
 const EndurawDashboardPage: React.FC = () => {
   const { t } = useTranslation();
-  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
   const [currentArchitectSlide, setCurrentArchitectSlide] = useState(0);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setAnimatedElements(prev => new Set(prev).add(entry.target.id));
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elementsToObserve = document.querySelectorAll('[id^="animate-"]');
-    elementsToObserve.forEach(el => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Architect data
   const architects = [
     {
       id: 1,
@@ -65,7 +46,6 @@ const EndurawDashboardPage: React.FC = () => {
     }
   ];
 
-  // Auto-slide architects (2x2 grid)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentArchitectSlide(
@@ -76,308 +56,297 @@ const EndurawDashboardPage: React.FC = () => {
   }, [architects.length]);
 
   return (
-    <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
-      {/* Modern animated background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
-      </div>
+    <div className="text-white min-h-screen pt-16">
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div 
-          id="animate-title"
-          className={`text-center mb-16 transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-        >
-          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
-            ENDURAW DASHBOARD
-          </h1>
+      {/* Hero Section */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-12">
+        <h1 className="text-title text-white mb-5 max-w-xl leading-tight">
+          ENDURAW DASHBOARD
+        </h1>
+        <p className="text-paragraph text-gray-300 max-w-xl mb-10">
+          {t('servicePages.endurawDashboard.stravaIntegration_sub')}
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href="https://enduraw-report-strava.onrender.com/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-enduraw"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).fbq) {
+                (window as any).fbq('track', 'Lead');
+              }
+            }}
+          >
+            <span>{t('servicePages.endurawDashboard.activateReport')}</span>
+            <svg
+              className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">STATS</p>
+        <h2 className="text-title-h2 text-white mb-10">
+          {t('servicePages.endurawDashboard.inFigures')}
+        </h2>
+        <div className="flex flex-wrap gap-12 sm:gap-20">
+          <div>
+            <p style={{ fontFamily: "'Inter Tight', sans-serif", fontStyle: 'italic', fontSize: '2rem', fontWeight: 700 }} className="text-white mb-1 leading-none">
+              12,010
+            </p>
+            <p className="text-body-uppercase text-gray-500 mt-1.5">
+              {t('servicePages.endurawDashboard.users_p')}
+            </p>
+          </div>
+          <div>
+            <p style={{ fontFamily: "'Inter Tight', sans-serif", fontStyle: 'italic', fontSize: '2rem', fontWeight: 700 }} className="text-white mb-1 leading-none">
+              1,234,090
+            </p>
+            <p className="text-body-uppercase text-gray-500 mt-1.5">
+              {t('servicePages.endurawDashboard.activities_p')}
+            </p>
+          </div>
+          <div>
+            <p style={{ fontFamily: "'Inter Tight', sans-serif", fontStyle: 'italic', fontSize: '2rem', fontWeight: 700 }} className="text-white mb-1 leading-none">
+              10.882M km
+            </p>
+            <p className="text-body-uppercase text-gray-500 mt-1.5">
+              {t('servicePages.endurawDashboard.distance_p')}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">ABOUT</p>
+        <h2 className="text-title-h2 text-white mb-4">
+          {t('servicePages.endurawDashboard.stravaIntegration_title')}
+        </h2>
+        <div className="space-y-5 text-gray-300 mb-10">
+          <p className="text-paragraph italic">{t('servicePages.endurawDashboard.quote')}</p>
+          <p className="text-paragraph">{t('servicePages.endurawDashboard.p1')}</p>
+          <p className="text-paragraph">{t('servicePages.endurawDashboard.p2')}</p>
+          <p className="text-paragraph">{t('servicePages.endurawDashboard.p3')}</p>
+          <p className="text-paragraph">{t('servicePages.endurawDashboard.p4')}</p>
         </div>
 
-        <div className="space-y-8">
-          {/* 1. Strava Integration Section */}
-          <section className="relative backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-10 shadow-2xl hover:bg-white/10 transition-all duration-500 group">
-            {/* Decorative corner elements */}
-            <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-cyan-400/20 to-transparent rounded-tl-3xl" />
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-blue-400/20 to-transparent rounded-br-3xl" />
+        <div>
+          <div className="flex items-start gap-5 py-5 border-b border-white/[0.06]">
+            <div className="icon-container bg-[#2054A8] flex-shrink-0 mt-0.5">
+              <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <p className="text-subtitle text-white mb-1">{t('servicePages.endurawDashboard.heat')}</p>
+              <p className="text-paragraph text-gray-400">{t('servicePages.endurawDashboard.heat_desc')}</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-5 py-5 border-b border-white/[0.06]">
+            <div className="icon-container bg-[#2054A8] flex-shrink-0 mt-0.5">
+              <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <p className="text-subtitle text-white mb-1">{t('servicePages.endurawDashboard.wind')}</p>
+              <p className="text-paragraph text-gray-400">{t('servicePages.endurawDashboard.wind_desc')}</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-5 py-5 border-b border-white/[0.06]">
+            <div className="icon-container bg-[#2054A8] flex-shrink-0 mt-0.5">
+              <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <p className="text-subtitle text-white mb-1">{t('servicePages.endurawDashboard.altitude')}</p>
+              <p className="text-paragraph text-gray-400">{t('servicePages.endurawDashboard.altitude_desc')}</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-5 py-5 border-b border-white/[0.06] last:border-0">
+            <div className="icon-container bg-[#2054A8] flex-shrink-0 mt-0.5">
+              <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <p className="text-subtitle text-white mb-1">{t('servicePages.endurawDashboard.elevationGain')}</p>
+              <p className="text-paragraph text-gray-400">{t('servicePages.endurawDashboard.elevationGain_desc')}</p>
+            </div>
+          </div>
+        </div>
 
-            <div className="relative z-10">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center shadow-lg">
-                  <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.599h4.172L10.463 0l-7 13.828h4.917" />
-                  </svg>
-                </div>
-                <div>
-                  <h2 className="text-3xl md:text-4xl font-bold mb-2 bg-clip-text text-transparent bg-custom-gradient uppercase">
-                    {t('servicePages.endurawDashboard.stravaIntegration_title')}
-                  </h2>
-                  <p className="text-xl text-gray-300 tracking-wide">
-                    {t('servicePages.endurawDashboard.stravaIntegration_sub')}
-                  </p>
-                </div>
-              </div>
+        <p className="text-paragraph text-gray-300 mt-8 mb-10">{t('servicePages.endurawDashboard.p5')}</p>
 
-              {/* Call to Action */}
-              <div className="text-center mb-16">
-                <a
-                  href="https://enduraw-report-strava.onrender.com/dashboard"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-enduraw"
-                  onClick={() => {
-                    if (typeof window !== 'undefined' && (window as any).fbq) {
-                      (window as any).fbq('track', 'Lead');
-                    }
-                  }}
-                >
-                  <span>{t('servicePages.endurawDashboard.activateReport')}</span>
-                  <svg
-                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </a>
-              </div>
+        <a
+          href="https://medium.com/@josephmestrallet/enduraw-report-api-a-powerful-tool-to-enhance-your-activity-interpretation-with-external-7273edbf9653"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
+        >
+          {t('servicePages.endurawDashboard.readMoreTech')}
+        </a>
+      </section>
 
-              {/* Statistics */}
-              <div className="mb-16">
-                <h3 className="text-xl font-bold text-gray-100 mb-12 text-center uppercase">
-                  {t('servicePages.endurawDashboard.inFigures')}
-                </h3>
-                <div className="grid md:grid-cols-3 gap-8">
-                  <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2 animate-float">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                      <span className="text-2xl">🌍</span>
-                    </div>
-                    <div className="text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6 tracking-tight">
-                      7,280
-                    </div>
-                    <p className="text-paragraph text-gray-300 leading-relaxed">
-                      {t('servicePages.endurawDashboard.users_p')}
-                    </p>
-                  </div>
+      {/* Releases Section */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">CHANGELOG</p>
+        <h2 className="text-title-h2 text-white mb-10">
+          {t('servicePages.endurawDashboard.releases')}
+        </h2>
+        <div>
+          {[
+            'release_1',
+            'release_2',
+            'release_3',
+            'release_4',
+            'release_8',
+            'release_9',
+            'release_5',
+            'release_6',
+            'release_7',
+          ].map((key, i, arr) => (
+            <div
+              key={key}
+              className={`flex items-start gap-4 py-4 ${i < arr.length - 1 ? 'border-b border-white/[0.06]' : ''}`}
+            >
+              <svg className="w-2 h-2 text-[#6CDCFF] mt-1.5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" /></svg>
+              <p className="text-paragraph text-gray-300">
+                {t(`servicePages.endurawDashboard.${key}`)}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
 
-                  <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2 animate-float-slow">
-                    <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                      <span className="text-2xl">👌</span>
-                    </div>
-                    <div className="text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6 tracking-tight">
-                      362,911
-                    </div>
-                    <p className="text-paragraph text-gray-300 leading-relaxed">
-                      {t('servicePages.endurawDashboard.activities_p')}
-                    </p>
-                  </div>
+      {/* Architects Section */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">TEAM</p>
+        <h2 className="text-title-h2 text-white mb-10">
+          {t('servicePages.endurawDashboard.architects')}
+        </h2>
 
-                  <div className="group text-center p-8 bg-gradient-to-br from-white/5 to-white/10 rounded-3xl border border-white/10 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-2 animate-float-fast">
-                    <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                      <span className="text-2xl">🌀</span>
-                    </div>
-                    <div className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-6 tracking-tight">
-                      3.2M km
-                    </div>
-                    <p className="text-paragraph text-gray-300 leading-relaxed">
-                      {t('servicePages.endurawDashboard.distance_p')}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Description Text */}
-              <div className="space-y-6 text-gray-200 mb-8">
-                <p className="text-paragraph italic">{t('servicePages.endurawDashboard.quote')}</p>
-                <p className="text-paragraph">{t('servicePages.endurawDashboard.p1')}</p>
-                <p className="text-paragraph">{t('servicePages.endurawDashboard.p2')}</p>
-                <p className="text-paragraph">{t('servicePages.endurawDashboard.p3')}</p>
-                <p className="text-paragraph">{t('servicePages.endurawDashboard.p4')}</p>
-                <ul className="space-y-2 ml-6">
-                  <li>• {t('servicePages.endurawDashboard.heat')}</li>
-                  <li>• {t('servicePages.endurawDashboard.wind')}</li>
-                  <li>• {t('servicePages.endurawDashboard.altitude')}</li>
-                  <li>• {t('servicePages.endurawDashboard.elevationGain')}</li>
-                </ul>
-                <p className="text-paragraph">{t('servicePages.endurawDashboard.p5')}</p>
-              </div>
-
-              {/* Technology Link */}
-              <div className="text-center mb-12">
-                <a
-                  href="https://medium.com/@josephmestrallet/enduraw-report-api-a-powerful-tool-to-enhance-your-activity-interpretation-with-external-7273edbf9653"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-enduraw"
-                >
-                  {t('servicePages.endurawDashboard.readMoreTech')}
-                </a>
-              </div>
-
-              {/* Releases */}
-              <div className="bg-white/10 p-6 rounded-lg border border-white/20 animate-float">
-                <h3 className="text-xl font-bold text-gray-100 mb-6 uppercase">
-                  {t('servicePages.endurawDashboard.releases')}
-                </h3>
-                <div className="space-y-3 text-gray-200">
-                  <p>• 07/07/2023 : First idea of the project</p>
-                  <p>• 16/11/2023 : Official launch</p>
-                  <p>• 15/05/2024 : Temperature and wind formula fixs.</p>
-                  <p>
-                    • 05/06/2024 : Launch of V2 : custom formula with your personalised
-                    data. Adding cycling and trail running
-                  </p>
-                </div>
-              </div>
-
-              {/* The Architects Section */}
-              <div className="mt-12">
-                <h3 className="text-xl font-bold text-gray-100 mb-8 text-center uppercase">
-                  {t('servicePages.endurawDashboard.architects')}
-                </h3>
-
-                <div className="relative overflow-hidden">
-                  <div
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentArchitectSlide * 100}%)` }}
-                  >
-                    {Array.from({ length: Math.ceil(architects.length / 2) }).map(
-                      (_, slideIndex) => (
-                        <div key={slideIndex} className="w-full flex-shrink-0">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {architects
-                              .slice(slideIndex * 2, (slideIndex + 1) * 2)
-                              .map((architect) => (
-                                <div
-                                  key={architect.id}
-                                  className="bg-white/5 backdrop-blur-sm rounded-lg p-6 border border-white/10 hover:border-cyan-400/50 transition-all duration-300"
-                                >
-                                  <div className="text-center">
-                                    {/* Profile image */}
-                                    <img
-                                      src={architect.image}
-                                      alt={architect.name}
-                                      className="w-16 h-16 rounded-full object-cover mx-auto mb-4"
-                                    />
-
-                                    {/* Name */}
-                                    <h4 className="text-xl font-bold text-white mb-2">
-                                      {architect.name}
-                                    </h4>
-
-                                    {/* Country */}
-                                    <p className="text-gray-300 mb-2">
-                                      {architect.country}
-                                    </p>
-
-                                    {/* Education */}
-                                    <p className="text-sm text-cyan-400 font-medium mb-2">
-                                      {architect.education}
-                                    </p>
-
-                                    {/* Position */}
-                                    <p className="text-white font-semibold mb-1">
-                                      {architect.position}
-                                    </p>
-
-                                    {/* Company */}
-                                    <p className="text-cyan-400 font-medium">
-                                      {architect.company}
-                                    </p>
-                                  </div>
-                                </div>
-                              ))}
+        <div className="relative overflow-hidden">
+          <div
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentArchitectSlide * 100}%)` }}
+          >
+            {Array.from({ length: Math.ceil(architects.length / 2) }).map(
+              (_, slideIndex) => (
+                <div key={slideIndex} className="w-full flex-shrink-0">
+                  <div className="grid grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
+                    {architects
+                      .slice(slideIndex * 2, (slideIndex + 1) * 2)
+                      .map((architect) => (
+                        <div
+                          key={architect.id}
+                          className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors"
+                        >
+                          <div className="flex flex-col items-center text-center">
+                            <img
+                              src={architect.image}
+                              alt={architect.name}
+                              className="w-16 h-16 rounded-full object-cover mb-4"
+                            />
+                            <p className="text-subtitle text-white mb-1">
+                              {architect.name}
+                            </p>
+                            <p className="text-paragraph text-gray-400 mb-1">
+                              {architect.country}
+                            </p>
+                            <p className="text-xs text-[#6CDCFF] font-medium mb-1">
+                              {architect.education}
+                            </p>
+                            <p className="text-paragraph text-white font-semibold mb-1">
+                              {architect.position}
+                            </p>
+                            <p className="text-xs text-[#6CDCFF] font-medium">
+                              {architect.company}
+                            </p>
                           </div>
                         </div>
-                      )
-                    )}
+                      ))}
                   </div>
                 </div>
-
-                {/* Navigation dots */}
-                <div className="flex justify-center mt-6 space-x-2">
-                  {Array.from({ length: Math.ceil(architects.length / 2) }).map(
-                    (_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentArchitectSlide(index)}
-                        className={`w-2 h-2 rounded-full transition-colors ${
-                          index === currentArchitectSlide
-                            ? "bg-cyan-400"
-                            : "bg-gray-500"
-                        }`}
-                      />
-                    )
-                  )}
-                </div>
-              </div>
-            </div>
-          </section>
+              )
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* Custom animations and styles */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-        
-        * {
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-        }
-        
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-10px) rotate(1deg); }
-        }
-        
-        .group:hover .animate-pulse {
-          animation: pulse 1s infinite;
-        }
-        
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-        
-        .backdrop-blur-xl {
-          backdrop-filter: blur(20px);
-        }
-        
-        .backdrop-blur-md {
-          backdrop-filter: blur(12px);
-        }
-        
-        .text-shadow {
-          text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .hover-glow:hover {
-          box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
-        }
-      `}</style>
+        <div className="flex justify-center mt-6 space-x-2">
+          {Array.from({ length: Math.ceil(architects.length / 2) }).map(
+            (_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentArchitectSlide(index)}
+                className={`w-2 h-2 rounded-full transition-colors ${
+                  index === currentArchitectSlide
+                    ? 'bg-[#6CDCFF]'
+                    : 'bg-gray-500'
+                }`}
+              />
+            )
+          )}
+        </div>
+      </section>
 
-      {/* Contact Section */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="glass-card p-8 rounded-2xl text-center">
-          <h2 className="text-3xl font-bold mb-4 text-gradient-blue-light">{t('servicePages.endurawDashboard.interested_title')}</h2>
-          <p className="text-gray-300 mb-6">{t('servicePages.endurawDashboard.interested_p')}</p>
-          <Link
-            to="/contact"
-            className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-          >
+      {/* CTA Section */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">CONTACT</p>
+        <h2 className="text-title text-white mb-4 max-w-md">
+          {t('servicePages.endurawDashboard.interested_title')}
+        </h2>
+        <p className="text-paragraph text-gray-400 mb-8">
+          {t('servicePages.endurawDashboard.interested_p')}
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link to="/contact" className="btn-enduraw">
             {t('servicePages.endurawDashboard.contactUs')}
+            <svg
+              className="w-5 h-5 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
           </Link>
+          <a
+            href="https://enduraw-report-strava.onrender.com/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).fbq) {
+                (window as any).fbq('track', 'Lead');
+              }
+            }}
+          >
+            {t('servicePages.endurawDashboard.activateReport')}
+          </a>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 };

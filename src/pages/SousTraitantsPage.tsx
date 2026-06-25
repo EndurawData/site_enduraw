@@ -1,31 +1,23 @@
-import React from 'react';
+﻿import React from 'react';
 import '../styles/fancy.css';
 
 const SousTraitantsPage: React.FC = () => {
   return (
-    <div className="bg-dark-bg text-white min-h-screen pt-16 relative overflow-hidden">
-      {/* Modern animated background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
-      </div>
-      
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        {/* Header with gradient */}
+    <div className="text-white min-h-screen pt-16 relative overflow-hidden">
+
+      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 py-20">
         <div className="mb-12 text-center">
-          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">
+          <h1 className="text-title text-white mb-8">
             SOUS-TRAITANTS & TRAITEMENTS DES DONNÉES
           </h1>
-          <p className="text-white/60 text-sm mt-4 text-body-uppercase">
+          <p className="text-body-uppercase text-white/50 mt-4">
             Dernière mise à jour : 27 octobre 2025
           </p>
         </div>
 
-        {/* Content */}
         <div className="space-y-10 text-paragraph">
           <section>
-            <h2 className="text-3xl text-subtitle mb-4 text-gradient-blue-light">
+            <h2 className="text-title-h2 text-[#6CDCFF] mb-4">
               1. Objet de cette page
             </h2>
             <p className="text-white/80 leading-relaxed mb-4">
@@ -45,7 +37,7 @@ const SousTraitantsPage: React.FC = () => {
           </section>
 
           <section>
-            <h2 className="text-3xl text-subtitle mb-4 text-gradient-blue-light">
+            <h2 className="text-title-h2 text-[#6CDCFF] mb-4">
               2. Principes généraux
             </h2>
             <p className="text-white/80 leading-relaxed mb-4">
@@ -63,16 +55,15 @@ const SousTraitantsPage: React.FC = () => {
           </section>
 
           <section>
-            <h2 className="text-3xl text-subtitle mb-4 text-gradient-blue-light">
+            <h2 className="text-title-h2 text-[#6CDCFF] mb-6">
               3. Liste des sous-traitants actuels
             </h2>
 
-            {/* Hébergement applicatif */}
-            <h3 className="text-2xl text-subtitle mb-4 text-cyan-400 mt-8">
+            <h3 className="text-subtitle text-[#6CDCFF] mb-4 mt-8">
               Hébergement applicatif
             </h3>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 mb-6">
-              <h4 className="text-xl font-semibold text-white mb-3">Render (Render.com)</h4>
+            <div className="glass-card p-6 mb-6">
+              <h4 className="text-subtitle text-white mb-3">Render (Render.com)</h4>
               <div className="space-y-2 text-white/80">
                 <p><strong>Service :</strong> hébergement de l'application, exécution des services backend</p>
                 <p><strong>Localisation :</strong> États-Unis</p>
@@ -80,12 +71,11 @@ const SousTraitantsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Hébergement du site web et DNS */}
-            <h3 className="text-2xl text-subtitle mb-4 text-cyan-400 mt-8">
+            <h3 className="text-subtitle text-[#6CDCFF] mb-4 mt-8">
               Hébergement du site web et DNS
             </h3>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 mb-6">
-              <h4 className="text-xl font-semibold text-white mb-3">Porkbun LLC</h4>
+            <div className="glass-card p-6 mb-6">
+              <h4 className="text-subtitle text-white mb-3">Porkbun LLC</h4>
               <div className="space-y-2 text-white/80">
                 <p><strong>Service :</strong> hébergement du site vitrine, gestion DNS et domaine</p>
                 <p><strong>Localisation :</strong> États-Unis</p>
@@ -93,12 +83,11 @@ const SousTraitantsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Base de données */}
-            <h3 className="text-2xl text-subtitle mb-4 text-cyan-400 mt-8">
+            <h3 className="text-subtitle text-[#6CDCFF] mb-4 mt-8">
               Base de données
             </h3>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 mb-6">
-              <h4 className="text-xl font-semibold text-white mb-3">MongoDB Atlas (MongoDB Inc.)</h4>
+            <div className="glass-card p-6 mb-6">
+              <h4 className="text-subtitle text-white mb-3">MongoDB Atlas (MongoDB Inc.)</h4>
               <div className="space-y-2 text-white/80">
                 <p><strong>Service :</strong> base de données cloud (MongoDB Atlas)</p>
                 <p><strong>Localisation :</strong> États-Unis</p>
@@ -106,12 +95,11 @@ const SousTraitantsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Paiements */}
-            <h3 className="text-2xl text-subtitle mb-4 text-cyan-400 mt-8">
+            <h3 className="text-subtitle text-[#6CDCFF] mb-4 mt-8">
               Paiements
             </h3>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 mb-6">
-              <h4 className="text-xl font-semibold text-white mb-3">Shopify / Shopify Payments</h4>
+            <div className="glass-card p-6 mb-6">
+              <h4 className="text-subtitle text-white mb-3">Shopify / Shopify Payments</h4>
               <div className="space-y-2 text-white/80">
                 <p><strong>Service :</strong> traitement des paiements et gestion des commandes</p>
                 <p><strong>Localisation :</strong> Canada / États-Unis</p>
@@ -119,12 +107,11 @@ const SousTraitantsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Communication & mailing automatique */}
-            <h3 className="text-2xl text-subtitle mb-4 text-cyan-400 mt-8">
+            <h3 className="text-subtitle text-[#6CDCFF] mb-4 mt-8">
               Communication & mailing automatique
             </h3>
-            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 mb-6">
-              <h4 className="text-xl font-semibold text-white mb-3">Mailjet (Sinch France)</h4>
+            <div className="glass-card p-6 mb-6">
+              <h4 className="text-subtitle text-white mb-3">Mailjet (Sinch France)</h4>
               <div className="space-y-2 text-white/80">
                 <p><strong>Service :</strong> envoi d'emails transactionnels et marketing</p>
                 <p><strong>Localisation :</strong> France / UE</p>
@@ -134,7 +121,7 @@ const SousTraitantsPage: React.FC = () => {
           </section>
 
           <section>
-            <h2 className="text-3xl text-subtitle mb-4 text-gradient-blue-light">
+            <h2 className="text-title-h2 text-[#6CDCFF] mb-4">
               4. Sécurité et durée de conservation
             </h2>
             <p className="text-white/80 leading-relaxed mb-2">
@@ -150,7 +137,7 @@ const SousTraitantsPage: React.FC = () => {
           </section>
 
           <section>
-            <h2 className="text-3xl text-subtitle mb-4 text-gradient-blue-light">
+            <h2 className="text-title-h2 text-[#6CDCFF] mb-4">
               5. Évolutions de cette liste
             </h2>
             <p className="text-white/80 leading-relaxed mb-4">
@@ -162,20 +149,20 @@ const SousTraitantsPage: React.FC = () => {
           </section>
 
           <section>
-            <h2 className="text-3xl text-subtitle mb-4 text-gradient-blue-light">
+            <h2 className="text-title-h2 text-[#6CDCFF] mb-4">
               6. Contact
             </h2>
             <p className="text-white/80 leading-relaxed mb-4">
               Pour toute question relative à nos sous-traitants :
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
-              📧 <a href="mailto:communication@enduraw.co" className="text-gradient-blue-light hover:text-white transition-colors duration-300 underline">communication@enduraw.co</a>
+              <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
             </p>
             <p className="text-white/80 leading-relaxed mb-2">
-              📍 Enduraw — 330 Route du Plagnolet, 74400 Chamonix-Mont-Blanc
+              Enduraw — 330 Route du Plagnolet, 74400 Chamonix-Mont-Blanc
             </p>
             <p className="text-white/80 leading-relaxed">
-              👤 Délégué à la protection des données : <strong>Valentin Templé</strong>
+              Délégué à la protection des données : <strong>Valentin Templé</strong>
             </p>
           </section>
         </div>

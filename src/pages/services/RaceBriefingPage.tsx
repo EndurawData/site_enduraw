@@ -1,167 +1,203 @@
-import React, { useState, useEffect } from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PersonCard from '../../components/PersonCard';
+import '../../styles/fancy.css';
 
 const RaceBriefingPage: React.FC = () => {
   const { t } = useTranslation();
-  const [animatedElements, setAnimatedElements] = useState<Set<string>>(new Set());
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setAnimatedElements(prev => new Set(prev).add(entry.target.id));
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const elementsToObserve = document.querySelectorAll('[id^="animate-"]');
-    elementsToObserve.forEach(el => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
   return (
-    <div className="pt-16 pb-16 bg-dark-bg text-white font-sans relative overflow-hidden">
-      {/* Modern animated background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-gradient-to-r from-green-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse delay-2000"></div>
-      </div>
+    <div className="text-white min-h-screen pt-16">
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="mb-4">
-          <Link to="/services" className="inline-flex items-center text-accent hover:text-accent-light font-semibold">{t('servicePages.backToServices')}</Link>
+      {/* Hero */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-12">
+        <div className="mb-5">
+          <Link to="/services" className="inline-flex items-center gap-1 text-body-uppercase text-[#6CDCFF] tracking-widest hover:text-white transition-colors">
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            {t('servicePages.backToServices')}
+          </Link>
         </div>
-        <header
-          id="animate-title"
-          className={`text-center mb-10 font-sans transform transition-all duration-1000 ${animatedElements.has('animate-title') ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-        >
-          <h1 className="text-title bg-clip-text text-transparent bg-custom-gradient mb-8">RACE BRIEFING</h1>
-          <p className="text-xl text-gray-300">{t('servicePages.raceBriefing.subtitle')}</p>
-          <p className="text-lg text-gray-400">{t('servicePages.raceBriefing.subtitle2')}</p>
-        </header>
+        <h1 className="text-title text-white mb-5 max-w-xl leading-tight">RACE BRIEFING</h1>
+        <p className="text-paragraph text-gray-300 max-w-md mb-3">{t('servicePages.raceBriefing.subtitle')}</p>
+        <p className="text-paragraph text-gray-300 max-w-md">{t('servicePages.raceBriefing.subtitle2')}</p>
+      </section>
 
-        <section className="mb-8 space-y-4 text-gray-200">
+      {/* Description */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">OVERVIEW</p>
+        <div className="space-y-4 text-paragraph text-gray-300 max-w-2xl">
           <p>{t('servicePages.raceBriefing.p1')}</p>
           <p>{t('servicePages.raceBriefing.p2')}</p>
           <p>{t('servicePages.raceBriefing.p3')}</p>
           <p>{t('servicePages.raceBriefing.p4')}</p>
-        </section>
+        </div>
+      </section>
 
-        <section className="mb-8 grid md:grid-cols-2 gap-6">
-          <div className="bg-dark-secondary rounded-lg p-6">
-            <h3 className="text-2xl font-semibold mb-2">{t('servicePages.raceBriefing.roadRace_title')}</h3>
-            <p className="text-gray-300 mb-2">{t('servicePages.raceBriefing.takeIntoAccount')}</p>
-            <ul className="list-disc list-inside text-gray-200 space-y-1">
-              <li>{t('servicePages.raceBriefing.level')}</li>
-              <li>{t('servicePages.raceBriefing.courseElevation')}</li>
-              <li>{t('servicePages.raceBriefing.wind')}</li>
-              <li>{t('servicePages.raceBriefing.temperature')}</li>
-              <li>{t('servicePages.raceBriefing.raceStrategy')}</li>
+      {/* Road Race & Trail Race */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">RACE TYPES</p>
+        <div className="grid md:grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
+
+          {/* Road Race */}
+          <div className="bg-[#020617] p-6 hover:bg-white/[0.015] transition-colors">
+            <div className="mb-4">
+              <div className="icon-container bg-[#2054A8] inline-flex">
+                <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                </svg>
+              </div>
+            </div>
+            <p className="text-subtitle text-white mb-3">{t('servicePages.raceBriefing.roadRace_title')}</p>
+            <p className="text-paragraph text-gray-400 mb-3">{t('servicePages.raceBriefing.takeIntoAccount')}</p>
+            <ul className="space-y-2 text-paragraph text-gray-400 mb-4">
+              {[
+                t('servicePages.raceBriefing.level'),
+                t('servicePages.raceBriefing.courseElevation'),
+                t('servicePages.raceBriefing.wind'),
+                t('servicePages.raceBriefing.temperature'),
+                t('servicePages.raceBriefing.raceStrategy'),
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#6CDCFF] rounded-full flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
             </ul>
-            <p className="mt-3 text-gray-300">{t('servicePages.raceBriefing.toCalculate')}</p>
-            <ul className="list-disc list-inside text-gray-200 space-y-1">
-              <li>{t('servicePages.raceBriefing.finalTime')}</li>
-              <li>{t('servicePages.raceBriefing.splitPace')}</li>
-              <li>{t('servicePages.raceBriefing.nutritionPlan')}</li>
+            <p className="text-paragraph text-gray-400 mb-3">{t('servicePages.raceBriefing.toCalculate')}</p>
+            <ul className="space-y-2 text-paragraph text-gray-400">
+              {[
+                t('servicePages.raceBriefing.finalTime'),
+                t('servicePages.raceBriefing.splitPace'),
+                t('servicePages.raceBriefing.nutritionPlan'),
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#6CDCFF] rounded-full flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
             </ul>
           </div>
-          <div className="bg-dark-secondary rounded-lg p-6">
-            <h3 className="text-2xl font-semibold mb-2">{t('servicePages.raceBriefing.trailRace_title')}</h3>
-            <p className="text-gray-300 mb-2">{t('servicePages.raceBriefing.takeIntoAccount')}</p>
-            <ul className="list-disc list-inside text-gray-200 space-y-1">
-              <li>{t('servicePages.raceBriefing.utmbIndex')}</li>
-              <li>{t('servicePages.raceBriefing.courseElevation')}</li>
-              <li>{t('servicePages.raceBriefing.wind')}</li>
-              <li>{t('servicePages.raceBriefing.temperature')}</li>
-              <li>{t('servicePages.raceBriefing.technicality')}</li>
-              <li>{t('servicePages.raceBriefing.speedDrift')}</li>
-              <li>{t('servicePages.raceBriefing.raceStrategy')}</li>
+
+          {/* Trail Race */}
+          <div className="bg-[#020617] p-6 hover:bg-white/[0.015] transition-colors">
+            <div className="mb-4">
+              <div className="icon-container bg-[#2054A8] inline-flex">
+                <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l6-4 6 4 6-4v14l-6 4-6-4-6 4V7z" />
+                </svg>
+              </div>
+            </div>
+            <p className="text-subtitle text-white mb-3">{t('servicePages.raceBriefing.trailRace_title')}</p>
+            <p className="text-paragraph text-gray-400 mb-3">{t('servicePages.raceBriefing.takeIntoAccount')}</p>
+            <ul className="space-y-2 text-paragraph text-gray-400 mb-4">
+              {[
+                t('servicePages.raceBriefing.utmbIndex'),
+                t('servicePages.raceBriefing.courseElevation'),
+                t('servicePages.raceBriefing.wind'),
+                t('servicePages.raceBriefing.temperature'),
+                t('servicePages.raceBriefing.technicality'),
+                t('servicePages.raceBriefing.speedDrift'),
+                t('servicePages.raceBriefing.raceStrategy'),
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#6CDCFF] rounded-full flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
             </ul>
-            <p className="mt-3 text-gray-300">{t('servicePages.raceBriefing.toCalculate')}</p>
-            <ul className="list-disc list-inside text-gray-200 space-y-1">
-              <li>{t('servicePages.raceBriefing.finalTime')}</li>
-              <li>{t('servicePages.raceBriefing.splitPace')}</li>
-              <li>{t('servicePages.raceBriefing.nutritionPlan')}</li>
-              <li>{t('servicePages.raceBriefing.whereToWalk')}</li>
+            <p className="text-paragraph text-gray-400 mb-3">{t('servicePages.raceBriefing.toCalculate')}</p>
+            <ul className="space-y-2 text-paragraph text-gray-400">
+              {[
+                t('servicePages.raceBriefing.finalTime'),
+                t('servicePages.raceBriefing.splitPace'),
+                t('servicePages.raceBriefing.nutritionPlan'),
+                t('servicePages.raceBriefing.whereToWalk'),
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#6CDCFF] rounded-full flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
             </ul>
           </div>
-        </section>
+        </div>
 
-        <section className="mb-8 text-center">
-          <button className="inline-block bg-accent hover:bg-accent-light text-white px-8 py-3 rounded-lg font-semibold">{t('servicePages.raceBriefing.discoverProduct')}</button>
-          <p className="text-gray-400 mt-2">{t('servicePages.raceBriefing.availability')}</p>
-        </section>
+        <div className="mt-10">
+          <button className="btn-enduraw">{t('servicePages.raceBriefing.discoverProduct')}</button>
+          <p className="text-paragraph text-gray-400 mt-3">{t('servicePages.raceBriefing.availability')}</p>
+        </div>
+      </section>
 
-        <section className="mb-8">
-          <h3 className="text-2xl font-semibold mb-3">{t('servicePages.raceBriefing.trustUs')}</h3>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 text-gray-200">
-            <PersonCard
-              fullName="Petter Engdahl"
-              age={29}
-              country="Sweden 🇸🇪"
-              sports="Trail, Ultra Trail"
-              achievements="CCC: win, record • Transvulcania win • MMB: 3rd"
-              variant="athlete"
-            />
-            <PersonCard
-              fullName="Ruth Croft"
-              country="New Zealand 🇳🇿"
-              sports="Trail, Ultra Trail"
-              achievements="UTMB 2023 • UTMB 2024"
-              variant="athlete"
-            />
-            <PersonCard
-              fullName="Duncan Périllat"
-              country="France 🇫🇷"
-              sports="Marathon, Ultra Trail"
-              achievements="Rotterdam Marathon • UTMB 2023"
-              variant="athlete"
-            />
-            <PersonCard
-              fullName="Solange Jésus"
-              country="Portugal 🇵🇹"
-              sports="Road Marathon"
-              achievements="Paris Marathon: 9th • World championship • NYC Marathon"
-              variant="athlete"
-            />
-            <PersonCard
-              fullName="Guillaume Adam"
-              country="France 🇫🇷"
-              sports="Road Marathon"
-              achievements="NYC Marathon"
-              variant="athlete"
-            />
-          </div>
-        </section>
+      {/* Athletes */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">ATHLETES</p>
+        <h2 className="text-title-h2 text-white mb-8">{t('servicePages.raceBriefing.trustUs')}</h2>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <PersonCard fullName="Petter Engdahl" age={29} country="Sweden 🇸🇪" sports="Trail, Ultra Trail" achievements="CCC: win, record • Transvulcania win • MMB: 3rd" variant="athlete" />
+          <PersonCard fullName="Ruth Croft" country="New Zealand 🇳🇿" sports="Trail, Ultra Trail" achievements="UTMB 2023 • UTMB 2024" variant="athlete" />
+          <PersonCard fullName="Duncan Périllat" country="France 🇫🇷" sports="Marathon, Ultra Trail" achievements="Rotterdam Marathon • UTMB 2023" variant="athlete" />
+          <PersonCard fullName="Solange Jésus" country="Portugal 🇵🇹" sports="Road Marathon" achievements="Paris Marathon: 9th • World championship • NYC Marathon" variant="athlete" />
+          <PersonCard fullName="Guillaume Adam" country="France 🇫🇷" sports="Road Marathon" achievements="NYC Marathon" variant="athlete" />
+        </div>
+      </section>
 
-        <section className="mb-8">
-          <h3 className="text-2xl font-bold mb-2">{t('servicePages.raceBriefing.goFurther_title')}</h3>
-          <p className="text-gray-300 mb-3">{t('servicePages.raceBriefing.goFurther_p1')}</p>
-          <p className="text-gray-200 font-semibold mb-2">{t('servicePages.raceBriefing.hyperCustomization')}</p>
-          <p className="text-gray-200 mb-3">{t('servicePages.raceBriefing.premiumFeatures')}</p>
-          <ul className="list-disc list-inside text-gray-200 space-y-1">
-            <li>{t('servicePages.raceBriefing.stravaAnalysis')}</li>
-            <li>{t('servicePages.raceBriefing.physiologicalProtocol')}</li>
-            <li>{t('servicePages.raceBriefing.heartRatePrediction')}</li>
-            <li>{t('servicePages.raceBriefing.sweatProfile')}</li>
-            <li>{t('servicePages.raceBriefing.nutritionStrategy')}</li>
-            <li>{t('servicePages.raceBriefing.competitorsAnalysis')}</li>
-            <li>{t('servicePages.raceBriefing.raceStrategyItem')}</li>
-            <li>{t('servicePages.raceBriefing.realTimeMonitoring')}</li>
-            <li>{t('servicePages.raceBriefing.fktPreparation')}</li>
-          </ul>
-          <p className="text-gray-300 mt-3">{t('servicePages.raceBriefing.dataTradeoffs')}</p>
-          <p className="text-accent mt-2">{t('servicePages.raceBriefing.contactCta')}</p>
-        </section>
+      {/* Go Further / Premium */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">PREMIUM</p>
+        <h2 className="text-title-h2 text-white mb-4">{t('servicePages.raceBriefing.goFurther_title')}</h2>
+        <p className="text-paragraph text-gray-400 max-w-md mb-6">{t('servicePages.raceBriefing.goFurther_p1')}</p>
+        <p className="text-subtitle text-white mb-2">{t('servicePages.raceBriefing.hyperCustomization')}</p>
+        <p className="text-paragraph text-gray-400 mb-8">{t('servicePages.raceBriefing.premiumFeatures')}</p>
 
+        <div>
+          {[
+            { key: t('servicePages.raceBriefing.stravaAnalysis'), icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /> },
+            { key: t('servicePages.raceBriefing.physiologicalProtocol'), icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /> },
+            { key: t('servicePages.raceBriefing.heartRatePrediction'), icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /> },
+            { key: t('servicePages.raceBriefing.sweatProfile'), icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /> },
+            { key: t('servicePages.raceBriefing.nutritionStrategy'), icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /> },
+            { key: t('servicePages.raceBriefing.competitorsAnalysis'), icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /> },
+            { key: t('servicePages.raceBriefing.raceStrategyItem'), icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /> },
+            { key: t('servicePages.raceBriefing.realTimeMonitoring'), icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0zM2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /> },
+            { key: t('servicePages.raceBriefing.fktPreparation'), icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3l14 9-14 9V3z" /> },
+          ].map((item) => (
+            <div key={item.key} className="flex items-start gap-5 py-5 border-b border-white/[0.06] last:border-0">
+              <div className="icon-container bg-[#2054A8] flex-shrink-0 mt-0.5">
+                <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {item.icon}
+                </svg>
+              </div>
+              <div className="flex-1">
+                <p className="text-paragraph text-gray-300">{item.key}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
-      </div>
+        <p className="text-paragraph text-gray-400 mt-6">{t('servicePages.raceBriefing.dataTradeoffs')}</p>
+        <p className="text-paragraph text-[#6CDCFF] mt-2">{t('servicePages.raceBriefing.contactCta')}</p>
+      </section>
+
+      {/* CTA */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
+        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">GET STARTED</p>
+        <h2 className="text-title text-white mb-8 max-w-sm">{t('servicePages.raceBriefing.discoverProduct')}</h2>
+        <div className="flex flex-wrap gap-3">
+          <Link to="/contact" className="btn-enduraw">
+            {t('servicePages.raceBriefing.contactCta')}
+            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+          <Link to="/services" className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150">
+            {t('servicePages.backToServices')}
+          </Link>
+        </div>
+      </section>
+
     </div>
   );
 };

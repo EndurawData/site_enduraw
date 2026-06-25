@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 interface PersonCardProps {
   fullName: string;
@@ -41,11 +41,11 @@ const PersonCard: React.FC<PersonCardProps> = ({
             />
           )}
           <div className="text-paragraph">
-            <p className="text-gray-400 mb-1">
+            <p className="text-gray-300 mb-1">
               {age ? `${age} yo • ${country}` : country}
             </p>
             {sports && <p className="text-gray-300 mb-1">{sports}</p>}
-            {credentials && <p className="text-gray-400 mb-1">{credentials}</p>}
+            {credentials && <p className="text-gray-300 mb-1">{credentials}</p>}
             {job && <p className="text-gray-300 mb-1">{job}</p>}
             {achievements && (
               <p className="text-gray-200 mt-2 leading-snug">{achievements}</p>
@@ -67,10 +67,10 @@ const PersonCard: React.FC<PersonCardProps> = ({
         />
       )}
       <h4 className="text-subtitle text-gradient-blue-light">{fullName}</h4>
-      <p className="text-paragraph text-gray-400">
+      <p className="text-paragraph text-gray-300">
         {age ? `${age} yo • ${country}` : country}
       </p>
-      {credentials && <p className="text-paragraph text-gray-400">{credentials}</p>}
+      {credentials && <p className="text-paragraph text-gray-300">{credentials}</p>}
       {sports && <p className="text-paragraph text-gray-300">{sports}</p>}
       {job && <p className="text-paragraph text-gray-300">{job}</p>}
       {achievements && (

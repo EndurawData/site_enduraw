@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -295,7 +295,7 @@ Please contact this person to schedule their testing session in Chamonix.
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label htmlFor="preferredDate" className="block text-body-uppercase text-gray-300">
-                Preferred Date <span className="text-gray-500">(Wednesdays only)</span>
+                Preferred Date <span className="text-gray-300">(Wednesdays only)</span>
               </label>
               <input
                 type="date"
@@ -375,16 +375,16 @@ Please contact this person to schedule their testing session in Chamonix.
 
           {/* Additional Info */}
           <div className="text-center pt-4">
-            <p className="text-paragraph text-gray-400">
+            <p className="text-paragraph text-gray-300">
               By submitting this form, you agree to be contacted about your testing session.
               <br />
               <span className="text-gradient-blue-light">We'll respond within 24 hours with availability and confirmation!</span>
             </p>
             <div className="mt-4 inline-flex items-center space-x-4 bg-white/5 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-400/20">
               <span className="text-blue-400 text-xs font-bold">📅 Wednesdays Only</span>
-              <span className="text-gray-400">•</span>
+              <span className="text-gray-300">•</span>
               <span className="text-purple-400 text-xs font-bold">🕐 8AM - 6PM</span>
-              <span className="text-gray-400">•</span>
+              <span className="text-gray-300">•</span>
               <span className="text-green-400 text-xs font-bold">💯 Expert Analysis</span>
             </div>
           </div>

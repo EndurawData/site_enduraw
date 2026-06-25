@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -26,8 +26,8 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ selectedS
 
   const trainingCampOptions = [
     { value: '', label: 'Select a training camp' },
-    { value: 'stage1', label: '1st IMMERSIVE STAGE (May 9-12, 2025)' },
-    { value: 'stage2', label: '2nd IMMERSIVE STAGE (May 14-17, 2025)' }
+    { value: 'stage1', label: '1st IMMERSIVE STAGE (Sep 30 – Oct 3, 2026)' },
+    { value: 'stage2', label: '2nd IMMERSIVE STAGE (Oct 7–10, 2026)' }
   ];
 
   const {
@@ -96,24 +96,13 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ selectedS
   };
 
   return (
-    <div className="glass-card p-8 relative group overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#6CDCFF]/10 to-blue-500/10 group-hover:from-[#6CDCFF]/20 group-hover:to-blue-500/20 transition-all duration-500"></div>
-      <div className="absolute -inset-2 bg-gradient-to-r from-[#6CDCFF]/20 to-blue-600/20 blur-xl group-hover:blur-2xl transition-all duration-500 rounded-2xl"></div>
-      
-      {/* Floating Elements */}
-      <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-cyan-400/30 to-blue-500/30 rounded-full group-hover:scale-125 group-hover:rotate-45 transition-all duration-500"></div>
-      <div className="absolute bottom-4 left-4 w-8 h-8 bg-gradient-to-br from-green-400/30 to-teal-500/30 rounded-full group-hover:scale-150 group-hover:-rotate-45 transition-all duration-700"></div>
-      
-      <div className="relative z-10">
+    <div className="glass-card p-8">
+      <div>
         <div className="text-center mb-8">
-          <h2 className="text-title-h2 bg-clip-text text-transparent bg-custom-gradient mb-4">
-            <span className="relative z-10">Request Your Training Camp</span>
-          </h2>
+          <h2 className="text-title-h2 text-white mb-4">Request Your Training Camp</h2>
           <p className="text-paragraph text-gray-300">
             Join elite athletes in the heart of Chamonix for the ultimate performance experience
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#6CDCFF] to-blue-500 mx-auto rounded-full mt-4"></div>
         </div>
         
         {submitStatus === 'success' && (
@@ -276,7 +265,7 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ selectedS
           {/* Optional Message */}
           <div className="space-y-2">
             <label htmlFor="message" className="block text-body-uppercase text-gray-300">
-              Additional Message <span className="text-gray-500">(Optional)</span>
+              Additional Message <span className="text-gray-300">(Optional)</span>
             </label>
             <textarea
               id="message"
@@ -312,7 +301,7 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ selectedS
 
           {/* Additional Info */}
           <div className="text-center pt-4">
-            <p className="text-paragraph text-gray-400">
+            <p className="text-paragraph text-gray-300">
               By submitting this form, you agree to be contacted about the Enduraw Performance Center training camps.
               <br />
               <span className="text-gradient-blue-light">We'll respond within 24 hours!</span>
