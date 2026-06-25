@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 

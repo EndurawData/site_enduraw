@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import '../styles/fancy.css';
 
 const SousTraitantsPage: React.FC = () => {
