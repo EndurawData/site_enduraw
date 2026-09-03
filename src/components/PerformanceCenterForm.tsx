@@ -26,8 +26,8 @@ const PerformanceCenterForm: React.FC<PerformanceCenterFormProps> = ({ selectedS
 
   const trainingCampOptions = [
     { value: '', label: 'Select a training camp' },
-    { value: 'stage1', label: '1st IMMERSIVE STAGE (Sep 30 – Oct 3, 2026)' },
-    { value: 'stage2', label: '2nd IMMERSIVE STAGE (Oct 7–10, 2026)' }
+    { value: 'stage1', label: '1st IMMERSIVE TRAINING CAMP (Oct 18–25, 2026)' },
+    { value: 'stage2', label: '2nd IMMERSIVE TRAINING CAMP (Oct 25 – Nov 1, 2026)' }
   ];
 
   const {
