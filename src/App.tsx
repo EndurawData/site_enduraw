@@ -15,6 +15,9 @@ import PacingPlanPage from './pages/services/PacingPlanPage';
 import EndurawReportPage from './pages/services/EndurawReportPage';
 import EndurawDashboardPage from './pages/services/EndurawDashboardPage';
 import EndurawAPIPage from './pages/services/EndurawAPIPage';
+import TrainingCampPage from './pages/epc/TrainingCampPage';
+import CorporateSeminarPage from './pages/epc/CorporateSeminarPage';
+import CoworkingPage from './pages/epc/CoworkingPage';
 import AdminPage from './pages/AdminPage';
 import BookingSuccessPage from './pages/BookingSuccessPage';
 import MentionsLegalesPage from './pages/MentionsLegalesPage';
@@ -54,6 +57,9 @@ function App() {
             />
             <Route path="/services/testing" element={<TestingPage />} />
             <Route path="/endurawperformancecenter" element={<EndurawPerformanceCenterPage />} />
+            <Route path="/epc/trainingcamp" element={<TrainingCampPage />} />
+            <Route path="/epc/corporateseminar" element={<CorporateSeminarPage />} />
+            <Route path="/epc/coworking" element={<CoworkingPage />} />
             <Route path="/services/athlete-support" element={<AthleteSupportPage />} />
             <Route path="/services/pacing-plan" element={<PacingPlanPage />} />
             <Route path="/services/enduraw-report" element={<EndurawReportPage />} />
