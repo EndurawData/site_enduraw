@@ -65,8 +65,8 @@ const CoworkingPage: React.FC = () => {
 
         <div className="overflow-hidden rounded-xl group">
           <img
-            src={img('Image 13 mai 2026, 15_03_38.png')}
-            alt="Espace de travail face au Mont-Blanc"
+            src={img('Coworking terrace.png')}
+            alt="Vue sur le Mont-Blanc depuis l'Enduraw Performance Center"
             className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             style={{ height: '360px' }}
           />
@@ -100,8 +100,8 @@ const CoworkingPage: React.FC = () => {
           </div>
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
-              src={img('Coworking terrace.png')}
-              alt="Terrasse"
+              src={img('A7408093.jpg')}
+              alt="Espace de coworking équipé"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '260px' }}
             />
@@ -122,24 +122,24 @@ const CoworkingPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
           <div className="overflow-hidden rounded-xl group">
             <img
-              src={img('Coworking office 1.png')}
-              alt="Bureau indépendant"
+              src={img('A7408103.jpg')}
+              alt="Coin de travail au calme, près de la cheminée"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '220px' }}
             />
           </div>
           <div className="overflow-hidden rounded-xl group">
             <img
-              src={img('Coworking office 2.png')}
-              alt="Bureau indépendant"
+              src={img('A7408129.jpg')}
+              alt="Coin de travail calme"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '220px' }}
             />
           </div>
           <div className="overflow-hidden rounded-xl group">
             <img
-              src={img('Coworking office 3.png')}
-              alt="Bureau indépendant"
+              src={img('A7408092.jpg')}
+              alt="Espace de travail sous les toits"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '220px' }}
             />
@@ -170,7 +170,7 @@ const CoworkingPage: React.FC = () => {
 
         <div className="overflow-hidden rounded-xl group">
           <img
-            src={img('13 mai 2026, 14_08_09.png')}
+            src={img('A7408177.jpg')}
             alt="Bar et lounge"
             className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             style={{ height: '260px' }}
