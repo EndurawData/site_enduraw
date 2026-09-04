@@ -69,20 +69,20 @@ const PerformanceCenterPage: React.FC = () => {
       </section>
 
       {/* ── GALLERY ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06] pb-24">
         <div className="flex gap-2 mb-2">
           <div className="overflow-hidden rounded-xl group" style={{ flex: 7 }}>
             <img
-              src={img('13 mai 2026, 14_01_48.png')}
-              alt="Terrace & Pool"
+              src={img('A7408097.jpg')}
+              alt="Espace détente et coworking sous les toits"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '360px' }}
             />
           </div>
           <div className="overflow-hidden rounded-xl group" style={{ flex: 5 }}>
             <img
-              src={img('Image 13 mai 2026, 17_18_11.png')}
-              alt="Conference Room"
+              src={img('A7408183.jpg')}
+              alt="Espace de vie et de récupération"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '360px' }}
             />
@@ -91,56 +91,26 @@ const PerformanceCenterPage: React.FC = () => {
         <div className="flex gap-2 mt-2">
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
-              src={img('13 mai 2026, 14_36_02.png')}
-              alt="Analysis Studio"
+              src={img('A7408129.jpg')}
+              alt="Mezzanine et coin salon"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '220px' }}
             />
           </div>
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
-              src={img('13 mai 2026, 14_44_13.png')}
-              alt="Dining Room"
+              src={img('A7408174.jpg')}
+              alt="Bar de l'Enduraw Performance Center"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '220px' }}
             />
           </div>
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
-              src={img('Image 13 mai 2026, 17_20_47.png')}
-              alt="Physio Lab — Cabinet Kiné"
+              src={img('A7408195.jpg')}
+              alt="Espace training et tests physiologiques"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '220px' }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECOND IMAGE ROW ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pb-24">
-        <div className="flex gap-2">
-          <div className="flex-1 overflow-hidden rounded-xl group">
-            <img
-              src={img('Image 13 mai 2026, 14_51_11.png')}
-              alt="Lounge"
-              className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-              style={{ height: '200px' }}
-            />
-          </div>
-          <div className="flex-1 overflow-hidden rounded-xl group">
-            <img
-              src={img('Image 13 mai 2026, 14_48_19.png')}
-              alt="Private Suite"
-              className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-              style={{ height: '200px' }}
-            />
-          </div>
-          <div className="overflow-hidden rounded-xl group" style={{ flex: 2 }}>
-            <img
-              src={img('Image 15 mai 2026, 11_00_52.png')}
-              alt="Outdoor Terrace"
-              className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-              style={{ height: '200px' }}
             />
           </div>
         </div>

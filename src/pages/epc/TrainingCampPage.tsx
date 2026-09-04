@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import PerformanceCenterForm from '../../components/PerformanceCenterForm';
 import '../../styles/fancy.css';
 
+const img = (filename: string): string =>
+  `/images/epc/${filename.replace(/ /g, '%20')}`;
+
 const TrainingCampPage: React.FC = () => {
   const { t } = useTranslation();
   const [selectedStage, setSelectedStage] = useState<string>('');
@@ -95,6 +98,36 @@ const TrainingCampPage: React.FC = () => {
               <p className="text-paragraph text-gray-300 text-sm leading-relaxed">{item}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── GALLERY ── */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 pb-20">
+        <div className="flex gap-2">
+          <div className="flex-1 overflow-hidden rounded-xl group">
+            <img
+              src={img('A7408201.jpg')}
+              alt="Espace training et tests physiologiques"
+              className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              style={{ height: '260px' }}
+            />
+          </div>
+          <div className="flex-1 overflow-hidden rounded-xl group">
+            <img
+              src={img('A7408177.jpg')}
+              alt="Bar et espace social"
+              className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              style={{ height: '260px' }}
+            />
+          </div>
+          <div className="flex-1 overflow-hidden rounded-xl group">
+            <img
+              src={img('A7408102.jpg')}
+              alt="Espace mezzanine calme"
+              className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              style={{ height: '260px' }}
+            />
+          </div>
         </div>
       </section>
 

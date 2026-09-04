@@ -71,7 +71,7 @@ const CorporateSeminarPage: React.FC = () => {
         <div className="flex gap-2 mb-2">
           <div className="overflow-hidden rounded-xl group" style={{ flex: 7 }}>
             <img
-              src={img('Image 13 mai 2026, 17_18_11.png')}
+              src={img('Coworking meeting room.png')}
               alt="Salle de réunion équipée"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '340px' }}
@@ -79,8 +79,8 @@ const CorporateSeminarPage: React.FC = () => {
           </div>
           <div className="overflow-hidden rounded-xl group" style={{ flex: 5 }}>
             <img
-              src={img('Image 13 mai 2026, 15_03_38.png')}
-              alt="Espace de travail"
+              src={img('Coworking terrace.png')}
+              alt="Terrasse avec vue sur le Mont-Blanc"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '340px' }}
             />
@@ -89,24 +89,24 @@ const CorporateSeminarPage: React.FC = () => {
         <div className="flex gap-2 mt-2">
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
-              src={img('A7408174.jpg')}
-              alt="Bar"
+              src={img('A7408180.jpg')}
+              alt="Espace de vie et de récupération"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '200px' }}
             />
           </div>
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
-              src={img('Image 13 mai 2026, 15_11_00.png')}
-              alt="Salle à manger"
+              src={img('A7408144.jpg')}
+              alt="Mezzanine et coin salon"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '200px' }}
             />
           </div>
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
-              src={img('Image 15 mai 2026, 10_43_19.png')}
-              alt="Terrasse"
+              src={img('A7408150.jpg')}
+              alt="Vue sur le bar depuis la mezzanine"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               style={{ height: '200px' }}
             />
