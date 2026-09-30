@@ -76,10 +76,10 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       linkedin: 'https://www.linkedin.com/in/anthony-saliou-085286158/',
     },
     {
-      name: 'Justine',
-      img: '/images/team/justine.png',
-      role: t('home.justine_role'),
-      bio: t('home.justine_p1'),
+      name: 'Lucas',
+      img: '/images/team/lucas.png',
+      role: t('home.lucas_role'),
+      bio: t('home.lucas_p1'),
       linkedin: null,
     },
     {
@@ -104,10 +104,10 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       linkedin: null,
     },
     {
-      name: 'Thibaut',
-      img: '/images/thibaut-removebg-preview.png',
-      role: t('home.thibaut_role'),
-      bio: t('home.thibaut_p1'),
+      name: 'Kyllian',
+      img: '/images/team/kyllian.png',
+      role: t('home.kyllian_role'),
+      bio: t('home.kyllian_p1'),
       linkedin: null,
     },
     {
