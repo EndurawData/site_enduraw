@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PerformanceCenterForm from '../../components/PerformanceCenterForm';
 import '../../styles/fancy.css';
+import ContactCTA from '../../components/ContactCTA';
 
+// Web-optimized copies (max 2000px JPEG) of the originals in /images/epc
 const img = (filename: string): string =>
-  `/images/epc/${filename.replace(/ /g, '%20')}`;
+  `/images/epc/web/${filename.replace(/\.\w+$/, '.jpg').replace(/ /g, '%20')}`;
 
 const TrainingCampPage: React.FC = () => {
   const { t } = useTranslation();
@@ -79,7 +81,7 @@ const TrainingCampPage: React.FC = () => {
 
       {/* ── HIGHLIGHTS ── */}
       <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-20">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('servicePages.performanceCenter.activity_stage_title')}</p>
+        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.activity_stage_title')}</p>
         <h1 className="text-title-h2 text-white mb-4">
           {t('servicePages.stages.highlightsTitle')}
         </h1>
@@ -114,6 +116,8 @@ const TrainingCampPage: React.FC = () => {
           </div>
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
+              loading="lazy"
+              decoding="async"
               src={img('A7408177.jpg')}
               alt="Bar et espace social"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -122,6 +126,8 @@ const TrainingCampPage: React.FC = () => {
           </div>
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
+              loading="lazy"
+              decoding="async"
               src={img('A7408102.jpg')}
               alt="Espace mezzanine calme"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -132,8 +138,8 @@ const TrainingCampPage: React.FC = () => {
       </section>
 
       {/* ── METHOD (4 PILLARS) ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('servicePages.stages.pillarsLabel')}</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">{t('servicePages.stages.pillarsLabel')}</p>
         <h2 className="text-title-h2 text-white mb-10">
           {t('servicePages.stages.pillarsTitle')}
         </h2>
@@ -154,8 +160,8 @@ const TrainingCampPage: React.FC = () => {
       </section>
 
       {/* ── DATES ── */}
-      <section id="stages" className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('servicePages.performanceCenter.datesLabel')}</p>
+      <section id="stages" className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.datesLabel')}</p>
         <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.performanceCenter.chooseStage')}
         </h2>
@@ -214,8 +220,8 @@ const TrainingCampPage: React.FC = () => {
       </section>
 
       {/* ── TEAM ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('servicePages.stages.teamLabel')}</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">{t('servicePages.stages.teamLabel')}</p>
         <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.stages.teamTitle')}
         </h2>
@@ -232,7 +238,7 @@ const TrainingCampPage: React.FC = () => {
         </div>
 
         <div className="border border-white/[0.06] rounded-lg p-6">
-          <p className="text-body-uppercase text-[#6CDCFF] tracking-widest mb-2">
+          <p className="label-enduraw mb-2">
             {t('servicePages.stages.personalizationTitle')}
           </p>
           <p className="text-paragraph text-gray-300 text-sm leading-relaxed">
@@ -242,8 +248,8 @@ const TrainingCampPage: React.FC = () => {
       </section>
 
       {/* ── PROGRAM (DAY BY DAY) ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('servicePages.stages.programLabel')}</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">{t('servicePages.stages.programLabel')}</p>
         <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.stages.programTitle')}
         </h2>
@@ -269,8 +275,8 @@ const TrainingCampPage: React.FC = () => {
       </section>
 
       {/* ── WHAT'S INCLUDED ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('servicePages.performanceCenter.packageLabel')}</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.packageLabel')}</p>
         <h2 className="text-title-h2 text-white mb-10">
           {t('servicePages.performanceCenter.whatsIncluded')}
         </h2>
@@ -335,8 +341,8 @@ const TrainingCampPage: React.FC = () => {
       </section>
 
       {/* ── BOOKING FORM ── */}
-      <section id="booking-form" className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('servicePages.performanceCenter.registrationLabel')}</p>
+      <section id="booking-form" className="max-w-5xl mx-auto px-6 sm:px-8 py-24 section-fade">
+        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.registrationLabel')}</p>
         <h2 className="text-title text-white mb-8 max-w-sm">
           {t('servicePages.performanceCenter.bookSpot')}
         </h2>
@@ -356,6 +362,9 @@ const TrainingCampPage: React.FC = () => {
           />
         </div>
       </section>
+
+      {/* ── CONTACT ── */}
+      <ContactCTA email="performance@enduraw.co" title={t('servicePages.performanceCenter.trainingCampContactTitle')} text={t('contactCta.trainingCamp_p')} />
 
     </div>
   );

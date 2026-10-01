@@ -1,23 +1,41 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import '../styles/fancy.css';
+import ContactCTA from '../components/ContactCTA';
 
 const NewsPage: React.FC = () => {
   const { t } = useTranslation();
 
   const latestContent = [
     {
+      title: "UTMB 2026 Recap",
+      url: "https://www.instagram.com/p/DdbLBDKDEsM/?img_index=1",
+      source: "Instagram",
+      description: "Our data-driven recap of the UTMB 2026 races."
+    },
+    {
+      title: "Tor des Glaciers – Race Analysis",
+      url: "https://www.instagram.com/p/DdJ5roZNgz0/",
+      source: "Instagram",
+      description: "Race analysis of the Tor des Glaciers."
+    },
+    {
+      title: "Trail Running Team Rankings 2026 – International Teams",
+      url: "https://distances.plus/international/trail-running-team-rankings-international-teams-2-hoka-salomon-2026/",
+      source: "Distances Plus",
+      description: "2026 rankings of the international trail running teams, featuring Hoka and Salomon."
+    },
+    {
+      title: "Enduraw Nutrition Guide",
+      url: "https://app.enduraw.co/guide-nutrition",
+      source: "Enduraw",
+      description: "Our guide to fueling your training and races."
+    },
+    {
       title: "What makes Paris 2024 a race to records",
       url: "https://worldathletics.org/waendurancemedicine/news/what-makes-paris-2024-a-race-to-records",
       source: "World Athletics",
       description: "Analysis of the performance factors behind the record-breaking performances at Paris 2024 Olympics."
-    },
-    {
-      title: "Trail Running Classement Trimestre 1 Teams Trail 2025",
-      url: "https://distances.plus/athletes/trail-running-classement-trimestre-1-teams-trail-2025/",
-      source: "Distances Plus",
-      description: "First quarter rankings for trail running teams in 2025 season."
     },
     {
       title: "Mathieu Blanchard Athlete Highlight",
@@ -37,8 +55,8 @@ const NewsPage: React.FC = () => {
       </section>
 
       {/* Instagram Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">Instagram</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">Instagram</p>
         <h2 className="text-title-h2 text-white mb-4">{t('news.followLatest')}</h2>
         <p className="text-paragraph text-gray-400 max-w-xl mb-10">{t('news.instagram_p')}</p>
         <a
@@ -56,8 +74,8 @@ const NewsPage: React.FC = () => {
       </section>
 
       {/* Latest Content */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">Articles</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">Articles</p>
         <h2 className="text-title-h2 text-white mb-10">{t('news.latestContent')}</h2>
         <div>
           {latestContent.map((item, index) => (
@@ -88,18 +106,8 @@ const NewsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Media Expertise CTA */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('news.expertise_label')}</p>
-        <h2 className="text-title text-white mb-5 max-w-sm leading-tight">{t('news.expertise_title')}</h2>
-        <p className="text-paragraph text-gray-300 max-w-xl mb-10">{t('news.expertise_p')}</p>
-        <Link to="/contact" className="btn-enduraw">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-          <span>{t('news.expertise_cta')}</span>
-        </Link>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA email="communication@enduraw.co" title={t('news.expertise_title')} text={t('news.expertise_p')} />
 
     </div>
   );

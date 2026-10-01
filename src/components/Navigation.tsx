@@ -22,6 +22,11 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
   const servicesHideTimer = useRef<number | null>(null);
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -63,7 +68,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
             />
           </Link>
 
-          <div className="flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             <Link to="/" className={navLinkClass('/')}>
               {t('nav.home')}
             </Link>
@@ -176,8 +181,75 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
               <img src="/images/dataplayers.png" alt="DataPlayers" className="h-7 w-auto" />
             </a>
           </div>
+
+          {/* Mobile burger */}
+          <button
+            onClick={() => setMobileOpen((open) => !open)}
+            className="lg:hidden p-2 text-white/70 hover:text-white transition-colors"
+            aria-label="Menu"
+            aria-expanded={mobileOpen}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="lg:hidden border-t border-white/[0.08] bg-[#020617]/95 max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div
+            className="px-4 py-4 flex flex-col gap-1"
+            onClick={(e) => { if ((e.target as HTMLElement).closest('a')) setMobileOpen(false); }}
+          >
+            <Link to="/" className={navLinkClass('/')}>{t('nav.home')}</Link>
+            <Link to="/news" className={navLinkClass('/news')}>{t('nav.news')}</Link>
+            <Link to="/services" className={navLinkClass('/services')}>{t('nav.services')}</Link>
+            <div className="flex flex-col pl-4 mb-1">
+              {servicesSections.map((service) => (
+                <Link
+                  key={service.id}
+                  to={service.path}
+                  className="px-3 py-1.5 text-sm text-white/45 hover:text-white/80 transition-colors text-body-uppercase"
+                >
+                  {service.name}
+                </Link>
+              ))}
+            </div>
+            <Link to="/contact" className={navLinkClass('/contact')}>{t('nav.contact')}</Link>
+            <Link to="/careers" className={navLinkClass('/careers')}>{t('nav.careers')}</Link>
+
+            <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-white/[0.08]">
+              {LANGUAGES.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => i18n.changeLanguage(lang.code)}
+                  className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-colors ${
+                    i18n.language.startsWith(lang.code)
+                      ? 'text-white bg-white/[0.10]'
+                      : 'text-white/50 hover:text-white/90 hover:bg-white/[0.08]'
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              ))}
+              <a
+                href="https://www.dataplayers.fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-auto opacity-70 hover:opacity-100 transition-opacity"
+              >
+                <img src="/images/dataplayers.png" alt="DataPlayers" className="h-7 w-auto" />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

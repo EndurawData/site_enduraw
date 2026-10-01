@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
+import ContactCTA from '../../components/ContactCTA';
 
 const AthleteSupportPage: React.FC = () => {
   const { t } = useTranslation();
@@ -20,8 +21,8 @@ const AthleteSupportPage: React.FC = () => {
         </p>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">OVERVIEW</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">OVERVIEW</p>
         <div className="space-y-5 text-paragraph text-gray-300 max-w-2xl">
           <p>{t('servicePages.athleteSupport.intro_p1')}</p>
           <p>{t('servicePages.athleteSupport.intro_p2')}</p>
@@ -30,8 +31,8 @@ const AthleteSupportPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">METHODOLOGY</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">METHODOLOGY</p>
         <h2 className="text-title-h2 text-white mb-10">
           {t('servicePages.athleteSupport.keysTitle')}
         </h2>
@@ -87,8 +88,8 @@ const AthleteSupportPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">OFFERS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">OFFERS</p>
         <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.athleteSupport.offersTitle')}
         </h2>
@@ -98,7 +99,7 @@ const AthleteSupportPage: React.FC = () => {
 
         <div className="border border-white/[0.06] rounded-lg p-8 mb-8">
           <h3 className="text-title-h2 text-white mb-3">{t('servicePages.athleteSupport.seasonalSupport_title')}</h3>
-          <p style={{ fontFamily: "'Inter Tight', sans-serif", fontStyle: 'italic', fontSize: '2rem', fontWeight: 700 }} className="text-[#6CDCFF] mb-6 leading-none">
+          <p className="text-title-h2 text-[#6CDCFF] mb-6 leading-none">
             <svg className="w-5 h-5 text-[#6CDCFF] mb-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             350€<span className="text-paragraph text-gray-400 font-normal not-italic">/month</span>
           </p>
@@ -141,7 +142,7 @@ const AthleteSupportPage: React.FC = () => {
         </p>
 
         <div className="border border-white/[0.06] rounded-lg p-6">
-          <p className="text-body-uppercase text-[#6CDCFF] tracking-widest mb-2">
+          <p className="label-enduraw mb-2">
             {t('servicePages.athleteSupport.eliteOffer')}
           </p>
           <p className="text-paragraph text-gray-300 leading-relaxed">
@@ -150,19 +151,8 @@ const AthleteSupportPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">CONTACT</p>
-        <h2 className="text-title text-white mb-8 max-w-sm">{t('servicePages.athleteSupport.cta')}</h2>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="mailto:performance@enduraw.co"
-            className="btn-enduraw inline-flex items-center gap-2"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
-            <span>{t('servicePages.athleteSupport.cta')}</span>
-          </a>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA email="performance@enduraw.co" title={t('servicePages.athleteSupport.cta')} text={t('contactCta.athleteSupport_p')} />
 
     </div>
   );

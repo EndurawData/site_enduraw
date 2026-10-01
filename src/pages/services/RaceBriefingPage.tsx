@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PersonCard from '../../components/PersonCard';
 import '../../styles/fancy.css';
+import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
 
 const RaceBriefingPage: React.FC = () => {
   const { t } = useTranslation();
@@ -26,8 +27,8 @@ const RaceBriefingPage: React.FC = () => {
       </section>
 
       {/* Description */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">OVERVIEW</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">OVERVIEW</p>
         <div className="space-y-4 text-paragraph text-gray-300 max-w-2xl">
           <p>{t('servicePages.raceBriefing.p1')}</p>
           <p>{t('servicePages.raceBriefing.p2')}</p>
@@ -37,8 +38,8 @@ const RaceBriefingPage: React.FC = () => {
       </section>
 
       {/* Road Race & Trail Race */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">RACE TYPES</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">RACE TYPES</p>
         <div className="grid md:grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
 
           {/* Road Race */}
@@ -132,8 +133,8 @@ const RaceBriefingPage: React.FC = () => {
       </section>
 
       {/* Athletes */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">ATHLETES</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">ATHLETES</p>
         <h2 className="text-title-h2 text-white mb-8">{t('servicePages.raceBriefing.trustUs')}</h2>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
           <PersonCard fullName="Petter Engdahl" age={29} country="Sweden 🇸🇪" sports="Trail, Ultra Trail" achievements="CCC: win, record • Transvulcania win • MMB: 3rd" variant="athlete" />
@@ -145,8 +146,8 @@ const RaceBriefingPage: React.FC = () => {
       </section>
 
       {/* Go Further / Premium */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">PREMIUM</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">PREMIUM</p>
         <h2 className="text-title-h2 text-white mb-4">{t('servicePages.raceBriefing.goFurther_title')}</h2>
         <p className="text-paragraph text-gray-400 max-w-md mb-6">{t('servicePages.raceBriefing.goFurther_p1')}</p>
         <p className="text-subtitle text-white mb-2">{t('servicePages.raceBriefing.hyperCustomization')}</p>
@@ -181,22 +182,12 @@ const RaceBriefingPage: React.FC = () => {
         <p className="text-paragraph text-[#6CDCFF] mt-2">{t('servicePages.raceBriefing.contactCta')}</p>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">GET STARTED</p>
-        <h2 className="text-title text-white mb-8 max-w-sm">{t('servicePages.raceBriefing.discoverProduct')}</h2>
-        <div className="flex flex-wrap gap-3">
-          <Link to="/contact" className="btn-enduraw">
-            {t('servicePages.raceBriefing.contactCta')}
-            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
-          <Link to="/services" className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150">
-            {t('servicePages.backToServices')}
-          </Link>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA email="performance@enduraw.co" title={t('servicePages.raceBriefing.discoverProduct')} text={t('contactCta.raceBriefing_p')}>
+        <Link to="/services" className={secondaryBtnClass}>
+          {t('servicePages.backToServices')}
+        </Link>
+      </ContactCTA>
 
     </div>
   );

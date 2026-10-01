@@ -1,6 +1,17 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
+import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
+
+const SHOP_URL = 'https://dashboard.enduraw-data.com/shop';
+
+const offer = [
+  { id: 'flat', bookable: true, lactate: true },
+  { id: 'uphill', bookable: true, lactate: true },
+  { id: 'runwalk', bookable: true, lactate: false },
+  { id: 'durability', bookable: false, lactate: false },
+  { id: 'premium', bookable: false, lactate: false },
+];
 
 const TestingPage: React.FC = () => {
   const { t } = useTranslation();
@@ -19,8 +30,8 @@ const TestingPage: React.FC = () => {
       </section>
 
       {/* Testing Locations */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">PROTOCOLS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">PROTOCOLS</p>
         <h2 className="text-title-h2 text-white mb-4">{t('servicePages.testing.testingLocations_title')}</h2>
         <p className="text-paragraph text-gray-400 max-w-xl mb-10">
           {t('servicePages.testing.testingLocations_p')}
@@ -73,25 +84,54 @@ const TestingPage: React.FC = () => {
             </div>
           </div>
         </div>
+      </section>
 
-        <div className="mt-8">
-          <a
-            href="https://juvenile-tennis-62a.notion.site/Offre-Profilage-Enduraw-33cd97cda6d380b0965ac7beef5a53ca?pvs=74"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-enduraw inline-flex items-center gap-2"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-            <span>{t('servicePages.testing.seeFullOffer')}</span>
-          </a>
+      {/* Offer */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">{t('testingOffer.label')}</p>
+        <h2 className="text-title-h2 text-white mb-10">{t('testingOffer.title')}</h2>
+
+        <div>
+          {offer.map((test) => (
+            <div key={test.id} className="flex flex-col md:flex-row md:items-start gap-4 md:gap-8 py-6 border-b border-white/[0.06] last:border-0">
+              <div className="md:w-48 flex-shrink-0">
+                <p className="text-subtitle text-white mb-1">{t(`testingOffer.${test.id}_name`)}</p>
+                <p className="text-title-h2 text-[#6CDCFF]">{t(`testingOffer.${test.id}_price`)}</p>
+                {test.lactate && (
+                  <p className="text-paragraph text-gray-400 text-xs">{t(`testingOffer.${test.id}_extra`)}</p>
+                )}
+              </div>
+              <div className="flex-1">
+                <p className="text-paragraph text-gray-300 mb-3 leading-relaxed">{t(`testingOffer.${test.id}_goal`)}</p>
+                <p className="text-paragraph text-gray-400 text-xs">
+                  <span className="text-white/70">{t('testingOffer.forLabel')} </span>{t(`testingOffer.${test.id}_for`)}
+                </p>
+                <p className="text-paragraph text-gray-400 text-xs">
+                  <span className="text-white/70">{t('testingOffer.locationLabel')} </span>{t(`testingOffer.${test.id}_location`)}
+                </p>
+              </div>
+              <div className="flex-shrink-0 md:self-center">
+                {test.bookable ? (
+                  <a href={SHOP_URL} target="_blank" rel="noopener noreferrer" className="btn-enduraw">
+                    {t('testingOffer.book')}
+                  </a>
+                ) : (
+                  <div>
+                    <a href="mailto:performance@enduraw.co" className={secondaryBtnClass}>
+                      {t('testingOffer.contact')}
+                    </a>
+                    <p className="text-paragraph text-gray-500 text-xs mt-2">{t('testingOffer.notBookable')}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* What's Included */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">PROCESS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">PROCESS</p>
         <h2 className="text-title-h2 text-white mb-10">{t('servicePages.testing.whatsIncluded')}</h2>
 
         <div>
@@ -132,8 +172,8 @@ const TestingPage: React.FC = () => {
       </section>
 
       {/* Online Booking */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">BOOKING</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">BOOKING</p>
         <h2 className="text-title-h2 text-white mb-4">{t('servicePages.testing.onlineBooking')}</h2>
 
         <div className="glass-card p-8">
@@ -176,41 +216,9 @@ const TestingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* No Slots */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">WAITING LIST</p>
-        <h2 className="text-title-h2 text-white mb-4">{t('servicePages.testing.noSlots')}</h2>
-        <p className="text-paragraph text-gray-400 max-w-xl mb-10">
-          {t('servicePages.testing.noSlots_p')}
-        </p>
-
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="/contact"
-            className="btn-enduraw"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-            <span>{t('servicePages.testing.contactUs')}</span>
-          </a>
-          <a
-            href="https://hg1xgb-km.myshopify.com/pages/lab-waiting-list"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-            <span>{t('servicePages.testing.keepUpdated')}</span>
-          </a>
-        </div>
-      </section>
-
       {/* Testing for Business */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">BUSINESS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">BUSINESS</p>
         <h2 className="text-title-h2 text-white mb-4">{t('servicePages.testing.testingBusiness_title')}</h2>
         <p className="text-paragraph text-gray-400 max-w-xl mb-10">
           {t('servicePages.testing.testingBusiness_p')}
@@ -246,41 +254,17 @@ const TestingPage: React.FC = () => {
           </div>
         </div>
 
-        <a
-          href="/contact"
-          className="btn-enduraw inline-flex items-center gap-2"
-        >
+        <p className="text-subtitle text-white mb-3">{t('servicePages.testing.requestQuote')}</p>
+        <a href="mailto:performance@enduraw.co" className="btn-enduraw inline-flex items-center gap-2">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>
-          <span>{t('servicePages.testing.requestQuote')}</span>
+          <span>performance@enduraw.co</span>
         </a>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">GET STARTED</p>
-        <h2 className="text-title text-white mb-8 max-w-sm">{t('servicePages.testing.bookNow')}</h2>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="https://hg1xgb-km.myshopify.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-enduraw"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 4v10m6-10v10M5 7h14l-1 12H6L5 7z" />
-            </svg>
-            <span>{t('servicePages.testing.bookNow')}</span>
-          </a>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
-          >
-            {t('servicePages.testing.contactUs')}
-          </a>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA email="performance@enduraw.co" title={t('contactCta.testing_title')} text={t('contactCta.testing_p')} />
 
     </div>
   );

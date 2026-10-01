@@ -1,9 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
+import ContactCTA from '../../components/ContactCTA';
 
+// Web-optimized copies (max 2000px JPEG) of the originals in /images/epc
 const img = (filename: string): string =>
-  `/images/epc/${filename.replace(/ /g, '%20')}`;
+  `/images/epc/web/${filename.replace(/\.\w+$/, '.jpg').replace(/ /g, '%20')}`;
 
 const CorporateSeminarPage: React.FC = () => {
   const { t } = useTranslation();
@@ -57,7 +59,7 @@ const CorporateSeminarPage: React.FC = () => {
 
       {/* ── HERO ── */}
       <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-20">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('servicePages.performanceCenter.seminarLabel')}</p>
+        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.seminarLabel')}</p>
         <h1 className="text-title-h2 text-white mb-4 max-w-2xl">
           {t('servicePages.performanceCenter.seminarTitle')}
         </h1>
@@ -67,7 +69,7 @@ const CorporateSeminarPage: React.FC = () => {
       </section>
 
       {/* ── GALLERY ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <div className="flex gap-2 mb-2">
           <div className="overflow-hidden rounded-xl group" style={{ flex: 7 }}>
             <img
@@ -79,6 +81,8 @@ const CorporateSeminarPage: React.FC = () => {
           </div>
           <div className="overflow-hidden rounded-xl group" style={{ flex: 5 }}>
             <img
+              loading="lazy"
+              decoding="async"
               src={img('Coworking terrace.png')}
               alt="Terrasse avec vue sur le Mont-Blanc"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -89,6 +93,8 @@ const CorporateSeminarPage: React.FC = () => {
         <div className="flex gap-2 mt-2">
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
+              loading="lazy"
+              decoding="async"
               src={img('A7408180.jpg')}
               alt="Espace de vie et de récupération"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -97,6 +103,8 @@ const CorporateSeminarPage: React.FC = () => {
           </div>
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
+              loading="lazy"
+              decoding="async"
               src={img('A7408144.jpg')}
               alt="Mezzanine et coin salon"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -105,6 +113,8 @@ const CorporateSeminarPage: React.FC = () => {
           </div>
           <div className="flex-1 overflow-hidden rounded-xl group">
             <img
+              loading="lazy"
+              decoding="async"
               src={img('A7408150.jpg')}
               alt="Vue sur le bar depuis la mezzanine"
               className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -115,8 +125,8 @@ const CorporateSeminarPage: React.FC = () => {
       </section>
 
       {/* ── FEATURES ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('servicePages.performanceCenter.seminarFeaturesLabel')}</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.seminarFeaturesLabel')}</p>
         <h2 className="text-title-h2 text-white mb-10">
           {t('servicePages.performanceCenter.seminarFeaturesTitle')}
         </h2>
@@ -137,8 +147,8 @@ const CorporateSeminarPage: React.FC = () => {
       </section>
 
       {/* ── FORMATS ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('servicePages.performanceCenter.seminarFormatsLabel')}</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.seminarFormatsLabel')}</p>
         <h2 className="text-title-h2 text-white mb-10">
           {t('servicePages.performanceCenter.seminarFormatsTitle')}
         </h2>
@@ -153,15 +163,8 @@ const CorporateSeminarPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <a href="mailto:performance@enduraw.co" className="btn-enduraw inline-flex items-center gap-2">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-          <span>{t('servicePages.performanceCenter.seminarCta')}</span>
-        </a>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA email="performance@enduraw.co" title={t('servicePages.performanceCenter.seminarContactTitle')} text={t('contactCta.seminar_p')} />
 
     </div>
   );

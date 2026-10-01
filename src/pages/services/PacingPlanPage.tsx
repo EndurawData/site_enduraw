@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
+import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
 
 const PacingPlanPage: React.FC = () => {
   const { t } = useTranslation();
@@ -17,8 +18,8 @@ const PacingPlanPage: React.FC = () => {
       </section>
 
       {/* Experience the Power */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">DEMO</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">DEMO</p>
         <h2 className="text-title-h2 text-white mb-4">{t('servicePages.pacingPlan.experiencePower')}</h2>
         <p className="text-paragraph text-gray-400 max-w-xl mb-10">
           {t('servicePages.pacingPlan.experiencePower_p')}
@@ -39,12 +40,12 @@ const PacingPlanPage: React.FC = () => {
       </section>
 
       {/* About the Plan */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">OVERVIEW</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">OVERVIEW</p>
         <p className="text-paragraph text-gray-300 max-w-2xl mb-8">
           {t('servicePages.pacingPlan.raceDay_p1')}
         </p>
-        <p className="text-subtitle text-white font-bold mb-8">
+        <p className="text-subtitle text-white mb-8">
           {t('servicePages.pacingPlan.endurawHere')}
         </p>
         <p className="text-paragraph text-gray-400 max-w-2xl">
@@ -53,8 +54,8 @@ const PacingPlanPage: React.FC = () => {
       </section>
 
       {/* By Analyzing */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">INPUTS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">INPUTS</p>
         <h2 className="text-title-h2 text-white mb-10">{t('servicePages.pacingPlan.byAnalyzing')}</h2>
         <div>
           <div className="flex items-start gap-5 py-5 border-b border-white/[0.06]">
@@ -105,8 +106,8 @@ const PacingPlanPage: React.FC = () => {
       </section>
 
       {/* We Compute */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">OUTPUTS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">OUTPUTS</p>
         <h2 className="text-title-h2 text-white mb-10">{t('servicePages.pacingPlan.weCompute')}</h2>
         <div>
           <div className="flex items-start gap-5 py-5 border-b border-white/[0.06]">
@@ -157,49 +158,16 @@ const PacingPlanPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Learn More Tech */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">TECHNOLOGY</p>
-        <h2 className="text-title-h2 text-white mb-4">{t('servicePages.pacingPlan.learnMoreTech')}</h2>
-        <p className="text-paragraph text-gray-400 max-w-xl mb-10">
-          {t('servicePages.pacingPlan.learnMoreTech_p')}
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="https://www.linkedin.com/pulse/petter-engdahls-pacing-strategy-mont-blanc-marathon-joseph-mestrallet/?trackingId=f1aj2RJkQuaMFK%2FBsmgwVA%3D%3D"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-enduraw"
-          >
-            <span>{t('servicePages.pacingPlan.learnMoreLink')}</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">GET STARTED</p>
-        <h2 className="text-title text-white mb-8 max-w-md">{t('servicePages.pacingPlan.readyToOptimize')}</h2>
-        <p className="text-paragraph text-gray-400 max-w-xl mb-10">
-          {t('servicePages.pacingPlan.readyToOptimize_p')}
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="https://hg1xgb-km.myshopify.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-enduraw"
-          >
-            <span>{t('servicePages.pacingPlan.getPacingPlan')}</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
-          </a>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA
+        email="performance@enduraw.co"
+        title={t('servicePages.pacingPlan.readyToOptimize')}
+        text={t('servicePages.pacingPlan.readyToOptimize_p')}
+      >
+        <a href="https://hg1xgb-km.myshopify.com/" target="_blank" rel="noopener noreferrer" className={secondaryBtnClass}>
+          {t('servicePages.pacingPlan.getPacingPlan')}
+        </a>
+      </ContactCTA>
 
     </div>
   );

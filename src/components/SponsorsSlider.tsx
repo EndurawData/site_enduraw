@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const SponsorsSlider: React.FC = () => {
   const sponsors = [
@@ -14,20 +14,63 @@ const SponsorsSlider: React.FC = () => {
     { id: 10, image: '/images/sponsors/sponsor10.png', name: 'Sponsor 10' },
   ];
 
-  const scrollAnimation = {
-    animation: 'scrollLeft 30s linear infinite',
-    width: 'calc(200%)',
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const position = useRef(0);
+  const paused = useRef(false);
+  const drag = useRef<{ x: number; scroll: number } | null>(null);
+
+  // Auto-scroll; the logo list is duplicated so we wrap at half the width
+  useEffect(() => {
+    let frame: number;
+    const step = () => {
+      const el = scrollRef.current;
+      if (el) {
+        const half = el.scrollWidth / 2;
+        if (!paused.current) position.current += 0.5;
+        if (position.current >= half) position.current -= half;
+        if (position.current < 0) position.current += half;
+        el.scrollLeft = position.current;
+      }
+      frame = requestAnimationFrame(step);
+    };
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    paused.current = true;
+    drag.current = { x: e.clientX, scroll: position.current };
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!drag.current) return;
+    position.current = drag.current.scroll - (e.clientX - drag.current.x);
+  };
+  const onPointerUp = () => {
+    drag.current = null;
+    paused.current = false;
   };
 
   return (
-    <div className="py-16 bg-gray-50 overflow-hidden">
+    <div className="py-16 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-subtitle text-center mb-12 bg-clip-text text-transparent bg-custom-gradient text-body-uppercase">
-          They trusted us
-        </h2>
+        <div className="text-center mb-12">
+          <h2 className="label-enduraw">
+            They trusted us
+          </h2>
+        </div>
         <div className="relative">
-          <div className="overflow-hidden">
-            <div className="flex" style={scrollAnimation}>
+          <div
+            ref={scrollRef}
+            className="overflow-hidden select-none cursor-grab active:cursor-grabbing"
+            style={{ touchAction: 'pan-y' }}
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerCancel={onPointerUp}
+            onDragStart={(e) => e.preventDefault()}
+          >
+            <div className="flex w-max">
               {/* First set of logos */}
               {sponsors.map((sponsor) => (
                 <div
@@ -68,17 +111,6 @@ const SponsorsSlider: React.FC = () => {
           </div>
         </div>
       </div>
-      
-      <style>{`
-        @keyframes scrollLeft {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
     </div>
   );
 };

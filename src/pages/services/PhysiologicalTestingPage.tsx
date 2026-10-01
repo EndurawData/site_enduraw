@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
+import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
 
 const PhysiologicalTestingPage: React.FC = () => {
   const { t } = useTranslation();
@@ -30,16 +31,16 @@ const PhysiologicalTestingPage: React.FC = () => {
       </section>
 
       {/* Protocols intro */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">PROTOCOLS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">PROTOCOLS</p>
         <h2 className="text-title-h2 text-white mb-4">{t('servicePages.physiologicalTesting.protocols_title')}</h2>
         <p className="text-paragraph text-gray-400 max-w-md mb-4">{t('servicePages.physiologicalTesting.protocols_p1')}</p>
         <p className="text-paragraph text-gray-400 max-w-md">{t('servicePages.physiologicalTesting.protocols_p2')}</p>
       </section>
 
       {/* VO2max & Walk-Run protocols */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">TESTING OPTIONS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">TESTING OPTIONS</p>
         <div className="grid gap-px bg-white/[0.06] rounded-lg overflow-hidden md:grid-cols-2">
 
           {/* VO2max */}
@@ -92,8 +93,8 @@ const PhysiologicalTestingPage: React.FC = () => {
       </section>
 
       {/* Sensors */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">EQUIPMENT</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">EQUIPMENT</p>
         <h2 className="text-title-h2 text-white mb-4">{t('servicePages.physiologicalTesting.sensors_title')}</h2>
         <p className="text-paragraph text-gray-400 max-w-xl mb-10">{t('servicePages.physiologicalTesting.sensors_soon')}</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
@@ -124,20 +125,16 @@ const PhysiologicalTestingPage: React.FC = () => {
         <p className="text-paragraph text-gray-400 mt-6">{t('servicePages.physiologicalTesting.sensors_linkedin')}</p>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">GET STARTED</p>
-        <h2 className="text-title text-white mb-4 max-w-sm">{t('servicePages.physiologicalTesting.interested_title')}</h2>
-        <p className="text-paragraph text-gray-400 max-w-xl mb-8">{t('servicePages.physiologicalTesting.interested_p')}</p>
-        <div className="flex flex-wrap gap-3">
-          <a href="mailto:performance@enduraw.co" className="btn-enduraw">
-            {t('servicePages.physiologicalTesting.contactBtn')}
-          </a>
-          <Link to="/services" className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150">
-            {t('servicePages.backToServices')}
-          </Link>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA
+        email="performance@enduraw.co"
+        title={t('servicePages.physiologicalTesting.interested_title')}
+        text={t('servicePages.physiologicalTesting.interested_p')}
+      >
+        <Link to="/services" className={secondaryBtnClass}>
+          {t('servicePages.backToServices')}
+        </Link>
+      </ContactCTA>
 
     </div>
   );

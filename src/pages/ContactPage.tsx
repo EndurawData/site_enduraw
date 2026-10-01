@@ -19,8 +19,8 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Email Categories */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">CHANNELS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">CHANNELS</p>
         <div>
           {/* Performance & Training */}
           <div className="flex items-start gap-5 py-5 border-b border-white/[0.06]">

@@ -18,6 +18,7 @@ import EndurawAPIPage from './pages/services/EndurawAPIPage';
 import TrainingCampPage from './pages/epc/TrainingCampPage';
 import CorporateSeminarPage from './pages/epc/CorporateSeminarPage';
 import CoworkingPage from './pages/epc/CoworkingPage';
+import PodcastStudioPage from './pages/epc/PodcastStudioPage';
 import AdminPage from './pages/AdminPage';
 import BookingSuccessPage from './pages/BookingSuccessPage';
 import MentionsLegalesPage from './pages/MentionsLegalesPage';
@@ -60,6 +61,7 @@ function App() {
             <Route path="/epc/trainingcamp" element={<TrainingCampPage />} />
             <Route path="/epc/corporateseminar" element={<CorporateSeminarPage />} />
             <Route path="/epc/coworking" element={<CoworkingPage />} />
+            <Route path="/epc/podcaststudio" element={<PodcastStudioPage />} />
             <Route path="/services/athlete-support" element={<AthleteSupportPage />} />
             <Route path="/services/pacing-plan" element={<PacingPlanPage />} />
             <Route path="/services/enduraw-report" element={<EndurawReportPage />} />

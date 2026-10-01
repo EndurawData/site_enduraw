@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
 
         {/* Address */}
         <p className="text-sm text-gray-300 mb-10 text-body-uppercase tracking-wide">
-          330 route du plagnolet &mdash; 74400 Chamonix &mdash; France
+          185 clos du tour noir &mdash; 74400 Chamonix &mdash; France
         </p>
 
         {/* Social Icons */}
