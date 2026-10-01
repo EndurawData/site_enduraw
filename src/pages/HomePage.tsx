@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SponsorsSlider from '../components/SponsorsSlider';
+import { useSwipe } from '../hooks/useSwipe';
 import '../styles/fancy.css';
 
 interface HomePageProps {
@@ -13,6 +14,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const [currentAthleteSlide, setCurrentAthleteSlide] = useState(0);
   const [currentTeamSlide, setCurrentTeamSlide] = useState(0);
+  const [teamPaused, setTeamPaused] = useState(false);
 
   useEffect(() => {
     if (activeSection && sectionRefs.current[activeSection]) {
@@ -76,7 +78,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       linkedin: 'https://www.linkedin.com/in/anthony-saliou-085286158/',
     },
     {
-      name: 'Lucas',
+      name: 'Lucas Guillot',
       img: '/images/team/lucas.png',
       role: t('home.lucas_role'),
       bio: t('home.lucas_p1'),
@@ -90,21 +92,21 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       linkedin: 'https://www.linkedin.com/in/valentin-templ%C3%A9/',
     },
     {
-      name: 'Charline',
+      name: 'Charline Batel',
       img: '/images/charline-removebg-preview.png',
       role: t('home.charline_role'),
       bio: t('home.charline_p1'),
       linkedin: 'https://www.linkedin.com/in/charline-batel/',
     },
     {
-      name: 'Antoine',
+      name: 'Antoine Figula',
       img: '/images/antoine-removebg-preview.png',
       role: t('home.antoine_role'),
       bio: t('home.antoine_p1'),
       linkedin: 'https://www.linkedin.com/in/antoine-figula-b518192b1/',
     },
     {
-      name: 'Kyllian',
+      name: 'Kyllian Gricourt',
       img: '/images/team/kyllian.png',
       role: t('home.kyllian_role'),
       bio: t('home.kyllian_p1'),
@@ -158,19 +160,34 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
     },
   ];
 
+  const athleteSlides = Math.ceil(athletes.length / 3);
+  const teamSlides = Math.ceil(team.length / 4);
+
+  // currentXSlide in deps: autoplay timer restarts after a manual swipe/click
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentAthleteSlide((prev) => (prev + 1) % Math.ceil(athletes.length / 3));
+      setCurrentAthleteSlide((prev) => (prev + 1) % athleteSlides);
     }, 4000);
     return () => clearInterval(interval);
-  }, [athletes.length]);
+  }, [athleteSlides, currentAthleteSlide]);
 
+  // Bios are long: slower autoplay, paused while the mouse is over the cards
   useEffect(() => {
+    if (teamPaused) return;
     const interval = setInterval(() => {
-      setCurrentTeamSlide((prev) => (prev + 1) % Math.ceil(team.length / 4));
-    }, 4500);
+      setCurrentTeamSlide((prev) => (prev + 1) % teamSlides);
+    }, 12000);
     return () => clearInterval(interval);
-  }, [team.length]);
+  }, [teamSlides, currentTeamSlide, teamPaused]);
+
+  const athleteSwipe = useSwipe(
+    () => setCurrentAthleteSlide((prev) => (prev - 1 + athleteSlides) % athleteSlides),
+    () => setCurrentAthleteSlide((prev) => (prev + 1) % athleteSlides),
+  );
+  const teamSwipe = useSwipe(
+    () => setCurrentTeamSlide((prev) => (prev - 1 + teamSlides) % teamSlides),
+    () => setCurrentTeamSlide((prev) => (prev + 1) % teamSlides),
+  );
 
   return (
     <div className="text-white min-h-screen">
@@ -213,10 +230,10 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       {/* ── PRODUCTS ── */}
       <section
         ref={(el) => { sectionRefs.current['about'] = el; }}
-        className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]"
+        className="max-w-5xl mx-auto px-6 sm:px-8 py-24 section-fade"
       >
         <div className="mb-12">
-          <p className="text-body-uppercase text-[#6CDCFF] tracking-widest mb-3">
+          <p className="label-enduraw mb-3">
             {t('home.products_label')}
           </p>
           <p className="text-paragraph text-gray-300 max-w-md leading-relaxed">
@@ -248,8 +265,8 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       </section>
 
       {/* ── ECOSYSTEM ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-16 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-300 tracking-widest mb-10">
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade">
+        <p className="label-enduraw mb-10">
           {t('home.ecosystem_label')}
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
@@ -266,18 +283,18 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       {/* ── ATHLETES ── */}
       <section
         ref={(el) => { sectionRefs.current['athletes'] = el; }}
-        className="max-w-5xl mx-auto px-6 sm:px-8 py-16 border-t border-white/[0.06]"
+        className="max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade"
       >
-        <p className="text-body-uppercase text-gray-300 tracking-widest mb-10">
+        <p className="label-enduraw mb-10">
           {t('home.eliteAthletes')}
         </p>
 
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden select-none cursor-grab active:cursor-grabbing" {...athleteSwipe}>
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${currentAthleteSlide * 100}%)` }}
           >
-            {Array.from({ length: Math.ceil(athletes.length / 3) }).map((_, slideIndex) => (
+            {Array.from({ length: athleteSlides }).map((_, slideIndex) => (
               <div key={slideIndex} className="w-full flex-shrink-0">
                 <div className="grid grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
                   {athletes.slice(slideIndex * 3, (slideIndex + 1) * 3).map((a, i) => (
@@ -303,7 +320,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
         </div>
 
         <div className="flex justify-center mt-6 space-x-2">
-          {Array.from({ length: Math.ceil(athletes.length / 3) }).map((_, index) => (
+          {Array.from({ length: athleteSlides }).map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentAthleteSlide(index)}
@@ -318,18 +335,21 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       {/* ── TEAM ── */}
       <section
         ref={(el) => { sectionRefs.current['aboutus'] = el; }}
-        className="max-w-5xl mx-auto px-6 sm:px-8 py-16 border-t border-white/[0.06]"
+        className="max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade"
       >
-        <p className="text-body-uppercase text-gray-300 tracking-widest mb-10">
+        <p className="label-enduraw mb-10">
           {t('home.aboutUs')}
         </p>
 
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden select-none cursor-grab active:cursor-grabbing" {...teamSwipe}
+          onMouseEnter={() => setTeamPaused(true)}
+          onMouseLeave={() => setTeamPaused(false)}
+        >
           <div
             className="flex transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${currentTeamSlide * 100}%)` }}
           >
-            {Array.from({ length: Math.ceil(team.length / 4) }).map((_, slideIndex) => (
+            {Array.from({ length: teamSlides }).map((_, slideIndex) => (
               <div key={slideIndex} className="w-full flex-shrink-0">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
                   {team.slice(slideIndex * 4, (slideIndex + 1) * 4).map((member) => (
@@ -369,7 +389,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
         </div>
 
         <div className="flex justify-center mt-6 space-x-2">
-          {Array.from({ length: Math.ceil(team.length / 4) }).map((_, index) => (
+          {Array.from({ length: teamSlides }).map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentTeamSlide(index)}
@@ -382,7 +402,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       </section>
 
       {/* ── SPONSORS ── */}
-      <div className="border-t border-white/[0.06]">
+      <div className="section-fade">
         <SponsorsSlider />
       </div>
 

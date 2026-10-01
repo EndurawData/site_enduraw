@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../styles/fancy.css';
+import ContactCTA, { secondaryBtnClass } from '../components/ContactCTA';
 
 const ProjectsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -121,8 +122,8 @@ const ProjectsPage: React.FC = () => {
         </p>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">{t('projects.expertise')}</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">{t('projects.expertise')}</p>
         <h2 className="text-title-h2 text-white mb-4">{t('projects.areasOfWork')}</h2>
         <p className="text-paragraph text-gray-400 max-w-xl mb-10">
           {t('projects.areasOfWork_p')}
@@ -147,24 +148,12 @@ const ProjectsPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">GET STARTED</p>
-        <h2 className="text-title text-white mb-8 max-w-sm">{t('projects.cta_title')}</h2>
-        <div className="flex flex-wrap gap-3">
-          <Link to="/services" className="btn-enduraw">
-            {t('projects.exploreServices')}
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
-          >
-            {t('projects.contactUs')}
-          </Link>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA email="communication@enduraw.co" title={t('projects.cta_title')} text={t('contactCta.projects_p')}>
+        <Link to="/services" className={secondaryBtnClass}>
+          {t('projects.exploreServices')}
+        </Link>
+      </ContactCTA>
 
     </div>
   );

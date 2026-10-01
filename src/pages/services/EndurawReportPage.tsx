@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
+import ContactCTA from '../../components/ContactCTA';
 
 const EndurawReportPage: React.FC = () => {
   const { t } = useTranslation();
@@ -15,8 +15,8 @@ const EndurawReportPage: React.FC = () => {
       </section>
 
       {/* Data Integration & Insights */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">DATA</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">DATA</p>
         <h2 className="text-title-h2 text-white mb-10">{t('servicePages.endurawReport.dataIntegration_title')}</h2>
         <div>
           <div className="flex items-start gap-5 py-5 border-b border-white/[0.06]">
@@ -63,8 +63,8 @@ const EndurawReportPage: React.FC = () => {
       </section>
 
       {/* Insights & Recommendations */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">INSIGHTS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">INSIGHTS</p>
         <h2 className="text-title-h2 text-white mb-10">{t('servicePages.endurawReport.insightsRec_title')}</h2>
         <div>
           <div className="flex items-start gap-5 py-5 border-b border-white/[0.06]">
@@ -111,8 +111,8 @@ const EndurawReportPage: React.FC = () => {
       </section>
 
       {/* Report Features */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">FEATURES</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">FEATURES</p>
         <h2 className="text-title-h2 text-white mb-10">{t('servicePages.endurawReport.reportFeatures_title')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
@@ -146,8 +146,8 @@ const EndurawReportPage: React.FC = () => {
       </section>
 
       {/* Sample Sections */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">SAMPLE SECTIONS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">SAMPLE SECTIONS</p>
         <h2 className="text-title-h2 text-white mb-10">{t('servicePages.endurawReport.sampleSections_title')}</h2>
         <div>
           <div className="flex items-start gap-5 py-5 border-b border-white/[0.06]">
@@ -162,15 +162,15 @@ const EndurawReportPage: React.FC = () => {
               <ul className="space-y-1.5">
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 bg-[#6CDCFF] rounded-full mt-2 flex-shrink-0"></span>
-                  <span className="text-sm text-gray-400">{t('servicePages.endurawReport.tl_li1')}</span>
+                  <span className="text-paragraph text-gray-400">{t('servicePages.endurawReport.tl_li1')}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 bg-[#6CDCFF] rounded-full mt-2 flex-shrink-0"></span>
-                  <span className="text-sm text-gray-400">{t('servicePages.endurawReport.tl_li2')}</span>
+                  <span className="text-paragraph text-gray-400">{t('servicePages.endurawReport.tl_li2')}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 bg-[#6CDCFF] rounded-full mt-2 flex-shrink-0"></span>
-                  <span className="text-sm text-gray-400">{t('servicePages.endurawReport.tl_li3')}</span>
+                  <span className="text-paragraph text-gray-400">{t('servicePages.endurawReport.tl_li3')}</span>
                 </li>
               </ul>
             </div>
@@ -187,15 +187,15 @@ const EndurawReportPage: React.FC = () => {
               <ul className="space-y-1.5">
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 bg-[#6CDCFF] rounded-full mt-2 flex-shrink-0"></span>
-                  <span className="text-sm text-gray-400">{t('servicePages.endurawReport.pp_li1')}</span>
+                  <span className="text-paragraph text-gray-400">{t('servicePages.endurawReport.pp_li1')}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 bg-[#6CDCFF] rounded-full mt-2 flex-shrink-0"></span>
-                  <span className="text-sm text-gray-400">{t('servicePages.endurawReport.pp_li2')}</span>
+                  <span className="text-paragraph text-gray-400">{t('servicePages.endurawReport.pp_li2')}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 bg-[#6CDCFF] rounded-full mt-2 flex-shrink-0"></span>
-                  <span className="text-sm text-gray-400">{t('servicePages.endurawReport.pp_li3')}</span>
+                  <span className="text-paragraph text-gray-400">{t('servicePages.endurawReport.pp_li3')}</span>
                 </li>
               </ul>
             </div>
@@ -203,20 +203,12 @@ const EndurawReportPage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">GET STARTED</p>
-        <h2 className="text-title text-white mb-8 max-w-sm">{t('servicePages.endurawReport.getReport_title')}</h2>
-        <p className="text-paragraph text-gray-400 max-w-xl mb-8">{t('servicePages.endurawReport.getReport_p')}</p>
-        <div className="flex flex-wrap gap-3">
-          <Link to="/contact" className="btn-enduraw">
-            {t('servicePages.endurawReport.contactUs')}
-            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA
+        email="dashboard@enduraw.co"
+        title={t('servicePages.endurawReport.getReport_title')}
+        text={t('servicePages.endurawReport.getReport_p')}
+      />
 
     </div>
   );

@@ -117,17 +117,50 @@ html, body {
     background: linear-gradient(to bottom, #ffffff 0%, #6CDCFF 33%, #2054A8 66%, #000000 100%);
   }
 
+  /* Section label — slanted gradient banner (dashboard DA, cf. degrade_DA.png) */
+  .label-enduraw {
+    display: inline-block;
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 0.75rem;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #020617;
+    padding: 0.5rem 1.25rem;
+    background: linear-gradient(90deg, #8FE6FF 0%, #6CDCFF 20%, #2054A8 100%);
+    clip-path: polygon(0.5rem 0, 100% 0, calc(100% - 0.5rem) 100%, 0 100%);
+  }
+
+  /* Section separator — 1px line fading out on both sides */
+  .section-fade {
+    position: relative;
+  }
+
+  .section-fade::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    right: 1.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(108, 220, 255, 0.28) 30%, rgba(32, 84, 168, 0.4) 70%, transparent 100%);
+    pointer-events: none;
+  }
+
   /* Bouton principal */
+  /* Same gradient as .label-enduraw */
   .btn-enduraw {
-    background-color: #6CDCFF;
-    color: #000000;
+    background-image: linear-gradient(90deg, #8FE6FF 0%, #6CDCFF 20%, #2054A8 100%);
+    color: #020617;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.09em;
     padding: 0.5rem 1.125rem;
     border-radius: 0.25rem;
-    transition: background-color 0.15s ease;
+    transition: filter 0.15s ease;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -135,7 +168,7 @@ html, body {
   }
 
   .btn-enduraw:hover {
-    background-color: #5ACCEF;
+    filter: brightness(1.1);
   }
 }
 

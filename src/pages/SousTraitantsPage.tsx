@@ -20,10 +20,10 @@ const SousTraitantsPage: React.FC = () => {
             <h2 className="text-title-h2 text-[#6CDCFF] mb-4">
               1. Objet de cette page
             </h2>
-            <p className="text-white/80 leading-relaxed mb-4">
+            <p className="text-paragraph text-white/80 leading-relaxed mb-4">
               Conformément à l'article 28 du Règlement Général sur la Protection des Données (RGPD), Enduraw informe ses utilisateurs des sous-traitants impliqués dans le traitement de leurs données personnelles.
             </p>
-            <p className="text-white/80 leading-relaxed mb-2">
+            <p className="text-paragraph text-white/80 leading-relaxed mb-2">
               Cette page présente :
             </p>
             <ul className="list-disc list-inside space-y-2 text-white/80 ml-4 mb-4">
@@ -31,7 +31,7 @@ const SousTraitantsPage: React.FC = () => {
               <li>la nature des prestations qu'ils fournissent,</li>
               <li>les mesures mises en place pour assurer la sécurité et la confidentialité des données.</li>
             </ul>
-            <p className="text-white/80 leading-relaxed">
+            <p className="text-paragraph text-white/80 leading-relaxed">
               Elle est mise à jour régulièrement afin de refléter tout changement dans notre écosystème technique.
             </p>
           </section>
@@ -40,10 +40,10 @@ const SousTraitantsPage: React.FC = () => {
             <h2 className="text-title-h2 text-[#6CDCFF] mb-4">
               2. Principes généraux
             </h2>
-            <p className="text-white/80 leading-relaxed mb-4">
+            <p className="text-paragraph text-white/80 leading-relaxed mb-4">
               Enduraw ne partage jamais vos données personnelles avec des tiers non autorisés.
             </p>
-            <p className="text-white/80 leading-relaxed mb-2">
+            <p className="text-paragraph text-white/80 leading-relaxed mb-2">
               Tous les sous-traitants listés ci-dessous :
             </p>
             <ul className="list-disc list-inside space-y-2 text-white/80 ml-4 mb-4">
@@ -124,7 +124,7 @@ const SousTraitantsPage: React.FC = () => {
             <h2 className="text-title-h2 text-[#6CDCFF] mb-4">
               4. Sécurité et durée de conservation
             </h2>
-            <p className="text-white/80 leading-relaxed mb-2">
+            <p className="text-paragraph text-white/80 leading-relaxed mb-2">
               Chaque sous-traitant s'engage contractuellement à :
             </p>
             <ul className="list-disc list-inside space-y-2 text-white/80 ml-4 mb-4">
@@ -140,10 +140,10 @@ const SousTraitantsPage: React.FC = () => {
             <h2 className="text-title-h2 text-[#6CDCFF] mb-4">
               5. Évolutions de cette liste
             </h2>
-            <p className="text-white/80 leading-relaxed mb-4">
+            <p className="text-paragraph text-white/80 leading-relaxed mb-4">
               Enduraw pourra modifier cette liste afin d'intégrer de nouveaux prestataires ou d'adapter ses outils internes.
             </p>
-            <p className="text-white/80 leading-relaxed">
+            <p className="text-paragraph text-white/80 leading-relaxed">
               En cas de modification significative (nouveau prestataire, changement de finalité de traitement, etc.), les utilisateurs seront informés via l'application ou par email avant la mise en œuvre.
             </p>
           </section>
@@ -152,16 +152,16 @@ const SousTraitantsPage: React.FC = () => {
             <h2 className="text-title-h2 text-[#6CDCFF] mb-4">
               6. Contact
             </h2>
-            <p className="text-white/80 leading-relaxed mb-4">
+            <p className="text-paragraph text-white/80 leading-relaxed mb-4">
               Pour toute question relative à nos sous-traitants :
             </p>
-            <p className="text-white/80 leading-relaxed mb-2">
+            <p className="text-paragraph text-white/80 leading-relaxed mb-2">
               <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
             </p>
-            <p className="text-white/80 leading-relaxed mb-2">
-              Enduraw — 330 Route du Plagnolet, 74400 Chamonix-Mont-Blanc
+            <p className="text-paragraph text-white/80 leading-relaxed mb-2">
+              Enduraw — 185 Clos du Tour Noir, 74400 Chamonix-Mont-Blanc
             </p>
-            <p className="text-white/80 leading-relaxed">
+            <p className="text-paragraph text-white/80 leading-relaxed">
               Délégué à la protection des données : <strong>Valentin Templé</strong>
             </p>
           </section>

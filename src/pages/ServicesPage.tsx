@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../styles/fancy.css';
+import ContactCTA from '../components/ContactCTA';
 
 interface ServicesPageProps {
   activeSection?: string;
@@ -75,8 +76,8 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
       </section>
 
       {/* Services Row List */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">
           {t('services.ourServices')}
         </p>
         <div>
@@ -105,24 +106,8 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">CONTACT</p>
-        <h2 className="text-title text-white mb-5 max-w-sm leading-tight">
-          {t('services.workTogether')}
-        </h2>
-        <p className="text-paragraph text-gray-300 max-w-xl mb-10">
-          {t('services.getInTouch_p')}
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <Link to="/contact" className="btn-enduraw">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <span>{t('services.contactUs')}</span>
-          </Link>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA email="communication@enduraw.co" title={t('services.workTogether')} text={t('services.getInTouch_p')} />
 
     </div>
   );

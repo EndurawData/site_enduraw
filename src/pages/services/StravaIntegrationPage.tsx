@@ -1,8 +1,8 @@
 ﻿import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PersonCard from '../../components/PersonCard';
 import '../../styles/fancy.css';
+import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
 
 const StravaIntegrationPage: React.FC = () => {
   const { t } = useTranslation();
@@ -18,8 +18,8 @@ const StravaIntegrationPage: React.FC = () => {
       </section>
 
       {/* Logos + Stats */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">OVERVIEW</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">OVERVIEW</p>
 
         <div className="flex flex-wrap items-center gap-8 mb-16">
           <img
@@ -49,8 +49,8 @@ const StravaIntegrationPage: React.FC = () => {
       </section>
 
       {/* About + screenshot */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">ABOUT</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">ABOUT</p>
 
         <div className="grid gap-10 md:grid-cols-2 items-start">
           <div className="space-y-5 text-paragraph text-gray-300 leading-relaxed">
@@ -87,8 +87,8 @@ const StravaIntegrationPage: React.FC = () => {
       </section>
 
       {/* How it works */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">PROCESS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">PROCESS</p>
         <h2 className="text-title-h2 text-white mb-10">{t('servicePages.stravaIntegration.howItWorks')}</h2>
 
         <div>
@@ -120,22 +120,22 @@ const StravaIntegrationPage: React.FC = () => {
       </section>
 
       {/* Tech behind */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">TECHNOLOGY</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">TECHNOLOGY</p>
         <h2 className="text-title-h2 text-white mb-4">{t('servicePages.stravaIntegration.techBehind')}</h2>
         <p className="text-paragraph text-gray-300 max-w-2xl">{t('servicePages.stravaIntegration.techBehindSub')}</p>
       </section>
 
       {/* Sponsors */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">PARTNERS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">PARTNERS</p>
         <h2 className="text-title-h2 text-white mb-4">{t('servicePages.stravaIntegration.sponsors')}</h2>
         <p className="text-paragraph text-gray-300 max-w-2xl">{t('servicePages.stravaIntegration.sponsorsSub')}</p>
       </section>
 
       {/* Builders */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">TEAM</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">TEAM</p>
         <h2 className="text-title-h2 text-white mb-8">{t('servicePages.stravaIntegration.builders')}</h2>
         <div className="grid sm:grid-cols-2 gap-6">
           <PersonCard
@@ -157,28 +157,16 @@ const StravaIntegrationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">GET STARTED</p>
-        <h2 className="text-title text-white mb-8 max-w-sm">{t('servicePages.stravaIntegration.wantAccess_title')}</h2>
-        <p className="text-paragraph text-gray-300 max-w-xl mb-8">{t('servicePages.stravaIntegration.wantAccess_p')}</p>
-        <div className="flex flex-wrap gap-3">
-          <Link to="/contact" className="btn-enduraw">
-            {t('servicePages.stravaIntegration.contactUs')}
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
-          <a
-            href="https://enduraw-report-strava.onrender.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
-          >
-            {t('servicePages.stravaIntegration.cta')}
-          </a>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA
+        email="dashboard@enduraw.co"
+        title={t('servicePages.stravaIntegration.wantAccess_title')}
+        text={t('servicePages.stravaIntegration.wantAccess_p')}
+      >
+        <a href="https://enduraw-report-strava.onrender.com/" target="_blank" rel="noopener noreferrer" className={secondaryBtnClass}>
+          {t('servicePages.stravaIntegration.cta')}
+        </a>
+      </ContactCTA>
 
     </div>
   );

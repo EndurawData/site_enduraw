@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
+import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
 
 const EndurawDashboardPage: React.FC = () => {
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ const EndurawDashboardPage: React.FC = () => {
       name: "Joseph Mestrallet",
       country: "France 🇫🇷",
       education: "X - HEC Berkeley ENSEA",
-      position: "Performance Scientist",
+      position: "CEO",
       company: "@Enduraw",
       image: "/images/team/joseph.png"
     },
@@ -40,7 +40,7 @@ const EndurawDashboardPage: React.FC = () => {
       name: "Valentin Templé",
       country: "France 🇫🇷",
       education: "ESILV Data science & IA",
-      position: "Data Scientist Intern",
+      position: "Technical Manager",
       company: "@Enduraw",
       image: "/images/team/valentin.png"
     }
@@ -97,8 +97,8 @@ const EndurawDashboardPage: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">STATS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">STATS</p>
         <h2 className="text-title-h2 text-white mb-10">
           {t('servicePages.endurawDashboard.inFigures')}
         </h2>
@@ -131,8 +131,8 @@ const EndurawDashboardPage: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">ABOUT</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">ABOUT</p>
         <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.endurawDashboard.stravaIntegration_title')}
         </h2>
@@ -204,8 +204,8 @@ const EndurawDashboardPage: React.FC = () => {
       </section>
 
       {/* Releases Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">CHANGELOG</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">CHANGELOG</p>
         <h2 className="text-title-h2 text-white mb-10">
           {t('servicePages.endurawDashboard.releases')}
         </h2>
@@ -235,8 +235,8 @@ const EndurawDashboardPage: React.FC = () => {
       </section>
 
       {/* Architects Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">TEAM</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">TEAM</p>
         <h2 className="text-title-h2 text-white mb-10">
           {t('servicePages.endurawDashboard.architects')}
         </h2>
@@ -269,13 +269,13 @@ const EndurawDashboardPage: React.FC = () => {
                             <p className="text-paragraph text-gray-400 mb-1">
                               {architect.country}
                             </p>
-                            <p className="text-xs text-[#6CDCFF] font-medium mb-1">
+                            <p className="text-body-uppercase text-[#6CDCFF] mb-1">
                               {architect.education}
                             </p>
-                            <p className="text-paragraph text-white font-semibold mb-1">
+                            <p className="text-subtitle text-white mb-1">
                               {architect.position}
                             </p>
-                            <p className="text-xs text-[#6CDCFF] font-medium">
+                            <p className="text-body-uppercase text-[#6CDCFF]">
                               {architect.company}
                             </p>
                           </div>
@@ -305,47 +305,26 @@ const EndurawDashboardPage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">CONTACT</p>
-        <h2 className="text-title text-white mb-4 max-w-md">
-          {t('servicePages.endurawDashboard.interested_title')}
-        </h2>
-        <p className="text-paragraph text-gray-400 mb-8">
-          {t('servicePages.endurawDashboard.interested_p')}
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <Link to="/contact" className="btn-enduraw">
-            {t('servicePages.endurawDashboard.contactUs')}
-            <svg
-              className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </Link>
-          <a
-            href="https://enduraw-report-strava.onrender.com/dashboard"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
-            onClick={() => {
-              if (typeof window !== 'undefined' && (window as any).fbq) {
-                (window as any).fbq('track', 'Lead');
-              }
-            }}
-          >
-            {t('servicePages.endurawDashboard.activateReport')}
-          </a>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA
+        email="dashboard@enduraw.co"
+        title={t('servicePages.endurawDashboard.interested_title')}
+        text={t('servicePages.endurawDashboard.interested_p')}
+      >
+        <a
+          href="https://enduraw-report-strava.onrender.com/dashboard"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={secondaryBtnClass}
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).fbq) {
+              (window as any).fbq('track', 'Lead');
+            }
+          }}
+        >
+          {t('servicePages.endurawDashboard.activateReport')}
+        </a>
+      </ContactCTA>
 
     </div>
   );

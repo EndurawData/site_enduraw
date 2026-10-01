@@ -19,8 +19,8 @@ const CareersPage: React.FC = () => {
         </p>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">APPLY</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">APPLY</p>
         <h2 className="text-title-h2 text-white mb-4">{t('careers.spontTitle')}</h2>
         <p className="text-paragraph text-gray-400 max-w-xl mb-10">
           {t('careers.spontIntro')}

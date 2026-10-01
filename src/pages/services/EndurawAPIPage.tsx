@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import '../../styles/fancy.css';
+import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
 
 const EndurawAPIPage: React.FC = () => {
   const { t } = useTranslation();
@@ -18,8 +19,8 @@ const EndurawAPIPage: React.FC = () => {
       </section>
 
       {/* Intelligence Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">CORE ENGINE</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">CORE ENGINE</p>
         <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.endurawAPI.intelligence_title')}
         </h2>
@@ -100,8 +101,8 @@ const EndurawAPIPage: React.FC = () => {
       </section>
 
       {/* Scientific Validation & Tech Integration â€” gap-grid */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">FOUNDATIONS</p>
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">FOUNDATIONS</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           {/* Scientific Validation */}
           <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
@@ -167,30 +168,12 @@ const EndurawAPIPage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-24 border-t border-white/[0.06]">
-        <p className="text-body-uppercase text-gray-500 tracking-widest mb-5">GET STARTED</p>
-        <h2 className="text-title text-white mb-8 max-w-sm">
-          {t('servicePages.endurawAPI.interested')}
-        </h2>
-        <div className="flex flex-wrap gap-3">
-          <Link to="/contact" className="btn-enduraw">
-            <span>{t('servicePages.endurawAPI.contactUs')}</span>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-            </svg>
-          </Link>
-          <Link
-            to="/services"
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
-          >
-            <span>{t('servicePages.endurawAPI.exploreServices')}</span>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+      {/* ── CONTACT ── */}
+      <ContactCTA email="dashboard@enduraw.co" title={t('servicePages.endurawAPI.interested')} text={t('contactCta.api_p')}>
+        <Link to="/services" className={secondaryBtnClass}>
+          {t('servicePages.endurawAPI.exploreServices')}
+        </Link>
+      </ContactCTA>
 
     </div>
   );
