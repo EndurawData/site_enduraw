@@ -19,6 +19,7 @@ import TrainingCampPage from './pages/epc/TrainingCampPage';
 import CorporateSeminarPage from './pages/epc/CorporateSeminarPage';
 import CoworkingPage from './pages/epc/CoworkingPage';
 import PodcastStudioPage from './pages/epc/PodcastStudioPage';
+import AboutPage from './pages/AboutPage';
 import AdminPage from './pages/AdminPage';
 import BookingSuccessPage from './pages/BookingSuccessPage';
 import MentionsLegalesPage from './pages/MentionsLegalesPage';
@@ -70,6 +71,7 @@ function App() {
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/booking-success" element={<BookingSuccessPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
             <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />

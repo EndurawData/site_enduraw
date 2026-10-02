@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
-import ContactCTA from '../../components/ContactCTA';
+import PageHero from '../../components/PageHero';
 
 // Web-optimized copies (max 2000px JPEG) of the originals in /images/epc
 const img = (filename: string): string =>
@@ -58,15 +58,14 @@ const CorporateSeminarPage: React.FC = () => {
     <div className="text-white min-h-screen pt-16">
 
       {/* ── HERO ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-20">
-        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.seminarLabel')}</p>
-        <h1 className="text-title-h2 text-white mb-4 max-w-2xl">
-          {t('servicePages.performanceCenter.seminarTitle')}
-        </h1>
-        <p className="text-paragraph text-gray-400 max-w-xl">
-          {t('servicePages.performanceCenter.seminarP')}
-        </p>
-      </section>
+      <PageHero
+        label={t('hero.epcSub_label')}
+        title={t('hero.seminar_title')}
+        text={t('servicePages.performanceCenter.seminarP')}
+        facts={[t('hero.seminar_fact2'), t('hero.seminar_fact3')]}
+        primary={{ label: t('hero.seminar_secondary'), href: '#formats' }}
+        contactEmail="performance@enduraw.co"
+      />
 
       {/* ── GALLERY ── */}
       <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
@@ -147,7 +146,7 @@ const CorporateSeminarPage: React.FC = () => {
       </section>
 
       {/* ── FORMATS ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+      <section id="formats" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.seminarFormatsLabel')}</p>
         <h2 className="text-title-h2 text-white mb-10">
           {t('servicePages.performanceCenter.seminarFormatsTitle')}
@@ -162,9 +161,6 @@ const CorporateSeminarPage: React.FC = () => {
           ))}
         </div>
       </section>
-
-      {/* ── CONTACT ── */}
-      <ContactCTA email="performance@enduraw.co" title={t('servicePages.performanceCenter.seminarContactTitle')} text={t('contactCta.seminar_p')} />
 
     </div>
   );

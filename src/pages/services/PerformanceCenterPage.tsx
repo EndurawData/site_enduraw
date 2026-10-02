@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
-import ContactCTA from '../../components/ContactCTA';
+import PageHero from '../../components/PageHero';
 
 // Web-optimized copies (max 2000px JPEG) of the originals in /images/epc
 const img = (filename: string): string =>
@@ -14,15 +14,17 @@ const PerformanceCenterPage: React.FC = () => {
   return (
     <div className="text-white min-h-screen pt-16">
 
-      {/* ── TITLE ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-12">
-        <h1 className="text-title text-white leading-tight">
-          ENDURAW PERFORMANCE CENTER
-        </h1>
-      </section>
+      {/* ── HERO ── */}
+      <PageHero
+        label={t('hero.epc_label')}
+        title={t('hero.epc_title')}
+        text={t('hero.epc_text')}
+        primary={{ label: t('hero.epc_primary'), href: '#activities' }}
+        contactEmail="performance@enduraw.co"
+      />
 
       {/* ── ACTIVITIES ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pb-20">
+      <section id="activities" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.activitiesLabel')}</p>
         <h2 className="text-title-h2 text-white mb-10 max-w-2xl">
           {t('servicePages.performanceCenter.activitiesTitle')}
@@ -138,13 +140,6 @@ const PerformanceCenterPage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* ── CONTACT ── */}
-      <ContactCTA
-        email="performance@enduraw.co"
-        title={t('servicePages.performanceCenter.contactTitle')}
-        text={t('servicePages.performanceCenter.coworkingContactNote')}
-      />
 
     </div>
   );

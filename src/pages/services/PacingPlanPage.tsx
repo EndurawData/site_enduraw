@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
-import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
+import PageHero from '../../components/PageHero';
 
 const PacingPlanPage: React.FC = () => {
   const { t } = useTranslation();
@@ -9,13 +9,16 @@ const PacingPlanPage: React.FC = () => {
   return (
     <div className="text-white min-h-screen pt-16">
 
-      {/* Hero Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-12">
-        <h1 className="text-title text-white mb-5 max-w-xl leading-tight">PACING PLAN</h1>
-        <p className="text-paragraph text-gray-300 max-w-xl mb-10">
-          {t('servicePages.pacingPlan.subtitle')}<br />{t('servicePages.pacingPlan.subtitle2')}
-        </p>
-      </section>
+      {/* ── HERO ── */}
+      <PageHero
+        label={t('hero.pp_label')}
+        title={t('hero.pp_title')}
+        text={t('hero.pp_text')}
+        facts={[t('hero.pp_fact1'), t('hero.pp_fact2'), t('hero.pp_fact3')]}
+        primary={{ label: t('hero.pp_primary'), href: 'https://hg1xgb-km.myshopify.com/' }}
+        secondary={{ label: t('hero.pp_secondary'), href: '#how' }}
+        contactEmail="performance@enduraw.co"
+      />
 
       {/* Experience the Power */}
       <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
@@ -54,7 +57,7 @@ const PacingPlanPage: React.FC = () => {
       </section>
 
       {/* By Analyzing */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+      <section id="how" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">INPUTS</p>
         <h2 className="text-title-h2 text-white mb-10">{t('servicePages.pacingPlan.byAnalyzing')}</h2>
         <div>
@@ -157,17 +160,6 @@ const PacingPlanPage: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* ── CONTACT ── */}
-      <ContactCTA
-        email="performance@enduraw.co"
-        title={t('servicePages.pacingPlan.readyToOptimize')}
-        text={t('servicePages.pacingPlan.readyToOptimize_p')}
-      >
-        <a href="https://hg1xgb-km.myshopify.com/" target="_blank" rel="noopener noreferrer" className={secondaryBtnClass}>
-          {t('servicePages.pacingPlan.getPacingPlan')}
-        </a>
-      </ContactCTA>
 
     </div>
   );

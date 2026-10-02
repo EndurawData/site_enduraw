@@ -1,7 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
-import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
+import { secondaryBtnClass } from '../../components/buttonStyles';
+import PageHero from '../../components/PageHero';
+import ForWhom from '../../components/ForWhom';
 
 const SHOP_URL = 'https://dashboard.enduraw-data.com/shop';
 
@@ -19,15 +21,19 @@ const TestingPage: React.FC = () => {
   return (
     <div className="text-white min-h-screen pt-16">
 
-      {/* Hero Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-12">
-        <h1 className="text-title text-white mb-5 max-w-xl leading-tight">
-          TESTING SERVICES
-        </h1>
-        <p className="text-paragraph text-gray-300 max-w-xl mb-10">
-          {t('servicePages.testing.subtitle')}
-        </p>
-      </section>
+      {/* ── HERO ── */}
+      <PageHero
+        label={t('hero.testing_label')}
+        title={t('hero.testing_title')}
+        text={t('hero.testing_text')}
+        facts={[t('hero.testing_fact1'), t('allLevels.badge'), t('hero.testing_fact2')]}
+        primary={{ label: t('hero.testing_primary'), href: SHOP_URL }}
+        secondary={{ label: t('hero.testing_secondary'), href: '#offer' }}
+        contactEmail="performance@enduraw.co"
+      />
+
+      {/* ── WHO IS IT FOR ── */}
+      <ForWhom offer="testing" />
 
       {/* Testing Locations */}
       <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
@@ -87,7 +93,7 @@ const TestingPage: React.FC = () => {
       </section>
 
       {/* Offer */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+      <section id="offer" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">{t('testingOffer.label')}</p>
         <h2 className="text-title-h2 text-white mb-10">{t('testingOffer.title')}</h2>
 
@@ -262,9 +268,6 @@ const TestingPage: React.FC = () => {
           <span>performance@enduraw.co</span>
         </a>
       </section>
-
-      {/* ── CONTACT ── */}
-      <ContactCTA email="performance@enduraw.co" title={t('contactCta.testing_title')} text={t('contactCta.testing_p')} />
 
     </div>
   );

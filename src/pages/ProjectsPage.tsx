@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../styles/fancy.css';
-import ContactCTA, { secondaryBtnClass } from '../components/ContactCTA';
+import ContactCTA from '../components/ContactCTA';
+import { secondaryBtnClass } from '../components/buttonStyles';
 
 const ProjectsPage: React.FC = () => {
   const { t } = useTranslation();

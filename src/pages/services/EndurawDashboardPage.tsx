@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
-import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
+import PageHero from '../../components/PageHero';
 
 const EndurawDashboardPage: React.FC = () => {
   const { t } = useTranslation();
@@ -11,7 +11,7 @@ const EndurawDashboardPage: React.FC = () => {
     {
       id: 1,
       name: "Alodie Boissonet",
-      country: "France 🇫🇷",
+      country: "France",
       education: "X - Cambridge",
       position: "Software Engineer",
       company: "@Mistral AI",
@@ -20,7 +20,7 @@ const EndurawDashboardPage: React.FC = () => {
     {
       id: 2,
       name: "Joseph Mestrallet",
-      country: "France 🇫🇷",
+      country: "France",
       education: "X - HEC Berkeley ENSEA",
       position: "CEO",
       company: "@Enduraw",
@@ -29,7 +29,7 @@ const EndurawDashboardPage: React.FC = () => {
     {
       id: 3,
       name: "Aymeric Roucher",
-      country: "France 🇫🇷",
+      country: "France",
       education: "X - Cambridge",
       position: "Project Lead - Agents",
       company: "@Hugging Face",
@@ -38,7 +38,7 @@ const EndurawDashboardPage: React.FC = () => {
     {
       id: 4,
       name: "Valentin Templé",
-      country: "France 🇫🇷",
+      country: "France",
       education: "ESILV Data science & IA",
       position: "Technical Manager",
       company: "@Enduraw",
@@ -58,43 +58,24 @@ const EndurawDashboardPage: React.FC = () => {
   return (
     <div className="text-white min-h-screen pt-16">
 
-      {/* Hero Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-12">
-        <h1 className="text-title text-white mb-5 max-w-xl leading-tight">
-          ENDURAW DASHBOARD
-        </h1>
-        <p className="text-paragraph text-gray-300 max-w-xl mb-10">
-          {t('servicePages.endurawDashboard.stravaIntegration_sub')}
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <a
-            href="https://enduraw-report-strava.onrender.com/dashboard"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-enduraw"
-            onClick={() => {
-              if (typeof window !== 'undefined' && (window as any).fbq) {
-                (window as any).fbq('track', 'Lead');
-              }
-            }}
-          >
-            <span>{t('servicePages.endurawDashboard.activateReport')}</span>
-            <svg
-              className="w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </a>
-        </div>
-      </section>
+      {/* ── HERO ── */}
+      <PageHero
+        label={t('hero.dashboard_label')}
+        title={t('hero.dashboard_title')}
+        text={t('hero.dashboard_text')}
+        facts={[t('hero.dashboard_fact1'), t('hero.dashboard_fact3')]}
+        primary={{
+          label: t('hero.dashboard_primary'),
+          href: 'https://enduraw-report-strava.onrender.com/dashboard',
+          onClick: () => {
+            if (typeof window !== 'undefined' && (window as any).fbq) {
+              (window as any).fbq('track', 'Lead');
+            }
+          },
+        }}
+        secondary={{ label: t('hero.dashboard_secondary'), href: '#about' }}
+        contactEmail="dashboard@enduraw.co"
+      />
 
       {/* Stats Section */}
       <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
@@ -131,7 +112,7 @@ const EndurawDashboardPage: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+      <section id="about" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">ABOUT</p>
         <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.endurawDashboard.stravaIntegration_title')}
@@ -304,27 +285,6 @@ const EndurawDashboardPage: React.FC = () => {
           )}
         </div>
       </section>
-
-      {/* ── CONTACT ── */}
-      <ContactCTA
-        email="dashboard@enduraw.co"
-        title={t('servicePages.endurawDashboard.interested_title')}
-        text={t('servicePages.endurawDashboard.interested_p')}
-      >
-        <a
-          href="https://enduraw-report-strava.onrender.com/dashboard"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={secondaryBtnClass}
-          onClick={() => {
-            if (typeof window !== 'undefined' && (window as any).fbq) {
-              (window as any).fbq('track', 'Lead');
-            }
-          }}
-        >
-          {t('servicePages.endurawDashboard.activateReport')}
-        </a>
-      </ContactCTA>
 
     </div>
   );

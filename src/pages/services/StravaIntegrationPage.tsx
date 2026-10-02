@@ -2,7 +2,8 @@
 import { useTranslation } from 'react-i18next';
 import PersonCard from '../../components/PersonCard';
 import '../../styles/fancy.css';
-import ContactCTA, { secondaryBtnClass } from '../../components/ContactCTA';
+import ContactCTA from '../../components/ContactCTA';
+import { secondaryBtnClass } from '../../components/buttonStyles';
 
 const StravaIntegrationPage: React.FC = () => {
   const { t } = useTranslation();
