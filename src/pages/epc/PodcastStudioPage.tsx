@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
-import ContactCTA from '../../components/ContactCTA';
+import PageHero from '../../components/PageHero';
 
 // Web-optimized copies (max 2000px JPEG) of the originals in /images/epc
 const img = (filename: string): string =>
@@ -42,15 +42,14 @@ const PodcastStudioPage: React.FC = () => {
     <div className="text-white min-h-screen pt-16">
 
       {/* ── HERO ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-20">
-        <p className="label-enduraw mb-5">{t('podcastStudio.label')}</p>
-        <h1 className="text-title-h2 text-white mb-4 max-w-2xl">
-          {t('podcastStudio.title')}
-        </h1>
-        <p className="text-paragraph text-gray-400 max-w-xl mb-10">
-          {t('podcastStudio.p')}
-        </p>
-
+      <PageHero
+        label={t('hero.epcSub_label')}
+        title={t('hero.podcast_title')}
+        text={t('podcastStudio.p')}
+        facts={[t('hero.podcast_fact1'), t('hero.podcast_fact2')]}
+        primary={{ label: t('hero.podcast_primary'), href: '#studio' }}
+        contactEmail="communication@enduraw.co"
+      >
         <div className="overflow-hidden rounded-xl group">
           <img
             src={img('podcast.png')}
@@ -59,10 +58,10 @@ const PodcastStudioPage: React.FC = () => {
             style={{ height: '420px' }}
           />
         </div>
-      </section>
+      </PageHero>
 
       {/* ── THE STUDIO / EQUIPMENT ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+      <section id="studio" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">{t('podcastStudio.studioLabel')}</p>
         <h2 className="text-title-h2 text-white mb-10">
           {t('podcastStudio.studioTitle')}
@@ -131,13 +130,6 @@ const PodcastStudioPage: React.FC = () => {
           ))}
         </div>
       </section>
-
-      {/* ── CONTACT ── */}
-      <ContactCTA
-        email="communication@enduraw.co"
-        title={t('podcastStudio.contactTitle')}
-        text={t('podcastStudio.contactText')}
-      />
 
     </div>
   );

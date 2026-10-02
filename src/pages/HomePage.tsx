@@ -2,56 +2,33 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SponsorsSlider from '../components/SponsorsSlider';
+import LatestContent from '../components/LatestContent';
 import { useSwipe } from '../hooks/useSwipe';
+import { secondaryBtnClass } from '../components/buttonStyles';
 import '../styles/fancy.css';
 
 interface HomePageProps {
   activeSection?: string;
 }
 
+const DASHBOARD_URL = 'https://enduraw-report-strava.onrender.com/dashboard';
+
+const trackLead = () => {
+  if (typeof window !== 'undefined' && (window as any).fbq) {
+    (window as any).fbq('track', 'Lead');
+  }
+};
+
 const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
   const { t } = useTranslation();
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
   const [currentAthleteSlide, setCurrentAthleteSlide] = useState(0);
-  const [currentTeamSlide, setCurrentTeamSlide] = useState(0);
-  const [teamPaused, setTeamPaused] = useState(false);
 
   useEffect(() => {
     if (activeSection && sectionRefs.current[activeSection]) {
       sectionRefs.current[activeSection]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, [activeSection]);
-
-  const products = [
-    {
-      num: '01',
-      name: 'Enduraw Dashboard',
-      desc: t('services.dashboard_desc'),
-      link: '/services/enduraw-dashboard',
-      tag: t('home.product_tag_analysis'),
-    },
-    {
-      num: '02',
-      name: 'Testing',
-      desc: t('services.testing_desc'),
-      link: '/services/testing',
-      tag: t('home.product_tag_physiology'),
-    },
-    {
-      num: '03',
-      name: 'Pacing Plan',
-      desc: t('services.pacingPlan_desc'),
-      link: '/services/pacing-plan',
-      tag: t('home.product_tag_strategy'),
-    },
-    {
-      num: '04',
-      name: 'Athletes Support',
-      desc: t('services.athleteSupport_desc'),
-      link: '/services/athlete-support',
-      tag: t('home.product_tag_coaching'),
-    },
-  ];
 
   const athletes = [
     { name: 'Tom Evans', title: t('home.tom_title'), img: '/images/athletes/tomevans.png' },
@@ -62,77 +39,11 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
     { name: 'Duncan Perrillat', title: t('home.duncan_title'), img: '/images/athletes/duncan.png' },
   ];
 
-  const team = [
-    {
-      name: 'Joseph Mestrallet',
-      img: '/images/team/joseph.png',
-      role: t('home.joseph_role'),
-      bio: t('home.joseph_p1'),
-      linkedin: 'https://www.linkedin.com/in/joseph-mestrallet-770279a7/',
-    },
-    {
-      name: 'Anthony Saliou',
-      img: '/images/team/anthony.png',
-      role: t('home.anthony_role'),
-      bio: t('home.anthony_p1'),
-      linkedin: 'https://www.linkedin.com/in/anthony-saliou-085286158/',
-    },
-    {
-      name: 'Lucas Guillot',
-      img: '/images/team/lucas.png',
-      role: t('home.lucas_role'),
-      bio: t('home.lucas_p1'),
-      linkedin: 'https://www.linkedin.com/in/lucas-guillot01/',
-    },
-    {
-      name: 'Valentin Templé',
-      img: '/images/team/valentin.png',
-      role: t('home.valentin_role'),
-      bio: t('home.valentin_p1'),
-      linkedin: 'https://www.linkedin.com/in/valentin-templ%C3%A9/',
-    },
-    {
-      name: 'Charline Batel',
-      img: '/images/charline-removebg-preview.png',
-      role: t('home.charline_role'),
-      bio: t('home.charline_p1'),
-      linkedin: 'https://www.linkedin.com/in/charline-batel/',
-    },
-    {
-      name: 'Antoine Figula',
-      img: '/images/antoine-removebg-preview.png',
-      role: t('home.antoine_role'),
-      bio: t('home.antoine_p1'),
-      linkedin: 'https://www.linkedin.com/in/antoine-figula-b518192b1/',
-    },
-    {
-      name: 'Kyllian Gricourt',
-      img: '/images/team/kyllian.png',
-      role: t('home.kyllian_role'),
-      bio: t('home.kyllian_p1'),
-      linkedin: 'https://www.linkedin.com/in/kyllian-gricourt-candelier-57856b25a/',
-    },
-    {
-      name: 'Alex',
-      img: '/images/alex-removebg-preview.png',
-      role: t('home.alex_role'),
-      bio: t('home.alex_p1'),
-      linkedin: 'https://www.linkedin.com/in/alexandre-pichon1/',
-    },
-  ];
-
   const ecosystem = [
     {
-      step: 'Testing',
-      desc: t('home.eco_testing'),
-      icon: (
-        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-    },
-    {
       step: 'Dashboard',
+      verb: t('homeV2.verb_dashboard'),
+      link: '/services/enduraw-dashboard',
       desc: t('home.eco_dashboard'),
       icon: (
         <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,16 +52,9 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
       ),
     },
     {
-      step: 'Pacing Plan',
-      desc: t('home.eco_pacing'),
-      icon: (
-        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-        </svg>
-      ),
-    },
-    {
-      step: 'Athletes Support',
+      step: 'Coaching',
+      verb: t('homeV2.verb_coaching'),
+      link: '/services/athlete-support',
       desc: t('home.eco_support'),
       icon: (
         <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,10 +62,43 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
         </svg>
       ),
     },
+    {
+      step: 'Testing',
+      verb: t('homeV2.verb_testing'),
+      link: '/services/testing',
+      desc: t('home.eco_testing'),
+      icon: (
+        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+    },
+    {
+      step: 'Pacing Plan',
+      verb: t('homeV2.verb_pp'),
+      link: '/services/pacing-plan',
+      desc: t('home.eco_pacing'),
+      icon: (
+        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+        </svg>
+      ),
+    },
   ];
 
+  // Same figures as the Dashboard page
+  const figures = [
+    { value: '12 010', label: t('servicePages.endurawDashboard.users_p') },
+    { value: '1,2 M', label: t('servicePages.endurawDashboard.activities_p') },
+    { value: '10,9 M km', label: t('homeV2.proof_distance') },
+  ];
+
+  const scrollToOffers = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById('offers')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const athleteSlides = Math.ceil(athletes.length / 3);
-  const teamSlides = Math.ceil(team.length / 4);
 
   // currentXSlide in deps: autoplay timer restarts after a manual swipe/click
   useEffect(() => {
@@ -171,123 +108,101 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
     return () => clearInterval(interval);
   }, [athleteSlides, currentAthleteSlide]);
 
-  // Bios are long: slower autoplay, paused while the mouse is over the cards
-  useEffect(() => {
-    if (teamPaused) return;
-    const interval = setInterval(() => {
-      setCurrentTeamSlide((prev) => (prev + 1) % teamSlides);
-    }, 12000);
-    return () => clearInterval(interval);
-  }, [teamSlides, currentTeamSlide, teamPaused]);
-
   const athleteSwipe = useSwipe(
     () => setCurrentAthleteSlide((prev) => (prev - 1 + athleteSlides) % athleteSlides),
     () => setCurrentAthleteSlide((prev) => (prev + 1) % athleteSlides),
-  );
-  const teamSwipe = useSwipe(
-    () => setCurrentTeamSlide((prev) => (prev - 1 + teamSlides) % teamSlides),
-    () => setCurrentTeamSlide((prev) => (prev + 1) % teamSlides),
   );
 
   return (
     <div className="text-white min-h-screen">
 
-      {/* ── HERO ── */}
+      {/* ── HERO: who we are + main entry point (free Dashboard) ── */}
       <section
         ref={(el) => { sectionRefs.current['hero'] = el; }}
-        className="min-h-screen flex flex-col items-center justify-center pt-16 px-6 text-center relative"
+        className="min-h-[85vh] flex flex-col items-center justify-center pt-24 pb-16 px-6 text-center relative"
       >
         <img
+          id="hero-logo"
           src="/images/LOGO_ENDURAW_WHITE.png"
           alt="Enduraw"
-          className="h-16 mx-auto mb-14 opacity-95"
+          className="h-20 md:h-24 mx-auto mb-10 opacity-95"
         />
         <h1 className="text-title text-white mb-5 max-w-xl leading-tight">
           {t('home.tagline')}
         </h1>
-        <p className="text-paragraph text-gray-300 max-w-sm mb-10 leading-relaxed">
-          {t('home.hero_sub')}
+        <p className="text-paragraph text-gray-300 max-w-md mb-10 leading-relaxed">
+          {t('allLevels.homeSub')}
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <Link to="/services" className="btn-enduraw">
-            {t('home.discoverServices')}
+          <a
+            href={DASHBOARD_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-enduraw"
+            onClick={trackLead}
+          >
+            {t('homeV2.cta_dashboard')}
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </Link>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium tracking-widest uppercase border border-white/20 rounded text-white/60 hover:text-white hover:border-white/40 transition-all duration-150"
-          >
-            {t('home.getStarted')}
-          </Link>
-        </div>
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
-          <div className="w-px h-10 bg-gradient-to-b from-transparent to-white/20 mx-auto" />
+          </a>
+          <a href="#offers" onClick={scrollToOffers} className={secondaryBtnClass}>
+            {t('homeV2.cta_offers')}
+          </a>
         </div>
       </section>
 
-      {/* ── PRODUCTS ── */}
-      <section
-        ref={(el) => { sectionRefs.current['about'] = el; }}
-        className="max-w-5xl mx-auto px-6 sm:px-8 py-24 section-fade"
-      >
-        <div className="mb-12">
-          <p className="label-enduraw mb-3">
-            {t('home.products_label')}
-          </p>
-          <p className="text-paragraph text-gray-300 max-w-md leading-relaxed">
-            {t('home.products_intro')}
-          </p>
-        </div>
-
-        <div>
-          {products.map((p) => (
-            <Link
-              key={p.num}
-              to={p.link}
-              className="flex items-center gap-5 sm:gap-8 py-5 border-b border-white/[0.06] hover:border-white/[0.18] group transition-all duration-150"
-            >
-              <span className="text-xs text-gray-500 font-mono w-5 flex-shrink-0">{p.num}</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-subtitle text-white mb-0.5">{p.name}</p>
-                <p className="text-paragraph text-gray-300 text-xs truncate">{p.desc}</p>
+      {/* ── WHAT WE DO: the 4 products as one journey ── */}
+      <section id="offers" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade">
+        <p className="label-enduraw mb-5">
+          {t('home.ecosystem_label')}
+        </p>
+        <h2 className="text-title-h2 text-white mb-10">{t('home.ecosystem_title')}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-6">
+          {ecosystem.map((item, i) => (
+            <Link key={item.link} to={item.link} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.03] transition-colors duration-150 group flex flex-col">
+              <div className="flex items-center gap-3 mb-3">
+                {item.icon}
+                <span className="text-body-uppercase text-gray-500">0{i + 1} · {item.verb}</span>
               </div>
-              <span className="hidden md:inline-flex text-xs text-gray-500 border border-white/[0.08] rounded px-2 py-0.5 group-hover:border-white/[0.18] group-hover:text-gray-300 transition-all duration-150 flex-shrink-0">
-                {p.tag}
+              <p className="text-subtitle text-white mb-1.5">{item.step}</p>
+              <p className="text-paragraph text-gray-300 text-xs leading-relaxed mb-4 flex-1">{item.desc}</p>
+              <span className="text-body-uppercase text-[#6CDCFF] inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                {t('homeV2.discover')}
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
               </span>
-              <svg className="w-3.5 h-3.5 text-white/20 group-hover:text-white/60 transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
             </Link>
           ))}
         </div>
+        <Link to="/endurawperformancecenter" className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 rounded-lg border border-white/[0.06] p-5 hover:border-[#6CDCFF]/40 transition-colors group">
+          <p className="text-paragraph text-gray-300 flex-1">{t('homeV2.epc_line')}</p>
+          <span className="text-body-uppercase text-[#6CDCFF] inline-flex items-center gap-2 flex-shrink-0">
+            {t('homeV2.epc_cta')}
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </span>
+        </Link>
       </section>
 
-      {/* ── ECOSYSTEM ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade">
-        <p className="label-enduraw mb-10">
-          {t('home.ecosystem_label')}
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
-          {ecosystem.map((item, i) => (
-            <div key={i} className="bg-[#020617] p-5 md:p-6 relative hover:bg-white/[0.015] transition-colors duration-150">
-              <div className="mb-3">{item.icon}</div>
-              <p className="text-subtitle text-white mb-1.5">{item.step}</p>
-              <p className="text-paragraph text-gray-300 text-xs leading-relaxed">{item.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── ATHLETES ── */}
+      {/* ── PROOF: figures, athletes and partners in one band ── */}
       <section
         ref={(el) => { sectionRefs.current['athletes'] = el; }}
         className="max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade"
       >
-        <p className="label-enduraw mb-10">
-          {t('home.eliteAthletes')}
+        <p className="label-enduraw mb-8">
+          {t('homeV2.proof_label')}
         </p>
+        <div className="grid grid-cols-3 gap-4 mb-10">
+          {figures.map((f) => (
+            <div key={f.value}>
+              <p className="text-title-h2 text-white leading-none mb-2">{f.value}</p>
+              <p className="text-body-uppercase text-gray-500">{f.label}</p>
+            </div>
+          ))}
+        </div>
 
         <div className="relative overflow-hidden select-none cursor-grab active:cursor-grabbing" {...athleteSwipe}>
           <div
@@ -330,81 +245,13 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
             />
           ))}
         </div>
-      </section>
-
-      {/* ── TEAM ── */}
-      <section
-        ref={(el) => { sectionRefs.current['aboutus'] = el; }}
-        className="max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade"
-      >
-        <p className="label-enduraw mb-10">
-          {t('home.aboutUs')}
-        </p>
-
-        <div className="relative overflow-hidden select-none cursor-grab active:cursor-grabbing" {...teamSwipe}
-          onMouseEnter={() => setTeamPaused(true)}
-          onMouseLeave={() => setTeamPaused(false)}
-        >
-          <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentTeamSlide * 100}%)` }}
-          >
-            {Array.from({ length: teamSlides }).map((_, slideIndex) => (
-              <div key={slideIndex} className="w-full flex-shrink-0">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
-                  {team.slice(slideIndex * 4, (slideIndex + 1) * 4).map((member) => (
-                    <div key={member.name} className="bg-[#020617] hover:bg-white/[0.015] transition-colors">
-                      <div className="w-full h-44 bg-[#020617] flex items-end justify-center overflow-hidden">
-                        <img
-                          src={member.img}
-                          alt={member.name}
-                          className="h-full w-auto object-contain opacity-90"
-                          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                        />
-                      </div>
-                      <div className="p-4">
-                        <p className="text-subtitle text-white mb-0.5">{member.name}</p>
-                        <p className="text-body-uppercase text-gray-400 mb-3">{member.role}</p>
-                        <p className="text-paragraph text-gray-300 text-xs leading-relaxed mb-3">{member.bio}</p>
-                        {member.linkedin && (
-                          <a
-                            href={member.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-body-uppercase text-[#6CDCFF] hover:text-white transition-colors"
-                          >
-                            LinkedIn
-                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex justify-center mt-6 space-x-2">
-          {Array.from({ length: teamSlides }).map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentTeamSlide(index)}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                index === currentTeamSlide ? 'bg-[#6CDCFF]' : 'bg-gray-500'
-              }`}
-            />
-          ))}
+        <div className="mt-12">
+          <SponsorsSlider bare />
         </div>
       </section>
 
-      {/* ── SPONSORS ── */}
-      <div className="section-fade">
-        <SponsorsSlider />
-      </div>
+      {/* ── LATEST CONTENT ── */}
+      <LatestContent />
 
     </div>
   );

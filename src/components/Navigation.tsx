@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -23,6 +23,26 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [heroLogoVisible, setHeroLogoVisible] = useState(false);
+
+  // Home page shows a large logo in its hero: hide the nav logo while that one is on screen
+  // Layout effect: runs before paint, so the nav logo never flashes on first load
+  useLayoutEffect(() => {
+    const heroLogo = document.getElementById('hero-logo');
+    if (!heroLogo) {
+      setHeroLogoVisible(false);
+      return;
+    }
+    // Set the initial state right away so the nav logo doesn't flash before the observer fires
+    const rect = heroLogo.getBoundingClientRect();
+    setHeroLogoVisible(rect.bottom > 64 && rect.top < window.innerHeight);
+    const observer = new IntersectionObserver(
+      ([entry]) => setHeroLogoVisible(entry.isIntersecting),
+      { rootMargin: '-64px 0px 0px 0px' } // ignore the part hidden behind the 64px nav bar
+    );
+    observer.observe(heroLogo);
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   useEffect(() => {
     setMobileOpen(false);
@@ -38,9 +58,9 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
     { id: 'enduraw-dashboard', name: 'Enduraw Dashboard', path: '/services/enduraw-dashboard' },
     { id: 'pacing-plan', name: 'Pacing Plan', path: '/services/pacing-plan' },
     { id: 'testing', name: 'Testing', path: '/services/testing' },
-    { id: 'athlete-support', name: 'Athletes Support', path: '/services/athlete-support' },
-    { id: 'enduraw-api', name: 'Enduraw API', path: '/services/enduraw-api' },
-    { id: 'performance-center', name: 'Performance Center', path: '/endurawperformancecenter' }
+    { id: 'athlete-support', name: 'Coaching', path: '/services/athlete-support' },
+    { id: 'performance-center', name: 'Performance Center', path: '/endurawperformancecenter' },
+    { id: 'enduraw-api', name: 'Enduraw API', path: '/services/enduraw-api' }
   ];
 
   const navLinkClass = (path: string) => {
@@ -60,7 +80,14 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-28">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex-shrink-0">
+          <Link
+            to="/"
+            className={`flex-shrink-0 transition-opacity duration-300 ${
+              heroLogoVisible && !mobileOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            }`}
+            aria-hidden={heroLogoVisible && !mobileOpen}
+            tabIndex={heroLogoVisible && !mobileOpen ? -1 : undefined}
+          >
             <img
               src="/images/LOGO_ENDURAW_WHITE.png"
               alt="Enduraw"
@@ -117,12 +144,12 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
               </div>
             </div>
 
-            <Link to="/contact" className={navLinkClass('/contact')}>
-              {t('nav.contact')}
+            <Link to="/about" className={navLinkClass('/about')}>
+              {t('nav.about')}
             </Link>
 
-            <Link to="/careers" className={navLinkClass('/careers')}>
-              {t('nav.careers')}
+            <Link to="/contact" className={navLinkClass('/contact')}>
+              {t('nav.contact')}
             </Link>
 
             {/* Language Switcher */}
@@ -221,8 +248,8 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
                 </Link>
               ))}
             </div>
+            <Link to="/about" className={navLinkClass('/about')}>{t('nav.about')}</Link>
             <Link to="/contact" className={navLinkClass('/contact')}>{t('nav.contact')}</Link>
-            <Link to="/careers" className={navLinkClass('/careers')}>{t('nav.careers')}</Link>
 
             <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-white/[0.08]">
               {LANGUAGES.map((lang) => (

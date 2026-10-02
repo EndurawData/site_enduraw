@@ -1,7 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
-import ContactCTA from '../../components/ContactCTA';
+import PageHero from '../../components/PageHero';
+import ForWhom from '../../components/ForWhom';
 
 const AthleteSupportPage: React.FC = () => {
   const { t } = useTranslation();
@@ -9,17 +10,18 @@ const AthleteSupportPage: React.FC = () => {
   return (
     <div className="text-white min-h-screen pt-16">
 
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-12">
-        <h1 className="text-title text-white mb-5 max-w-xl leading-tight">
-          ATHLETES SUPPORT
-        </h1>
-        <p className="text-paragraph text-gray-300 max-w-md mb-4">
-          {t('servicePages.athleteSupport.subtitle')}
-        </p>
-        <p className="text-paragraph text-gray-300 max-w-md">
-          {t('servicePages.athleteSupport.subtitle2')}
-        </p>
-      </section>
+      {/* ── HERO ── */}
+      <PageHero
+        label={t('hero.coaching_label')}
+        title={t('hero.coaching_title')}
+        text={t('hero.coaching_text')}
+        facts={[t('hero.coaching_fact1'), t('allLevels.badge')]}
+        primary={{ label: t('hero.seeOffer'), href: '#offers' }}
+        contactEmail="performance@enduraw.co"
+      />
+
+      {/* ── WHO IS IT FOR ── */}
+      <ForWhom offer="coaching" />
 
       <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">OVERVIEW</p>
@@ -88,7 +90,7 @@ const AthleteSupportPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+      <section id="offers" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">OFFERS</p>
         <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.athleteSupport.offersTitle')}
@@ -97,62 +99,49 @@ const AthleteSupportPage: React.FC = () => {
           {t('servicePages.athleteSupport.offers_p')}
         </p>
 
-        <div className="border border-white/[0.06] rounded-lg p-8 mb-8">
-          <h3 className="text-title-h2 text-white mb-3">{t('servicePages.athleteSupport.seasonalSupport_title')}</h3>
-          <p className="text-title-h2 text-[#6CDCFF] mb-6 leading-none">
-            <svg className="w-5 h-5 text-[#6CDCFF] mb-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            350€<span className="text-paragraph text-gray-400 font-normal not-italic">/month</span>
-          </p>
-          <div>
-            {[
-              t('servicePages.athleteSupport.ss_li1'),
-              t('servicePages.athleteSupport.ss_li2'),
-              t('servicePages.athleteSupport.ss_li3'),
-              t('servicePages.athleteSupport.ss_li4'),
-              t('servicePages.athleteSupport.ss_li5'),
-              t('servicePages.athleteSupport.ss_li6'),
-            ].map((item, i) => (
-              <div key={i} className="flex items-start gap-5 py-4 border-b border-white/[0.06] last:border-0">
-                <div className="icon-container bg-[#2054A8] flex-shrink-0 mt-0.5">
-                  <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+        <div className="space-y-4">
+          <div className="border border-white/[0.06] rounded-lg p-6 md:p-8">
+            <h3 className="text-title-h2 text-white mb-3">{t('servicePages.athleteSupport.seasonalSupport_title')}</h3>
+            <p className="text-title-h2 text-[#6CDCFF] mb-6 leading-none">
+              <svg className="w-5 h-5 text-[#6CDCFF] mb-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.121 15.536c-1.171 1.952-3.07 1.952-4.242 0-1.172-1.953-1.172-5.119 0-7.072 1.171-1.952 3.07-1.952 4.242 0M8 10.5h4m-4 3h4m9-1.5a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              350 €<span className="text-paragraph text-gray-400 font-normal not-italic">{t('allLevels.elite_perMonth')}</span>
+            </p>
+            <div>
+              {[
+                t('servicePages.athleteSupport.ss_li1'),
+                t('servicePages.athleteSupport.ss_li2'),
+                t('servicePages.athleteSupport.ss_li3'),
+                t('servicePages.athleteSupport.ss_li4'),
+                t('servicePages.athleteSupport.ss_li5'),
+                t('servicePages.athleteSupport.ss_li6'),
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-5 py-4 border-b border-white/[0.06] last:border-0">
+                  <div className="icon-container bg-[#2054A8] flex-shrink-0 mt-0.5">
+                    <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  </div>
+                  <p className="text-paragraph text-gray-300">{item}</p>
                 </div>
-                <p className="text-paragraph text-gray-300">{item}</p>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-lg p-6 md:p-8 border border-[#6CDCFF]/40 bg-gradient-to-r from-[#2054A8]/40 via-[#020617]/90 to-[#020617]/90 flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex-1">
+              <div className="flex flex-wrap items-center gap-3 mb-3">
+                <h3 className="text-title-h2 text-white">{t('servicePages.athleteSupport.eliteOffer')}</h3>
+                <span className="text-body-uppercase text-[#6CDCFF]">{t('allLevels.elite_badge')}</span>
               </div>
-            ))}
+              <p className="text-paragraph text-gray-300">{t('servicePages.athleteSupport.eliteOffer_p')}</p>
+            </div>
+            <a href="mailto:performance@enduraw.co?subject=Offre%20Elite" className="btn-enduraw self-start md:self-center flex-shrink-0">
+              {t('allLevels.elite_cta')}
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </a>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-10">
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
-            <p className="text-subtitle text-white mb-1.5">{t('servicePages.athleteSupport.smartTraining_title')}</p>
-            <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.athleteSupport.smartTraining_p')}</p>
-          </div>
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
-            <p className="text-subtitle text-white mb-1.5">{t('servicePages.athleteSupport.recoveryFirst_title')}</p>
-            <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.athleteSupport.recoveryFirst_p')}</p>
-          </div>
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
-            <p className="text-subtitle text-white mb-1.5">{t('servicePages.athleteSupport.precisionPacing_title')}</p>
-            <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.athleteSupport.precisionPacing_p')}</p>
-          </div>
-        </div>
-
-        <p className="text-paragraph text-gray-400 mb-6">
-          {t('servicePages.athleteSupport.chooseOption')}
-        </p>
-
-        <div className="border border-white/[0.06] rounded-lg p-6">
-          <p className="label-enduraw mb-2">
-            {t('servicePages.athleteSupport.eliteOffer')}
-          </p>
-          <p className="text-paragraph text-gray-300 leading-relaxed">
-            {t('servicePages.athleteSupport.eliteOffer_p')}
-          </p>
-        </div>
       </section>
-
-      {/* ── CONTACT ── */}
-      <ContactCTA email="performance@enduraw.co" title={t('servicePages.athleteSupport.cta')} text={t('contactCta.athleteSupport_p')} />
 
     </div>
   );

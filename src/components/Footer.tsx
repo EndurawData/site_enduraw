@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaInstagram, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 // Temporary type shim for React 19 compatibility with react-icons
@@ -13,6 +14,28 @@ const Footer: React.FC = () => {
   return (
     <footer className="border-t border-[#2054A8]/20 pt-14 pb-10 text-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+
+        {/* Contact — one address per topic, visible on every page */}
+        <div className="mb-12">
+          <p className="label-enduraw mb-6">{t('footer.contact_title')}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            {[
+              { email: 'performance@enduraw.co', topic: t('footer.contact_performance') },
+              { email: 'dashboard@enduraw.co', topic: t('footer.contact_dashboard') },
+              { email: 'communication@enduraw.co', topic: t('footer.contact_communication') },
+            ].map((item) => (
+              <div key={item.email}>
+                <p className="text-body-uppercase text-gray-400 mb-1.5">{item.topic}</p>
+                <a href={`mailto:${item.email}`} className="text-paragraph text-[#6CDCFF] hover:text-white transition-colors">
+                  {item.email}
+                </a>
+              </div>
+            ))}
+          </div>
+          <Link to="/contact" className="inline-block mt-6 text-body-uppercase text-gray-400 hover:text-white transition-colors">
+            {t('footer.contact_page')} →
+          </Link>
+        </div>
 
         {/* Address */}
         <p className="text-sm text-gray-300 mb-10 text-body-uppercase tracking-wide">

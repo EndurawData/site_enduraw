@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
-import ContactCTA from '../../components/ContactCTA';
+import PageHero from '../../components/PageHero';
 
 // Web-optimized copies (max 2000px JPEG) of the originals in /images/epc
 const img = (filename: string): string =>
@@ -56,15 +56,14 @@ const CoworkingPage: React.FC = () => {
     <div className="text-white min-h-screen pt-16">
 
       {/* ── HERO ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-20">
-        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.coworkingLabel')}</p>
-        <h1 className="text-title-h2 text-white mb-4 max-w-2xl">
-          {t('servicePages.performanceCenter.coworkingTitle')}
-        </h1>
-        <p className="text-paragraph text-gray-400 max-w-xl mb-10">
-          {t('servicePages.performanceCenter.coworkingP')}
-        </p>
-
+      <PageHero
+        label={t('hero.epcSub_label')}
+        title={t('hero.coworking_title')}
+        text={t('servicePages.performanceCenter.coworkingP')}
+        facts={[t('hero.coworking_fact1'), t('hero.coworking_fact2'), t('hero.coworking_fact3')]}
+        primary={{ label: t('hero.coworking_primary'), href: '#offices' }}
+        contactEmail="communication@enduraw.co"
+      >
         <div className="overflow-hidden rounded-xl group">
           <img
             src={img('Coworking terrace.png')}
@@ -73,7 +72,7 @@ const CoworkingPage: React.FC = () => {
             style={{ height: '360px' }}
           />
         </div>
-      </section>
+      </PageHero>
 
       {/* ── COWORKING SPACE ── */}
       <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
@@ -116,7 +115,7 @@ const CoworkingPage: React.FC = () => {
       </section>
 
       {/* ── OFFICES ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+      <section id="offices" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.coworkingOfficesLabel')}</p>
         <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.performanceCenter.coworkingOfficesTitle')}
@@ -234,9 +233,6 @@ const CoworkingPage: React.FC = () => {
           ))}
         </div>
       </section>
-
-      {/* ── CONTACT ── */}
-      <ContactCTA email="communication@enduraw.co" title={t('contactCta.coworking_title')} text={t('servicePages.performanceCenter.coworkingContactNote')} />
 
     </div>
   );

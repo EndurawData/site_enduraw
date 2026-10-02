@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PerformanceCenterForm from '../../components/PerformanceCenterForm';
 import '../../styles/fancy.css';
-import ContactCTA from '../../components/ContactCTA';
+import PageHero from '../../components/PageHero';
 
 // Web-optimized copies (max 2000px JPEG) of the originals in /images/epc
 const img = (filename: string): string =>
@@ -79,12 +79,22 @@ const TrainingCampPage: React.FC = () => {
   return (
     <div className="text-white min-h-screen pt-16">
 
+      {/* ── HERO ── */}
+      <PageHero
+        label={t('hero.epcSub_label')}
+        title={t('hero.camp_title')}
+        text={t('hero.camp_text')}
+        facts={[t('hero.camp_fact1'), t('hero.camp_fact2'), t('hero.camp_fact3')]}
+        primary={{ label: t('hero.camp_primary'), href: '#booking-form' }}
+        secondary={{ label: t('hero.camp_secondary'), href: '#stages' }}
+        contactEmail="performance@enduraw.co"
+      />
+
       {/* ── HIGHLIGHTS ── */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-20">
-        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.activity_stage_title')}</p>
-        <h1 className="text-title-h2 text-white mb-4">
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.stages.highlightsTitle')}
-        </h1>
+        </h2>
         <p className="text-paragraph text-gray-400 max-w-xl mb-10">
           {t('servicePages.stages.formatNote')}
         </p>
@@ -160,7 +170,7 @@ const TrainingCampPage: React.FC = () => {
       </section>
 
       {/* ── DATES ── */}
-      <section id="stages" className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+      <section id="stages" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.datesLabel')}</p>
         <h2 className="text-title-h2 text-white mb-4">
           {t('servicePages.performanceCenter.chooseStage')}
@@ -237,14 +247,12 @@ const TrainingCampPage: React.FC = () => {
           ))}
         </div>
 
-        <div className="border border-white/[0.06] rounded-lg p-6">
-          <p className="label-enduraw mb-2">
-            {t('servicePages.stages.personalizationTitle')}
-          </p>
-          <p className="text-paragraph text-gray-300 text-sm leading-relaxed">
-            {t('servicePages.stages.personalization_p')}
-          </p>
-        </div>
+        <h3 className="text-title-h2 text-white mb-3">
+          {t('servicePages.stages.personalizationTitle')}
+        </h3>
+        <p className="text-paragraph text-gray-300 max-w-2xl">
+          {t('servicePages.stages.personalization_p')}
+        </p>
       </section>
 
       {/* ── PROGRAM (DAY BY DAY) ── */}
@@ -341,7 +349,7 @@ const TrainingCampPage: React.FC = () => {
       </section>
 
       {/* ── BOOKING FORM ── */}
-      <section id="booking-form" className="max-w-5xl mx-auto px-6 sm:px-8 py-24 section-fade">
+      <section id="booking-form" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-24 section-fade">
         <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.registrationLabel')}</p>
         <h2 className="text-title text-white mb-8 max-w-sm">
           {t('servicePages.performanceCenter.bookSpot')}
@@ -362,9 +370,6 @@ const TrainingCampPage: React.FC = () => {
           />
         </div>
       </section>
-
-      {/* ── CONTACT ── */}
-      <ContactCTA email="performance@enduraw.co" title={t('servicePages.performanceCenter.trainingCampContactTitle')} text={t('contactCta.trainingCamp_p')} />
 
     </div>
   );

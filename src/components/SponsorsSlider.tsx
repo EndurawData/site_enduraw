@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
-const SponsorsSlider: React.FC = () => {
+// bare: no title/padding, for embedding inside another section
+const SponsorsSlider: React.FC<{ bare?: boolean }> = ({ bare = false }) => {
   const sponsors = [
     { id: 1, image: '/images/sponsors/sponsor1.png', name: 'Sponsor 1' },
     { id: 2, image: '/images/sponsors/sponsor2.png', name: 'Sponsor 2' },
@@ -52,9 +53,9 @@ const SponsorsSlider: React.FC = () => {
   };
 
   return (
-    <div className="py-16 overflow-hidden">
+    <div className={bare ? 'overflow-hidden' : 'py-16 overflow-hidden'}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className={bare ? 'hidden' : 'text-center mb-12'}>
           <h2 className="label-enduraw">
             They trusted us
           </h2>
