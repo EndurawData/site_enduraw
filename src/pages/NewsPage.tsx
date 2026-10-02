@@ -12,6 +12,7 @@ const NewsPage: React.FC = () => {
 
       {/* Hero */}
       <section className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-12">
+        <p className="label-enduraw mb-6">{t('pageLabels.media')}</p>
         <h1 className="text-title text-white mb-5 max-w-xl leading-tight">{t('news.title')}</h1>
         <p className="text-paragraph text-gray-300 max-w-xl mb-10">{t('news.subtitle')}</p>
       </section>

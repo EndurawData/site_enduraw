@@ -67,6 +67,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
         ref={(el) => { sectionRefs.current['overview'] = el; }}
         className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-12"
       >
+        <p className="label-enduraw mb-6">Dashboard · Coaching · Testing · Pacing Plan</p>
         <h1 className="text-title text-white mb-5 max-w-xl leading-tight">
           {t('services.ourServices')}
         </h1>

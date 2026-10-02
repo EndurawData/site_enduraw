@@ -1,4 +1,8 @@
 ﻿{
+    "pageLabels": {
+        "media": "Analysen & News",
+        "contact": "Eine Frage, ein Projekt?"
+    },
     "homeV2": {
         "cta_dashboard": "Dashboard kostenlos testen",
         "cta_offers": "Unsere Angebote entdecken",
