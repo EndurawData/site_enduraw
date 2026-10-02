@@ -1,4 +1,8 @@
 ﻿{
+    "pageLabels": {
+        "media": "分析とニュース",
+        "contact": "ご質問・ご相談"
+    },
     "homeV2": {
         "cta_dashboard": "Dashboardを無料で試す",
         "cta_offers": "サービスを見る",

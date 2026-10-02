@@ -1,4 +1,8 @@
 ﻿{
+    "pageLabels": {
+        "media": "Análisis y actualidad",
+        "contact": "¿Una pregunta, un proyecto?"
+    },
     "homeV2": {
         "cta_dashboard": "Prueba el Dashboard gratis",
         "cta_offers": "Descubrir nuestras ofertas",
