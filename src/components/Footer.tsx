@@ -15,28 +15,6 @@ const Footer: React.FC = () => {
     <footer className="border-t border-[#2054A8]/20 pt-14 pb-10 text-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 
-        {/* Contact — one address per topic, visible on every page */}
-        <div className="mb-12">
-          <p className="label-enduraw mb-6">{t('footer.contact_title')}</p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            {[
-              { email: 'performance@enduraw.co', topic: t('footer.contact_performance') },
-              { email: 'dashboard@enduraw.co', topic: t('footer.contact_dashboard') },
-              { email: 'communication@enduraw.co', topic: t('footer.contact_communication') },
-            ].map((item) => (
-              <div key={item.email}>
-                <p className="text-body-uppercase text-gray-400 mb-1.5">{item.topic}</p>
-                <a href={`mailto:${item.email}`} className="text-paragraph text-[#6CDCFF] hover:text-white transition-colors">
-                  {item.email}
-                </a>
-              </div>
-            ))}
-          </div>
-          <Link to="/contact" className="inline-block mt-6 text-body-uppercase text-gray-400 hover:text-white transition-colors">
-            {t('footer.contact_page')} →
-          </Link>
-        </div>
-
         {/* Address */}
         <p className="text-sm text-gray-300 mb-10 text-body-uppercase tracking-wide">
           185 clos du tour noir &mdash; 74400 Chamonix &mdash; France
@@ -75,6 +53,10 @@ const Footer: React.FC = () => {
 
         {/* Legal Links */}
         <div className="flex justify-center flex-wrap gap-6 text-xs mb-8">
+          <Link to="/contact" className="text-gray-300 hover:text-gray-300 transition-colors duration-200 text-body-uppercase">
+            {t('footer.contact_title')}
+          </Link>
+          <span className="text-gray-700">|</span>
           <a href="/mentions-legales" className="text-gray-300 hover:text-gray-300 transition-colors duration-200 text-body-uppercase">
             {t('footer.mentions')}
           </a>

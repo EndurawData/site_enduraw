@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
 import { secondaryBtnClass } from '../../components/buttonStyles';
 import PageHero from '../../components/PageHero';
+import ContactCTA from '../../components/ContactCTA';
 import ForWhom from '../../components/ForWhom';
 
-const SHOP_URL = 'https://dashboard.enduraw-data.com/shop';
+const SHOP_URL = 'https://hg1xgb-km.myshopify.com/products/testing-session-vo2max-enduraw-chamonix-june-10th-2026-copie?variant=53859143450963';
 
 const offer = [
   { id: 'flat', bookable: true, lactate: true },
@@ -199,7 +200,7 @@ const TestingPage: React.FC = () => {
 
           <div className="flex flex-wrap gap-3">
             <a
-              href="https://hg1xgb-km.myshopify.com/"
+              href={SHOP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-enduraw"
@@ -268,6 +269,9 @@ const TestingPage: React.FC = () => {
           <span>performance@enduraw.co</span>
         </a>
       </section>
+
+      {/* ── CONTACT ── */}
+      <ContactCTA email="performance@enduraw.co" title={t('contactCta.testing_title')} text={t('contactCta.testing_p')} />
 
     </div>
   );

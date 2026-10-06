@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
 import PageHero from '../../components/PageHero';
+import ContactCTA from '../../components/ContactCTA';
 import ForWhom from '../../components/ForWhom';
 
 const AthleteSupportPage: React.FC = () => {
@@ -142,6 +143,9 @@ const AthleteSupportPage: React.FC = () => {
         </div>
 
       </section>
+
+      {/* ── CONTACT ── */}
+      <ContactCTA email="performance@enduraw.co" title={t('contactCta.athleteSupport_title')} text={t('contactCta.athleteSupport_p')} />
 
     </div>
   );

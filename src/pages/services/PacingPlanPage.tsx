@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
 import PageHero from '../../components/PageHero';
+import ContactCTA from '../../components/ContactCTA';
 
 const PacingPlanPage: React.FC = () => {
   const { t } = useTranslation();
@@ -160,6 +161,9 @@ const PacingPlanPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* ── CONTACT ── */}
+      <ContactCTA email="performance@enduraw.co" title={t('contactCta.pacingPlan_title')} text={t('contactCta.pacingPlan_p')} />
 
     </div>
   );

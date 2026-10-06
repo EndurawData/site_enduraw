@@ -197,7 +197,19 @@
         "testing_p": "Questions about our protocols or need help choosing your test? Drop us a line.",
         "seminar_p": "Share your dates, team size and wishes, and we'll get back to you with a proposal.",
         "trainingCamp_p": "Questions about the programme, accommodation or required level? Our team is here to help.",
-        "coworking_title": "Book your desk"
+        "coworking_title": "Book your desk",
+        "athleteSupport_title": "Let's build your season together",
+        "pacingPlan_title": "Get your race plan",
+        "pacingPlan_p": "A target race, a time goal or a question about our plans? Tell us and we'll guide you to the right Pacing Plan.",
+        "dashboard_title": "Your data, at its full potential",
+        "dashboard_p": "Questions about the Dashboard, a team or club offer, or connecting your data? Our team will get back to you.",
+        "performanceCenter_title": "Come and train at the Performance Center",
+        "performanceCenter_p": "Training camp, testing, seminar or a visit to the venue in Chamonix — tell us about your project and we'll organise it with you.",
+        "trainingCamp_title": "Questions about the camp?",
+        "seminar_title": "Plan your seminar in Chamonix",
+        "coworking_p": "Desk, private office or a few days of trial — tell us what you need and we'll get back to you with availability.",
+        "podcast_title": "Book the studio",
+        "podcast_p": "A podcast, an interview or a video project? Share your dates and needs and we'll prepare the studio for you."
     },
     "nav": {
         "about": "About",

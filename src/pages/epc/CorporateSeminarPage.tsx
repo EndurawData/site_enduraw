@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
 import PageHero from '../../components/PageHero';
+import ContactCTA from '../../components/ContactCTA';
 
 // Web-optimized copies (max 2000px JPEG) of the originals in /images/epc
 const img = (filename: string): string =>
@@ -161,6 +162,9 @@ const CorporateSeminarPage: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* ── CONTACT ── */}
+      <ContactCTA email="performance@enduraw.co" title={t('contactCta.seminar_title')} text={t('contactCta.seminar_p')} />
 
     </div>
   );
