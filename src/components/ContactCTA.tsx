@@ -2,7 +2,7 @@ import React from 'react';
 import ContactLine, { ContactEmail } from './ContactLine';
 
 // Closing section for pages without an offer hero (media, services, projects…): short pitch + how to reach us.
-// Offer pages carry their contact line in the PageHero instead; the 3 addresses are also in the footer.
+// All addresses are listed on the /contact page, linked from the footer.
 interface ContactCTAProps {
   email: ContactEmail;
   title?: string;

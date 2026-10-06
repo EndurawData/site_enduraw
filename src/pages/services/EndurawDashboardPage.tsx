@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
 import PageHero from '../../components/PageHero';
+import ContactCTA from '../../components/ContactCTA';
 
 const EndurawDashboardPage: React.FC = () => {
   const { t } = useTranslation();
@@ -285,6 +286,9 @@ const EndurawDashboardPage: React.FC = () => {
           )}
         </div>
       </section>
+
+      {/* ── CONTACT ── */}
+      <ContactCTA email="dashboard@enduraw.co" title={t('contactCta.dashboard_title')} text={t('contactCta.dashboard_p')} />
 
     </div>
   );

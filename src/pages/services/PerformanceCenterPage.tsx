@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import '../../styles/fancy.css';
 import PageHero from '../../components/PageHero';
+import ContactCTA from '../../components/ContactCTA';
 
 // Web-optimized copies (max 2000px JPEG) of the originals in /images/epc
 const img = (filename: string): string =>
@@ -140,6 +141,9 @@ const PerformanceCenterPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* ── CONTACT ── */}
+      <ContactCTA email="performance@enduraw.co" title={t('contactCta.performanceCenter_title')} text={t('contactCta.performanceCenter_p')} />
 
     </div>
   );
