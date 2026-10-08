@@ -21,6 +21,52 @@ const Photo: React.FC<{ src: string; alt: string; height: number; lazy?: boolean
   </div>
 );
 
+// Trimmed, resized copies of the originals in /images/logos — an entry without a file shows its name as a wordmark.
+// mono: dark logos rendered in white so they stay readable on the dark background
+type Org = { name: string; logo?: string; mono?: boolean };
+
+const schools: Org[] = [
+  { name: 'ENSEA', logo: 'ensea.png' },
+  { name: 'École polytechnique', logo: 'polytechnique.png', mono: true },
+  { name: 'HEC Paris', logo: 'hec.svg', mono: true },
+];
+
+const hosts: Org[] = [
+  { name: 'Vinci', logo: 'vinci.png', mono: true },
+  { name: 'Candriam', logo: 'candriam.png', mono: true },
+  { name: 'DevFest', logo: 'devfest.png' },
+  { name: 'Les Étoiles du Sport', logo: 'etoiles-du-sport.png' },
+  { name: 'HEC Paris', logo: 'hec.svg', mono: true },
+  { name: 'Nike', logo: 'nike.png' },
+  { name: 'Ravanel', logo: 'ravanel.png' },
+  { name: 'Coros', logo: 'coros.png', mono: true },
+  { name: 'Garmin', logo: 'garmin.png', mono: true },
+  { name: 'SII', logo: 'sii.png' },
+  { name: 'Data Players', logo: 'dataplayers.png' },
+  { name: 'Asics', logo: 'asics.png', mono: true },
+  { name: 'OC Sport', logo: 'ocsport.png', mono: true },
+  { name: 'Artefact', logo: 'artefact.png', mono: true },
+  { name: 'Compressport', logo: 'compressport.png' },
+  { name: 'Strava', logo: 'strava.png' },
+];
+
+const OrgTile: React.FC<{ org: Org; compact?: boolean }> = ({ org, compact = false }) => (
+  <div className={`bg-[#020617] flex items-center justify-center ${compact ? 'px-3 py-3 min-h-[56px]' : 'px-4 py-5 min-h-[76px]'}`}>
+    {org.logo ? (
+      <img
+        loading="lazy"
+        decoding="async"
+        src={`/images/conferences/logos/${org.logo}`}
+        alt={org.name}
+        className={`${compact ? 'max-h-7' : 'max-h-10'} max-w-full object-contain`}
+        style={org.mono ? { filter: 'brightness(0) invert(1)', opacity: 0.85 } : undefined}
+      />
+    ) : (
+      <span className="text-body-uppercase text-white/70 text-center">{org.name}</span>
+    )}
+  </div>
+);
+
 const ConferencesPage: React.FC = () => {
   const { t } = useTranslation();
 
@@ -52,17 +98,54 @@ const ConferencesPage: React.FC = () => {
         secondary={{ label: t('conferences.secondary'), href: '#themes' }}
       >
         <div className="flex gap-2">
-          <Photo src="candriam_chamonix.jpg" alt="Conférence Enduraw devant un auditorium" height={340} lazy={false} flex={7} />
-          <Photo src="joseph_eds.jpeg" alt="Expert Enduraw au micro lors d'une conférence" height={340} lazy={false} flex={5} />
+          <Photo src="candriam_chamonix.jpg" alt="Joseph Mestrallet en conférence devant un auditorium" height={340} lazy={false} flex={7} />
+          <Photo src="charline_epc.jpg" alt="Intervention sur la physiologie de l'effort d'endurance" height={340} lazy={false} flex={5} />
         </div>
       </PageHero>
+
+      {/* ── JOSEPH MESTRALLET ── */}
+      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
+        <p className="label-enduraw mb-5">{t('conferences.josephLabel')}</p>
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12 items-center mb-14">
+          <div className="md:col-span-2">
+            <Photo src="joseph_eds.jpeg" alt="Joseph Mestrallet au micro lors d'une conférence" height={420} />
+          </div>
+          <div className="md:col-span-3">
+            <h2 className="text-title text-white mb-2 leading-tight">Joseph Mestrallet</h2>
+            <p className="text-body-uppercase text-[#6CDCFF] mb-6">{t('conferences.josephRole')}</p>
+            <p className="text-paragraph text-gray-300 mb-8">{t('conferences.josephText')}</p>
+
+            <div className="grid grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-8">
+              <div className="bg-[#020617] p-5 md:p-6">
+                <p className="text-body-uppercase text-gray-400 mb-1">{t('conferences.stat1_prefix')}</p>
+                <p className="text-title text-white leading-none mb-2">{t('conferences.stat1_value')}</p>
+                <p className="text-paragraph text-gray-400 text-xs">{t('conferences.stat1_label')}</p>
+              </div>
+              <div className="bg-[#020617] p-5 md:p-6 flex flex-col justify-end">
+                <p className="text-title-h2 text-white leading-none mb-2">{t('conferences.stat2_value')}</p>
+                <p className="text-paragraph text-gray-400 text-xs">{t('conferences.stat2_label')}</p>
+              </div>
+            </div>
+
+            <p className="text-body-uppercase text-gray-400 mb-3">{t('conferences.josephEducation')}</p>
+            <div className="grid grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
+              {schools.map((org) => <OrgTile key={org.name} org={org} />)}
+            </div>
+          </div>
+        </div>
+
+        <p className="text-body-uppercase text-gray-400 mb-3">{t('conferences.josephInvited')}</p>
+        <div className="grid grid-cols-4 md:grid-cols-8 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
+          {hosts.map((org) => <OrgTile key={org.name} org={org} compact />)}
+        </div>
+      </section>
 
       {/* ── THEMES ── */}
       <section id="themes" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
         <p className="label-enduraw mb-5">{t('conferences.themesLabel')}</p>
         <h2 className="text-title-h2 text-white mb-10">{t('conferences.themesTitle')}</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           {themes.map((theme, i) => (
             <div key={i} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <p className="text-subtitle text-white mb-1.5">{theme.title}</p>
@@ -70,8 +153,6 @@ const ConferencesPage: React.FC = () => {
             </div>
           ))}
         </div>
-
-        <Photo src="charline_epc.jpg" alt="Intervention sur la physiologie de l'effort d'endurance" height={360} />
       </section>
 
       {/* ── EXPERTS ── */}
@@ -80,7 +161,15 @@ const ConferencesPage: React.FC = () => {
           <div>
             <p className="label-enduraw mb-5">{t('conferences.expertsLabel')}</p>
             <h2 className="text-title-h2 text-white mb-5">{t('conferences.expertsTitle')}</h2>
-            <p className="text-paragraph text-gray-300 mb-8">{t('conferences.expertsText')}</p>
+            <p className="text-paragraph text-gray-300 mb-6">{t('conferences.expertsText')}</p>
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {[1, 2, 3, 4, 5].map((n) => (
+                <span key={n} className="text-body-uppercase text-white/80 border border-[#6CDCFF]/30 rounded px-3 py-1.5">
+                  {t(`conferences.role${n}`)}
+                </span>
+              ))}
+            </div>
 
             <div>
               {pillars.map((pillar, i) => (

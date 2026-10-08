@@ -1139,7 +1139,7 @@
         "theme6_desc": "Cómo las cifras enriquecen el relato de una carrera para medios, marcas y organizadores.",
         "expertsLabel": "Ponentes",
         "expertsTitle": "Los expertos de Enduraw",
-        "expertsText": "Científicos de datos, fisiólogos y entrenadores: nuestros expertos trabajan cada día con atletas, marcas y organizadores de carreras. Suben al escenario para compartir esta experiencia, con un discurso accesible y respaldado por los datos.",
+        "expertsText": "Doctores (PhD), fisiólogos, nutricionista, científicos de datos y entrenadores: nuestros expertos trabajan cada día con atletas, marcas y organizadores de carreras. Suben al escenario para compartir esta experiencia, con un discurso accesible y respaldado por los datos.",
         "pillar1_title": "Rigor científico",
         "pillar1_desc": "Mensajes basados en datos y métodos probados.",
         "pillar2_title": "Experiencia de campo",
@@ -1158,6 +1158,21 @@
         "format4_desc": "Un momento destacado para tus equipos, en un seminario o un evento interno.",
         "cta_title": "Invita a un experto de Enduraw",
         "cta_p": "Cuéntanos tu evento, tu público y tus fechas: te propondremos la ponencia más adecuada.",
-        "services_desc": "Los expertos de Enduraw intervienen en eventos deportivos, empresas y escuelas sobre datos, fisiología y rendimiento."
+        "services_desc": "Los expertos de Enduraw intervienen en eventos deportivos, empresas y escuelas sobre datos, fisiología y rendimiento.",
+        "josephLabel": "Ponente principal",
+        "josephRole": "Fundador de Enduraw · Científico del rendimiento",
+        "josephText": "Cara visible de Enduraw, Joseph comparte su visión del rendimiento en resistencia, en la encrucijada entre los datos, la ciencia y el terreno. Ingeniero de formación, interviene tanto ante deportistas como ante directivos, estudiantes o equipos de empresa.",
+        "josephEducation": "Formación",
+        "stat1_prefix": "Hasta",
+        "stat1_value": "900",
+        "stat1_label": "personas en el público",
+        "stat2_value": "40 min – 2h30",
+        "stat2_label": "de ponencia, según el formato",
+        "josephInvited": "Ha intervenido para",
+        "role1": "Doctores (PhD)",
+        "role2": "Fisiólogos",
+        "role3": "Nutricionista",
+        "role4": "Científicos de datos",
+        "role5": "Entrenadores"
     }
 }
