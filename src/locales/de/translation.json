@@ -1139,7 +1139,7 @@
         "theme6_desc": "Wie Zahlen die Geschichte eines Rennens für Medien, Marken und Veranstalter bereichern.",
         "expertsLabel": "Referenten",
         "expertsTitle": "Die Enduraw-Experten",
-        "expertsText": "Data Scientists, Physiologen und Coaches: Unsere Experten arbeiten täglich mit Athleten, Marken und Rennveranstaltern. Auf der Bühne teilen sie diese Erfahrung – verständlich und datenbasiert.",
+        "expertsText": "Promovierte (PhD), Physiologen, eine Ernährungsberaterin, Data Scientists und Coaches: Unsere Experten arbeiten täglich mit Athleten, Marken und Rennveranstaltern. Auf der Bühne teilen sie diese Erfahrung – verständlich und datenbasiert.",
         "pillar1_title": "Wissenschaftliche Präzision",
         "pillar1_desc": "Botschaften auf Basis von Daten und bewährten Methoden.",
         "pillar2_title": "Praxiserfahrung",
@@ -1158,6 +1158,21 @@
         "format4_desc": "Ein Highlight für Ihre Teams, bei einem Seminar oder einer internen Veranstaltung.",
         "cta_title": "Laden Sie einen Enduraw-Experten ein",
         "cta_p": "Erzählen Sie uns von Ihrer Veranstaltung, Ihrem Publikum und Ihren Terminen – wir schlagen Ihnen den passenden Vortrag vor.",
-        "services_desc": "Die Enduraw-Experten sprechen bei Sportveranstaltungen, in Unternehmen und an Schulen über Daten, Physiologie und Leistung."
+        "services_desc": "Die Enduraw-Experten sprechen bei Sportveranstaltungen, in Unternehmen und an Schulen über Daten, Physiologie und Leistung.",
+        "josephLabel": "Hauptredner",
+        "josephRole": "Gründer von Enduraw · Leistungswissenschaftler",
+        "josephText": "Als Gesicht von Enduraw teilt Joseph seine Sicht auf Ausdauerleistung an der Schnittstelle von Daten, Wissenschaft und Praxis. Der ausgebildete Ingenieur spricht vor Sportlern ebenso wie vor Führungskräften, Studierenden und Unternehmensteams.",
+        "josephEducation": "Ausbildung",
+        "stat1_prefix": "Bis zu",
+        "stat1_value": "900",
+        "stat1_label": "Personen im Publikum",
+        "stat2_value": "40 Min. – 2:30 Std.",
+        "stat2_label": "Vortragsdauer, je nach Format",
+        "josephInvited": "Referent bei",
+        "role1": "Promovierte (PhD)",
+        "role2": "Physiologen",
+        "role3": "Ernährungsberatung",
+        "role4": "Data Scientists",
+        "role5": "Coaches"
     }
 }

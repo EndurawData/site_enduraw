@@ -1139,7 +1139,7 @@
         "theme6_desc": "Comment les chiffres enrichissent le récit d'une course pour les médias, les marques et les organisateurs.",
         "expertsLabel": "Les intervenants",
         "expertsTitle": "Les experts Enduraw",
-        "expertsText": "Data scientists, physiologistes et coachs : nos experts travaillent chaque jour avec des athlètes, des marques et des organisateurs de course. Ils montent sur scène pour partager cette expérience, avec un discours accessible et étayé par les données.",
+        "expertsText": "Docteurs (PhD), physiologistes, nutritionniste, data scientists et coachs : nos experts travaillent chaque jour avec des athlètes, des marques et des organisateurs de course. Ils montent sur scène pour partager cette expérience, avec un discours accessible et étayé par les données.",
         "pillar1_title": "Rigueur scientifique",
         "pillar1_desc": "Des messages fondés sur des données et des méthodes éprouvées.",
         "pillar2_title": "Expérience de terrain",
@@ -1158,6 +1158,21 @@
         "format4_desc": "Un moment fort pour vos équipes, lors d'un séminaire ou d'un événement interne.",
         "cta_title": "Invitez un expert Enduraw",
         "cta_p": "Parlez-nous de votre événement, de votre public et de vos dates : nous vous proposerons l'intervention la plus adaptée.",
-        "services_desc": "Les experts Enduraw interviennent lors d'événements sportifs, en entreprise et dans les écoles sur la data, la physiologie et la performance."
+        "services_desc": "Les experts Enduraw interviennent lors d'événements sportifs, en entreprise et dans les écoles sur la data, la physiologie et la performance.",
+        "josephLabel": "Speaker phare",
+        "josephRole": "Fondateur d'Enduraw · Scientifique de la performance",
+        "josephText": "Visage d'Enduraw, Joseph partage sa vision de la performance d'endurance à la croisée de la data, de la science et du terrain. Ingénieur de formation, il intervient aussi bien devant des sportifs que devant des dirigeants, des étudiants ou des équipes en entreprise.",
+        "josephEducation": "Formation",
+        "stat1_prefix": "Jusqu'à",
+        "stat1_value": "900",
+        "stat1_label": "personnes dans le public",
+        "stat2_value": "40 min – 2h30",
+        "stat2_label": "de conférence, selon le format",
+        "josephInvited": "Il est intervenu pour",
+        "role1": "Docteurs (PhD)",
+        "role2": "Physiologistes",
+        "role3": "Nutritionniste",
+        "role4": "Data scientists",
+        "role5": "Coachs"
     }
 }

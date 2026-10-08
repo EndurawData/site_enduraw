@@ -1139,7 +1139,7 @@
         "theme6_desc": "How numbers enrich the story of a race for media, brands and organisers.",
         "expertsLabel": "Speakers",
         "expertsTitle": "Enduraw experts",
-        "expertsText": "Data scientists, physiologists and coaches: our experts work every day with athletes, brands and race organisers. They take the stage to share this experience, with an accessible, data-backed message.",
+        "expertsText": "PhDs, physiologists, a nutritionist, data scientists and coaches: our experts work every day with athletes, brands and race organisers. They take the stage to share this experience, with an accessible, data-backed message.",
         "pillar1_title": "Scientific rigour",
         "pillar1_desc": "Messages grounded in data and proven methods.",
         "pillar2_title": "Field experience",
@@ -1158,6 +1158,21 @@
         "format4_desc": "A highlight for your teams, during a seminar or an internal event.",
         "cta_title": "Invite an Enduraw expert",
         "cta_p": "Tell us about your event, your audience and your dates, and we'll suggest the most suitable talk.",
-        "services_desc": "Enduraw experts speak at sports events, companies and schools about data, physiology and performance."
+        "services_desc": "Enduraw experts speak at sports events, companies and schools about data, physiology and performance.",
+        "josephLabel": "Featured speaker",
+        "josephRole": "Enduraw founder · Performance scientist",
+        "josephText": "The face of Enduraw, Joseph shares his vision of endurance performance at the crossroads of data, science and the field. An engineer by training, he speaks to athletes as well as executives, students and corporate teams.",
+        "josephEducation": "Education",
+        "stat1_prefix": "Up to",
+        "stat1_value": "900",
+        "stat1_label": "people in the audience",
+        "stat2_value": "40 min – 2h30",
+        "stat2_label": "talks, depending on the format",
+        "josephInvited": "Speaker for",
+        "role1": "PhDs",
+        "role2": "Physiologists",
+        "role3": "Nutritionist",
+        "role4": "Data scientists",
+        "role5": "Coaches"
     }
 }
