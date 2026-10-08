@@ -65,7 +65,6 @@ const CorporateSeminarPage: React.FC = () => {
         text={t('servicePages.performanceCenter.seminarP')}
         facts={[t('hero.seminar_fact2'), t('hero.seminar_fact3')]}
         primary={{ label: t('hero.seminar_secondary'), href: '#formats' }}
-        contactEmail="performance@enduraw.co"
       />
 
       {/* ── GALLERY ── */}

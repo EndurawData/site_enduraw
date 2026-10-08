@@ -58,9 +58,10 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
     { id: 'enduraw-dashboard', name: 'Enduraw Dashboard', path: '/services/enduraw-dashboard' },
     { id: 'pacing-plan', name: 'Pacing Plan', path: '/services/pacing-plan' },
     { id: 'testing', name: 'Testing', path: '/services/testing' },
-    { id: 'athlete-support', name: 'Coaching', path: '/services/athlete-support' },
+    { id: 'coaching', name: 'Coaching', path: '/services/coaching' },
     { id: 'performance-center', name: 'Performance Center', path: '/endurawperformancecenter' },
-    { id: 'enduraw-api', name: 'Enduraw API', path: '/services/enduraw-api' }
+    { id: 'enduraw-api', name: 'Enduraw API', path: '/services/enduraw-api' },
+    { id: 'conferences', name: 'Conferences', path: '/services/conferences' }
   ];
 
   const navLinkClass = (path: string) => {

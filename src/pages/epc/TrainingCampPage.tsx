@@ -88,7 +88,6 @@ const TrainingCampPage: React.FC = () => {
         facts={[t('hero.camp_fact1'), t('hero.camp_fact2'), t('hero.camp_fact3')]}
         primary={{ label: t('hero.camp_primary'), href: '#booking-form' }}
         secondary={{ label: t('hero.camp_secondary'), href: '#stages' }}
-        contactEmail="performance@enduraw.co"
       />
 
       {/* ── HIGHLIGHTS ── */}

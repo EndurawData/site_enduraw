@@ -21,7 +21,6 @@ const PerformanceCenterPage: React.FC = () => {
         title={t('hero.epc_title')}
         text={t('hero.epc_text')}
         primary={{ label: t('hero.epc_primary'), href: '#activities' }}
-        contactEmail="performance@enduraw.co"
       />
 
       {/* ── ACTIVITIES ── */}

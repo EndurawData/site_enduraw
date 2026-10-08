@@ -18,7 +18,6 @@ const AthleteSupportPage: React.FC = () => {
         text={t('hero.coaching_text')}
         facts={[t('hero.coaching_fact1'), t('allLevels.badge')]}
         primary={{ label: t('hero.seeOffer'), href: '#offers' }}
-        contactEmail="performance@enduraw.co"
       />
 
       {/* ── WHO IS IT FOR ── */}

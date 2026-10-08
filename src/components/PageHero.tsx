@@ -17,7 +17,7 @@ interface PageHeroProps {
   facts?: string[];
   primary?: HeroAction;
   secondary?: HeroAction;
-  contactEmail?: ContactEmail; // shown as "Any question? email" under the actions
+  contactEmail?: ContactEmail; // shown as "Any question? email" under the actions — omit when the page ends with a ContactCTA
   children?: React.ReactNode; // e.g. a hero image below the actions
 }
 

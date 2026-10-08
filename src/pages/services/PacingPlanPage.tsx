@@ -18,7 +18,6 @@ const PacingPlanPage: React.FC = () => {
         facts={[t('hero.pp_fact1'), t('hero.pp_fact2'), t('hero.pp_fact3')]}
         primary={{ label: t('hero.pp_primary'), href: 'https://hg1xgb-km.myshopify.com/' }}
         secondary={{ label: t('hero.pp_secondary'), href: '#how' }}
-        contactEmail="performance@enduraw.co"
       />
 
       {/* Experience the Power */}

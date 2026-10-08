@@ -49,7 +49,6 @@ const PodcastStudioPage: React.FC = () => {
         text={t('podcastStudio.p')}
         facts={[t('hero.podcast_fact1'), t('hero.podcast_fact2')]}
         primary={{ label: t('hero.podcast_primary'), href: '#studio' }}
-        contactEmail="communication@enduraw.co"
       >
         <div className="overflow-hidden rounded-xl group">
           <img
