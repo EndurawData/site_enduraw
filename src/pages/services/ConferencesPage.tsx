@@ -91,7 +91,7 @@ const ConferencesPage: React.FC = () => {
         title={t('conferences.title')}
         text={t('conferences.text')}
         facts={[t('conferences.fact1'), t('conferences.fact2'), t('conferences.fact3')]}
-        primary={{ label: t('conferences.primary'), href: 'mailto:communication@enduraw.co?subject=Conf%C3%A9rence' }}
+        primary={{ label: t('conferences.primary'), href: '#contact' }}
         secondary={{ label: t('conferences.secondary'), href: '#themes' }}
       >
         <div className="flex gap-2">
@@ -210,7 +210,7 @@ const ConferencesPage: React.FC = () => {
       </section>
 
       {/* ── CONTACT ── */}
-      <ContactCTA email="communication@enduraw.co" title={t('conferences.cta_title')} text={t('conferences.cta_p')} />
+      <ContactCTA id="contact" email="communication@enduraw.co" title={t('conferences.cta_title')} text={t('conferences.cta_p')} />
 
     </div>
   );

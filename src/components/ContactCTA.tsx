@@ -8,10 +8,11 @@ interface ContactCTAProps {
   title?: string;
   text?: string;
   children?: React.ReactNode;
+  id?: string; // anchor target, e.g. for a hero button scrolling down here
 }
 
-const ContactCTA: React.FC<ContactCTAProps> = ({ email, title, text, children }) => (
-  <section className="max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade">
+const ContactCTA: React.FC<ContactCTAProps> = ({ email, title, text, children, id }) => (
+  <section id={id} className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade">
     {title && <h2 className="text-title-h2 text-white mb-4 max-w-xl">{title}</h2>}
     {text && <p className="text-paragraph text-gray-300 max-w-xl mb-6">{text}</p>}
     <ContactLine email={email} />
