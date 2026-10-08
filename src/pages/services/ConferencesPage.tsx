@@ -21,49 +21,46 @@ const Photo: React.FC<{ src: string; alt: string; height: number; lazy?: boolean
   </div>
 );
 
-// Trimmed, resized copies of the originals in /images/logos — an entry without a file shows its name as a wordmark.
-// mono: dark logos rendered in white so they stay readable on the dark background
-type Org = { name: string; logo?: string; mono?: boolean };
+// Trimmed, resized copies of the originals in /images/logos, all rendered in white on the dark background.
+// Logos with a filled shape use a "-white" knockout copy so their inner details survive the white filter.
+// color: keep the brand colors instead (Strava)
+type Org = { name: string; logo: string; color?: boolean };
 
 const schools: Org[] = [
   { name: 'ENSEA', logo: 'ensea.png' },
-  { name: 'École polytechnique', logo: 'polytechnique.png', mono: true },
-  { name: 'HEC Paris', logo: 'hec.svg', mono: true },
+  { name: 'École polytechnique', logo: 'polytechnique.png' },
+  { name: 'HEC Paris', logo: 'hec.svg' },
 ];
 
 const hosts: Org[] = [
-  { name: 'Vinci', logo: 'vinci.png', mono: true },
-  { name: 'Candriam', logo: 'candriam.png', mono: true },
-  { name: 'DevFest', logo: 'devfest.png' },
+  { name: 'Vinci', logo: 'vinci.png' },
+  { name: 'Candriam', logo: 'candriam.png' },
+  { name: 'DevFest', logo: 'devfest-white.png' },
   { name: 'Les Étoiles du Sport', logo: 'etoiles-du-sport.png' },
-  { name: 'HEC Paris', logo: 'hec.svg', mono: true },
+  { name: 'HEC Paris', logo: 'hec.svg' },
   { name: 'Nike', logo: 'nike.png' },
   { name: 'Ravanel', logo: 'ravanel.png' },
-  { name: 'Coros', logo: 'coros.png', mono: true },
-  { name: 'Garmin', logo: 'garmin.png', mono: true },
-  { name: 'SII', logo: 'sii.png' },
+  { name: 'Coros', logo: 'coros.png' },
+  { name: 'Garmin', logo: 'garmin.png' },
+  { name: 'SII', logo: 'sii-white.png' },
   { name: 'Data Players', logo: 'dataplayers.png' },
-  { name: 'Asics', logo: 'asics.png', mono: true },
-  { name: 'OC Sport', logo: 'ocsport.png', mono: true },
-  { name: 'Artefact', logo: 'artefact.png', mono: true },
-  { name: 'Compressport', logo: 'compressport.png' },
-  { name: 'Strava', logo: 'strava.png' },
+  { name: 'Asics', logo: 'asics.png' },
+  { name: 'OC Sport', logo: 'ocsport.png' },
+  { name: 'Artefact', logo: 'artefact.png' },
+  { name: 'Compressport', logo: 'compressport-white.png' },
+  { name: 'Strava', logo: 'strava.png', color: true },
 ];
 
 const OrgTile: React.FC<{ org: Org; compact?: boolean }> = ({ org, compact = false }) => (
   <div className={`bg-[#020617] flex items-center justify-center ${compact ? 'px-3 py-3 min-h-[56px]' : 'px-4 py-5 min-h-[76px]'}`}>
-    {org.logo ? (
-      <img
-        loading="lazy"
-        decoding="async"
-        src={`/images/conferences/logos/${org.logo}`}
-        alt={org.name}
-        className={`${compact ? 'max-h-7' : 'max-h-10'} max-w-full object-contain`}
-        style={org.mono ? { filter: 'brightness(0) invert(1)', opacity: 0.85 } : undefined}
-      />
-    ) : (
-      <span className="text-body-uppercase text-white/70 text-center">{org.name}</span>
-    )}
+    <img
+      loading="lazy"
+      decoding="async"
+      src={`/images/conferences/logos/${org.logo}`}
+      alt={org.name}
+      className={`${compact ? 'max-h-7' : 'max-h-10'} max-w-full object-contain`}
+      style={org.color ? undefined : { filter: 'brightness(0) invert(1)', opacity: 0.85 }}
+    />
   </div>
 );
 
