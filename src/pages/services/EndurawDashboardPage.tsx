@@ -75,7 +75,6 @@ const EndurawDashboardPage: React.FC = () => {
           },
         }}
         secondary={{ label: t('hero.dashboard_secondary'), href: '#about' }}
-        contactEmail="dashboard@enduraw.co"
       />
 
       {/* Stats Section */}

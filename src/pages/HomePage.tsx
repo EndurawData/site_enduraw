@@ -54,7 +54,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
     {
       step: 'Coaching',
       verb: t('homeV2.verb_coaching'),
-      link: '/services/athlete-support',
+      link: '/services/coaching',
       desc: t('home.eco_support'),
       icon: (
         <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

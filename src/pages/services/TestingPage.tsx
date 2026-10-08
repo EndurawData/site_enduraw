@@ -30,7 +30,6 @@ const TestingPage: React.FC = () => {
         facts={[t('hero.testing_fact1'), t('allLevels.badge'), t('hero.testing_fact2')]}
         primary={{ label: t('hero.testing_primary'), href: SHOP_URL }}
         secondary={{ label: t('hero.testing_secondary'), href: '#offer' }}
-        contactEmail="performance@enduraw.co"
       />
 
       {/* ── WHO IS IT FOR ── */}

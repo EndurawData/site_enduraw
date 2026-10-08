@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import ScrollToTop from './components/ScrollToTop';
 import Footer from './components/Footer';
@@ -15,6 +15,7 @@ import PacingPlanPage from './pages/services/PacingPlanPage';
 import EndurawReportPage from './pages/services/EndurawReportPage';
 import EndurawDashboardPage from './pages/services/EndurawDashboardPage';
 import EndurawAPIPage from './pages/services/EndurawAPIPage';
+import ConferencesPage from './pages/services/ConferencesPage';
 import TrainingCampPage from './pages/epc/TrainingCampPage';
 import CorporateSeminarPage from './pages/epc/CorporateSeminarPage';
 import CoworkingPage from './pages/epc/CoworkingPage';
@@ -63,11 +64,13 @@ function App() {
             <Route path="/epc/corporateseminar" element={<CorporateSeminarPage />} />
             <Route path="/epc/coworking" element={<CoworkingPage />} />
             <Route path="/epc/podcaststudio" element={<PodcastStudioPage />} />
-            <Route path="/services/athlete-support" element={<AthleteSupportPage />} />
+            <Route path="/services/coaching" element={<AthleteSupportPage />} />
+            <Route path="/services/athlete-support" element={<Navigate to="/services/coaching" replace />} />
             <Route path="/services/pacing-plan" element={<PacingPlanPage />} />
             <Route path="/services/enduraw-report" element={<EndurawReportPage />} />
             <Route path="/services/enduraw-dashboard" element={<EndurawDashboardPage />} />
             <Route path="/services/enduraw-api" element={<EndurawAPIPage />} />
+            <Route path="/services/conferences" element={<ConferencesPage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/booking-success" element={<BookingSuccessPage />} />
             <Route path="/contact" element={<ContactPage />} />

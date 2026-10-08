@@ -63,7 +63,6 @@ const CoworkingPage: React.FC = () => {
         text={t('servicePages.performanceCenter.coworkingP')}
         facts={[t('hero.coworking_fact1'), t('hero.coworking_fact2'), t('hero.coworking_fact3')]}
         primary={{ label: t('hero.coworking_primary'), href: '#offices' }}
-        contactEmail="communication@enduraw.co"
       >
         <div className="overflow-hidden rounded-xl group">
           <img
