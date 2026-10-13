@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import PerformanceCenterForm from '../../components/PerformanceCenterForm';
 import '../../styles/fancy.css';
 import PageHero from '../../components/PageHero';
 import ContactCTA from '../../components/ContactCTA';
@@ -86,7 +85,7 @@ const TrainingCampPage: React.FC = () => {
         title={t('hero.camp_title')}
         text={t('hero.camp_text')}
         facts={[t('hero.camp_fact1'), t('hero.camp_fact2'), t('hero.camp_fact3')]}
-        primary={{ label: t('hero.camp_primary'), href: '#booking-form' }}
+        primary={{ label: t('hero.camp_primary'), href: '#contact' }}
         secondary={{ label: t('hero.camp_secondary'), href: '#stages' }}
       />
 
@@ -191,7 +190,7 @@ const TrainingCampPage: React.FC = () => {
                 onClick={() => {
                   setSelectedStage(stage.id);
                   setTimeout(() => {
-                    document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth' });
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                   }, 300);
                 }}
               >
@@ -348,31 +347,8 @@ const TrainingCampPage: React.FC = () => {
         </div>
       </section>
 
-      {/* ── BOOKING FORM ── */}
-      <section id="booking-form" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-24 section-fade">
-        <p className="label-enduraw mb-5">{t('servicePages.performanceCenter.registrationLabel')}</p>
-        <h2 className="text-title text-white mb-8 max-w-sm">
-          {t('servicePages.performanceCenter.bookSpot')}
-        </h2>
-        <p className="text-paragraph text-gray-300 max-w-xl mb-10">
-          {selectedStage
-            ? t('servicePages.performanceCenter.bookSelected', {
-                stage: stages.find(s => s.id === selectedStage)?.title,
-              })
-            : t('servicePages.performanceCenter.bookGeneric')}
-        </p>
-        <div className="glass-card p-8">
-          <PerformanceCenterForm
-            selectedStage={selectedStage}
-            onSubmitSuccess={() => {
-              console.log('Training camp request sent successfully!');
-            }}
-          />
-        </div>
-      </section>
-
       {/* ── CONTACT ── */}
-      <ContactCTA email="performance@enduraw.co" title={t('contactCta.trainingCamp_title')} text={t('contactCta.trainingCamp_p')} />
+      <ContactCTA id="contact" email="performance@enduraw.co" title={t('contactCta.trainingCamp_title')} text={t('contactCta.trainingCamp_p')} />
 
     </div>
   );

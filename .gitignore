@@ -22,3 +22,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# dependencies (all levels)
+node_modules/
+
+# local environment / secrets
+.env
+*.pem
+credentials*.json
+
+# local tooling
+.claude/settings.local.json
