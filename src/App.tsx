@@ -21,8 +21,6 @@ import CorporateSeminarPage from './pages/epc/CorporateSeminarPage';
 import CoworkingPage from './pages/epc/CoworkingPage';
 import PodcastStudioPage from './pages/epc/PodcastStudioPage';
 import AboutPage from './pages/AboutPage';
-import AdminPage from './pages/AdminPage';
-import BookingSuccessPage from './pages/BookingSuccessPage';
 import MentionsLegalesPage from './pages/MentionsLegalesPage';
 import PolitiqueConfidentialitePage from './pages/PolitiqueConfidentialitePage';
 import CGUPage from './pages/CGUPage';
@@ -71,8 +69,6 @@ function App() {
             <Route path="/services/enduraw-dashboard" element={<EndurawDashboardPage />} />
             <Route path="/services/enduraw-api" element={<EndurawAPIPage />} />
             <Route path="/services/conferences" element={<ConferencesPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/booking-success" element={<BookingSuccessPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/careers" element={<CareersPage />} />
