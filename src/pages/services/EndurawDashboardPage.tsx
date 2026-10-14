@@ -86,7 +86,7 @@ const EndurawDashboardPage: React.FC = () => {
         <div className="flex flex-wrap gap-12 sm:gap-20">
           <div>
             <p style={{ fontFamily: "'Inter Tight', sans-serif", fontStyle: 'italic', fontSize: '2rem', fontWeight: 700 }} className="text-white mb-1 leading-none">
-              12,010
+              15,460
             </p>
             <p className="text-body-uppercase text-gray-500 mt-1.5">
               {t('servicePages.endurawDashboard.users_p')}
@@ -94,7 +94,7 @@ const EndurawDashboardPage: React.FC = () => {
           </div>
           <div>
             <p style={{ fontFamily: "'Inter Tight', sans-serif", fontStyle: 'italic', fontSize: '2rem', fontWeight: 700 }} className="text-white mb-1 leading-none">
-              1,234,090
+              6,698,705
             </p>
             <p className="text-body-uppercase text-gray-500 mt-1.5">
               {t('servicePages.endurawDashboard.activities_p')}
@@ -102,7 +102,7 @@ const EndurawDashboardPage: React.FC = () => {
           </div>
           <div>
             <p style={{ fontFamily: "'Inter Tight', sans-serif", fontStyle: 'italic', fontSize: '2rem', fontWeight: 700 }} className="text-white mb-1 leading-none">
-              10.882M km
+              11.318M km
             </p>
             <p className="text-body-uppercase text-gray-500 mt-1.5">
               {t('servicePages.endurawDashboard.distance_p')}

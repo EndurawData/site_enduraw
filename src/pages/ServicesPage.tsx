@@ -31,34 +31,41 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
     },
     {
       id: 1,
+      title: "Pacing Plan",
+      description: t('services.pacingPlan_desc'),
+      link: "/services/pacing-plan",
+      icon: "M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+    },
+    {
+      id: 2,
       title: "Testing",
       description: t('services.testing_desc'),
       link: "/services/testing",
       icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
     },
     {
-      id: 2,
+      id: 3,
       title: "Coaching",
       description: t('services.athleteSupport_desc'),
       link: "/services/coaching",
       icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
     },
     {
-      id: 3,
+      id: 4,
       title: "Enduraw Performance Center",
       description: t('services.performanceCenter_desc'),
       link: "/endurawperformancecenter",
       icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
     },
     {
-      id: 4,
+      id: 5,
       title: "Enduraw API",
       description: t('services.api_desc'),
       link: "/services/enduraw-api",
       icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
     },
     {
-      id: 5,
+      id: 6,
       title: "Conferences",
       description: t('conferences.services_desc'),
       link: "/services/conferences",
