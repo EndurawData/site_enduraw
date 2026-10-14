@@ -88,9 +88,9 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
 
   // Same figures as the Dashboard page
   const figures = [
-    { value: '12 010', label: t('servicePages.endurawDashboard.users_p') },
-    { value: '1,2 M', label: t('servicePages.endurawDashboard.activities_p') },
-    { value: '10,9 M km', label: t('homeV2.proof_distance') },
+    { value: '15 460', label: t('servicePages.endurawDashboard.users_p') },
+    { value: '6,7 M', label: t('servicePages.endurawDashboard.activities_p') },
+    { value: '11,3 M km', label: t('homeV2.proof_distance') },
   ];
 
   const scrollToOffers = (e: React.MouseEvent) => {

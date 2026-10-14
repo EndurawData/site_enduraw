@@ -57,6 +57,10 @@ const Footer: React.FC = () => {
             {t('footer.contact_title')}
           </Link>
           <span className="text-gray-700">|</span>
+          <Link to="/careers" className="text-gray-300 hover:text-gray-300 transition-colors duration-200 text-body-uppercase">
+            {t('nav.careers')}
+          </Link>
+          <span className="text-gray-700">|</span>
           <a href="/mentions-legales" className="text-gray-300 hover:text-gray-300 transition-colors duration-200 text-body-uppercase">
             {t('footer.mentions')}
           </a>
