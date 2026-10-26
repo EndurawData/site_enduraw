@@ -12,6 +12,40 @@ const img = (filename: string): string =>
 const PerformanceCenterPage: React.FC = () => {
   const { t } = useTranslation();
 
+  // Each card previews its page with one of that page's photos (position: crop focus for portrait shots)
+  const activities: { link: string; photo: string; alt: string; position?: string; title: string; description: string }[] = [
+    {
+      link: '/epc/trainingcamp',
+      photo: 'A7408201.jpg',
+      alt: 'Espace training et tests physiologiques',
+      title: t('servicePages.performanceCenter.activity_stage_title'),
+      description: t('servicePages.performanceCenter.activity_stage_desc'),
+    },
+    {
+      link: '/epc/corporateseminar',
+      photo: 'Coworking meeting room.png',
+      alt: "Présentation devant un groupe à l'Enduraw Performance Center",
+      position: 'center 60%',
+      title: t('servicePages.performanceCenter.activity_seminar_title'),
+      description: t('servicePages.performanceCenter.activity_seminar_desc'),
+    },
+    {
+      link: '/epc/coworking',
+      photo: 'Coworking terrace.png',
+      alt: 'Terrasse face au Mont-Blanc',
+      position: 'center 55%',
+      title: t('servicePages.performanceCenter.activity_coworking_title'),
+      description: t('servicePages.performanceCenter.activity_coworking_desc'),
+    },
+    {
+      link: '/epc/podcaststudio',
+      photo: 'podcast.png',
+      alt: "Studio podcast de l'Enduraw Performance Center",
+      title: t('podcastStudio.activity_title'),
+      description: t('podcastStudio.activity_desc'),
+    },
+  ];
+
   return (
     <div className="text-white min-h-screen pt-16">
 
@@ -31,57 +65,34 @@ const PerformanceCenterPage: React.FC = () => {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
-          <Link
-            to="/epc/trainingcamp"
-            className="bg-[#020617] p-6 text-left hover:bg-white/[0.015] transition-colors"
-          >
-            <div className="icon-container bg-[#2054A8] mb-4">
-              <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <p className="text-subtitle text-white mb-1.5">{t('servicePages.performanceCenter.activity_stage_title')}</p>
-            <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.performanceCenter.activity_stage_desc')}</p>
-          </Link>
-
-          <Link
-            to="/epc/corporateseminar"
-            className="bg-[#020617] p-6 text-left hover:bg-white/[0.015] transition-colors"
-          >
-            <div className="icon-container bg-[#2054A8] mb-4">
-              <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-            </div>
-            <p className="text-subtitle text-white mb-1.5">{t('servicePages.performanceCenter.activity_seminar_title')}</p>
-            <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.performanceCenter.activity_seminar_desc')}</p>
-          </Link>
-
-          <Link
-            to="/epc/coworking"
-            className="bg-[#020617] p-6 text-left hover:bg-white/[0.015] transition-colors"
-          >
-            <div className="icon-container bg-[#2054A8] mb-4">
-              <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-            <p className="text-subtitle text-white mb-1.5">{t('servicePages.performanceCenter.activity_coworking_title')}</p>
-            <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.performanceCenter.activity_coworking_desc')}</p>
-          </Link>
-
-          <Link
-            to="/epc/podcaststudio"
-            className="bg-[#020617] p-6 text-left hover:bg-white/[0.015] transition-colors"
-          >
-            <div className="icon-container bg-[#2054A8] mb-4">
-              <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-              </svg>
-            </div>
-            <p className="text-subtitle text-white mb-1.5">{t('podcastStudio.activity_title')}</p>
-            <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('podcastStudio.activity_desc')}</p>
-          </Link>
+          {activities.map((activity) => (
+            <Link
+              key={activity.link}
+              to={activity.link}
+              className="bg-[#020617] hover:bg-white/[0.03] transition-colors duration-150 group flex flex-col"
+            >
+              <div className="overflow-hidden">
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  src={img(activity.photo)}
+                  alt={activity.alt}
+                  style={activity.position ? { objectPosition: activity.position } : undefined}
+                  className="w-full h-40 object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                />
+              </div>
+              <div className="p-5 md:p-6 flex flex-col flex-1">
+                <p className="text-subtitle text-white mb-1.5">{activity.title}</p>
+                <p className="text-paragraph text-gray-400 text-xs leading-relaxed mb-4 flex-1">{activity.description}</p>
+                <span className="text-body-uppercase text-[#6CDCFF] inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                  {t('homeV2.discover')}
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
 
