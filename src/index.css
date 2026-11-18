@@ -11,9 +11,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Charte du dashboard : noir franc, une seule lueur bleue ancrée en bas du
+   viewport (voir .site-background), grain par-dessus (fancy.css). */
 html, body {
-  background-color: #020617;
+  background-color: #000000;
   color-scheme: dark;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Défilement : le débordement horizontal est masqué sur <html> seulement (le « viewport »).
+   Avant, <html> ET <body> portaient `overflow-x: hidden` : <body> devenait alors un conteneur
+   de défilement à part, et son `overscroll-behavior: none` empêchait la molette de remonter
+   jusqu'à la page — d'où une page qui ne défilait plus à la souris.
+   <body> utilise `clip`, qui coupe le débordement sans créer de conteneur de défilement. */
+html {
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+}
+body {
+  overflow-x: clip;
+}
+
+/* Barres de défilement invisibles, comme dans le dashboard : le défilement
+   reste entier, seule la barre n'est pas peinte. */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 #root,
@@ -28,9 +55,17 @@ html, body {
 
 .site-background {
   position: fixed;
-  inset: 0;
+  inset: auto 0 0 0;
+  height: 46vh;
   z-index: 0;
   pointer-events: none;
+  /* Lueur de marque du dashboard (body::after), à l'identique. */
+  background: radial-gradient(
+    ellipse 90% 60% at 50% 118%,
+    rgba(32, 84, 168, 0.55) 0%,
+    rgba(108, 220, 255, 0.14) 40%,
+    rgba(0, 0, 0, 0) 74%
+  );
 }
 
 .site-content {
@@ -149,26 +184,48 @@ html, body {
     pointer-events: none;
   }
 
-  /* Bouton principal */
-  /* Same gradient as .label-enduraw */
+  /* Bouton principal — .ep-btn--brand du dashboard : parallélogramme incliné
+     de -12°, dégradé ciel → bleu intermédiaire, Inter Tight italique.
+     Le fond est porté par ::before pour que le texte reste droit, même
+     quand le libellé est un nœud de texte nu (pas de <span> à contre-incliner). */
   .btn-enduraw {
-    background-image: linear-gradient(90deg, #8FE6FF 0%, #6CDCFF 20%, #2054A8 100%);
-    color: #020617;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    padding: 0.5rem 1.125rem;
-    border-radius: 0.25rem;
-    transition: filter 0.15s ease;
+    white-space: nowrap;
+    position: relative;
+    isolation: isolate;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.75rem;
+    justify-content: center;
+    gap: 0.625rem;
+    height: 42px;
+    padding: 0 1.25rem;
+    color: #00121f;
+    font-family: 'Inter Tight', system-ui, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 0.78125rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 0;
+    background: none;
+    transition: transform 0.16s cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+
+  .btn-enduraw::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: skewX(-12deg);
+    background: linear-gradient(100deg, #6cdcff, #4a93d6);
+    transition: background 0.16s cubic-bezier(0.2, 0.7, 0.3, 1);
   }
 
   .btn-enduraw:hover {
-    filter: brightness(1.1);
+    transform: translateY(-2px);
+  }
+
+  .btn-enduraw:hover::before {
+    background: #6cdcff;
   }
 }
 
@@ -216,4 +273,72 @@ html, body {
 }
 .flip-back {
   transform: rotateY(180deg);
+}
+
+
+/* ═══ Repères UX ═══════════════════════════════════════════════════════════════ */
+
+/* Défilement doux vers les ancres, sans passer sous la barre fixe (64 px). */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* Focus clavier visible partout, avec le bleu ciel de la marque. */
+:focus-visible {
+  outline: 2px solid #6CDCFF;
+  outline-offset: 3px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+main:focus {
+  outline: none;
+}
+
+::selection {
+  background: rgba(108, 220, 255, 0.35);
+  color: #fff;
+}
+
+/* Lien d'évitement : invisible jusqu'au premier Tab, puis premier élément de la page. */
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: #fff;
+  color: #000;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translateY(-200%);
+  transition: transform 0.15s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Apparition des sections au défilement (voir RevealOnScroll). */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.7, 0.3, 1), transform 0.6s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

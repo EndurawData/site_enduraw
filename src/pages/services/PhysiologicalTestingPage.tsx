@@ -45,7 +45,7 @@ const PhysiologicalTestingPage: React.FC = () => {
         <div className="grid gap-px bg-white/[0.06] rounded-lg overflow-hidden md:grid-cols-2">
 
           {/* VO2max */}
-          <div className="bg-[#020617] p-6 md:p-8">
+          <div className="bg-[#000000] p-6 md:p-8">
             <h3 className="text-subtitle text-white mb-3">{t('servicePages.physiologicalTesting.vo2max_title')}</h3>
             <p className="text-paragraph text-gray-400 mb-4">{t('servicePages.physiologicalTesting.measure')}</p>
             <div>
@@ -64,7 +64,7 @@ const PhysiologicalTestingPage: React.FC = () => {
           </div>
 
           {/* Walk-Run */}
-          <div className="bg-[#020617] p-6 md:p-8">
+          <div className="bg-[#000000] p-6 md:p-8">
             <h3 className="text-subtitle text-white mb-3">{t('servicePages.physiologicalTesting.walkRun_title')}</h3>
             <p className="text-paragraph text-gray-400 mb-4">{t('servicePages.physiologicalTesting.walkRun_goal')}</p>
             <div>
@@ -114,7 +114,7 @@ const PhysiologicalTestingPage: React.FC = () => {
               href={s.href}
               target="_blank"
               rel="noreferrer"
-              className="bg-[#020617] p-5 md:p-6 flex flex-col items-center hover:bg-white/[0.015] transition-colors"
+              className="bg-[#000000] p-5 md:p-6 flex flex-col items-center hover:bg-white/[0.015] transition-colors"
             >
               <img src={s.img} alt={s.alt} className="h-10 object-contain mb-3" loading="lazy" />
               <p className="text-subtitle text-white mb-1 text-center">{s.name}</p>

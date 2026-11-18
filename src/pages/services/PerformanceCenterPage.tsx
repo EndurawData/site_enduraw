@@ -69,7 +69,7 @@ const PerformanceCenterPage: React.FC = () => {
             <Link
               key={activity.link}
               to={activity.link}
-              className="bg-[#020617] hover:bg-white/[0.03] transition-colors duration-150 group flex flex-col"
+              className="bg-[#000000] hover:bg-white/[0.03] transition-colors duration-150 group flex flex-col"
             >
               <div className="overflow-hidden">
                 <img

@@ -52,7 +52,7 @@ const hosts: Org[] = [
 ];
 
 const OrgTile: React.FC<{ org: Org; compact?: boolean }> = ({ org, compact = false }) => (
-  <div className={`bg-[#020617] flex items-center justify-center ${compact ? 'px-3 py-3 min-h-[56px]' : 'px-4 py-5 min-h-[76px]'}`}>
+  <div className={`bg-[#000000] flex items-center justify-center ${compact ? 'px-3 py-3 min-h-[56px]' : 'px-4 py-5 min-h-[76px]'}`}>
     <img
       loading="lazy"
       decoding="async"
@@ -113,12 +113,12 @@ const ConferencesPage: React.FC = () => {
             <p className="text-paragraph text-gray-300 mb-8">{t('conferences.josephText')}</p>
 
             <div className="grid grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-8">
-              <div className="bg-[#020617] p-5 md:p-6">
+              <div className="bg-[#000000] p-5 md:p-6">
                 <p className="text-body-uppercase text-gray-400 mb-1">{t('conferences.stat1_prefix')}</p>
                 <p className="text-title text-white leading-none mb-2">{t('conferences.stat1_value')}</p>
                 <p className="text-paragraph text-gray-400 text-xs">{t('conferences.stat1_label')}</p>
               </div>
-              <div className="bg-[#020617] p-5 md:p-6 flex flex-col justify-end">
+              <div className="bg-[#000000] p-5 md:p-6 flex flex-col justify-end">
                 <p className="text-title-h2 text-white leading-none mb-2">{t('conferences.stat2_value')}</p>
                 <p className="text-paragraph text-gray-400 text-xs">{t('conferences.stat2_label')}</p>
               </div>
@@ -144,7 +144,7 @@ const ConferencesPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           {themes.map((theme, i) => (
-            <div key={i} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={i} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <p className="text-subtitle text-white mb-1.5">{theme.title}</p>
               <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{theme.description}</p>
             </div>
@@ -199,7 +199,7 @@ const ConferencesPage: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-10">
           {formats.map((format, i) => (
-            <div key={i} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={i} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <p className="text-subtitle text-white mb-1.5">{format.title}</p>
               <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{format.description}</p>
             </div>
@@ -210,7 +210,7 @@ const ConferencesPage: React.FC = () => {
       </section>
 
       {/* ── CONTACT ── */}
-      <ContactCTA id="contact" email="communication@enduraw.co" title={t('conferences.cta_title')} text={t('conferences.cta_p')} />
+      <ContactCTA id="contact" email="media@enduraw.co" title={t('conferences.cta_title')} text={t('conferences.cta_p')} />
 
     </div>
   );

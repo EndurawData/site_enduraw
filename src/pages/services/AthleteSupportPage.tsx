@@ -40,7 +40,7 @@ const AthleteSupportPage: React.FC = () => {
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
             </div>
@@ -48,7 +48,7 @@ const AthleteSupportPage: React.FC = () => {
             <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.athleteSupport.trainingAnalysis_content')}</p>
           </div>
 
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>
             </div>
@@ -56,7 +56,7 @@ const AthleteSupportPage: React.FC = () => {
             <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.athleteSupport.historicalProfiling_content')}</p>
           </div>
 
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
             </div>
@@ -64,7 +64,7 @@ const AthleteSupportPage: React.FC = () => {
             <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.athleteSupport.performanceFactors_content')}</p>
           </div>
 
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
             </div>
@@ -72,7 +72,7 @@ const AthleteSupportPage: React.FC = () => {
             <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.athleteSupport.nutritionGuidance_content')}</p>
           </div>
 
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
             </div>
@@ -80,7 +80,7 @@ const AthleteSupportPage: React.FC = () => {
             <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.athleteSupport.refuelingStrategy_content')}</p>
           </div>
 
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
             </div>
@@ -124,7 +124,7 @@ const AthleteSupportPage: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="rounded-lg p-6 md:p-8 border border-[#6CDCFF]/40 bg-gradient-to-r from-[#2054A8]/40 via-[#020617]/90 to-[#020617]/90 flex flex-col md:flex-row md:items-center gap-6">
+          <div className="rounded-lg p-6 md:p-8 border border-[#6CDCFF]/40 bg-gradient-to-r from-[#2054A8]/40 via-[#000000]/90 to-[#000000]/90 flex flex-col md:flex-row md:items-center gap-6">
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-3 mb-3">
                 <h3 className="text-title-h2 text-white">{t('servicePages.athleteSupport.eliteOffer')}</h3>

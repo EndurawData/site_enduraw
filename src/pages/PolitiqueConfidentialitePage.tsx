@@ -27,7 +27,7 @@ const PolitiqueConfidentialitePage: React.FC = () => {
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">{t('privacy.s1_2')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">{t('privacy.s1_3')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">
-              {t('privacy.s1_4')} <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
+              {t('privacy.s1_4')} <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>
             </p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">{t('privacy.s1_5')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-4">{t('privacy.s1_6')}</p>
@@ -121,7 +121,7 @@ const PolitiqueConfidentialitePage: React.FC = () => {
             </ul>
             <p className="text-paragraph text-white/80 leading-relaxed mb-4">{t('privacy.s6_p3')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed">
-              {t('privacy.s6_p4')} <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
+              {t('privacy.s6_p4')} <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>
             </p>
           </section>
 
@@ -164,7 +164,7 @@ const PolitiqueConfidentialitePage: React.FC = () => {
             </ul>
             <p className="text-paragraph text-white/80 leading-relaxed mb-4">{t('privacy.s9_p2')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">
-              <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
+              <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>
             </p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-4">{t('privacy.s9_p3')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed">
@@ -198,7 +198,7 @@ const PolitiqueConfidentialitePage: React.FC = () => {
             <h2 className="text-title-h2 text-[#6CDCFF] mb-4">{t('privacy.s13_title')}</h2>
             <p className="text-paragraph text-white/80 leading-relaxed mb-4">{t('privacy.s13_p1')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">
-              <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
+              <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>
             </p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">
               Enduraw — 185 Clos du Tour Noir, 74400 Chamonix-Mont-Blanc

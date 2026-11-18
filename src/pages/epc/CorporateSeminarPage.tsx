@@ -143,7 +143,7 @@ const CorporateSeminarPage: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-8">
               {stats.map((stat) => (
-                <div key={stat.label} className="bg-[#020617] p-5 md:p-6">
+                <div key={stat.label} className="bg-[#000000] p-5 md:p-6">
                   <p className="text-title text-white leading-none mb-2">{stat.value}</p>
                   <p className="text-paragraph text-gray-400 text-xs">{stat.label}</p>
                 </div>
@@ -169,7 +169,7 @@ const CorporateSeminarPage: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           {spaces.map((space) => (
-            <div key={space.title} className="bg-[#020617] group hover:bg-white/[0.015] transition-colors">
+            <div key={space.title} className="bg-[#000000] group hover:bg-white/[0.015] transition-colors">
               <div className="overflow-hidden">
                 <img
                   loading="lazy"
@@ -230,7 +230,7 @@ const CorporateSeminarPage: React.FC = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-4">
           {steps.map((step) => (
-            <div key={step.time} className="bg-[#020617] p-5 hover:bg-white/[0.015] transition-colors">
+            <div key={step.time} className="bg-[#000000] p-5 hover:bg-white/[0.015] transition-colors">
               <p className="text-subtitle text-[#6CDCFF] mb-3">{step.time}</p>
               <p className="text-body-uppercase text-white mb-1.5">{step.title}</p>
               <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{step.description}</p>
@@ -247,7 +247,7 @@ const CorporateSeminarPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-10">
           {formats.map((format) => (
-            <div key={format.title} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={format.title} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <span className="inline-block text-body-uppercase text-white/80 border border-[#6CDCFF]/30 rounded px-2.5 py-1 mb-4">
                 {format.tag}
               </span>
@@ -260,7 +260,7 @@ const CorporateSeminarPage: React.FC = () => {
         <p className="text-subtitle text-white mb-4">{t('seminar.servicesTitle')}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-10">
           {services.map((service) => (
-            <div key={service.title} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={service.title} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <div className="mb-3">
                 <div className="icon-container bg-[#2054A8]">
                   <div className="text-[#6CDCFF]">{service.icon}</div>

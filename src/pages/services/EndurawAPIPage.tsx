@@ -106,7 +106,7 @@ const EndurawAPIPage: React.FC = () => {
         <p className="label-enduraw mb-5">FOUNDATIONS</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           {/* Scientific Validation */}
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -137,7 +137,7 @@ const EndurawAPIPage: React.FC = () => {
           </div>
 
           {/* Tech Integration */}
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />

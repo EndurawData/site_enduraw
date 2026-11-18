@@ -26,7 +26,7 @@ const LatestContent: React.FC = () => {
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.03] transition-colors group flex flex-col"
+            className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.03] transition-colors group flex flex-col"
           >
             <span className="text-body-uppercase text-[#6CDCFF] mb-3">{item.source}</span>
             <p className="text-subtitle text-white mb-2">{item.title}</p>

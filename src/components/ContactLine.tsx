@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export type ContactEmail = 'performance@enduraw.co' | 'dashboard@enduraw.co' | 'communication@enduraw.co';
+export type ContactEmail = 'performance@enduraw.co' | 'dashboard@enduraw.co' | 'media@enduraw.co';
 
 // "Any question? email" — the page-specific way to reach us
 const ContactLine: React.FC<{ email: ContactEmail; className?: string }> = ({ email, className = '' }) => {

@@ -70,7 +70,7 @@ const NewsPage: React.FC = () => {
       </section>
 
       {/* ── CONTACT ── */}
-      <ContactCTA email="communication@enduraw.co" title={t('news.expertise_title')} text={t('news.expertise_p')} />
+      <ContactCTA email="media@enduraw.co" title={t('news.expertise_title')} text={t('news.expertise_p')} />
 
     </div>
   );

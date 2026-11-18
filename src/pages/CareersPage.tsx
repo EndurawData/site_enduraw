@@ -31,7 +31,7 @@ const CareersPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           {steps.map((step, i) => (
-            <div key={i} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={i} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <p className="text-body-uppercase text-[#6CDCFF] mb-3">0{i + 1}</p>
               <p className="text-subtitle text-white mb-1.5">{step.title}</p>
               <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{step.description}</p>

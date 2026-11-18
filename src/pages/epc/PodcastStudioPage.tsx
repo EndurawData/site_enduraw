@@ -106,7 +106,7 @@ const PodcastStudioPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           {uses.map((use, i) => (
-            <div key={i} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={i} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <p className="text-subtitle text-white mb-1.5">{use.title}</p>
               <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{use.description}</p>
             </div>
@@ -123,7 +123,7 @@ const PodcastStudioPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           {features.map((feature, i) => (
-            <div key={i} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={i} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <p className="text-subtitle text-white mb-1.5">{feature.title}</p>
               <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{feature.description}</p>
             </div>
@@ -132,7 +132,7 @@ const PodcastStudioPage: React.FC = () => {
       </section>
 
       {/* ── CONTACT ── */}
-      <ContactCTA email="communication@enduraw.co" title={t('contactCta.podcast_title')} text={t('contactCta.podcast_p')} />
+      <ContactCTA email="media@enduraw.co" title={t('contactCta.podcast_title')} text={t('contactCta.podcast_p')} />
 
     </div>
   );

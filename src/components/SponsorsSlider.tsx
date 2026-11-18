@@ -79,6 +79,8 @@ const SponsorsSlider: React.FC<{ bare?: boolean }> = ({ bare = false }) => {
                   className="flex-shrink-0 mx-8 w-32 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm"
                 >
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={sponsor.image}
                     alt={sponsor.name}
                     className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
@@ -97,6 +99,8 @@ const SponsorsSlider: React.FC<{ bare?: boolean }> = ({ bare = false }) => {
                   className="flex-shrink-0 mx-8 w-32 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm"
                 >
                   <img
+                    loading="lazy"
+                    decoding="async"
                     src={sponsor.image}
                     alt={sponsor.name}
                     className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"

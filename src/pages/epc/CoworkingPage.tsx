@@ -108,7 +108,7 @@ const CoworkingPage: React.FC = () => {
 
             <div className="grid grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-8">
               {stats.map((stat) => (
-                <div key={stat.label} className="bg-[#020617] p-5 md:p-6">
+                <div key={stat.label} className="bg-[#000000] p-5 md:p-6">
                   <p className="text-title text-white leading-none mb-2">{stat.value}</p>
                   <p className="text-paragraph text-gray-400 text-xs">{stat.label}</p>
                 </div>
@@ -134,7 +134,7 @@ const CoworkingPage: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           {spaces.map((space) => (
-            <div key={space.title} className="bg-[#020617] group hover:bg-white/[0.015] transition-colors">
+            <div key={space.title} className="bg-[#000000] group hover:bg-white/[0.015] transition-colors">
               <div className="overflow-hidden">
                 <img
                   loading="lazy"
@@ -160,7 +160,7 @@ const CoworkingPage: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-6">
           {audiences.map((audience) => (
-            <div key={audience.title} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={audience.title} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <p className="text-subtitle text-white mb-1.5">{audience.title}</p>
               <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{audience.description}</p>
             </div>
@@ -210,7 +210,7 @@ const CoworkingPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-4">
           {plans.map((plan) => (
-            <div key={plan.title} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={plan.title} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <span className="inline-block text-body-uppercase text-white/80 border border-[#6CDCFF]/30 rounded px-2.5 py-1 mb-4">
                 {plan.tag}
               </span>
@@ -235,7 +235,7 @@ const CoworkingPage: React.FC = () => {
           <div className="flex flex-col gap-2">
             <Photo src={img('EPC location map.png')} alt="Localisation de l'Enduraw Performance Center" height={300} />
             {locationFeatures.map((feature) => (
-              <div key={feature.title} className="bg-[#020617] border border-white/[0.06] rounded-lg p-5 md:p-6">
+              <div key={feature.title} className="bg-[#000000] border border-white/[0.06] rounded-lg p-5 md:p-6">
                 <p className="text-subtitle text-white mb-1.5">{feature.title}</p>
                 <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{feature.description}</p>
               </div>
@@ -254,7 +254,7 @@ const CoworkingPage: React.FC = () => {
       </section>
 
       {/* ── CONTACT ── */}
-      <ContactCTA id="contact" email="communication@enduraw.co" title={t('contactCta.coworking_title')} text={t('contactCta.coworking_p')} />
+      <ContactCTA id="contact" email="media@enduraw.co" title={t('contactCta.coworking_title')} text={t('contactCta.coworking_p')} />
 
     </div>
   );

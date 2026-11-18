@@ -115,7 +115,7 @@ const EndurawReportPage: React.FC = () => {
         <p className="label-enduraw mb-5">FEATURES</p>
         <h2 className="text-title-h2 text-white mb-10">{t('servicePages.endurawReport.reportFeatures_title')}</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -124,7 +124,7 @@ const EndurawReportPage: React.FC = () => {
             <p className="text-subtitle text-white mb-1.5">{t('servicePages.endurawReport.dataViz_title')}</p>
             <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.endurawReport.dataViz_p')}</p>
           </div>
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -133,7 +133,7 @@ const EndurawReportPage: React.FC = () => {
             <p className="text-subtitle text-white mb-1.5">{t('servicePages.endurawReport.actionableInsights_title')}</p>
             <p className="text-paragraph text-gray-400 text-xs leading-relaxed">{t('servicePages.endurawReport.actionableInsights_p')}</p>
           </div>
-          <div className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-3">
               <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />

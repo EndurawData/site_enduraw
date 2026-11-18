@@ -44,7 +44,7 @@ const RaceBriefingPage: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
 
           {/* Road Race */}
-          <div className="bg-[#020617] p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-4">
               <div className="icon-container bg-[#2054A8] inline-flex">
                 <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,7 +84,7 @@ const RaceBriefingPage: React.FC = () => {
           </div>
 
           {/* Trail Race */}
-          <div className="bg-[#020617] p-6 hover:bg-white/[0.015] transition-colors">
+          <div className="bg-[#000000] p-6 hover:bg-white/[0.015] transition-colors">
             <div className="mb-4">
               <div className="icon-container bg-[#2054A8] inline-flex">
                 <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

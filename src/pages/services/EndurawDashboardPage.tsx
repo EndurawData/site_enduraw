@@ -236,7 +236,7 @@ const EndurawDashboardPage: React.FC = () => {
                       .map((architect) => (
                         <div
                           key={architect.id}
-                          className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors"
+                          className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors"
                         >
                           <div className="flex flex-col items-center text-center">
                             <img
