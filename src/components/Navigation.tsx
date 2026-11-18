@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { LOGIN_URL, REGISTER_URL, trackLead } from '../config';
 
 const LANGUAGES = [
   { code: 'en', label: 'EN', name: 'English' },
@@ -48,6 +49,12 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
     setMobileOpen(false);
   }, [location.pathname]);
 
+  // Menu mobile ouvert : la page dessous ne défile plus.
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
@@ -64,22 +71,21 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
     { id: 'conferences', name: 'Conferences', path: '/services/conferences' }
   ];
 
+  // Libellé de la charte (.ep-label du dashboard) : pas de soulignement, le
+  // blanc plein marque la section active.
+  const labelBase = 'inline-flex items-center gap-1 whitespace-nowrap px-2.5 py-1.5 text-[12px] font-medium uppercase tracking-[0.15em] transition-colors duration-150';
   const navLinkClass = (path: string) => {
     const isActive = path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
-    return `inline-flex items-center gap-1 px-3 py-1.5 text-sm transition-all duration-150 text-body-uppercase ${
-      isActive
-        ? 'border-b-2 border-white/60 text-white font-medium'
-        : 'border-b-2 border-transparent text-white/45 hover:text-white/75 hover:border-white/20'
-    }`;
+    return `${labelBase} ${isActive ? 'text-white' : 'text-white/[0.62] hover:text-white'}`;
   };
+  const dropdownItemClass =
+    'block border-l-2 border-transparent px-4 py-2.5 text-[12px] font-medium uppercase tracking-[0.15em] text-white/[0.62] transition-colors duration-150 hover:border-white/25 hover:text-white';
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 backdrop-blur-xl border-b ${
-      scrolled
-        ? 'bg-white/[0.06] border-white/[0.09] shadow-sm'
-        : 'bg-white/[0.03] border-white/[0.06]'
+    <nav className={`fixed top-0 w-full z-50 transition-colors duration-300 backdrop-blur-[14px] bg-black/80 border-b ${
+      scrolled ? 'border-white/10' : 'border-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-20 2xl:px-28">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 xl:px-10">
         <div className="flex justify-between items-center h-16">
           <Link
             to="/"
@@ -127,16 +133,16 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
                 </svg>
               </Link>
 
-              <div className={`absolute left-0 top-full mt-1.5 w-52 bg-[#0c1222]/95 border border-white/[0.08] rounded-xl shadow-lg transition-all duration-200 origin-top ${
+              <div className={`absolute left-0 top-full mt-1.5 w-52 bg-black/95 border border-white/15 backdrop-blur-[14px] transition-all duration-200 origin-top ${
                 showServicesSections ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95'
               }`}>
-                <div className="p-1">
+                <div className="py-1.5">
                   {servicesSections.map((service) => (
                     <Link
                       key={service.id}
                       to={service.path}
                       onClick={() => setShowServicesSections(false)}
-                      className="block px-4 py-2.5 text-sm text-white/60 hover:text-white/90 hover:bg-white/[0.08] transition-colors duration-150 rounded-lg text-body-uppercase"
+                      className={dropdownItemClass}
                     >
                       {service.name}
                     </Link>
@@ -144,6 +150,10 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
                 </div>
               </div>
             </div>
+
+            <Link to="/dashboard" className={navLinkClass('/dashboard')}>
+              {t('nav.dashboard')}
+            </Link>
 
             <Link to="/about" className={navLinkClass('/about')}>
               {t('nav.about')}
@@ -165,7 +175,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
               }}
             >
               <button
-                className="flex items-center gap-1.5 px-3 py-2 text-sm text-white/45 hover:text-white/75 transition-colors duration-150"
+                className="flex items-center gap-1.5 px-2.5 py-2 text-[12px] font-medium uppercase tracking-[0.15em] text-white/[0.62] hover:text-white transition-colors duration-150"
                 aria-label="Select language"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -177,18 +187,18 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
                 </svg>
               </button>
 
-              <div className={`absolute right-0 top-full mt-1.5 w-36 bg-[#0c1222]/95 border border-white/[0.08] rounded-xl shadow-lg transition-all duration-200 origin-top ${
+              <div className={`absolute right-0 top-full mt-1.5 w-36 bg-black/95 border border-white/15 backdrop-blur-[14px] transition-all duration-200 origin-top ${
                 showLangMenu ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95'
               }`}>
-                <div className="p-1">
+                <div className="py-1.5">
                   {LANGUAGES.map(lang => (
                     <button
                       key={lang.code}
                       onClick={() => { i18n.changeLanguage(lang.code); setShowLangMenu(false); }}
-                      className={`w-full text-left px-3 py-2 text-sm rounded-lg transition-colors duration-150 flex items-center gap-2 ${
+                      className={`w-full text-left border-l-2 px-4 py-2 text-sm transition-colors duration-150 flex items-center gap-2 ${
                         i18n.language.startsWith(lang.code)
-                          ? 'text-white bg-white/[0.10]'
-                          : 'text-white/60 hover:text-white/90 hover:bg-white/[0.08]'
+                          ? 'border-[#6CDCFF] text-[#6CDCFF]'
+                          : 'border-transparent text-white/[0.62] hover:border-white/25 hover:text-white'
                       }`}
                     >
                       <span className="font-mono text-xs w-5">{lang.label}</span>
@@ -204,10 +214,16 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
               href="https://www.dataplayers.fr/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center px-3 py-2 opacity-70 hover:opacity-100 transition-opacity duration-200"
+              className="hidden 2xl:flex items-center px-3 py-2 opacity-70 hover:opacity-100 transition-opacity duration-200"
             >
               <img src="/images/dataplayers.png" alt="DataPlayers" className="h-7 w-auto" />
             </a>
+
+            {/* Entrée dans l'application : même parcours que sur Nolio, connexion + création de compte */}
+            <div className="flex items-center gap-2 pl-3 ml-1 border-l border-white/10">
+              <a href={LOGIN_URL} className={labelBase}>{t('nav.login')}</a>
+              <a href={REGISTER_URL} className="btn-enduraw" onClick={trackLead}>{t('nav.signup')}</a>
+            </div>
           </div>
 
           {/* Mobile burger */}
@@ -230,7 +246,7 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-white/[0.08] bg-[#020617]/95 max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="lg:hidden border-t border-white/10 bg-black/95 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <div
             className="px-4 py-4 flex flex-col gap-1"
             onClick={(e) => { if ((e.target as HTMLElement).closest('a')) setMobileOpen(false); }}
@@ -243,24 +259,30 @@ const Navigation: React.FC<NavigationProps> = ({ onScrollToSection: _onScrollToS
                 <Link
                   key={service.id}
                   to={service.path}
-                  className="px-3 py-1.5 text-sm text-white/45 hover:text-white/80 transition-colors text-body-uppercase"
+                  className="px-3 py-1.5 text-[12px] font-medium uppercase tracking-[0.15em] text-white/[0.62] hover:text-white transition-colors"
                 >
                   {service.name}
                 </Link>
               ))}
             </div>
+            <Link to="/dashboard" className={navLinkClass('/dashboard')}>{t('nav.dashboard')}</Link>
             <Link to="/about" className={navLinkClass('/about')}>{t('nav.about')}</Link>
             <Link to="/contact" className={navLinkClass('/contact')}>{t('nav.contact')}</Link>
 
-            <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-white/[0.08]">
+            <div className="flex flex-wrap items-center gap-3 mt-4 pt-4 border-t border-white/10">
+              <a href={REGISTER_URL} className="btn-enduraw" onClick={trackLead}>{t('nav.signup')}</a>
+              <a href={LOGIN_URL} className={labelBase}>{t('nav.login')}</a>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 mt-4 pt-4 border-t border-white/10">
               {LANGUAGES.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => i18n.changeLanguage(lang.code)}
-                  className={`px-3 py-1.5 text-xs font-mono rounded-lg transition-colors ${
+                  className={`px-3 py-1.5 text-xs border-b-2 transition-colors ${
                     i18n.language.startsWith(lang.code)
-                      ? 'text-white bg-white/[0.10]'
-                      : 'text-white/50 hover:text-white/90 hover:bg-white/[0.08]'
+                      ? 'border-[#6CDCFF] text-[#6CDCFF]'
+                      : 'border-transparent text-white/50 hover:text-white'
                   }`}
                 >
                   {lang.label}

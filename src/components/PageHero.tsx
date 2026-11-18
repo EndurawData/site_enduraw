@@ -8,6 +8,7 @@ export interface HeroAction {
   label: string;
   href: string; // "/path" → router link, "#id" → in-page anchor, otherwise external/mailto
   onClick?: () => void; // e.g. analytics tracking
+  sameTab?: boolean; // external link opened in the same tab (e.g. entering the app)
 }
 
 interface PageHeroProps {
@@ -35,7 +36,7 @@ const ActionLink: React.FC<{ action: HeroAction; className: string; children: Re
   }
   const external = action.href.startsWith('http');
   return (
-    <a href={action.href} onClick={action.onClick} className={className} {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+    <a href={action.href} onClick={action.onClick} className={className} {...(external && !action.sameTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
       {children}
     </a>
   );

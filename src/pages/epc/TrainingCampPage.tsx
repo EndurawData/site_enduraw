@@ -155,7 +155,7 @@ const TrainingCampPage: React.FC = () => {
 
         <div className="grid grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
           {pillars.map((pillar, i) => (
-            <div key={i} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={i} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <div className="mb-3">
                 <div className="icon-container bg-[#2054A8]">
                   <div className="text-[#6CDCFF]">{pillar.icon}</div>
@@ -240,7 +240,7 @@ const TrainingCampPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden mb-10">
           {team.map((item, i) => (
-            <div key={i} className="bg-[#020617] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
+            <div key={i} className="bg-[#000000] p-5 md:p-6 hover:bg-white/[0.015] transition-colors">
               <p className="text-paragraph text-gray-300 text-sm leading-relaxed">{item}</p>
             </div>
           ))}
@@ -289,7 +289,7 @@ const TrainingCampPage: React.FC = () => {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
-          <div className="bg-[#020617] p-5 md:p-6">
+          <div className="bg-[#000000] p-5 md:p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 rounded-lg bg-emerald-900/40 border border-emerald-500/20 flex items-center justify-center flex-shrink-0">
                 <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -318,7 +318,7 @@ const TrainingCampPage: React.FC = () => {
             </ul>
           </div>
 
-          <div className="bg-[#020617] p-5 md:p-6">
+          <div className="bg-[#000000] p-5 md:p-6">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-8 h-8 rounded-lg bg-red-900/40 border border-red-500/20 flex items-center justify-center flex-shrink-0">
                 <svg className="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

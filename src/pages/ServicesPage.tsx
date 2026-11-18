@@ -119,7 +119,7 @@ const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
       </section>
 
       {/* ── CONTACT ── */}
-      <ContactCTA email="communication@enduraw.co" title={t('services.workTogether')} text={t('services.getInTouch_p')} />
+      <ContactCTA email="media@enduraw.co" title={t('services.workTogether')} text={t('services.getInTouch_p')} />
 
     </div>
   );

@@ -24,7 +24,7 @@ const MentionsLegalesPage: React.FC = () => {
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">{t('mentions.publisher_2')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">{t('mentions.publisher_3')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">
-              {t('mentions.publisher_4')} <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
+              {t('mentions.publisher_4')} <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>
             </p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">{t('mentions.publisher_5')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed">{t('mentions.publisher_6')}</p>
@@ -69,7 +69,7 @@ const MentionsLegalesPage: React.FC = () => {
               {t('mentions.vuln_title')}
             </h2>
             <p className="text-paragraph text-white/80 leading-relaxed">
-              {t('mentions.vuln_p')} <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
+              {t('mentions.vuln_p')} <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>
             </p>
           </section>
         </div>

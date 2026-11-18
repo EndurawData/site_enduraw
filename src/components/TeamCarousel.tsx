@@ -46,8 +46,8 @@ const TeamCarousel: React.FC = () => {
             <div key={slideIndex} className="w-full flex-shrink-0">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
                 {team.slice(slideIndex * 4, (slideIndex + 1) * 4).map((member) => (
-                  <div key={member.name} className="bg-[#020617] hover:bg-white/[0.015] transition-colors">
-                    <div className="w-full h-44 bg-[#020617] flex items-end justify-center overflow-hidden">
+                  <div key={member.name} className="bg-[#000000] hover:bg-white/[0.015] transition-colors">
+                    <div className="w-full h-44 bg-[#000000] flex items-end justify-center overflow-hidden">
                       <img
                         src={member.img}
                         alt={member.name}

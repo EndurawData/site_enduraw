@@ -156,7 +156,7 @@ const SousTraitantsPage: React.FC = () => {
               Pour toute question relative à nos sous-traitants :
             </p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">
-              <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
+              <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>
             </p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">
               Enduraw — 185 Clos du Tour Noir, 74400 Chamonix-Mont-Blanc

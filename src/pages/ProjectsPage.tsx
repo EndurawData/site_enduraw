@@ -150,7 +150,7 @@ const ProjectsPage: React.FC = () => {
       </section>
 
       {/* ── CONTACT ── */}
-      <ContactCTA email="communication@enduraw.co" title={t('projects.cta_title')} text={t('contactCta.projects_p')}>
+      <ContactCTA email="media@enduraw.co" title={t('projects.cta_title')} text={t('contactCta.projects_p')}>
         <Link to="/services" className={secondaryBtnClass}>
           {t('projects.exploreServices')}
         </Link>

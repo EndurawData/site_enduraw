@@ -1,36 +1,41 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Navigation from './components/Navigation';
 import ScrollToTop from './components/ScrollToTop';
 import Footer from './components/Footer';
+import RouteMeta from './components/RouteMeta';
+import RevealOnScroll from './components/RevealOnScroll';
 import HomePage from './pages/HomePage';
-import ServicesPage from './pages/ServicesPage';
-import NewsPage from './pages/NewsPage';
-import ContactPage from './pages/ContactPage';
-import CareersPage from './pages/CareersPage';
-import TestingPage from './pages/services/TestingPage';
-import EndurawPerformanceCenterPage from './pages/services/PerformanceCenterPage';
-import AthleteSupportPage from './pages/services/AthleteSupportPage';
-import PacingPlanPage from './pages/services/PacingPlanPage';
-import EndurawReportPage from './pages/services/EndurawReportPage';
-import EndurawDashboardPage from './pages/services/EndurawDashboardPage';
-import EndurawAPIPage from './pages/services/EndurawAPIPage';
-import ConferencesPage from './pages/services/ConferencesPage';
-import TrainingCampPage from './pages/epc/TrainingCampPage';
-import CorporateSeminarPage from './pages/epc/CorporateSeminarPage';
-import CoworkingPage from './pages/epc/CoworkingPage';
-import PodcastStudioPage from './pages/epc/PodcastStudioPage';
-import AboutPage from './pages/AboutPage';
-import MentionsLegalesPage from './pages/MentionsLegalesPage';
-import PolitiqueConfidentialitePage from './pages/PolitiqueConfidentialitePage';
-import CGUPage from './pages/CGUPage';
-import SousTraitantsPage from './pages/SousTraitantsPage';
+
+// Les autres pages ne sont téléchargées qu'au moment de leur visite : le premier affichage est plus rapide.
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const NewsPage = lazy(() => import('./pages/NewsPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const CareersPage = lazy(() => import('./pages/CareersPage'));
+const TestingPage = lazy(() => import('./pages/services/TestingPage'));
+const EndurawPerformanceCenterPage = lazy(() => import('./pages/services/PerformanceCenterPage'));
+const AthleteSupportPage = lazy(() => import('./pages/services/AthleteSupportPage'));
+const PacingPlanPage = lazy(() => import('./pages/services/PacingPlanPage'));
+const EndurawReportPage = lazy(() => import('./pages/services/EndurawReportPage'));
+const EndurawDashboardPage = lazy(() => import('./pages/services/EndurawDashboardPage'));
+const EndurawAPIPage = lazy(() => import('./pages/services/EndurawAPIPage'));
+const ConferencesPage = lazy(() => import('./pages/services/ConferencesPage'));
+const TrainingCampPage = lazy(() => import('./pages/epc/TrainingCampPage'));
+const CorporateSeminarPage = lazy(() => import('./pages/epc/CorporateSeminarPage'));
+const CoworkingPage = lazy(() => import('./pages/epc/CoworkingPage'));
+const PodcastStudioPage = lazy(() => import('./pages/epc/PodcastStudioPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const MentionsLegalesPage = lazy(() => import('./pages/MentionsLegalesPage'));
+const PolitiqueConfidentialitePage = lazy(() => import('./pages/PolitiqueConfidentialitePage'));
+const CGUPage = lazy(() => import('./pages/CGUPage'));
+const SousTraitantsPage = lazy(() => import('./pages/SousTraitantsPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
+  const { t } = useTranslation();
   const [activeSection, setActiveSection] = useState<string>('');
-  const siteBackgroundStyle: React.CSSProperties = {
-    background: 'radial-gradient(120% 60% at 50% 120%, #6CDCFF 0%, #2054A8 30%, #0a0f1a 50%, #020617 65%)',
-  };
 
   const handleScrollToSection = useCallback((sectionId: string) => {
     setActiveSection(sectionId);
@@ -42,16 +47,23 @@ function App() {
   return (
     <Router>
       <div className="App min-h-screen">
-        <div className="site-background" style={siteBackgroundStyle} aria-hidden="true" />
+        <div className="site-background" aria-hidden="true" />
         <div className="site-content">
           <ScrollToTop />
+          <RouteMeta />
+          <RevealOnScroll />
+          <a href="#main" className="skip-link">{t('a11y.skip')}</a>
           <Navigation onScrollToSection={handleScrollToSection} />
+          <main id="main" tabIndex={-1}>
+          <Suspense fallback={<div className="min-h-screen" aria-hidden="true" />}>
           <Routes>
             <Route 
               path="/" 
               element={<HomePage activeSection={activeSection} />} 
             />
             <Route path="/news" element={<NewsPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/platform" element={<Navigate to="/dashboard" replace />} />
             <Route 
               path="/services" 
               element={<ServicesPage activeSection={activeSection} />} 
@@ -76,7 +88,10 @@ function App() {
             <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />
             <Route path="/cgu" element={<CGUPage />} />
             <Route path="/sous-traitants" element={<SousTraitantsPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
+          </Suspense>
+          </main>
           <Footer />
         </div>
       </div>

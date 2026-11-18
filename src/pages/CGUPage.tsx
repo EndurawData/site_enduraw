@@ -31,7 +31,7 @@ const CGUPage: React.FC = () => {
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">{t('cgu.s2_2')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">{t('cgu.s2_3')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">
-              {t('cgu.s2_4')} <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
+              {t('cgu.s2_4')} <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>
             </p>
             <p className="text-paragraph text-white/80 leading-relaxed">{t('cgu.s2_5')}</p>
           </section>
@@ -49,7 +49,7 @@ const CGUPage: React.FC = () => {
             <p className="text-paragraph text-white/80 leading-relaxed mb-4">{t('cgu.s4_p2')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-4">{t('cgu.s4_p3')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed">
-              {t('cgu.s4_p4')} <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>.
+              {t('cgu.s4_p4')} <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>.
             </p>
           </section>
 
@@ -104,7 +104,7 @@ const CGUPage: React.FC = () => {
             <h2 className="text-title-h2 text-[#6CDCFF] mb-4">{t('cgu.s10_title')}</h2>
             <p className="text-paragraph text-white/80 leading-relaxed mb-4">{t('cgu.s10_p1')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed">
-              {t('cgu.s10_p2')} <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>.
+              {t('cgu.s10_p2')} <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>.
             </p>
           </section>
 
@@ -154,7 +154,7 @@ const CGUPage: React.FC = () => {
             <h2 className="text-title-h2 text-[#6CDCFF] mb-4">{t('cgu.s16_title')}</h2>
             <p className="text-paragraph text-white/80 leading-relaxed mb-4">{t('cgu.s16_p1')}</p>
             <p className="text-paragraph text-white/80 leading-relaxed mb-2">
-              <a href="mailto:communication@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">communication@enduraw.co</a>
+              <a href="mailto:media@enduraw.co" className="text-[#6CDCFF] hover:text-white transition-colors underline">media@enduraw.co</a>
             </p>
             <p className="text-paragraph text-white/80 leading-relaxed">{t('cgu.s16_p2')}</p>
           </section>

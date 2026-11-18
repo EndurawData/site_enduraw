@@ -53,23 +53,23 @@ const Footer: React.FC = () => {
 
         {/* Legal Links */}
         <div className="flex justify-center flex-wrap gap-6 text-xs mb-8">
-          <Link to="/contact" className="text-gray-300 hover:text-gray-300 transition-colors duration-200 text-body-uppercase">
+          <Link to="/contact" className="text-gray-300 hover:text-white transition-colors duration-200 text-body-uppercase">
             {t('footer.contact_title')}
           </Link>
           <span className="text-gray-700">|</span>
-          <Link to="/careers" className="text-gray-300 hover:text-gray-300 transition-colors duration-200 text-body-uppercase">
+          <Link to="/careers" className="text-gray-300 hover:text-white transition-colors duration-200 text-body-uppercase">
             {t('nav.careers')}
           </Link>
           <span className="text-gray-700">|</span>
-          <a href="/mentions-legales" className="text-gray-300 hover:text-gray-300 transition-colors duration-200 text-body-uppercase">
+          <a href="/mentions-legales" className="text-gray-300 hover:text-white transition-colors duration-200 text-body-uppercase">
             {t('footer.mentions')}
           </a>
           <span className="text-gray-700">|</span>
-          <a href="/politique-confidentialite" className="text-gray-300 hover:text-gray-300 transition-colors duration-200 text-body-uppercase">
+          <a href="/politique-confidentialite" className="text-gray-300 hover:text-white transition-colors duration-200 text-body-uppercase">
             {t('footer.privacy')}
           </a>
           <span className="text-gray-700">|</span>
-          <a href="/cgu" className="text-gray-300 hover:text-gray-300 transition-colors duration-200 text-body-uppercase">
+          <a href="/cgu" className="text-gray-300 hover:text-white transition-colors duration-200 text-body-uppercase">
             {t('footer.cgu')}
           </a>
         </div>
