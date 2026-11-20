@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LatestContent from '../components/LatestContent';
 import { useSwipe } from '../hooks/useSwipe';
+import { Link } from 'react-router-dom';
 import { FinalCta } from '../components/HomeShowcase';
 import { HomeHero, ProofBand, FeatureTabs, TestingSection, FieldSection, EpcSection } from '../components/HomeHero';
 import '../styles/fancy.css';
@@ -101,6 +101,17 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [athleteCount, athletePos]);
 
+  // Once the cloned cards are on screen, jump back to the real ones without animation.
+  // A timer rather than onTransitionEnd, which never fires if transitions are disabled or the tab is in the background.
+  useEffect(() => {
+    if (athletePos < athleteCount) return;
+    const id = setTimeout(() => {
+      setAthleteAnimate(false);
+      setAthletePos((p) => p % athleteCount);
+    }, 750);
+    return () => clearTimeout(id);
+  }, [athletePos, athleteCount]);
+
   const athleteSwipe = useSwipe(prevAthlete, nextAthlete);
 
   return (
@@ -150,15 +161,11 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
         <p className="label-enduraw mb-8">
           {t('homeV2.proof_label')}
         </p>
-        <div className="relative overflow-hidden select-none cursor-grab active:cursor-grabbing rounded-lg border border-white/[0.06]" {...athleteSwipe}>
+        <div className="relative overflow-hidden select-none cursor-grab active:cursor-grabbing rounded-lg" {...athleteSwipe}>
+          {/* -mr-px pushes the last visible card's right border out of view: lines only between athletes */}
           <div
-            className={`flex ${athleteAnimate ? 'transition-transform duration-700 ease-in-out' : ''}`}
+            className={`-mr-px flex ${athleteAnimate ? 'transition-transform duration-700 ease-in-out' : ''}`}
             style={{ transform: `translateX(-${athletePos * (100 / VISIBLE)}%)` }}
-            onTransitionEnd={(e) => {
-              if (e.target !== e.currentTarget || athletePos < athleteCount) return;
-              setAthleteAnimate(false);
-              setAthletePos(athletePos - athleteCount);
-            }}
           >
             {athleteTrack.map((a, i) => (
               <div key={i} className="w-1/3 flex-shrink-0 bg-black border-r border-white/[0.06] hover:bg-white/[0.02] transition-colors duration-150">

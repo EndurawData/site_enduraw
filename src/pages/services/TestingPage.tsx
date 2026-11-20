@@ -5,8 +5,7 @@ import { secondaryBtnClass } from '../../components/buttonStyles';
 import PageHero from '../../components/PageHero';
 import ContactCTA from '../../components/ContactCTA';
 import ForWhom from '../../components/ForWhom';
-
-const SHOP_URL = 'https://hg1xgb-km.myshopify.com/products/testing-session-vo2max-enduraw-chamonix-june-10th-2026-copie?variant=53859143450963';
+import { TESTING_SHOP_URL as SHOP_URL } from '../../config';
 
 const offer = [
   { id: 'flat', bookable: true, lactate: true },
