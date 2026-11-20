@@ -25,9 +25,6 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
 
   const athletes = [
     { name: 'Tom Evans', title: t('home.tom_title'), img: '/images/athletes/tomevans.webp' },
-    { name: 'Ruth Croft', title: t('home.ruth_title'), img: '/images/athletes/ruthcroft.webp' },
-    { name: 'Nicolas Navarro', title: t('home.nicolas_title'), img: '/images/athletes/niconavarro.webp' },
-    { name: 'Meline Rollin', title: t('home.meline_title'), img: '/images/athletes/meline.webp' },
     { name: 'Petter Engdahl', title: t('home.petter_title'), img: '/images/athletes/petterengdahl.webp' },
     { name: 'Duncan Perrillat', title: t('home.duncan_title'), img: '/images/athletes/duncan.webp' },
   ];
@@ -83,6 +80,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
 
   // currentXSlide in deps: autoplay timer restarts after a manual swipe/click
   useEffect(() => {
+    if (athleteSlides < 2) return;
     const interval = setInterval(() => {
       setCurrentAthleteSlide((prev) => (prev + 1) % athleteSlides);
     }, 4000);
@@ -173,7 +171,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
           </div>
         </div>
 
-        <div className="flex justify-center mt-6 space-x-2">
+        {athleteSlides > 1 && (<div className="flex justify-center mt-6 space-x-2">
           {Array.from({ length: athleteSlides }).map((_, index) => (
             <button
               key={index}
@@ -184,7 +182,7 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
               }`}
             />
           ))}
-        </div>
+        </div>)}
       </section>
 
 
