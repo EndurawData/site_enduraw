@@ -15,7 +15,8 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
   const { t } = useTranslation();
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
-  const [currentAthleteSlide, setCurrentAthleteSlide] = useState(0);
+  const [athletePos, setAthletePos] = useState(0);
+  const [athleteAnimate, setAthleteAnimate] = useState(true);
 
   useEffect(() => {
     if (activeSection && sectionRefs.current[activeSection]) {
@@ -78,21 +79,29 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
     },
   ];
 
-  const athleteSlides = Math.ceil(athletes.length / 3);
+  // Endless carousel moving one card at a time: the first 3 cards are repeated at the end,
+  // and once the clones are reached we jump back to the start without animation.
+  const VISIBLE = 3;
+  const athleteCount = athletes.length;
+  const athleteTrack = [...athletes, ...athletes.slice(0, VISIBLE)];
 
-  // currentXSlide in deps: autoplay timer restarts after a manual swipe/click
+  const nextAthlete = () => { setAthleteAnimate(true); setAthletePos((p) => p + 1); };
+  const prevAthlete = () => {
+    if (athletePos > 0) { setAthleteAnimate(true); setAthletePos((p) => p - 1); return; }
+    setAthleteAnimate(false);
+    setAthletePos(athleteCount);
+    requestAnimationFrame(() => requestAnimationFrame(() => { setAthleteAnimate(true); setAthletePos(athleteCount - 1); }));
+  };
+
+  // athletePos in deps: autoplay timer restarts after a manual swipe
   useEffect(() => {
-    if (athleteSlides < 2) return;
-    const interval = setInterval(() => {
-      setCurrentAthleteSlide((prev) => (prev + 1) % athleteSlides);
-    }, 4000);
+    if (athleteCount <= VISIBLE) return;
+    const interval = setInterval(nextAthlete, 3000);
     return () => clearInterval(interval);
-  }, [athleteSlides, currentAthleteSlide]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [athleteCount, athletePos]);
 
-  const athleteSwipe = useSwipe(
-    () => setCurrentAthleteSlide((prev) => (prev - 1 + athleteSlides) % athleteSlides),
-    () => setCurrentAthleteSlide((prev) => (prev + 1) % athleteSlides),
-  );
+  const athleteSwipe = useSwipe(prevAthlete, nextAthlete);
 
   return (
     <div className="text-white min-h-screen">
@@ -141,52 +150,36 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
         <p className="label-enduraw mb-8">
           {t('homeV2.proof_label')}
         </p>
-        <div className="relative overflow-hidden select-none cursor-grab active:cursor-grabbing" {...athleteSwipe}>
+        <div className="relative overflow-hidden select-none cursor-grab active:cursor-grabbing rounded-lg border border-white/[0.06]" {...athleteSwipe}>
           <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentAthleteSlide * 100}%)` }}
+            className={`flex ${athleteAnimate ? 'transition-transform duration-700 ease-in-out' : ''}`}
+            style={{ transform: `translateX(-${athletePos * (100 / VISIBLE)}%)` }}
+            onTransitionEnd={(e) => {
+              if (e.target !== e.currentTarget || athletePos < athleteCount) return;
+              setAthleteAnimate(false);
+              setAthletePos(athletePos - athleteCount);
+            }}
           >
-            {Array.from({ length: athleteSlides }).map((_, slideIndex) => (
-              <div key={slideIndex} className="w-full flex-shrink-0">
-                <div className="grid grid-cols-3 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
-                  {athletes.slice(slideIndex * 3, (slideIndex + 1) * 3).map((a, i) => (
-                    <div key={i} className="bg-black hover:bg-white/[0.02] transition-colors duration-150">
-                      <div className="w-full h-44 bg-black flex items-end justify-center overflow-hidden">
-                        <img
-                          loading="lazy"
-                          decoding="async"
-                          src={a.img}
-                          alt={a.name}
-                          className="h-full w-auto object-contain opacity-90"
-                          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                        />
-                      </div>
-                      <div className="p-4">
-                        <p className="text-subtitle text-white mb-0.5">{a.name}</p>
-                        <p className="text-paragraph text-gray-300 text-xs leading-relaxed">{a.title}</p>
-                      </div>
-                    </div>
-                  ))}
-                  {/* last slide: pad the grid so the gap colour doesn't show through */}
-                  {Array.from({ length: Math.max(0, 3 - (athletes.length - slideIndex * 3)) }).map((_, i) => (<div key={`pad-${i}`} className="bg-black" />))}
+            {athleteTrack.map((a, i) => (
+              <div key={i} className="w-1/3 flex-shrink-0 bg-black border-r border-white/[0.06] hover:bg-white/[0.02] transition-colors duration-150">
+                <div className="w-full h-44 bg-black flex items-end justify-center overflow-hidden">
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    src={a.img}
+                    alt={a.name}
+                    className="h-full w-auto object-contain opacity-90"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="text-subtitle text-white mb-0.5">{a.name}</p>
+                  <p className="text-paragraph text-gray-300 text-xs leading-relaxed">{a.title}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-
-        {athleteSlides > 1 && (<div className="flex justify-center mt-6 space-x-2">
-          {Array.from({ length: athleteSlides }).map((_, index) => (
-            <button
-              key={index}
-              aria-label={`${index + 1} / ${athleteSlides}`}
-              onClick={() => setCurrentAthleteSlide(index)}
-              className={`w-2 h-2 rounded-full transition-colors ${
-                index === currentAthleteSlide ? 'bg-[#6CDCFF]' : 'bg-gray-500'
-              }`}
-            />
-          ))}
-        </div>)}
       </section>
 
 
