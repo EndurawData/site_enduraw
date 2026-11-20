@@ -27,6 +27,8 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
     { name: 'Tom Evans', title: t('home.tom_title'), img: '/images/athletes/tomevans.webp' },
     { name: 'Petter Engdahl', title: t('home.petter_title'), img: '/images/athletes/petterengdahl.webp' },
     { name: 'Duncan Perrillat', title: t('home.duncan_title'), img: '/images/athletes/duncan.webp' },
+    { name: 'Casimir Moine', title: t('home.casimir_title'), img: '/images/athletes/casimir.webp' },
+    { name: 'Théo Detienne', title: t('home.theo_title'), img: '/images/athletes/theodetienne.webp' },
   ];
 
   const ecosystem = [
@@ -165,6 +167,8 @@ const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
                       </div>
                     </div>
                   ))}
+                  {/* last slide: pad the grid so the gap colour doesn't show through */}
+                  {Array.from({ length: Math.max(0, 3 - (athletes.length - slideIndex * 3)) }).map((_, i) => (<div key={`pad-${i}`} className="bg-black" />))}
                 </div>
               </div>
             ))}
