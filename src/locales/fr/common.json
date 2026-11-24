@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "primary": "Navigation principale",
+    "home": "Accueil",
+    "media": "Média",
+    "dashboard": "Dashboard",
+    "services": "Services",
+    "about": "À propos",
+    "lab": "Labo & tests",
+    "coaching": "Coaching",
+    "conferences": "Conférences",
+    "servicesMenu": "Afficher les services",
+    "shop": "Boutique",
+    "language": "Langue",
+    "menu": "Menu"
+  },
+  "footer": {
+    "tagline": "Un laboratoire de performance sportive à Chamonix. Nous transformons les données d'entraînement et de labo en analyses utiles.",
+    "site": "Site",
+    "contact": "Contact",
+    "follow": "Suivre",
+    "careers": "Recrutement",
+    "mentions": "Mentions légales",
+    "privacy": "Confidentialité",
+    "cgu": "CGU",
+    "subprocessors": "Sous-traitants"
+  },
+  "a11y": {
+    "skip": "Aller au contenu"
+  },
+  "seo": {
+    "tagline": "Laboratoire de performance en endurance",
+    "og_alt": "Enduraw, laboratoire de performance sportive",
+    "home": "Enduraw analyse les données d'entraînement et de laboratoire : un dashboard pour coureurs, des tests à Chamonix, du coaching et des conférences.",
+    "media": "Analyses de courses, articles et études d'Enduraw sur le trail, le marathon et la performance en endurance.",
+    "dashboard": "Le dashboard Enduraw analyse chaque séance synchronisée depuis Strava, construit votre Runner Matrix et vos plans de course.",
+    "services": "Tests en laboratoire à Chamonix, coaching individuel et conférences : les services d'Enduraw pour athlètes, équipes et entreprises.",
+    "lab": "Tests VO2max, seuils ventilatoires et économie de course, lactate en option, au Performance Center Enduraw à Chamonix. Aussi un lieu pour stages, séminaires et enregistrements.",
+    "coaching": "Un coaching individuel sur toute la saison, par les scientifiques du sport d'Enduraw, pour tous les niveaux.",
+    "conferences": "Conférences et ateliers sur la performance en endurance et la donnée sportive, pour entreprises, écoles et événements.",
+    "about": "Qui nous sommes : Enduraw, une équipe d'ingénieurs et de scientifiques du sport basée à Chamonix.",
+    "careers": "Rejoindre Enduraw : postes ouverts et candidatures spontanées.",
+    "legal": "Informations légales du site enduraw.co."
+  }
+}

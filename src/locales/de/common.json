@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "primary": "Hauptnavigation",
+    "home": "Start",
+    "media": "Media",
+    "dashboard": "Dashboard",
+    "services": "Leistungen",
+    "about": "Über uns",
+    "lab": "Labor & Tests",
+    "coaching": "Coaching",
+    "conferences": "Vorträge",
+    "servicesMenu": "Leistungen anzeigen",
+    "shop": "Shop",
+    "language": "Sprache",
+    "menu": "Menü"
+  },
+  "footer": {
+    "tagline": "Ein Labor für Sportleistung in Chamonix. Wir machen aus Trainings- und Labordaten Analysen, mit denen man arbeiten kann.",
+    "site": "Seite",
+    "contact": "Kontakt",
+    "follow": "Folgen",
+    "careers": "Karriere",
+    "mentions": "Impressum",
+    "privacy": "Datenschutz",
+    "cgu": "Nutzungsbedingungen",
+    "subprocessors": "Unterauftragsverarbeiter"
+  },
+  "a11y": {
+    "skip": "Zum Inhalt springen"
+  },
+  "seo": {
+    "tagline": "Labor für Ausdauerleistung",
+    "og_alt": "Enduraw, Labor für Sportleistung",
+    "home": "Enduraw analysiert Trainings- und Labordaten: ein Dashboard für Läufer, Tests in Chamonix, Coaching und Vorträge.",
+    "media": "Rennanalysen, Artikel und Studien von Enduraw zu Trail, Marathon und Ausdauerleistung.",
+    "dashboard": "Das Enduraw-Dashboard analysiert jede aus Strava synchronisierte Einheit, erstellt deine Runner Matrix und deine Rennpläne.",
+    "services": "Labortests in Chamonix, individuelles Coaching und Vorträge: die Leistungen von Enduraw für Athleten, Teams und Unternehmen.",
+    "lab": "VO2max-, Schwellen- und Laufökonomie-Tests, Laktat optional, im Enduraw Performance Center in Chamonix. Auch ein Ort für Camps, Seminare und Aufnahmen.",
+    "coaching": "Individuelles Coaching über die ganze Saison, von den Sportwissenschaftlern von Enduraw, für jedes Niveau.",
+    "conferences": "Vorträge und Workshops zu Ausdauerleistung und Sportdaten, für Unternehmen, Hochschulen und Events.",
+    "about": "Wer wir sind: Enduraw, ein Team aus Ingenieuren und Sportwissenschaftlern in Chamonix.",
+    "careers": "Bei Enduraw arbeiten: offene Stellen und Initiativbewerbungen.",
+    "legal": "Rechtliche Informationen zu enduraw.co."
+  }
+}
