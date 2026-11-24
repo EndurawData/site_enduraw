@@ -1,0 +1,39 @@
+{
+  "aboutPage": {
+    "hero": {
+      "alt": "Un membre de l'équipe Enduraw entre deux athlètes ASICS, dans l'aire d'arrivée d'une course",
+      "title": "Un laboratoire de performance sportive",
+      "lead": "Se comprendre comme athlète et comme personne, c'est ce qui fait passer un cap. Nous partons des données pour y arriver.",
+      "cta": "Voir nos services"
+    },
+    "story": {
+      "title": "Né à Chamonix",
+      "text": "Tout part d'une chambre à Chamonix : Joseph Mestrallet y passe ses nuits à construire des plans de course à partir du profil du parcours et des conditions. Le rapport Enduraw suit, puis le dashboard.",
+      "milestones": {
+        "idea": "Première idée du projet",
+        "launch": "Lancement officiel du rapport Enduraw",
+        "v2": "Deuxième version : une formule calculée sur vos données, le vélo et le trail en plus",
+        "dashboard": "Le rapport devient un dashboard complet",
+        "pacing": "Les plans de course arrivent dans le dashboard",
+        "testing": "Les résultats de tests rejoignent le dashboard",
+        "matrix": "Lancement de la Runner Matrix"
+      }
+    },
+    "team": {
+      "title": "Ingénieurs et scientifiques du sport",
+      "text": "Physique, data science, nutrition, finance et image : une petite équipe, basée à Chamonix.",
+      "careers": "Rejoindre l'équipe",
+      "linkedin": "{{name}} sur LinkedIn",
+      "roles": {
+        "joseph": "Fondateur, scientifique de la performance",
+        "anthony": "Directeur général",
+        "lucas": "Responsable financier",
+        "valentin": "Responsable technique",
+        "kyllian": "Scientifique de la performance",
+        "charline": "Spécialiste en nutrition",
+        "antoine": "Data scientist",
+        "alex": "Photographe sportif"
+      }
+    }
+  }
+}

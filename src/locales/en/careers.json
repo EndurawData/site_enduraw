@@ -1,0 +1,26 @@
+{
+  "careersPage": {
+    "hero": {
+      "alt": "Wooden mezzanine of the Performance Center in Chamonix",
+      "title": "Join Enduraw",
+      "lead": "No position that fits you? Send a spontaneous application."
+    },
+    "apply": "Send my application",
+    "steps": {
+      "title": "Three steps to join us",
+      "text": "From application to first conversation.",
+      "form": {
+        "title": "Fill in the form",
+        "text": "Tell us about yourself, your background and what you would like to bring to Enduraw. It only takes a few minutes."
+      },
+      "review": {
+        "title": "We review your profile",
+        "text": "The team reads every application we receive."
+      },
+      "talk": {
+        "title": "Let's talk",
+        "text": "If your profile matches our projects, we get back to you for a first conversation."
+      }
+    }
+  }
+}

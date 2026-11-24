@@ -1,0 +1,26 @@
+{
+  "careersPage": {
+    "hero": {
+      "alt": "Holzgalerie im Performance Center in Chamonix",
+      "title": "Zu Enduraw kommen",
+      "lead": "Keine passende Stelle dabei? Schick uns eine Initiativbewerbung."
+    },
+    "apply": "Bewerbung senden",
+    "steps": {
+      "title": "In drei Schritten zu uns",
+      "text": "Von der Bewerbung bis zum ersten Gespräch.",
+      "form": {
+        "title": "Formular ausfüllen",
+        "text": "Stell dich vor, erzähl von deinem Werdegang und davon, was du zu Enduraw beitragen möchtest. Das dauert nur ein paar Minuten."
+      },
+      "review": {
+        "title": "Wir prüfen dein Profil",
+        "text": "Das Team liest jede eingehende Bewerbung."
+      },
+      "talk": {
+        "title": "Wir sprechen miteinander",
+        "text": "Passt dein Profil zu unseren Projekten, melden wir uns für ein erstes Gespräch."
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "careersPage": {
+    "hero": {
+      "alt": "Entreplanta de madera del Performance Center, en Chamonix",
+      "title": "Únete a Enduraw",
+      "lead": "¿Ningún puesto encaja contigo? Envía una candidatura espontánea."
+    },
+    "apply": "Enviar mi candidatura",
+    "steps": {
+      "title": "Tres pasos para unirte",
+      "text": "De la candidatura a la primera conversación.",
+      "form": {
+        "title": "Rellena el formulario",
+        "text": "Preséntate, cuéntanos tu trayectoria y lo que te gustaría aportar a Enduraw. Solo te llevará unos minutos."
+      },
+      "review": {
+        "title": "Estudiamos tu perfil",
+        "text": "El equipo lee cada candidatura recibida."
+      },
+      "talk": {
+        "title": "Hablamos",
+        "text": "Si tu perfil encaja con nuestros proyectos, te contactamos para una primera conversación."
+      }
+    }
+  }
+}

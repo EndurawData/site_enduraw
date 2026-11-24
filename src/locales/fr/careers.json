@@ -1,0 +1,26 @@
+{
+  "careersPage": {
+    "hero": {
+      "alt": "Mezzanine en bois du Performance Center, à Chamonix",
+      "title": "Rejoindre Enduraw",
+      "lead": "Aucun poste ne vous correspond ? Envoyez une candidature spontanée."
+    },
+    "apply": "Envoyer ma candidature",
+    "steps": {
+      "title": "Trois étapes pour nous rejoindre",
+      "text": "De la candidature au premier échange.",
+      "form": {
+        "title": "Remplissez le formulaire",
+        "text": "Présentez-vous, votre parcours et ce que vous aimeriez apporter à Enduraw. Quelques minutes suffisent."
+      },
+      "review": {
+        "title": "Nous étudions votre profil",
+        "text": "L'équipe lit chaque candidature reçue."
+      },
+      "talk": {
+        "title": "On en discute",
+        "text": "Si votre profil rejoint nos projets, nous revenons vers vous pour un premier échange."
+      }
+    }
+  }
+}

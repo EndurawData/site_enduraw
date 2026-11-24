@@ -1,0 +1,19 @@
+{
+  "mediaPage": {
+    "hero": {
+      "alt": "Podcast-Studio im Performance Center, Enduraw-Mikrofone auf dem Tisch",
+      "title": "Das Rennen, mit Daten gelesen",
+      "lead": "Rennanalysen, veröffentlichte Studien und Guides: Wir machen Ausdauerdaten zugänglich und lesbar."
+    },
+    "all": {
+      "title": "Alle Inhalte",
+      "follow": "Jede Woche Rennanalysen auf Instagram:"
+    },
+    "cta": {
+      "title": "Unsere Daten für deine Medien",
+      "text": "Rennstatistiken, Leistungsanalysen, technische Studien: Unsere Daten können deiner Berichterstattung wissenschaftliche Tiefe geben.",
+      "button": "Dem Medienteam schreiben",
+      "subject": "Presseanfrage"
+    }
+  }
+}
