@@ -1,0 +1,55 @@
+{
+  "home": {
+    "hero": {
+      "alt": "Traileur qui regarde sa montre sur une crête au-dessus de Chamonix",
+      "lead": "La science des données au service de la performance en endurance, pour chaque athlète, de la première course à la finale olympique.",
+      "ctaDashboard": "Découvrir le dashboard",
+      "ctaServices": "Voir nos services",
+      "line1": "Turning raw data",
+      "line2": "into relevant",
+      "line3": "analysis"
+    },
+    "dashboard": {
+      "title": "Votre entraînement, lu comme en laboratoire",
+      "text": "Connectez Strava. Vos séances sont lues et votre Runner Matrix note six dimensions de votre course.",
+      "cta": "Voir le dashboard",
+      "alt": "Vue d'ensemble du dashboard Enduraw : activités, Runner Matrix, plans de course et tests"
+    },
+    "testing": {
+      "title": "Mesurez votre physiologie",
+      "text": "VO₂max, seuils ventilatoires et vitesse maximale aérobie, mesurés dans notre Performance Center à Chamonix et expliqués avec ce qui compte pour votre entraînement.",
+      "cta": "Voir les tests",
+      "alt": "Athlète qui court sur tapis avec un masque d'analyse des gaz"
+    },
+    "field": {
+      "title": "L'exigence de l'élite, pour tous",
+      "text": "Nous préparons les briefings de course d'athlètes élite. Le même travail minutieux nourrit chaque plan et chaque coaching.",
+      "cta": "Découvrir le coaching",
+      "alt": "Tom Evans lors d'un prélèvement de lactate à l'arrivée d'une course"
+    },
+    "athletes": {
+      "label": "Ils travaillent avec nous",
+      "tom": "Vainqueur de l'UTMB et de la Western States",
+      "petter": "Vainqueur de la CCC",
+      "casimir": "25e des championnats du monde Ironman 70.3 2026, 2 fois vainqueur d'Ironman 70.3",
+      "theo": "Vainqueur du 90 km du Mont-Blanc",
+      "duncan": "Marathonien français"
+    },
+    "latest": {
+      "title": "Derniers contenus",
+      "all": "Tous les contenus",
+      "follow": "Des analyses de course chaque semaine sur Instagram :"
+    },
+    "cta": {
+      "title": "Votre prochaine course commence ici",
+      "text": "Connectez Strava et obtenez votre profil Runner Matrix en quelques minutes.",
+      "button": "Créer mon compte"
+    }
+  },
+  "figures": {
+    "aria": "Enduraw en chiffres",
+    "users": "Utilisateurs d'Enduraw report dans le monde",
+    "activities": "Activités traitées et analysées",
+    "distance": "Kilomètres analysés"
+  }
+}
