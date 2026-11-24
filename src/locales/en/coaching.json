@@ -1,0 +1,70 @@
+{
+  "coachingPage": {
+    "contactSubject": "Coaching",
+    "hero": {
+      "title": "A scientific coach for your season",
+      "lead": "Monthly planning, analysis of your training data and strategy for your goal races, whether you are preparing your first marathon or a podium.",
+      "cta": "Talk about your season",
+      "ctaSeason": "See what's included",
+      "alt": "Trail runner on a mountain path, snowy peaks behind"
+    },
+    "areas": {
+      "title": "More than a training plan",
+      "lead": "From a first marathon to the podium, the same method: we follow performance as a whole, from training to sleep.",
+      "training": {
+        "title": "Training analysis",
+        "text": "Your sessions analysed and monitored throughout the season."
+      },
+      "history": {
+        "title": "Historical profile",
+        "text": "Your profile built from your past training and racing data."
+      },
+      "factors": {
+        "title": "Performance factors",
+        "text": "Your races compared to isolate what makes the difference."
+      },
+      "nutrition": {
+        "title": "Nutrition",
+        "text": "What you eat in training and racing."
+      },
+      "refueling": {
+        "title": "Refuelling",
+        "text": "The right electrolytes and water sources to refuel better."
+      },
+      "sleep": {
+        "title": "Sleep",
+        "text": "Your sleep monitored and analysed for better recovery."
+      },
+      "testing": "Want to know your zones first?",
+      "testingCta": "See the tests",
+      "captureAlt": "Analysis of a 4 × 8 minute threshold session in the Enduraw dashboard: pace, heart rate, conditions and consistency of the repetitions",
+      "caption": "Session analysis in the dashboard, sample data"
+    },
+    "season": {
+      "title": "What the season includes",
+      "lead": "A format built around your goals, your race calendar and the level of follow-up you want.",
+      "items": {
+        "planning": "Monthly planning tailored to your goals",
+        "advice": "Scientific advice to optimise your training",
+        "feedback": "Weekly feedback on your training data",
+        "support": "Phone and email support, with replies within 48 h",
+        "pacing": "A pacing strategy for your main races",
+        "call": "One video call a month on a technical topic: training optimisation, race analysis"
+      },
+      "priceLabel": "Seasonal support",
+      "price": "€350",
+      "period": "per month"
+    },
+    "elite": {
+      "title": "Elite support, on request",
+      "text": "For high-level athletes: close, tailored support built with you around your season goals and major races. Places are limited.",
+      "cta": "Apply for elite support",
+      "subject": "Elite support"
+    },
+    "cta": {
+      "title": "Let's build your season together",
+      "text": "Tell us about your goals and race calendar, and we'll suggest the support that fits you best.",
+      "button": "Talk about your season"
+    }
+  }
+}

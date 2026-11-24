@@ -1,0 +1,91 @@
+{
+  "conferencesPage": {
+    "subject": "Talk",
+    "hero": {
+      "title": "The science of endurance",
+      "lead": "Told by those who measure it. Race data, physiology, strategy, athlete preparation: our experts bring to the stage what they see every day.",
+      "cta": "Invite an expert",
+      "ctaThemes": "See the topics",
+      "audiences": "Sports events · Companies · Schools and universities",
+      "alt": "Joseph Mestrallet giving a talk in front of an auditorium"
+    },
+    "joseph": {
+      "role": "Enduraw founder · Performance scientist",
+      "text": "The face of Enduraw, Joseph shares his vision of endurance performance at the crossroads of data, science and the field. An engineer by training, he speaks to athletes as well as executives, students and corporate teams.",
+      "alt": "Joseph Mestrallet at the microphone during a talk",
+      "stat1Prefix": "up to",
+      "stat1Value": "900",
+      "stat1Label": "people in the audience",
+      "stat2Value": "40–150",
+      "stat2Label": "per talk, depending on the format",
+      "education": "Education",
+      "invited": "Speaker for",
+      "stat2Unit": "min"
+    },
+    "themes": {
+      "title": "Topics rooted in the field",
+      "lead": "Six topics, tailored to your audience's level and expectations.",
+      "alt": "Talk on the physiology of endurance effort in front of a screen",
+      "t1": {
+        "title": "Data and performance",
+        "text": "What data really reveals about running and trail performance, and how to read it."
+      },
+      "t2": {
+        "title": "Physiology and testing",
+        "text": "VO₂max, thresholds, lactate: what tests measure and how they guide training."
+      },
+      "t3": {
+        "title": "Pacing and race strategy",
+        "text": "Managing pace, effort and nutrition to reach your full potential on race day."
+      },
+      "t4": {
+        "title": "Behind the scenes of elite sport",
+        "text": "Analyses of major races and lessons from supporting elite athletes."
+      },
+      "t5": {
+        "title": "Performance and business",
+        "text": "What endurance sport teaches about commitment, consistency and managing effort at work."
+      },
+      "t6": {
+        "title": "Data and storytelling",
+        "text": "How numbers enrich the story of a race for media, brands and organisers."
+      }
+    },
+    "experts": {
+      "title": "Enduraw experts",
+      "text": "Our experts work every day with athletes, brands and race organisers. They take the stage to share this experience, with an accessible, data-backed message.",
+      "role1": "PhDs",
+      "role2": "Physiologists",
+      "role3": "Nutritionist",
+      "role4": "Data scientists",
+      "role5": "Coaches",
+      "altJoseph": "Joseph Mestrallet on stage for the talk “Secrets de compétition”",
+      "altValentin": "Race data presented on a large screen"
+    },
+    "formats": {
+      "title": "A format for every event",
+      "alt": "Enduraw expert on stage at a data conference",
+      "f1": {
+        "title": "Keynote",
+        "text": "A talk to open or punctuate your event."
+      },
+      "f2": {
+        "title": "Panel discussion",
+        "text": "An Enduraw expert alongside athletes, researchers or sports professionals."
+      },
+      "f3": {
+        "title": "Workshop",
+        "text": "A small-group session built around concrete cases and your own data."
+      },
+      "f4": {
+        "title": "Corporate talk",
+        "text": "A highlight for your teams, during a seminar or an internal event."
+      }
+    },
+    "cta": {
+      "title": "Invite an Enduraw expert",
+      "text": "Tell us about your event, your audience and your dates, and we'll suggest the most suitable talk.",
+      "button": "Invite an expert"
+    }
+  }
+}

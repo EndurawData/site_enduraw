@@ -1,0 +1,91 @@
+{
+  "conferencesPage": {
+    "subject": "Vortrag",
+    "hero": {
+      "title": "Die Wissenschaft der Ausdauer",
+      "lead": "Erzählt von denen, die sie messen. Renndaten, Physiologie, Strategie, Athletenvorbereitung: Unsere Experten bringen auf die Bühne, was sie täglich beobachten.",
+      "cta": "Experten einladen",
+      "ctaThemes": "Themen ansehen",
+      "audiences": "Sportevents · Unternehmen · Schulen und Hochschulen",
+      "alt": "Joseph Mestrallet hält einen Vortrag vor einem Auditorium"
+    },
+    "joseph": {
+      "role": "Gründer von Enduraw · Leistungswissenschaftler",
+      "text": "Als Gesicht von Enduraw teilt Joseph seine Sicht auf Ausdauerleistung, an der Schnittstelle von Daten, Wissenschaft und Praxis. Der ausgebildete Ingenieur spricht vor Sportlern ebenso wie vor Führungskräften, Studierenden und Unternehmensteams.",
+      "alt": "Joseph Mestrallet am Mikrofon während eines Vortrags",
+      "stat1Prefix": "bis zu",
+      "stat1Value": "900",
+      "stat1Label": "Personen im Publikum",
+      "stat2Value": "40–150",
+      "stat2Label": "Vortragsdauer, je nach Format",
+      "education": "Ausbildung",
+      "invited": "Sprach bereits für",
+      "stat2Unit": "Min."
+    },
+    "themes": {
+      "title": "Themen aus der Praxis",
+      "lead": "Sechs Themen, abgestimmt auf Niveau und Erwartungen deines Publikums.",
+      "alt": "Vortrag zur Physiologie der Ausdauerbelastung vor einem Bildschirm",
+      "t1": {
+        "title": "Daten und Leistung",
+        "text": "Was Daten wirklich über Leistung im Lauf und Trail verraten, und wie man sie liest."
+      },
+      "t2": {
+        "title": "Physiologie und Tests",
+        "text": "VO₂max, Schwellen, Laktat: was Tests messen und wie sie das Training leiten."
+      },
+      "t3": {
+        "title": "Pacing und Rennstrategie",
+        "text": "Tempo, Belastung und Ernährung steuern, um am Renntag dein volles Potenzial abzurufen."
+      },
+      "t4": {
+        "title": "Hinter den Kulissen des Spitzensports",
+        "text": "Analysen großer Rennen und Erfahrungen aus der Betreuung von Elite-Athleten."
+      },
+      "t5": {
+        "title": "Leistung und Unternehmen",
+        "text": "Was Ausdauersport über Engagement, Beständigkeit und Belastungssteuerung im Job lehrt."
+      },
+      "t6": {
+        "title": "Daten und Storytelling",
+        "text": "Wie Zahlen die Geschichte eines Rennens für Medien, Marken und Veranstalter bereichern."
+      }
+    },
+    "experts": {
+      "title": "Die Enduraw-Experten",
+      "text": "Unsere Experten arbeiten täglich mit Athleten, Marken und Rennveranstaltern. Auf der Bühne teilen sie diese Erfahrung, verständlich und mit Daten belegt.",
+      "role1": "Promovierte (PhD)",
+      "role2": "Physiologen",
+      "role3": "Ernährungsberaterin",
+      "role4": "Data Scientists",
+      "role5": "Coaches",
+      "altJoseph": "Joseph Mestrallet auf der Bühne beim Vortrag „Secrets de compétition“",
+      "altValentin": "Renndaten auf einer großen Leinwand"
+    },
+    "formats": {
+      "title": "Ein Format für jedes Event",
+      "alt": "Enduraw-Experte auf der Bühne einer Datenkonferenz",
+      "f1": {
+        "title": "Keynote",
+        "text": "Ein Vortrag, der dein Event eröffnet oder strukturiert."
+      },
+      "f2": {
+        "title": "Podiumsdiskussion",
+        "text": "Ein Enduraw-Experte gemeinsam mit Athleten, Forschenden oder Sportprofis."
+      },
+      "f3": {
+        "title": "Workshop",
+        "text": "Eine Session in kleiner Gruppe, mit konkreten Fällen und deinen eigenen Daten."
+      },
+      "f4": {
+        "title": "Vortrag im Unternehmen",
+        "text": "Ein Highlight für deine Teams, bei einem Seminar oder einem internen Event."
+      }
+    },
+    "cta": {
+      "title": "Lade einen Enduraw-Experten ein",
+      "text": "Erzähl uns von deinem Event, deinem Publikum und deinen Terminen: Wir schlagen dir den passenden Vortrag vor.",
+      "button": "Experten einladen"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "coachingPage": {
+    "contactSubject": "Coaching",
+    "hero": {
+      "title": "Un coach scientifique pour votre saison",
+      "lead": "Planification mensuelle, analyse de vos données d'entraînement et stratégie pour vos courses objectifs, que vous prépariez votre premier marathon ou un podium.",
+      "cta": "Parler de votre saison",
+      "ctaSeason": "Voir ce qui est inclus",
+      "alt": "Traileur en course sur un sentier de montagne, sommets enneigés derrière lui"
+    },
+    "areas": {
+      "title": "Plus qu'un plan d'entraînement",
+      "lead": "Du premier marathon au podium, la même méthode : nous suivons la performance en entier, de l'entraînement au sommeil.",
+      "training": {
+        "title": "Analyse de l'entraînement",
+        "text": "Vos séances analysées et suivies tout au long de la saison."
+      },
+      "history": {
+        "title": "Profil historique",
+        "text": "Votre profil construit à partir de vos données d'entraînement et de course passées."
+      },
+      "factors": {
+        "title": "Facteurs de performance",
+        "text": "Vos courses comparées pour isoler ce qui fait la différence."
+      },
+      "nutrition": {
+        "title": "Nutrition",
+        "text": "Votre alimentation à l'entraînement et en course."
+      },
+      "refueling": {
+        "title": "Ravitaillement",
+        "text": "Les bons électrolytes et les bonnes sources d'eau pour mieux vous ravitailler."
+      },
+      "sleep": {
+        "title": "Sommeil",
+        "text": "Votre sommeil suivi et analysé pour mieux récupérer."
+      },
+      "testing": "Vous voulez d'abord connaître vos zones ?",
+      "testingCta": "Voir les tests",
+      "captureAlt": "Analyse d'une séance de seuil de 4 × 8 minutes dans le dashboard Enduraw : allure, fréquence cardiaque, conditions et régularité des répétitions",
+      "caption": "Analyse d'une séance dans le dashboard, données fictives"
+    },
+    "season": {
+      "title": "Ce que comprend la saison",
+      "lead": "Un format pensé autour de vos objectifs, de votre calendrier de courses et du niveau de suivi que vous souhaitez.",
+      "items": {
+        "planning": "Une planification mensuelle adaptée à vos objectifs",
+        "advice": "Des conseils scientifiques pour optimiser votre entraînement",
+        "feedback": "Un retour chaque semaine sur vos données d'entraînement",
+        "support": "Un suivi par téléphone et par e-mail, avec réponse sous 48 h",
+        "pacing": "Une stratégie d'allure pour vos courses principales",
+        "call": "Une visioconférence par mois sur un sujet technique : optimisation de l'entraînement, analyse de course"
+      },
+      "priceLabel": "Support saisonnier",
+      "price": "350 €",
+      "period": "par mois"
+    },
+    "elite": {
+      "title": "Accompagnement élite, sur demande",
+      "text": "Pour les athlètes de haut niveau : un accompagnement sur mesure et rapproché, construit avec vous autour de vos objectifs de saison et de vos courses majeures. Les places sont limitées.",
+      "cta": "Candidater à l'accompagnement élite",
+      "subject": "Accompagnement élite"
+    },
+    "cta": {
+      "title": "Construisons votre saison ensemble",
+      "text": "Parlez-nous de vos objectifs et de votre calendrier de courses : nous vous proposerons l'accompagnement le plus adapté.",
+      "button": "Parler de votre saison"
+    }
+  }
+}

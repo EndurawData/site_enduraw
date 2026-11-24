@@ -1,0 +1,36 @@
+{
+  "servicesPage": {
+    "hero": {
+      "title": "Three ways to work with us",
+      "lead": "In the lab, in the field or on stage: the same reading of performance, applied to what you need.",
+      "alt": "Wooden chalet facing snow-capped peaks"
+    },
+    "lab": {
+      "title": "Lab & testing",
+      "text": "VO₂max, ventilatory thresholds and maximal aerobic speed measured at the Performance Center in Chamonix, which also hosts training camps, seminars and coworking.",
+      "cta": "See the tests and the venue",
+      "alt": "Test room at the Performance Center, treadmill and screen"
+    },
+    "coaching": {
+      "title": "Coaching",
+      "text": "A scientific coach for your whole season: monthly planning, analysis of your data and strategy for your goal races.",
+      "cta": "Discover coaching",
+      "alt": "Trail runner on a mountain path, snowy peaks behind"
+    },
+    "conferences": {
+      "title": "Talks",
+      "text": "Our experts speak at sports events, companies and schools about data, physiology and performance.",
+      "cta": "See the talks",
+      "alt": "Joseph Mestrallet on stage in front of an auditorium"
+    },
+    "dashboard": {
+      "text": "Your Strava session analysis, Runner Matrix and race plans live in the dashboard.",
+      "cta": "See the dashboard"
+    },
+    "contact": {
+      "title": "Write to the right team",
+      "lab": "A test, a stay or coaching:",
+      "conferences": "A talk:"
+    }
+  }
+}

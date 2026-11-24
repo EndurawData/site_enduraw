@@ -1,0 +1,118 @@
+{
+  "labPage": {
+    "book": "Réserver un test",
+    "hero": {
+      "alt": "Salle de test du Performance Center : tapis de course, écran et murs de pierre",
+      "title": "Votre physiologie, mesurée au labo",
+      "lead": "VO2max, seuils et économie de course, mesurés en laboratoire à Chamonix et à Paris, pour connaître vos vraies zones d'entraînement. Pour tous les niveaux.",
+      "seeTests": "Voir les tests"
+    },
+    "measure": {
+      "title": "Ce que mesure un test",
+      "lead": "Une séance en trois temps, sur l'un de nos deux protocoles selon votre pratique.",
+      "steps": {
+        "before": {
+          "label": "Avant",
+          "text": "Un échange sur votre santé, votre pratique et votre objectif, pour choisir le bon protocole."
+        },
+        "during": {
+          "label": "Pendant",
+          "text": "L'effort sur tapis, masque d'analyse des gaz et cardiofréquencemètre, avec prélèvements de lactate si vous les avez choisis."
+        },
+        "after": {
+          "label": "Après",
+          "text": "Un compte rendu détaillé : vos seuils, vos zones d'entraînement et des recommandations pour la suite."
+        }
+      },
+      "vo2": {
+        "title": "Protocole VO2max",
+        "items": "Fréquence cardiaque maximale, VO2max, seuils ventilatoires 1 et 2, vitesse maximale aérobie, zones d'entraînement, oxygénation musculaire, température corporelle, lactate en option."
+      },
+      "runWalk": {
+        "title": "Protocole course et marche",
+        "items": "Économie de course, de marche et avec bâtons, pente critique de marche, vitesse critique de course, VO2 et ventilation, fréquence cardiaque, dépense énergétique."
+      },
+      "captureAlt": "Compte rendu d'un test dans le dashboard Enduraw : VO2max, fréquence cardiaque maximale, vitesse maximale aérobie et seuils",
+      "caption": "Synthèse d'un test dans le dashboard, données fictives"
+    },
+    "offer": {
+      "title": "Tests et tarifs",
+      "lead": "Achetez votre test en ligne, nous confirmons le créneau par e-mail. Tests à Chamonix ou à Paris ; durabilité en trail à Chamonix seulement.",
+      "onRequest": "Sur demande",
+      "lactate": "+ 30 € avec lactate",
+      "tests": {
+        "flat": {
+          "name": "Flat test",
+          "price": "190 €",
+          "short": "Zones, VO2max, seuils et économie de course. Route, piste, Hyrox, sports collectifs, trail."
+        },
+        "uphill": {
+          "name": "Uphill test",
+          "price": "190 €",
+          "short": "Les mêmes mesures en montée, avec vos vitesses ascensionnelles. Trail."
+        },
+        "runwalk": {
+          "name": "Test course et marche",
+          "price": "190 €",
+          "short": "Courir ou marcher : la meilleure option selon la pente. Trail."
+        },
+        "durability": {
+          "name": "Test de durabilité",
+          "price": "250 €",
+          "short": "Votre profil sur un effort long à intensité fixe. Trail, marathon, ultra."
+        },
+        "premium": {
+          "name": "Profil trail premium",
+          "price": "575 €",
+          "short": "Le profil complet du traileur sur toutes les pentes, notre test le plus complet."
+        }
+      },
+      "business": "Entreprises : tests au labo ou sur site, tarif de groupe à partir de 5 personnes et synthèse d'équipe pour vos responsables RH et bien-être.",
+      "businessCta": "Demander un devis",
+      "businessSubject": "Tests pour une équipe : demande de devis"
+    },
+    "place": {
+      "title": "Le Performance Center",
+      "p1": "Un chalet de bois et de pierre face au Mont-Blanc, où l'équipe Enduraw teste et suit ses athlètes.",
+      "p2": "Le lieu accueille aussi des stages, des séminaires, du coworking et des enregistrements, présentés ci-dessous.",
+      "alt": "Grand espace de vie du Performance Center, piliers de pierre et mezzanine en bois",
+      "access": "gare à 150 m, bus à 120 m, parking à 250 m, centre de Chamonix à 15 minutes"
+    },
+    "uses": {
+      "camp": {
+        "title": "Training camp",
+        "text": "De 4 à 7 jours pour vous entraîner, vous tester et récupérer, encadré par l'équipe Enduraw : tests, sorties trail coachées, kiné et stratégie de course. Tous niveaux, places limitées.",
+        "cta": "Demander les prochaines dates",
+        "subject": "Training camp : demande d'inscription",
+        "alt": "Terrasse en bois du chalet au crépuscule, massif du Mont-Blanc enneigé au fond"
+      },
+      "seminar": {
+        "title": "Séminaires",
+        "text": "Jusqu'à 12 personnes, de la demi-journée à plusieurs jours, avec salle de réunion, écran 4K et repas sur place. L'après-midi, une sortie trail ou un test physio encadré par nos experts.",
+        "cta": "Organiser un séminaire",
+        "subject": "Séminaire au Performance Center",
+        "alt": "Présentation devant un groupe assis dans la salle principale du chalet"
+      },
+      "coworking": {
+        "title": "Coworking",
+        "text": "Un poste partagé ou un bureau fermé, à la journée ou pour un séjour, avec salle de réunion, imprimante, douches et bar. Les sentiers de l'UTMB partent du pied du chalet.",
+        "cta": "Réserver un poste",
+        "subject": "Coworking au Performance Center",
+        "alt": "Espace de travail sous la charpente du chalet"
+      },
+      "podcast": {
+        "title": "Studio podcast",
+        "text": "Une pièce dédiée à l'enregistrement, avec micros, caméras et éclairage LED. Pour un podcast, une interview ou un contenu de marque, seul ou pendant un séjour au centre.",
+        "cta": "Réserver le studio",
+        "subject": "Studio podcast : demande de réservation",
+        "alt": "Studio podcast avec caméra, boîtes à lumière et table d'enregistrement sous la charpente"
+      }
+    },
+    "cta": {
+      "title": "Réservez votre test",
+      "text": "Achetez votre test en ligne, nous confirmons le créneau par e-mail. Une question avant : écrivez-nous.",
+      "secondary": "Écrire à l'équipe",
+      "subject": "Question sur les tests"
+    }
+  }
+}

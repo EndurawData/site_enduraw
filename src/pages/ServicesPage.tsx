@@ -1,128 +1,113 @@
-import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import '../styles/fancy.css';
-import ContactCTA from '../components/ContactCTA';
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { PhotoHero } from "@/components/ui/PhotoHero";
+import { Action } from "@/components/ui/Action";
+import { Media } from "@/components/ui/Media";
+import { EMAILS, mailto } from "@/lib/links";
 
-interface ServicesPageProps {
-  activeSection?: string;
-}
+/* Les trois piliers. Une rangée chacun : photo, titre, une phrase, un lien.
+   C'est un aiguillage : le détail vit sur la page du pilier. */
+const PILLARS = [
+  {
+    to: "/services/testing",
+    image: "/images/epc/web/A7408201.jpg",
+    position: "75% center",
+    title: "servicesPage.lab.title",
+    description: "servicesPage.lab.text",
+    alt: "servicesPage.lab.alt",
+    cta: "servicesPage.lab.cta",
+  },
+  {
+    to: "/services/coaching",
+    image: "/images/workshop/workshop5.JPG",
+    position: "center 40%",
+    title: "servicesPage.coaching.title",
+    description: "servicesPage.coaching.text",
+    alt: "servicesPage.coaching.alt",
+    cta: "servicesPage.coaching.cta",
+  },
+  {
+    to: "/services/conferences",
+    image: "/images/conferences/web/candriam_chamonix.jpg",
+    position: "60% center",
+    title: "servicesPage.conferences.title",
+    description: "servicesPage.conferences.text",
+    alt: "servicesPage.conferences.alt",
+    cta: "servicesPage.conferences.cta",
+  },
+] as const;
 
-const ServicesPage: React.FC<ServicesPageProps> = ({ activeSection }) => {
+export default function ServicesPage() {
   const { t } = useTranslation();
-  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
-
-  useEffect(() => {
-    if (activeSection && sectionRefs.current[activeSection]) {
-      sectionRefs.current[activeSection]?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  }, [activeSection]);
-
-  const services = [
-    {
-      id: 0,
-      title: "Enduraw Dashboard",
-      description: t('services.dashboard_desc'),
-      link: "/services/enduraw-dashboard",
-      icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-    },
-    {
-      id: 1,
-      title: "Pacing Plan",
-      description: t('services.pacingPlan_desc'),
-      link: "/services/pacing-plan",
-      icon: "M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-    },
-    {
-      id: 2,
-      title: "Testing",
-      description: t('services.testing_desc'),
-      link: "/services/testing",
-      icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-    },
-    {
-      id: 3,
-      title: "Coaching",
-      description: t('services.athleteSupport_desc'),
-      link: "/services/coaching",
-      icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-    },
-    {
-      id: 4,
-      title: "Enduraw Performance Center",
-      description: t('services.performanceCenter_desc'),
-      link: "/endurawperformancecenter",
-      icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-    },
-    {
-      id: 5,
-      title: "Enduraw API",
-      description: t('services.api_desc'),
-      link: "/services/enduraw-api",
-      icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-    },
-    {
-      id: 6,
-      title: "Conferences",
-      description: t('conferences.services_desc'),
-      link: "/services/conferences",
-      icon: "M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-    }
-  ];
 
   return (
-    <div className="text-white min-h-screen pt-16">
+    <>
+      <PhotoHero
+        image="/images/workshop/workshop6.jpg"
+        alt={t("servicesPage.hero.alt")}
+        position="40% center"
+        short
+        title={t("servicesPage.hero.title")}
+        lead={t("servicesPage.hero.lead")}
+      />
 
-      {/* Hero Section */}
-      <section
-        ref={(el) => { sectionRefs.current['overview'] = el; }}
-        className="max-w-5xl mx-auto px-6 sm:px-8 pt-24 pb-12"
-      >
-        <p className="label-enduraw mb-6">Dashboard · Coaching · Testing · Pacing Plan</p>
-        <h1 className="text-title text-white mb-5 max-w-xl leading-tight">
-          {t('services.ourServices')}
-        </h1>
-        <p className="text-paragraph text-gray-300 max-w-lg">
-          {t('services.description')}
-        </p>
-      </section>
+      {/* Aiguillage : trois rangées à filets, pas de cartes. */}
+      <section className="ep-section pt-12">
+        <div className="ep-wrap">
+          <ul className="ep-lines ep-lines--loose">
+            {PILLARS.map((p) => (
+              <li
+                key={p.to}
+                className="grid items-center gap-6 sm:grid-cols-[220px_1fr] sm:gap-10 lg:grid-cols-[280px_1fr] lg:gap-14"
+              >
+                <Media
+                  src={p.image}
+                  alt={t(p.alt)}
+                  ratio="3 / 2"
+                  sizes="(min-width: 1024px) 280px, (min-width: 640px) 220px, 100vw"
+                  position={p.position}
+                />
+                <div>
+                  <h2 className="ep-display ep-h3">{t(p.title)}</h2>
+                  <p className="ep-body mt-3 max-w-[54ch] text-[16px] leading-relaxed">{t(p.description)}</p>
+                  <div className="mt-5">
+                    <Action to={p.to} variant="link">
+                      {t(p.cta)}
+                    </Action>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
 
-      {/* Services Row List */}
-      <section className="max-w-5xl mx-auto px-6 sm:px-8 py-20 section-fade">
-        <div>
-          {services.map((service) => (
-            <Link
-              key={service.id}
-              to={service.link}
-              className="flex items-start gap-5 py-5 border-b border-white/[0.06] last:border-0 group hover:opacity-80 transition-opacity"
-            >
-              <div className="icon-container bg-[#2054A8] flex-shrink-0 mt-0.5">
-                <svg className="w-5 h-5 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={service.icon} />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <p className="text-subtitle text-white mb-1">{service.title}</p>
-                <p className="text-paragraph text-gray-400">{service.description}</p>
-              </div>
-              <div className="flex-shrink-0 self-center text-gray-500 group-hover:text-white transition-colors">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
+          {/* Le dashboard a sa propre page : une ligne y renvoie. */}
+          <p className="ep-body mt-10 text-[16px]">
+            {t("servicesPage.dashboard.text")}{" "}
+            <Link to="/dashboard" className="ep-inline-link">
+              {t("servicesPage.dashboard.cta")}
             </Link>
-          ))}
+          </p>
+
+          {/* Contact : une adresse par pilier, à la place d'un appel final. */}
+          <div className="ep-rule mt-16 pt-10">
+            <h2 className="ep-display ep-h3">{t("servicesPage.contact.title")}</h2>
+            <ul className="ep-body mt-5 space-y-2 text-[16px]">
+              <li>
+                {t("servicesPage.contact.lab")}{" "}
+                <a href={mailto(EMAILS.performance)} className="ep-inline-link">
+                  {EMAILS.performance}
+                </a>
+              </li>
+              <li>
+                {t("servicesPage.contact.conferences")}{" "}
+                <a href={mailto(EMAILS.communication)} className="ep-inline-link">
+                  {EMAILS.communication}
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
-
-      {/* ── CONTACT ── */}
-      <ContactCTA email="media@enduraw.co" title={t('services.workTogether')} text={t('services.getInTouch_p')} />
-
-    </div>
+    </>
   );
-};
-
-export default ServicesPage;
+}

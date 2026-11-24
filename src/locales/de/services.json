@@ -1,0 +1,36 @@
+{
+  "servicesPage": {
+    "hero": {
+      "title": "Drei Wege, mit uns zu arbeiten",
+      "lead": "Im Labor, im Gelände oder auf der Bühne: derselbe Blick auf Leistung, angewandt auf das, was du brauchst.",
+      "alt": "Holzchalet vor schneebedeckten Gipfeln"
+    },
+    "lab": {
+      "title": "Labor & Tests",
+      "text": "VO₂max, ventilatorische Schwellen und maximale aerobe Geschwindigkeit, gemessen im Performance Center in Chamonix, das auch Trainingslager, Seminare und Coworking beherbergt.",
+      "cta": "Tests und Ort ansehen",
+      "alt": "Testraum des Performance Center, Laufband und Bildschirm"
+    },
+    "coaching": {
+      "title": "Coaching",
+      "text": "Ein wissenschaftlicher Coach für deine ganze Saison: monatliche Planung, Analyse deiner Daten und Strategie für deine Zielrennen.",
+      "cta": "Coaching entdecken",
+      "alt": "Trailläufer auf einem Bergpfad, verschneite Gipfel im Hintergrund"
+    },
+    "conferences": {
+      "title": "Vorträge",
+      "text": "Unsere Expertinnen und Experten sprechen bei Sportevents, in Unternehmen und an Hochschulen über Daten, Physiologie und Leistung.",
+      "cta": "Vorträge ansehen",
+      "alt": "Joseph Mestrallet auf der Bühne vor einem Auditorium"
+    },
+    "dashboard": {
+      "text": "Die Analyse deiner Strava-Einheiten, deine Runner Matrix und deine Rennpläne findest du im Dashboard.",
+      "cta": "Dashboard ansehen"
+    },
+    "contact": {
+      "title": "Schreib dem richtigen Team",
+      "lab": "Ein Test, ein Aufenthalt oder Coaching:",
+      "conferences": "Ein Vortrag:"
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "labPage": {
+    "book": "Test buchen",
+    "hero": {
+      "alt": "Testraum des Performance Center: Laufband, Bildschirm und Steinwände",
+      "title": "Deine Physiologie, im Labor gemessen",
+      "lead": "VO2max, Schwellen und Laufökonomie, im Labor in Chamonix und Paris gemessen, damit du deine echten Trainingszonen kennst. Für jedes Niveau.",
+      "seeTests": "Tests ansehen"
+    },
+    "measure": {
+      "title": "Was ein Test misst",
+      "lead": "Ein Termin in drei Schritten, mit einem unserer zwei Protokolle je nach Sportart.",
+      "steps": {
+        "before": {
+          "label": "Vorher",
+          "text": "Ein Gespräch über deine Gesundheit, dein Training und dein Ziel, um das passende Protokoll zu wählen."
+        },
+        "during": {
+          "label": "Währenddessen",
+          "text": "Die Belastung auf dem Laufband, mit Atemgasmaske und Herzfrequenzmesser, dazu Laktatproben, wenn du sie gewählt hast."
+        },
+        "after": {
+          "label": "Danach",
+          "text": "Ein ausführlicher Bericht: deine Schwellen, deine Trainingszonen und Empfehlungen für die nächsten Schritte."
+        }
+      },
+      "vo2": {
+        "title": "VO2max-Protokoll",
+        "items": "Maximale Herzfrequenz, VO2max, ventilatorische Schwellen 1 und 2, maximale aerobe Geschwindigkeit, Trainingszonen, Muskelsauerstoffsättigung, Körperkerntemperatur, Laktat optional."
+      },
+      "runWalk": {
+        "title": "Lauf- und Gehprotokoll",
+        "items": "Lauf-, Geh- und Stockökonomie, kritische Gehsteigung, kritische Laufgeschwindigkeit, VO2 und Ventilation, Herzfrequenz, Energieverbrauch."
+      },
+      "captureAlt": "Testbericht im Enduraw-Dashboard: VO2max, maximale Herzfrequenz, maximale aerobe Geschwindigkeit und Schwellen",
+      "caption": "Testübersicht im Dashboard, Beispieldaten"
+    },
+    "offer": {
+      "title": "Tests und Preise",
+      "lead": "Kauf deinen Test online, wir bestätigen den Termin per E-Mail. Tests in Chamonix oder Paris; Durability-Test im Trail nur in Chamonix.",
+      "onRequest": "Auf Anfrage",
+      "lactate": "+ 30 € mit Laktat",
+      "tests": {
+        "flat": {
+          "name": "Flat test",
+          "price": "190 €",
+          "short": "Zonen, VO2max, Schwellen und Laufökonomie. Straße, Bahn, Hyrox, Mannschaftssport, Trail."
+        },
+        "uphill": {
+          "name": "Uphill test",
+          "price": "190 €",
+          "short": "Dieselben Messungen bergauf, mit deinen Steiggeschwindigkeiten. Trail."
+        },
+        "runwalk": {
+          "name": "Lauf- und Gehtest",
+          "price": "190 €",
+          "short": "Laufen oder gehen: die beste Wahl je nach Steigung. Trail."
+        },
+        "durability": {
+          "name": "Durability-Test",
+          "price": "250 €",
+          "short": "Dein Profil bei einer langen Belastung mit fester Intensität. Trail, Marathon, Ultra."
+        },
+        "premium": {
+          "name": "Premium-Trailprofil",
+          "price": "575 €",
+          "short": "Das komplette Profil des Trailläufers auf jeder Steigung, unser umfassendster Test."
+        }
+      },
+      "business": "Unternehmen: Tests im Labor oder vor Ort, Gruppenpreis ab 5 Personen und eine Teamauswertung für deine HR- und Gesundheitsverantwortlichen.",
+      "businessCta": "Angebot anfragen",
+      "businessSubject": "Tests für ein Team: Angebotsanfrage"
+    },
+    "place": {
+      "title": "Das Performance Center",
+      "p1": "Ein Chalet aus Holz und Stein gegenüber dem Mont Blanc, in dem das Enduraw-Team seine Athleten testet und betreut.",
+      "p2": "Es beherbergt auch Camps, Seminare, Coworking und Aufnahmen, die du unten findest.",
+      "alt": "Großer Wohnbereich des Performance Center, Steinsäulen und Holzgalerie",
+      "access": "Bahnhof 150 m, Bus 120 m, Parkplatz 250 m, Zentrum von Chamonix 15 Minuten"
+    },
+    "uses": {
+      "camp": {
+        "title": "Training camp",
+        "text": "4 bis 7 Tage zum Trainieren, Testen und Erholen, betreut vom Enduraw-Team: Tests, gecoachte Trailläufe, Physiotherapie und Rennstrategie. Alle Niveaus, begrenzte Plätze.",
+        "cta": "Nächste Termine anfragen",
+        "subject": "Training camp: Anmeldeanfrage",
+        "alt": "Holzterrasse des Chalets in der Abenddämmerung, verschneites Mont-Blanc-Massiv im Hintergrund"
+      },
+      "seminar": {
+        "title": "Seminare",
+        "text": "Bis zu 12 Personen, vom halben Tag bis zu mehreren Tagen, mit Besprechungsraum, 4K-Bildschirm und Mahlzeiten vor Ort. Am Nachmittag ein Traillauf oder ein Physiotest mit unseren Experten.",
+        "cta": "Seminar planen",
+        "subject": "Seminar im Performance Center",
+        "alt": "Präsentation vor einer sitzenden Gruppe im Hauptraum des Chalets"
+      },
+      "coworking": {
+        "title": "Coworking",
+        "text": "Ein geteilter Platz oder ein eigenes Büro, tageweise oder für einen Aufenthalt, mit Besprechungsraum, Drucker, Duschen und Bar. Die UTMB-Trails beginnen direkt am Chalet.",
+        "cta": "Platz buchen",
+        "subject": "Coworking im Performance Center",
+        "alt": "Arbeitsbereich unter dem Holzdach des Chalets"
+      },
+      "podcast": {
+        "title": "Podcast-Studio",
+        "text": "Ein Raum für Aufnahmen, mit Mikrofonen, Kameras und LED-Licht. Für einen Podcast, ein Interview oder Markeninhalte, einzeln oder während eines Aufenthalts im Zentrum.",
+        "cta": "Studio buchen",
+        "subject": "Podcast-Studio: Buchungsanfrage",
+        "alt": "Podcast-Studio mit Kamera, Softboxen und Aufnahmetisch unter dem Holzdach"
+      }
+    },
+    "cta": {
+      "title": "Buche deinen Test",
+      "text": "Kauf deinen Test online, wir bestätigen den Termin per E-Mail. Vorher eine Frage: schreib uns.",
+      "secondary": "Dem Team schreiben",
+      "subject": "Frage zu den Tests"
+    }
+  }
+}

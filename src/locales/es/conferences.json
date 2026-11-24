@@ -1,0 +1,91 @@
+{
+  "conferencesPage": {
+    "subject": "Conferencia",
+    "hero": {
+      "title": "La ciencia de la resistencia",
+      "lead": "Contada por quienes la miden. Datos de carrera, fisiología, estrategia, preparación de atletas: nuestros expertos comparten en el escenario lo que observan cada día.",
+      "cta": "Invitar a un experto",
+      "ctaThemes": "Ver los temas",
+      "audiences": "Eventos deportivos · Empresas · Escuelas y universidades",
+      "alt": "Joseph Mestrallet dando una conferencia ante un auditorio"
+    },
+    "joseph": {
+      "role": "Fundador de Enduraw · Científico del rendimiento",
+      "text": "Cara visible de Enduraw, Joseph comparte su visión del rendimiento en resistencia, en el cruce entre los datos, la ciencia y el terreno. Ingeniero de formación, interviene tanto ante deportistas como ante directivos, estudiantes o equipos de empresa.",
+      "alt": "Joseph Mestrallet con el micrófono durante una conferencia",
+      "stat1Prefix": "hasta",
+      "stat1Value": "900",
+      "stat1Label": "personas en el público",
+      "stat2Value": "40–150",
+      "stat2Label": "de conferencia, según el formato",
+      "education": "Formación",
+      "invited": "Ha intervenido para",
+      "stat2Unit": "min"
+    },
+    "themes": {
+      "title": "Temas anclados en el terreno",
+      "lead": "Seis temas, adaptados al nivel y a las expectativas de tu público.",
+      "alt": "Intervención sobre la fisiología del esfuerzo de resistencia ante una pantalla",
+      "t1": {
+        "title": "Datos y rendimiento",
+        "text": "Lo que los datos revelan realmente sobre el rendimiento en running y trail, y cómo leerlos."
+      },
+      "t2": {
+        "title": "Fisiología y tests",
+        "text": "VO₂máx, umbrales, lactato: qué miden los tests y cómo guían el entrenamiento."
+      },
+      "t3": {
+        "title": "Pacing y estrategia de carrera",
+        "text": "Gestionar el ritmo, el esfuerzo y la nutrición para llegar al máximo de tu potencial el día D."
+      },
+      "t4": {
+        "title": "Entre bastidores del alto nivel",
+        "text": "Análisis de grandes carreras y experiencias del acompañamiento de atletas de élite."
+      },
+      "t5": {
+        "title": "Rendimiento y empresa",
+        "text": "Lo que la resistencia enseña sobre el compromiso, la constancia y la gestión del esfuerzo en el trabajo."
+      },
+      "t6": {
+        "title": "Datos y storytelling",
+        "text": "Cómo las cifras enriquecen el relato de una carrera para medios, marcas y organizadores."
+      }
+    },
+    "experts": {
+      "title": "Los expertos de Enduraw",
+      "text": "Nuestros expertos trabajan cada día con atletas, marcas y organizadores de carreras. Suben al escenario para compartir esa experiencia, con un discurso accesible y respaldado por los datos.",
+      "role1": "Doctores (PhD)",
+      "role2": "Fisiólogos",
+      "role3": "Nutricionista",
+      "role4": "Científicos de datos",
+      "role5": "Entrenadores",
+      "altJoseph": "Joseph Mestrallet en el escenario en la conferencia «Secrets de compétition»",
+      "altValentin": "Datos de carrera presentados en una gran pantalla"
+    },
+    "formats": {
+      "title": "Un formato para cada evento",
+      "alt": "Experto de Enduraw en el escenario de una conferencia sobre datos",
+      "f1": {
+        "title": "Keynote",
+        "text": "Una intervención para abrir o marcar el ritmo de tu evento."
+      },
+      "f2": {
+        "title": "Mesa redonda",
+        "text": "Un experto de Enduraw junto a atletas, investigadores o profesionales del deporte."
+      },
+      "f3": {
+        "title": "Taller",
+        "text": "Una sesión en grupo reducido, en torno a casos concretos y a tus propios datos."
+      },
+      "f4": {
+        "title": "Intervención en empresa",
+        "text": "Un momento destacado para tus equipos, en un seminario o un evento interno."
+      }
+    },
+    "cta": {
+      "title": "Invita a un experto de Enduraw",
+      "text": "Cuéntanos tu evento, tu público y tus fechas: te propondremos la intervención más adecuada.",
+      "button": "Invitar a un experto"
+    }
+  }
+}

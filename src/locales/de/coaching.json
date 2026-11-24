@@ -1,0 +1,70 @@
+{
+  "coachingPage": {
+    "contactSubject": "Coaching",
+    "hero": {
+      "title": "Ein wissenschaftlicher Coach für deine Saison",
+      "lead": "Monatliche Planung, Analyse deiner Trainingsdaten und Strategie für deine Zielrennen, ob du deinen ersten Marathon oder ein Podium vorbereitest.",
+      "cta": "Über deine Saison sprechen",
+      "ctaSeason": "Leistungen ansehen",
+      "alt": "Trailläufer auf einem Bergpfad, verschneite Gipfel im Hintergrund"
+    },
+    "areas": {
+      "title": "Mehr als ein Trainingsplan",
+      "lead": "Vom ersten Marathon bis aufs Podium, dieselbe Methode: Wir begleiten die Leistung als Ganzes, vom Training bis zum Schlaf.",
+      "training": {
+        "title": "Trainingsanalyse",
+        "text": "Deine Einheiten, analysiert und begleitet über die ganze Saison."
+      },
+      "history": {
+        "title": "Historisches Profil",
+        "text": "Dein Profil, erstellt aus deinen bisherigen Trainings- und Wettkampfdaten."
+      },
+      "factors": {
+        "title": "Leistungsfaktoren",
+        "text": "Deine Rennen im Vergleich, um herauszufinden, was den Unterschied macht."
+      },
+      "nutrition": {
+        "title": "Ernährung",
+        "text": "Deine Ernährung in Training und Rennen."
+      },
+      "refueling": {
+        "title": "Verpflegung",
+        "text": "Die richtigen Elektrolyte und Wasserquellen für eine bessere Verpflegung."
+      },
+      "sleep": {
+        "title": "Schlaf",
+        "text": "Dein Schlaf, erfasst und analysiert für eine bessere Erholung."
+      },
+      "testing": "Willst du zuerst deine Zonen kennen?",
+      "testingCta": "Tests ansehen",
+      "captureAlt": "Analyse einer Schwelleneinheit von 4 × 8 Minuten im Enduraw-Dashboard: Pace, Herzfrequenz, Bedingungen und Gleichmäßigkeit der Wiederholungen",
+      "caption": "Analyse einer Einheit im Dashboard, Beispieldaten"
+    },
+    "season": {
+      "title": "Was die Saison umfasst",
+      "lead": "Ein Format rund um deine Ziele, deinen Rennkalender und die Betreuung, die du dir wünschst.",
+      "items": {
+        "planning": "Monatliche Planung, abgestimmt auf deine Ziele",
+        "advice": "Wissenschaftliche Ratschläge, um dein Training zu optimieren",
+        "feedback": "Wöchentliches Feedback zu deinen Trainingsdaten",
+        "support": "Betreuung per Telefon und E-Mail, Antwort innerhalb von 48 h",
+        "pacing": "Eine Pacing-Strategie für deine wichtigsten Rennen",
+        "call": "Ein Videocall pro Monat zu einem technischen Thema: Trainingsoptimierung, Rennanalyse"
+      },
+      "priceLabel": "Saisonbetreuung",
+      "price": "350 €",
+      "period": "pro Monat"
+    },
+    "elite": {
+      "title": "Elite-Betreuung, auf Anfrage",
+      "text": "Für Athleten auf hohem Niveau: eine maßgeschneiderte, enge Betreuung, mit dir aufgebaut rund um deine Saisonziele und wichtigsten Rennen. Die Plätze sind begrenzt.",
+      "cta": "Für die Elite-Betreuung bewerben",
+      "subject": "Elite-Betreuung"
+    },
+    "cta": {
+      "title": "Lass uns deine Saison gemeinsam aufbauen",
+      "text": "Erzähl uns von deinen Zielen und deinem Rennkalender: Wir schlagen dir die passende Betreuung vor.",
+      "button": "Über deine Saison sprechen"
+    }
+  }
+}
