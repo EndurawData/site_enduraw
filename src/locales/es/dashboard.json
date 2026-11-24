@@ -1,0 +1,114 @@
+{
+  "dashboardPage": {
+    "hero": {
+      "title": "Tus salidas de Strava, analizadas",
+      "lead": "Enduraw report corrige cada salida según las condiciones del día, la Runner Matrix traza tu perfil y el plan de pacing se construye sobre el recorrido, tu objetivo y tus condiciones.",
+      "ctaPrimary": "Crear mi cuenta",
+      "ctaSecondary": "Iniciar sesión",
+      "alt": "Vista general del dashboard Enduraw con datos ficticios: actividades, Runner Matrix, planes de pacing, tests de laboratorio y test de Stroop"
+    },
+    "report": {
+      "title": "Cada salida, corregida según las condiciones del día",
+      "lead": "Conecta Strava: Enduraw report recalcula el ritmo de cada nueva actividad. Es gratuito.",
+      "heat": "Calor",
+      "heatDesc": "Alrededor de un 0,27 % de ritmo por grado por encima de 15,6 °C, para ver lo que vale la sesión con tiempo fresco.",
+      "wind": "Viento",
+      "windDesc": "Viento de cara y de espalda, tomados sobre tu recorrido, para aislar su efecto en el esfuerzo.",
+      "altitude": "Altitud",
+      "altitudeDesc": "Menos oxígeno, más esfuerzo para el mismo ritmo: la corrección lo tiene en cuenta.",
+      "elevation": "Desnivel",
+      "elevationDesc": "Subidas y bajadas convertidas en un ritmo equivalente en llano.",
+      "deep": "Bajo demanda, el análisis en profundidad de una sesión va más allá: deriva cardíaca, rendimiento en subida, parte caminada, regularidad de las repeticiones. Cada gráfico explica cómo se construye y cómo leerlo.",
+      "article": "Leer el artículo técnico",
+      "alt": "Análisis de una salida de trail con datos ficticios: velocidad corregida por la pendiente conservada por tramo, subidas, llanos y bajadas"
+    },
+    "matrix": {
+      "title": "Tu perfil de corredor",
+      "lead": "La Runner Matrix puntúa seis dimensiones sobre 100: resistencia, subida, bajada, velocidad, resiliencia, fisiología. Se construye a partir de tu historial de Strava y, con Starter, se actualiza después de cada salida.",
+      "alt": "Radar de la Runner Matrix en seis dimensiones, con datos ficticios"
+    },
+    "pacing": {
+      "title": "Un plan para el día D",
+      "lead": "Tu ritmo tramo a tramo en el recorrido real, tus tiempos de paso en cada avituallamiento, la previsión meteorológica a la hora en que pasarás y tu plan de nutrición: hidratos, agua y sodio por hora.",
+      "alt": "Plan de pacing con datos ficticios: ritmo objetivo sobre el perfil del recorrido, avituallamientos marcados",
+      "inputsLabel": "Lo que el plan tiene en cuenta",
+      "target": "Tu objetivo",
+      "targetDesc": "El tiempo que buscas, traducido en un ritmo sostenible en cada tramo.",
+      "course": "El recorrido",
+      "courseDesc": "Pendiente y técnica del terreno: frenar en subida, relanzar en bajada.",
+      "altitude": "La altitud",
+      "altitudeDesc": "El esfuerzo adicional en lo alto de los collados.",
+      "weather": "La meteo",
+      "weatherDesc": "Temperatura, viento y humedad previstos a lo largo del recorrido, para elegir tu equipo.",
+      "delivery": "Preparado por el equipo Enduraw y entregado en tu dashboard en un plazo de 5 días laborables, exportable en PDF para la carrera. Tras la meta, compara el plan con tu carrera real, directamente desde Strava.",
+      "ctaDemo": "Ver un plan de demostración",
+      "ctaOrder": "Pedir un plan"
+    },
+    "plans": {
+      "title": "Empieza gratis",
+      "lead": "Enduraw report y la Runner Matrix son gratuitos. Los planes de pago añaden la actualización continua y los análisis en profundidad. Sin permanencia, cancelable en cualquier momento.",
+      "cta": "Elegir un plan",
+      "price": "{{value}} €",
+      "perMonth": "al mes",
+      "free": {
+        "name": "Gratis",
+        "f1": "Enduraw report y lista de actividades",
+        "f2": "Resumen de cada sesión, ilimitado",
+        "f3": "Runner Matrix: tarjeta de identidad y Laboratorio de rendimiento",
+        "f4": "Un análisis en profundidad de sesión incluido"
+      },
+      "starter": {
+        "name": "Starter",
+        "intro": "Todo lo de Gratis, más:",
+        "f1": "Runner Matrix actualizada después de cada salida",
+        "f2": "2 análisis en profundidad al mes"
+      },
+      "pro": {
+        "name": "Pro",
+        "intro": "Todo lo de Starter, más:",
+        "f1": "30 análisis en profundidad al mes",
+        "f2": "2 planes de pacing incluidos al año",
+        "f3": "Test de Stroop"
+      },
+      "elite": "El plan Elite aún no está abierto."
+    },
+    "api": {
+      "title": "Las matemáticas por dentro",
+      "lead": "Los modelos que usamos con la élite del trail son los que funcionan en tu dashboard. Aquí están, escritos con claridad.",
+      "symbols": {
+        "hr": "FC",
+        "rest": "reposo"
+      },
+      "rows": {
+        "gap": {
+          "name": "Ritmo corregido por la pendiente",
+          "text": "Con un 10 % de pendiente, 3 m/s equivalen a 4,3 m/s en llano.",
+          "legend": "vc: velocidad corregida, equivalente en llano; v: velocidad medida; p: pendiente en %, entre −20 y +20 %."
+        },
+        "drift": {
+          "name": "Desacoplamiento cardíaco",
+          "text": "Los dos tercios se comparan a igual pendiente, por tramos del 2 %: una cuesta al final de la salida no se interpreta como una pérdida de ritmo.",
+          "legend": "D: desacoplamiento en %; EF₁, EF₃: velocidad por latido (v / FC) en el primer y el último tercio del esfuerzo."
+        },
+        "vam": {
+          "name": "Velocidad ascensional",
+          "text": "En m/h, leída por tramos de pendiente en la Runner Matrix.",
+          "legend": "D+: desnivel positivo en metros; t: tiempo de subida en horas."
+        },
+        "load": {
+          "name": "Carga de entrenamiento",
+          "text": "TRIMP de Banister, por ejemplo a = 0,64 y b = 1,92 para un hombre.",
+          "legend": "t: duración en minutos; Δ: reserva de frecuencia cardíaca (Karvonen); FC: frecuencia cardíaca; a, b: coeficientes según el perfil."
+        }
+      },
+      "contact": "Podemos estudiar un acceso por API para plataformas, clubes y equipos. Describe tu caso de uso y te responderemos.",
+      "cta": "Escribir al equipo",
+      "subject": "Acceso API Enduraw"
+    },
+    "cta": {
+      "title": "Tu próxima carrera empieza aquí",
+      "text": "Crea tu cuenta y conecta Strava: tus nuevas sesiones llegan al dashboard.",
+      "button": "Crear mi cuenta"
+    }
+  }
+}

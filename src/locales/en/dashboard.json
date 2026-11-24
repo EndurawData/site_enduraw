@@ -1,0 +1,114 @@
+{
+  "dashboardPage": {
+    "hero": {
+      "title": "Your Strava runs, analysed",
+      "lead": "Enduraw report corrects every run for the conditions of the day, the Runner Matrix maps your profile, and the pacing plan is built on the course, your goal and your conditions.",
+      "ctaPrimary": "Create my account",
+      "ctaSecondary": "Log in",
+      "alt": "Enduraw dashboard overview with sample data: activities, Runner Matrix, pacing plans, lab tests and Stroop test"
+    },
+    "report": {
+      "title": "Every run, corrected for the conditions of the day",
+      "lead": "Connect Strava: Enduraw report recalculates the pace of every new activity. It is free.",
+      "heat": "Heat",
+      "heatDesc": "About 0.27% of pace per degree above 15.6 °C, to show what the session is worth in cool weather.",
+      "wind": "Wind",
+      "windDesc": "Headwind and tailwind, taken along your route, to isolate their effect on the effort.",
+      "altitude": "Altitude",
+      "altitudeDesc": "Less oxygen, more effort for the same pace: the correction accounts for it.",
+      "elevation": "Elevation",
+      "elevationDesc": "Climbs and descents brought back to an equivalent pace on the flat.",
+      "deep": "On demand, the in-depth session analysis goes further: cardiac drift, climbing efficiency, share of walking, consistency of your repetitions. Every chart explains how it is built and how to read it.",
+      "article": "Read the technical article",
+      "alt": "Analysis of a trail run with sample data: grade-adjusted speed retained per section, climbs, flats and descents"
+    },
+    "matrix": {
+      "title": "Your runner profile",
+      "lead": "The Runner Matrix scores six dimensions out of 100: endurance, uphill, downhill, speed, resilience, physiology. It is built from your Strava history and, with Starter, updates after every run.",
+      "alt": "Runner Matrix radar on six dimensions, with sample data"
+    },
+    "pacing": {
+      "title": "A plan for race day",
+      "lead": "Your pace section by section on the real course, your split times at every aid station, the forecast for the hour you will pass each point, and your nutrition plan: carbohydrates, water and sodium per hour.",
+      "alt": "Pacing plan with sample data: target pace over the course profile, aid stations marked",
+      "inputsLabel": "What the plan accounts for",
+      "target": "Your goal",
+      "targetDesc": "The time you are aiming for, turned into a sustainable pace on each section.",
+      "course": "The course",
+      "courseDesc": "Gradient and technicality of the terrain: ease off on climbs, push on descents.",
+      "altitude": "Altitude",
+      "altitudeDesc": "The extra effort at the top of the passes.",
+      "weather": "The weather",
+      "weatherDesc": "Forecast temperature, wind and humidity along the course, to choose your gear.",
+      "delivery": "Prepared by the Enduraw team and delivered to your dashboard within 5 working days, with a PDF export for race day. After the finish, compare the plan with your actual race, straight from Strava.",
+      "ctaDemo": "See a demo plan",
+      "ctaOrder": "Order a plan"
+    },
+    "plans": {
+      "title": "Start for free",
+      "lead": "Enduraw report and the Runner Matrix are free. Paid plans add continuous updates and in-depth analyses. No commitment, cancel at any time.",
+      "cta": "Choose a plan",
+      "price": "€{{value}}",
+      "perMonth": "per month",
+      "free": {
+        "name": "Free",
+        "f1": "Enduraw report and activity list",
+        "f2": "Summary of every session, unlimited",
+        "f3": "Runner Matrix: identity card and Performance Lab",
+        "f4": "One in-depth session analysis included"
+      },
+      "starter": {
+        "name": "Starter",
+        "intro": "Everything in Free, plus:",
+        "f1": "Runner Matrix updated after every run",
+        "f2": "2 in-depth analyses per month"
+      },
+      "pro": {
+        "name": "Pro",
+        "intro": "Everything in Starter, plus:",
+        "f1": "30 in-depth analyses per month",
+        "f2": "2 pacing plans included per year",
+        "f3": "Stroop test"
+      },
+      "elite": "The Elite plan is not open yet."
+    },
+    "api": {
+      "title": "The maths under the hood",
+      "lead": "The models we use with elite trail runners are the ones running in your dashboard. Here they are, written out.",
+      "symbols": {
+        "hr": "HR",
+        "rest": "rest"
+      },
+      "rows": {
+        "gap": {
+          "name": "Grade-adjusted pace",
+          "text": "On a 10% gradient, 3 m/s is worth 4.3 m/s on the flat.",
+          "legend": "vc: corrected speed, its equivalent on the flat; v: measured speed; p: gradient in %, between −20 and +20%."
+        },
+        "drift": {
+          "name": "Cardiac decoupling",
+          "text": "Both thirds are compared at equal gradient, in 2% bands: a climb at the end of a run is not read as a slowdown.",
+          "legend": "D: decoupling in %; EF₁, EF₃: speed per heartbeat (v / HR) over the first and last third of the effort."
+        },
+        "vam": {
+          "name": "Vertical speed (VAM)",
+          "text": "In m/h, read gradient band by gradient band in the Runner Matrix.",
+          "legend": "D+: elevation gain in metres; t: climbing time in hours."
+        },
+        "load": {
+          "name": "Training load",
+          "text": "Banister TRIMP, for example a = 0.64 and b = 1.92 for a man.",
+          "legend": "t: duration in minutes; Δ: heart rate reserve (Karvonen); HR: heart rate; a, b: coefficients depending on the profile."
+        }
+      },
+      "contact": "We can look into API access for platforms, clubs and teams. Describe your use case and we will get back to you.",
+      "cta": "Write to the team",
+      "subject": "Enduraw API access"
+    },
+    "cta": {
+      "title": "Your next race starts here",
+      "text": "Create your account and connect Strava: your new sessions come through to the dashboard.",
+      "button": "Create my account"
+    }
+  }
+}
