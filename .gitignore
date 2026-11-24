@@ -33,3 +33,8 @@ credentials*.json
 
 # local tooling
 .claude/settings.local.json
+
+# généré
+/build-ssr
+/public/_img
+/src/data/images.generated.json
