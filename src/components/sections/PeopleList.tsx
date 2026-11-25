@@ -13,7 +13,8 @@ export type Person = {
 
 /**
  * Liste typographique de personnes : un nom, une ligne de détail. Commune aux
- * athlètes de l'accueil et à l'équipe de la page À propos. Pas de portraits.
+ * athlètes de l'accueil et à l'équipe de la page À propos. Pas de portraits,
+ * pas de capitales : un nom se lit, il ne s'affiche pas.
  */
 export function PeopleList({
   people,
@@ -33,16 +34,16 @@ export function PeopleList({
               href={p.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="ep-display text-[22px] transition-colors hover:text-ep-sky sm:text-[24px]"
+              className="text-[17px] font-medium text-white transition-colors hover:text-ep-sky"
             >
               {p.linkLabel ? <span className="sr-only">{p.linkLabel}</span> : null}
               <span aria-hidden={p.linkLabel ? true : undefined}>{p.name}</span>
               <NewTab />
             </a>
           ) : (
-            <span className="ep-display text-[22px] sm:text-[24px]">{p.name}</span>
+            <span className="text-[17px] font-medium text-white">{p.name}</span>
           )}
-          <span className="ep-body text-[15px] sm:text-right">{p.detail}</span>
+          <span className="ep-body text-[14px] sm:text-right">{p.detail}</span>
         </li>
       ))}
     </ul>

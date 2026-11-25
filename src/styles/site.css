@@ -10,7 +10,7 @@
 /* Canaux RVB des tokens de brand.css (qui ne les expose pas) : à garder
    alignés sur --ep-sky, --ep-deep, --ep-mid, --ep-s1/2/3. */
 :root {
-  --ep-sky-rgb: 108 220 255;
+  --ep-sky-rgb: 74 147 214; /* --ep-sky du site = bleu Enduraw (#4A93D6) */
   --ep-deep-rgb: 32 84 168;
   --ep-mid-rgb: 74 147 214;
   --ep-s1-rgb: 10 11 12;
@@ -28,6 +28,87 @@ body {
    l'échelle marketing) passe à 12, comme dans la barre du dashboard. */
 .ep-shell {
   --ep-label-fs: 12px;
+
+  /* ─── Bleu Enduraw plutôt que ciel (choix du dashboard, 2026-11-24) ────
+     L'accent de l'outil est passé du ciel #6CDCFF au bleu intermédiaire de
+     la charte, #4A93D6 (6,4:1 sur noir) : il se lit comme la marque sans
+     allumer l'écran. Le site suit : tout ce qui portait le ciel (tiret,
+     actif, focus, chiffre clé) porte ce bleu. Le halo ne garde que le bleu
+     foncé, comme l'horizon des pages de compte. */
+  --ep-sky: var(--ep-mid);
+  --ep-glow: radial-gradient(
+    ellipse 60% 100% at 50% 100%,
+    rgba(32, 84, 168, 0.34) 0%,
+    rgba(32, 84, 168, 0.12) 45%,
+    rgba(32, 84, 168, 0) 75%
+  );
+
+  /* Trois rôles de texte nettement distincts (100, 70, 50 %) et deux
+     filets (7 %, 12 %), comme l'intérieur du dashboard. */
+  --ep-dim: rgba(255, 255, 255, 0.7);
+  --ep-faint: rgba(255, 255, 255, 0.5);
+  --ep-line: rgba(255, 255, 255, 0.07);
+  --ep-line-2: rgba(255, 255, 255, 0.12);
+
+  /* Titres : la voix de la marque (italique, capitales) reste, à un volume
+     plus bas. Le titre de tête garde sa taille sur desktop ; les titres de
+     section descendent d'un tiers. */
+  --ep-t-display: clamp(2.1rem, 5vw, 4.2rem);
+  --ep-t-h2: clamp(1.45rem, 2.4vw, 2.15rem);
+  --ep-t-h3: clamp(1.05rem, 1.25vw, 1.2rem);
+}
+
+/* ─── boutons : la langue de la nouvelle version du dashboard ──────────
+   Aplat droit, casse normale, Space Grotesk 600, 44 px. Le biais et
+   l'italique restent aux titres, seul endroit où la marque parle fort.
+   Action principale en blanc cassé. Repris de auth.css (dashboard). */
+.ep-shell .ep-btn {
+  height: 44px;
+  padding: 0 18px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  gap: 8px;
+  transform: none;
+  transition: background-color 0.16s var(--ep-ease), color 0.16s var(--ep-ease),
+    border-color 0.16s var(--ep-ease), transform 0.12s var(--ep-ease);
+}
+.ep-shell .ep-btn > * {
+  transform: none;
+}
+.ep-shell .ep-btn--primary {
+  background: rgba(255, 255, 255, 0.95);
+  color: rgba(0, 0, 0, 0.96);
+}
+.ep-shell .ep-btn--primary:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(--ep-white);
+  transform: none;
+}
+.ep-shell .ep-btn--ghost:hover:not(:disabled, [aria-disabled="true"]) {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  transform: none;
+}
+.ep-shell .ep-btn:active:not(:disabled, [aria-disabled="true"]) {
+  transform: scale(0.98);
+}
+@media (max-width: 767px) {
+  .ep-shell .ep-btn {
+    height: 42px;
+    padding: 0 16px;
+    font-size: 13.5px;
+  }
+}
+
+/* Lien d'action : casse normale, comme les boutons. */
+.ep-shell .ep-link {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 /* <main> reçoit le focus après une navigation, pour les lecteurs d'écran :
@@ -311,4 +392,144 @@ body {
 :lang(ja) .ep-display {
   word-break: keep-all;
   line-break: strict;
+}
+
+/* ─── habillage des images ──────────────────────────────────────────────
+   Une photo n'est pas posée brute : elle tient dans un cadre d'imprimeur.
+   Un filet décalé derrière l'image, deux croix de repère de la charte (7.4)
+   aux coins opposés, une légende courte ouverte par le tiret. Angles droits,
+   aucune ombre. */
+.ep-frame {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+}
+.ep-frame__box {
+  position: relative;
+}
+.ep-frame__box::before {
+  content: "";
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  border: 1px solid var(--ep-line-2);
+  z-index: -1;
+  pointer-events: none;
+}
+.ep-frame--left .ep-frame__box::before {
+  inset: 16px 16px -16px -16px;
+}
+.ep-frame .ep-cross {
+  color: var(--ep-white);
+  opacity: 0.4;
+}
+.ep-frame__cross-a {
+  top: -22px;
+  left: -5px;
+}
+.ep-frame__cross-b {
+  bottom: -38px;
+  right: -21px;
+}
+.ep-frame--left .ep-frame__cross-a {
+  left: auto;
+  right: -5px;
+}
+.ep-frame--left .ep-frame__cross-b {
+  right: auto;
+  left: -21px;
+}
+.ep-frame figcaption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ep-faint);
+}
+.ep-frame figcaption::before {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 3px;
+  transform: skewX(-12deg);
+  background: var(--ep-sky);
+}
+@media (max-width: 767px) {
+  .ep-frame__box::before {
+    inset: 10px -10px -10px 10px;
+  }
+  .ep-frame--left .ep-frame__box::before {
+    inset: 10px 10px -10px -10px;
+  }
+  .ep-frame__cross-b {
+    bottom: -30px;
+    right: -15px;
+  }
+  .ep-frame--left .ep-frame__cross-b {
+    left: -15px;
+  }
+}
+
+/* ─── apparitions au défilement ─────────────────────────────────────────
+   Animations pilotées par le défilement, en CSS seul et en amélioration
+   progressive : sans prise en charge (ou avec « réduire les animations »),
+   tout est simplement affiché. Opacité et transformations seulement. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes ep-in {
+      from {
+        opacity: 0;
+        translate: 0 32px;
+      }
+    }
+    @keyframes ep-settle {
+      from {
+        scale: 1.12;
+      }
+    }
+    @keyframes ep-line-in {
+      from {
+        opacity: 0;
+        translate: -16px 16px;
+      }
+    }
+    .ep-reveal {
+      animation: ep-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    .ep-frame {
+      animation: ep-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+    .ep-frame .ep-media img {
+      animation: ep-settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+    .ep-frame__box::before {
+      animation: ep-line-in linear both;
+      animation-timeline: view();
+      animation-range: entry 20% entry 100%;
+    }
+  }
+}
+
+/* ─── hero inversé : photo à gauche, texte à droite ─────────────────── */
+@media (min-width: 1024px) {
+  .ep-hero--left .ep-hero__media {
+    inset: 0 40% 0 0;
+  }
+  .ep-hero--left .ep-hero__media::after {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 18%),
+      linear-gradient(270deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.55) 18%, rgba(0, 0, 0, 0) 45%),
+      linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 30%);
+  }
+  .ep-hero--left .ep-hero__text {
+    margin-left: auto;
+    max-width: min(560px, 42%);
+  }
 }

@@ -25,7 +25,8 @@
     "matrix": {
       "title": "Dein Läuferprofil",
       "lead": "Die Runner Matrix bewertet sechs Dimensionen auf 100: Ausdauer, Bergauf, Bergab, Tempo, Resilienz, Physiologie. Sie entsteht aus deiner Strava-Historie und wird mit Starter nach jedem Lauf aktualisiert.",
-      "alt": "Radar der Runner Matrix mit sechs Dimensionen, mit Beispieldaten"
+      "alt": "Radar der Runner Matrix mit sechs Dimensionen, mit Beispieldaten",
+      "altPacing": "Pacing-Plan auf dem Smartphone: Zielzeit, Bewegungszeit, Distanz und Höhenmeter"
     },
     "pacing": {
       "title": "Ein Plan für den Renntag",
@@ -42,7 +43,8 @@
       "weatherDesc": "Vorhergesagte Temperatur, Wind und Luftfeuchtigkeit entlang der Strecke, für die Wahl deiner Ausrüstung.",
       "delivery": "Vom Enduraw-Team erstellt und innerhalb von 5 Werktagen in deinem Dashboard bereitgestellt, als PDF für den Renntag exportierbar. Nach dem Ziel vergleichst du den Plan direkt über Strava mit deinem tatsächlichen Rennen.",
       "ctaDemo": "Einen Demo-Plan ansehen",
-      "ctaOrder": "Einen Plan bestellen"
+      "ctaOrder": "Einen Plan bestellen",
+      "altMap": "Pacing-Plan: Streckenkarte und Höhenprofil nach Steigung eingefärbt"
     },
     "plans": {
       "title": "Kostenlos starten",

@@ -28,11 +28,11 @@ export function FinalCta({
           <h2 className={glow ? "ep-display ep-h2 mt-5" : "ep-display ep-h3 mt-5"}>{title}</h2>
           {text && <p className="ep-lead mt-5 max-w-[52ch]">{text}</p>}
           <div className="mt-9 flex flex-wrap gap-3">
-            <Action to={action.to} onClick={action.onClick} className="max-sm:w-full">
+            <Action to={action.to} onClick={action.onClick}>
               {action.label}
             </Action>
             {secondary && (
-              <Action to={secondary.to} variant="ghost" className="max-sm:w-full">
+              <Action to={secondary.to} variant="ghost">
                 {secondary.label}
               </Action>
             )}

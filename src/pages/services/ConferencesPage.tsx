@@ -3,6 +3,7 @@ import { PhotoHero } from "@/components/ui/PhotoHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Action } from "@/components/ui/Action";
 import { Media } from "@/components/ui/Media";
+import { Frame } from "@/components/ui/Frame";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { EMAILS, mailto } from "@/lib/links";
 import { cn } from "@/lib/utils";
@@ -83,21 +84,21 @@ export default function ConferencesPage() {
 
   return (
     <>
-      {/* Sur desktop, la photo est resserrée sur la scène (zoom ancré en bas à
-          droite) : l'écran rouge sort du cadre, le titre se pose sur le public. */}
+      {/* Photo à gauche, titre à droite sur le noir : l'écran rouge de la
+          scène reste dans la photo, loin du titre. */}
         <PhotoHero
-          zoom={{ scale: 1.6, origin: "right bottom" }}
+          side="left"
           image="/images/conferences/web/candriam_chamonix.jpg"
           alt={t("conferencesPage.hero.alt")}
-          position="100% center"
+          position="60% center"
           title={t("conferencesPage.hero.title")}
           lead={t("conferencesPage.hero.lead")}
           actions={
             <>
-              <Action to={contact} className="max-sm:w-full">
+              <Action to={contact}>
                 {t("conferencesPage.hero.cta")}
               </Action>
-              <Action to="#themes" variant="ghost" className="max-sm:w-full">
+              <Action to="#themes" variant="ghost">
                 {t("conferencesPage.hero.ctaThemes")}
               </Action>
             </>
@@ -113,7 +114,8 @@ export default function ConferencesPage() {
       <section className="ep-section pt-16 lg:pt-20">
         <div className="ep-wrap">
           <div className="grid items-center gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
-            <Media
+            <Frame
+              side="left"
               src="/images/conferences/web/joseph_eds.jpg"
               alt={t("conferencesPage.joseph.alt")}
               ratio="4 / 5"
@@ -172,7 +174,8 @@ export default function ConferencesPage() {
         <div className="ep-wrap">
           <SectionHead title={t("conferencesPage.themes.title")} lead={t("conferencesPage.themes.lead")} />
           <div className="mt-12 grid items-start gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
-            <Media
+            <Frame
+              side="left"
               src="/images/conferences/web/charline_epc.jpg"
               alt={t("conferencesPage.themes.alt")}
               ratio="4 / 3"
@@ -238,7 +241,8 @@ export default function ConferencesPage() {
               </div>
             ))}
           </dl>
-          <Media
+          <Frame
+            side="right"
             src="/images/conferences/web/anthony_dataplayers.jpg"
             alt={t("conferencesPage.formats.alt")}
             ratio="21 / 9"

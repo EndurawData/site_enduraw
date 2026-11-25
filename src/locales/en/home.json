@@ -13,19 +13,23 @@
       "title": "Your training, read like a lab would",
       "text": "Connect Strava. Your sessions are read and your Runner Matrix scores six dimensions of your running.",
       "cta": "See the dashboard",
-      "alt": "Enduraw dashboard overview: activities, Runner Matrix, pacing plans and lab tests"
+      "alt": "Enduraw dashboard overview: activities, Runner Matrix, pacing plans and lab tests",
+      "altToday": "Enduraw dashboard on a phone: the Today screen with the athlete silhouette and matrix score",
+      "altMatrix": "Runner Matrix on a phone: six dimensions scored out of 100 on a radar"
     },
     "testing": {
       "title": "Measure your physiology",
       "text": "VO₂max, ventilatory thresholds and maximal aerobic speed, measured at our Performance Center in Chamonix and explained with the points that matter for your training.",
       "cta": "See the tests",
-      "alt": "Athlete running on a treadmill with a gas analysis mask"
+      "alt": "Athlete running on a treadmill with a gas analysis mask",
+      "caption": "Treadmill test with gas exchange analysis"
     },
     "field": {
       "title": "Elite standards, for everyone",
       "text": "We prepare race briefings for elite athletes. The same meticulous work goes into every plan and every coaching.",
       "cta": "Discover coaching",
-      "alt": "Tom Evans during a lactate sample at the finish of a race"
+      "alt": "Tom Evans during a lactate sample at the finish of a race",
+      "caption": "Lactate sample at the finish line"
     },
     "athletes": {
       "label": "They work with us",

@@ -25,7 +25,8 @@
     "matrix": {
       "title": "Votre profil de coureur",
       "lead": "La Runner Matrix note six dimensions sur 100 : endurance, montée, descente, vitesse, résilience, physiologie. Elle se construit à partir de votre historique Strava et, avec Starter, se met à jour après chaque sortie.",
-      "alt": "Radar de la Runner Matrix sur six dimensions, avec des données fictives"
+      "alt": "Radar de la Runner Matrix sur six dimensions, avec des données fictives",
+      "altPacing": "Plan de pacing sur téléphone : temps cible, temps en mouvement, distance et dénivelé"
     },
     "pacing": {
       "title": "Un plan pour le jour J",
@@ -42,7 +43,8 @@
       "weatherDesc": "Température, vent et humidité prévus le long du parcours, pour choisir votre équipement.",
       "delivery": "Préparé par l'équipe Enduraw et livré sur votre dashboard sous 5 jours ouvrables, à exporter en PDF pour la course. Après l'arrivée, comparez le plan à votre course réelle, directement depuis Strava.",
       "ctaDemo": "Voir un plan de démonstration",
-      "ctaOrder": "Commander un plan"
+      "ctaOrder": "Commander un plan",
+      "altMap": "Plan de pacing : carte du parcours et profil d'altitude coloré par la pente"
     },
     "plans": {
       "title": "Commencez gratuitement",

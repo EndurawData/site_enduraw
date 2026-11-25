@@ -42,10 +42,10 @@ export default function CoachingPage() {
         lead={t("coachingPage.hero.lead")}
         actions={
           <>
-            <Action to={contact} className="max-sm:w-full">
+            <Action to={contact}>
               {t("coachingPage.hero.cta")}
             </Action>
-            <Action to="#saison" variant="ghost" className="max-sm:w-full">
+            <Action to="#saison" variant="ghost">
               {t("coachingPage.hero.ctaSeason")}
             </Action>
           </>

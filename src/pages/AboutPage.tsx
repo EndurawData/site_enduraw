@@ -34,13 +34,14 @@ export default function AboutPage() {
   return (
     <>
       <PhotoHero
+        side="left"
         image="/images/photos/team-asics.jpg"
         alt={t("aboutPage.hero.alt")}
         position="center 25%"
         title={t("aboutPage.hero.title")}
         lead={t("aboutPage.hero.lead")}
         actions={
-          <Action to="/services" variant="ghost" className="max-sm:w-full">
+          <Action to="/services" variant="ghost">
             {t("aboutPage.hero.cta")}
           </Action>
         }

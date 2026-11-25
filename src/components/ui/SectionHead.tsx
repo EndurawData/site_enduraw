@@ -23,7 +23,7 @@ export function SectionHead({
   tone?: "light" | "dark";
 }) {
   return (
-    <div className={cn("flex flex-col gap-6 md:flex-row md:items-end md:justify-between", className)}>
+    <div className={cn("ep-reveal flex flex-col gap-6 md:flex-row md:items-end md:justify-between", className)}>
       <div className="max-w-[720px]">
         <span className={cn("ep-tiret", tone === "dark" && "ep-tiret--dark")} aria-hidden="true" />
         <Tag className={cn("ep-display mt-5", Tag === "h2" ? "ep-h2" : "ep-h3")}>{title}</Tag>

@@ -25,7 +25,8 @@
     "matrix": {
       "title": "Your runner profile",
       "lead": "The Runner Matrix scores six dimensions out of 100: endurance, uphill, downhill, speed, resilience, physiology. It is built from your Strava history and, with Starter, updates after every run.",
-      "alt": "Runner Matrix radar on six dimensions, with sample data"
+      "alt": "Runner Matrix radar on six dimensions, with sample data",
+      "altPacing": "Pacing plan on a phone: target time, moving time, distance and elevation"
     },
     "pacing": {
       "title": "A plan for race day",
@@ -42,7 +43,8 @@
       "weatherDesc": "Forecast temperature, wind and humidity along the course, to choose your gear.",
       "delivery": "Prepared by the Enduraw team and delivered to your dashboard within 5 working days, with a PDF export for race day. After the finish, compare the plan with your actual race, straight from Strava.",
       "ctaDemo": "See a demo plan",
-      "ctaOrder": "Order a plan"
+      "ctaOrder": "Order a plan",
+      "altMap": "Pacing plan: course map and elevation profile coloured by gradient"
     },
     "plans": {
       "title": "Start for free",

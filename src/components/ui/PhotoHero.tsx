@@ -16,6 +16,7 @@ export function PhotoHero({
   actions,
   short = false,
   zoom,
+  side = "right",
   children,
 }: {
   image: string;
@@ -29,11 +30,14 @@ export function PhotoHero({
   /** Recadrage plus serré sur desktop seulement (ex. sortir du cadre une
    *  zone chargée qui passerait sous le titre). */
   zoom?: { scale: number; origin: string };
+  /** Côté de la photo sur desktop ; le texte se pose de l'autre côté, sur le
+   *  noir. Alterner d'une page à l'autre donne du rythme au parcours. */
+  side?: "left" | "right";
   children?: ReactNode;
 }) {
   const entry = imageEntry(image);
   return (
-    <header className={cn("ep-hero", short && "ep-hero--short")}>
+    <header className={cn("ep-hero", short && "ep-hero--short", side === "left" && "ep-hero--left")}>
       <div
         className="ep-hero__media"
         style={zoom ? ({ "--ep-hero-zoom": zoom.scale, "--ep-hero-origin": zoom.origin } as React.CSSProperties) : undefined}
@@ -53,7 +57,7 @@ export function PhotoHero({
         />
       </div>
       <div className="ep-wrap w-full">
-        <div className="max-w-[740px]">
+        <div className="ep-hero__text max-w-[720px]">
           <span className="ep-tiret ep-tiret--sky ep-rise" aria-hidden="true" />
           <h1 className="ep-display ep-h1 ep-rise ep-rise--2 mt-6">{title}</h1>
           {lead && <p className="ep-lead ep-rise ep-rise--3 mt-6 max-w-[46ch]">{lead}</p>}

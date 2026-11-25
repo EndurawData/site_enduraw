@@ -1,4 +1,4 @@
-/* Copie de dashboard/frontend/src/styles/brand.css au commit 884793d7 (2026-11-24). Ne pas éditer ici. */
+/* Copie de dashboard/frontend/src/styles/brand.css au commit 926c59f3 (2026-11-25). Ne pas éditer ici. */
 /* ════════════════════════════════════════════════════════════════════════
    Enduraw — couche de marque, source de vérité unique
    Charte graphique V1 (20251017) :
@@ -643,6 +643,18 @@ html:has(.ep-shell) {
 
 /* Action destructrice. Contour seulement au repos : elle ne doit pas rivaliser
    avec l'action principale de l'écran. */
+/* Google en contour : présent, sans voler la place de l'action. Fond et
+   contour repris du bouton sombre de leur charte. */
+.ep-btn--google {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+.ep-btn--google:hover:not(:disabled, [aria-disabled="true"]) {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
 .ep-btn--danger {
   border-color: color-mix(in srgb, var(--ep-danger) 40%, transparent);
   color: var(--ep-danger-ink);
@@ -1653,13 +1665,17 @@ textarea.ep-input {
 }
 
 /* Bouton icône. Visuel 32 px, zone de clic 44 px. */
+/* Sans cadre : un bouton-icône encadré, posé dans une carte, faisait un cadre
+   dans le cadre (retour du 2026-11-24). Le survol pose un fond, l'état actif
+   prend l'accent. */
 .ep-icobtn {
   position: relative;
   width: 32px;
   height: 32px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--ep-line);
+  border: 1px solid transparent;
+  border-radius: 6px;
   color: var(--ep-dim);
   background: transparent;
   cursor: pointer;
@@ -1672,13 +1688,13 @@ textarea.ep-input {
   inset: -6px;
 }
 .ep-icobtn:hover {
-  border-color: var(--ep-line-2);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--ep-white);
 }
 .ep-icobtn[aria-pressed="true"],
 .ep-icobtn[aria-expanded="true"],
 .ep-icobtn[aria-current="page"] {
-  border-color: var(--ep-sky);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--ep-sky);
 }
 
@@ -3171,10 +3187,14 @@ select.ep-select optgroup {
   inset: 0;
   z-index: 70;
 }
+/* Largeur ET hauteur : un <svg> sans hauteur prend 150 px par défaut, et le
+   voile ne couvrait que le haut de l'écran — le reste de la page restait
+   allumé sous la carte. */
 .ep-tour__scrim {
   position: absolute;
   inset: 0;
   width: 100%;
+  height: 100%;
 }
 
 /* Le cadre de la découpe. Angles droits, comme la découpe elle-même. */

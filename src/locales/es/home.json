@@ -13,19 +13,23 @@
       "title": "Tu entrenamiento, leído como en un laboratorio",
       "text": "Conecta Strava. Tus sesiones se leen y tu Runner Matrix puntúa seis dimensiones de tu carrera.",
       "cta": "Ver el dashboard",
-      "alt": "Vista general del dashboard de Enduraw: actividades, Runner Matrix, planes de carrera y tests"
+      "alt": "Vista general del dashboard de Enduraw: actividades, Runner Matrix, planes de carrera y tests",
+      "altToday": "Dashboard de Enduraw en el móvil: la pantalla Hoy, con la silueta del atleta y la puntuación de su matriz",
+      "altMatrix": "Runner Matrix en el móvil: seis dimensiones puntuadas sobre 100, en radar"
     },
     "testing": {
       "title": "Mide tu fisiología",
       "text": "VO₂max, umbrales ventilatorios y velocidad aeróbica máxima, medidos en nuestro Performance Center de Chamonix y explicados con lo que importa para tu entrenamiento.",
       "cta": "Ver los tests",
-      "alt": "Atleta corriendo en cinta con una máscara de análisis de gases"
+      "alt": "Atleta corriendo en cinta con una máscara de análisis de gases",
+      "caption": "Test de esfuerzo en cinta, análisis de gases"
     },
     "field": {
       "title": "La exigencia de la élite, para todos",
       "text": "Preparamos los briefings de carrera de atletas de élite. El mismo trabajo minucioso alimenta cada plan y cada coaching.",
       "cta": "Descubrir el coaching",
-      "alt": "Tom Evans durante una toma de lactato en la meta de una carrera"
+      "alt": "Tom Evans durante una toma de lactato en la meta de una carrera",
+      "caption": "Toma de lactato en la meta"
     },
     "athletes": {
       "label": "Trabajan con nosotros",

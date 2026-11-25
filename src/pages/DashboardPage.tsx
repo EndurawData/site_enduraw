@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Action } from "@/components/ui/Action";
 import { Capture } from "@/components/ui/Capture";
+import { PhoneShots } from "@/components/sections/PhoneShots";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { DashboardFormulas } from "@/components/sections/DashboardFormulas";
 import { DashboardPlans } from "@/components/sections/DashboardPlans";
@@ -34,16 +35,16 @@ export default function DashboardPage() {
             <h1 className="ep-display ep-h1 ep-rise ep-rise--2 mt-6">{t("dashboardPage.hero.title")}</h1>
             <p className="ep-lead ep-rise ep-rise--3 mt-6 max-w-[46ch]">{t("dashboardPage.hero.lead")}</p>
             <div className="ep-rise ep-rise--3 mt-8 flex flex-wrap gap-3">
-              <Action to={LINKS.register} onClick={trackLead} className="max-sm:w-full">
+              <Action to={LINKS.register} onClick={trackLead}>
                 {t("dashboardPage.hero.ctaPrimary")}
               </Action>
-              <Action to={LINKS.login} variant="ghost" className="max-sm:w-full">
+              <Action to={LINKS.login} variant="ghost">
                 {t("dashboardPage.hero.ctaSecondary")}
               </Action>
             </div>
           </div>
           <Capture
-            src="/images/captures/dashboard-vue-ensemble-desktop.png"
+            src="/images/captures/aujourdhui-desktop.png"
             alt={t("dashboardPage.hero.alt")}
             sizes="(min-width: 1360px) 740px, (min-width: 1024px) 55vw, 100vw"
             priority
@@ -85,11 +86,12 @@ export default function DashboardPage() {
       {/* Runner Matrix. */}
       <section className="ep-section pt-0">
         <div className="ep-wrap grid items-center gap-12 lg:grid-cols-[6fr_6fr] lg:gap-16">
-          <Capture
-            src="/images/captures/matrice-radar-profil-athletique.png"
-            alt={t("dashboardPage.matrix.alt")}
-            sizes="(min-width: 1024px) 620px, 100vw"
-            className="max-lg:order-2"
+          <PhoneShots
+            className="mx-auto w-full max-w-[560px] max-lg:order-2"
+            shots={[
+              { src: "/images/captures/matrice-mobile.png", alt: t("dashboardPage.matrix.alt") },
+              { src: "/images/captures/pacing-apercu-mobile.png", alt: t("dashboardPage.matrix.altPacing") },
+            ]}
           />
           <SectionHead title={t("dashboardPage.matrix.title")} lead={t("dashboardPage.matrix.lead")} />
         </div>
@@ -100,8 +102,8 @@ export default function DashboardPage() {
         <div className="ep-wrap">
           <SectionHead title={t("dashboardPage.pacing.title")} lead={t("dashboardPage.pacing.lead")} />
           <Capture
-            src="/images/captures/pacing-courbe-allure-altitude.png"
-            alt={t("dashboardPage.pacing.alt")}
+            src="/images/captures/pacing-parcours-carte-profil.png"
+            alt={t("dashboardPage.pacing.altMap")}
             sizes="(min-width: 1360px) 1280px, 100vw"
             className="mt-12"
           />
@@ -120,10 +122,10 @@ export default function DashboardPage() {
             <div className="lg:pt-9">
               <p className="ep-body text-[15px]">{t("dashboardPage.pacing.delivery")}</p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Action to={LINKS.pacingDemo} className="max-sm:w-full">
+                <Action to={LINKS.pacingDemo}>
                   {t("dashboardPage.pacing.ctaDemo")}
                 </Action>
-                <Action to={LINKS.shop} variant="ghost" className="max-sm:w-full">
+                <Action to={LINKS.shop} variant="ghost">
                   {t("dashboardPage.pacing.ctaOrder")}
                 </Action>
               </div>
@@ -162,7 +164,7 @@ export default function DashboardPage() {
             <Action
               to={mailto(EMAILS.dashboard, t("dashboardPage.api.subject"))}
               variant="ghost"
-              className="shrink-0 max-sm:w-full"
+              className="shrink-0"
             >
               {t("dashboardPage.api.cta")}
             </Action>

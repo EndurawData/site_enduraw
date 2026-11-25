@@ -19,7 +19,7 @@ export default function CareersPage() {
         title={t("careersPage.hero.title")}
         lead={t("careersPage.hero.lead")}
         actions={
-          <Action to={LINKS.careersForm} className="max-sm:w-full">
+          <Action to={LINKS.careersForm}>
             {t("careersPage.apply")}
           </Action>
         }

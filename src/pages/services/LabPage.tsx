@@ -4,6 +4,7 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Action } from "@/components/ui/Action";
 import { Capture } from "@/components/ui/Capture";
 import { Media } from "@/components/ui/Media";
+import { Frame } from "@/components/ui/Frame";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { ADDRESS, EMAILS, LINKS, mailto } from "@/lib/links";
 
@@ -39,17 +40,18 @@ export default function LabPage() {
   return (
     <>
       <PhotoHero
+        side="left"
         image="/images/epc/web/A7408201.jpg"
         alt={t("labPage.hero.alt")}
-        position="94% center"
+        position="70% center"
         title={t("labPage.hero.title")}
         lead={t("labPage.hero.lead")}
         actions={
           <>
-            <Action to={LINKS.shopTesting} className="max-sm:w-full">
+            <Action to={LINKS.shopTesting}>
               {t("labPage.book")}
             </Action>
-            <Action to="#tests" variant="ghost" className="max-sm:w-full">
+            <Action to="#tests" variant="ghost">
               {t("labPage.hero.seeTests")}
             </Action>
           </>
@@ -140,7 +142,8 @@ export default function LabPage() {
               <span className="text-white">{ADDRESS.display}</span> · {t("labPage.place.access")}
             </address>
           </div>
-          <Media
+          <Frame
+            side="right"
             src="/images/epc/web/A7408183.jpg"
             alt={t("labPage.place.alt")}
             ratio="16 / 10"

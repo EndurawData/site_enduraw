@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { PhotoHero } from "@/components/ui/PhotoHero";
 import { SectionHead } from "@/components/ui/SectionHead";
-import { Media } from "@/components/ui/Media";
+import { Frame } from "@/components/ui/Frame";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { ContentLink, ContentList, ContentMeta, ContentRow, NewTab } from "@/components/sections/ContentRow";
 import { latestContent } from "@/data/latestContent";
@@ -17,6 +17,7 @@ export default function MediaPage() {
     <>
       <PhotoHero
         short
+        side="left"
         image="/images/epc/web/podcast.jpg"
         alt={t("mediaPage.hero.alt")}
         position="60% center"
@@ -29,7 +30,8 @@ export default function MediaPage() {
         <div className="ep-wrap">
           <article className="group relative grid items-center gap-8 lg:grid-cols-[7fr_5fr] lg:gap-16">
             {lead.image && (
-              <Media
+              <Frame
+                side="left"
                 src={lead.image}
                 alt=""
                 ratio="16 / 10"
