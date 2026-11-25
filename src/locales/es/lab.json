@@ -33,7 +33,8 @@
         "items": "Economía de carrera, de marcha y con bastones, pendiente crítica de marcha, velocidad crítica de carrera, VO2 y ventilación, frecuencia cardiaca, gasto energético."
       },
       "captureAlt": "Informe de una prueba en el dashboard de Enduraw: VO2max, frecuencia cardíaca máxima, velocidad aeróbica máxima y umbrales",
-      "caption": "Resumen de una prueba en el dashboard, datos ficticios"
+      "caption": "Resultados de un test en el dashboard, datos ficticios",
+      "altEvolution": "Test de laboratorio en el móvil: evolución entre dos tests, VO2max, VAM y umbrales"
     },
     "offer": {
       "title": "Pruebas y precios",

@@ -43,12 +43,21 @@ export default function DashboardPage() {
               </Action>
             </div>
           </div>
+          {/* Sur ordinateur, la vue d'ensemble ; au téléphone, l'écran du
+              téléphone : réduite à 335 px, la vue d'ensemble ne se lisait pas. */}
           <Capture
             src="/images/captures/aujourdhui-desktop.png"
             alt={t("dashboardPage.hero.alt")}
-            sizes="(min-width: 1360px) 740px, (min-width: 1024px) 55vw, 100vw"
+            sizes="(min-width: 1360px) 740px, 55vw"
             priority
-            className="ep-rise ep-rise--3"
+            className="ep-rise ep-rise--3 max-lg:hidden"
+          />
+          <Capture
+            src="/images/captures/aujourdhui-mobile.png"
+            alt={t("dashboardPage.hero.alt")}
+            ratio="9 / 15"
+            sizes="(min-width: 1024px) 1px, 72vw"
+            className="ep-rise ep-rise--3 mx-auto w-[72%] max-w-[300px] lg:hidden"
           />
         </div>
       </header>

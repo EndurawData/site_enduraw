@@ -33,7 +33,8 @@
         "items": "Lauf-, Geh- und Stockökonomie, kritische Gehsteigung, kritische Laufgeschwindigkeit, VO2 und Ventilation, Herzfrequenz, Energieverbrauch."
       },
       "captureAlt": "Testbericht im Enduraw-Dashboard: VO2max, maximale Herzfrequenz, maximale aerobe Geschwindigkeit und Schwellen",
-      "caption": "Testübersicht im Dashboard, Beispieldaten"
+      "caption": "Testergebnisse im Dashboard, fiktive Daten",
+      "altEvolution": "Labortest auf dem Smartphone: Entwicklung zwischen zwei Tests, VO2max, MAS und Schwellen"
     },
     "offer": {
       "title": "Tests und Preise",

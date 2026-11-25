@@ -33,7 +33,8 @@
         "items": "Running, walking and poles economy, critical walking gradient, critical running speed, VO2 and ventilation, heart rate, energy expenditure."
       },
       "captureAlt": "Test report in the Enduraw dashboard: VO2max, maximum heart rate, maximal aerobic speed and thresholds",
-      "caption": "Test summary in the dashboard, sample data"
+      "caption": "Lab test results in the dashboard, fictitious data",
+      "altEvolution": "Lab test on a phone: progress between two tests, VO2max, MAS and thresholds"
     },
     "offer": {
       "title": "Tests and prices",

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { PhotoHero } from "@/components/ui/PhotoHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Action } from "@/components/ui/Action";
-import { Capture } from "@/components/ui/Capture";
+import { PhoneShots } from "@/components/sections/PhoneShots";
 import { Media } from "@/components/ui/Media";
 import { Frame } from "@/components/ui/Frame";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -80,11 +80,16 @@ export default function LabPage() {
               ))}
             </dl>
           </div>
-          <Capture
-            src="/images/captures/testing-synthese-test.png"
-            alt={t("labPage.measure.captureAlt")}
-            caption={t("labPage.measure.caption")}
-          />
+          <figure className="lg:sticky lg:top-[calc(var(--ep-nav-h)+40px)]">
+            <PhoneShots
+              className="mx-auto w-full max-w-[560px]"
+              shots={[
+                { src: "/images/captures/testing-resultats-mobile.png", alt: t("labPage.measure.captureAlt") },
+                { src: "/images/captures/testing-evolution-mobile.png", alt: t("labPage.measure.altEvolution") },
+              ]}
+            />
+            <figcaption className="mx-auto mt-4 max-w-[560px] text-[13px] text-white/50">{t("labPage.measure.caption")}</figcaption>
+          </figure>
         </div>
       </section>
 

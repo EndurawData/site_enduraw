@@ -33,7 +33,8 @@
         "items": "Économie de course, de marche et avec bâtons, pente critique de marche, vitesse critique de course, VO2 et ventilation, fréquence cardiaque, dépense énergétique."
       },
       "captureAlt": "Compte rendu d'un test dans le dashboard Enduraw : VO2max, fréquence cardiaque maximale, vitesse maximale aérobie et seuils",
-      "caption": "Synthèse d'un test dans le dashboard, données fictives"
+      "caption": "Résultats d'un test dans le dashboard, données fictives",
+      "altEvolution": "Test labo sur téléphone : évolution entre deux tests, VO2max, VMA et seuils"
     },
     "offer": {
       "title": "Tests et tarifs",
