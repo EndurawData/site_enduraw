@@ -19,8 +19,8 @@ const MILESTONES = [
 const TEAM: readonly { name: string; key: string; linkedin: string; photo?: string }[] = [
   { name: "Joseph Mestrallet", key: "joseph", linkedin: "https://www.linkedin.com/in/joseph-mestrallet-770279a7/", photo: "/images/equipe/joseph.jpg" },
   { name: "Anthony Saliou", key: "anthony", linkedin: "https://www.linkedin.com/in/anthony-saliou-085286158/", photo: "/images/equipe/anthony.jpg" },
-  { name: "Lucas Guillot", key: "lucas", linkedin: "https://www.linkedin.com/in/lucas-guillot01/", photo: "/images/equipe/lucas.jpg" },
   { name: "Valentin Templé", key: "valentin", linkedin: "https://www.linkedin.com/in/valentin-templ%C3%A9/", photo: "/images/equipe/valentin.jpg" },
+  { name: "Lucas Guillot", key: "lucas", linkedin: "https://www.linkedin.com/in/lucas-guillot01/", photo: "/images/equipe/lucas.jpg" },
   { name: "Kyllian Gricourt", key: "kyllian", linkedin: "https://www.linkedin.com/in/kyllian-gricourt-candelier-57856b25a/" },
   { name: "Charline Batel", key: "charline", linkedin: "https://www.linkedin.com/in/charline-batel/", photo: "/images/equipe/charline.jpg" },
   { name: "Antoine Figula", key: "antoine", linkedin: "https://www.linkedin.com/in/antoine-figula-b518192b1/", photo: "/images/equipe/antoine.jpg" },
@@ -66,9 +66,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Équipe : le titre dans le conteneur, les portraits en bandeau pleine largeur.
-          Le bouton pause du bandeau et la rangée statique (mouvement réduit) se calent
-          sur le bord du conteneur, comme le titre. */}
+      {/* Équipe : par pages de quatre, qui se succèdent. */}
       <section className="ep-section pt-0">
         <div className="ep-wrap">
           <SectionHead
@@ -81,7 +79,7 @@ export default function AboutPage() {
             }
           />
         </div>
-        <div className="ep-reveal mt-12 [--team-edge:20px] md:[--team-edge:max(40px,calc((100%-var(--ep-container))/2+40px))] [&_.ep-marquee]:py-3 [&>div>button]:ms-[var(--team-edge)] motion-reduce:[&_.ep-marquee]:scroll-px-[var(--team-edge)] motion-reduce:[&_.ep-marquee\_\_track]:px-[var(--team-edge)]">
+        <div className="ep-wrap ep-reveal mt-12">
           <TeamMarquee
             label={t("aboutPage.team.label")}
             members={TEAM.map((p) => ({
