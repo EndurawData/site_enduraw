@@ -1,0 +1,52 @@
+{
+  "aboutPage": {
+    "hero": {
+      "alt": "Un membre de l'équipe Enduraw entre deux athlètes ASICS, dans l'aire d'arrivée d'une course",
+      "title": "Un laboratoire de performance sportive",
+      "lead": "Se comprendre comme athlète et comme personne, c'est ce qui fait passer un cap. Nous partons des données pour y arriver.",
+      "cta": "Voir nos services"
+    },
+    "story": {
+      "title": "Né à Chamonix",
+      "text": "Tout part d'une chambre à Chamonix : Joseph Mestrallet y passe ses nuits à construire des plans de course à partir du profil du parcours et des conditions. Le rapport Enduraw suit, puis le dashboard.",
+      "milestones": {
+        "idea": "Première idée du projet",
+        "launch": "Lancement officiel du rapport Enduraw",
+        "v2": "Deuxième version : une formule calculée sur vos données, le vélo et le trail en plus",
+        "dashboard": "Le rapport devient un dashboard complet",
+        "pacing": "Les plans de course arrivent dans le dashboard",
+        "testing": "Les résultats de tests rejoignent le dashboard",
+        "matrix": "Lancement de la Runner Matrix"
+      }
+    },
+    "team": {
+      "title": "Ingénieurs et scientifiques du sport",
+      "text": "Physique, data science, nutrition, finance et image : une petite équipe, basée à Chamonix.",
+      "careers": "Rejoindre l'équipe",
+      "linkedin": "{{name}} sur LinkedIn",
+      "roles": {
+        "joseph": "Fondateur, scientifique de la performance",
+        "anthony": "Directeur général",
+        "lucas": "Responsable financier",
+        "valentin": "Responsable technique",
+        "kyllian": "Scientifique de la performance",
+        "charline": "Spécialiste en nutrition",
+        "antoine": "Data scientist",
+        "alex": "Photographe sportif"
+      },
+      "label": "L'équipe Enduraw",
+      "play": "Reprendre le défilement",
+      "pause": "Mettre en pause le défilement",
+      "bios": {
+        "joseph": "Depuis sa chambre à Chamonix, Joseph a passé des nuits à construire les plans de course parfaits en analysant le profil de course et les conditions environnementales.",
+        "anthony": "Anthony pilote la stratégie et les opérations d'Enduraw, porté par un doctorat en physique et une passion profonde pour la science de la performance.",
+        "lucas": "Lucas pilote la gestion financière d'Enduraw et structure sa croissance, en veillant à la solidité nécessaire pour soutenir les ambitions de l'équipe.",
+        "valentin": "Valentin pilote le développement technique du dashboard : il conçoit l'architecture du produit, coordonne les équipes techniques et garantit la fiabilité de la plateforme.",
+        "charline": "Ingénieure de formation, Charline met son expertise en stratégies d'alimentation et en optimisation énergétique au service de la performance des athlètes.",
+        "antoine": "Passionné d'analyse de la performance, il apporte une expérience précieuse acquise chez Tudor Cycling, au cœur du cyclisme professionnel.",
+        "kyllian": "Kyllian met son expertise scientifique au service de la performance des athlètes, entre analyse fine des données et suivi rigoureux sur le terrain.",
+        "alex": "Dédié à la création de visuels professionnels et impactants, il capture l'essence d'Enduraw, de ses athlètes et de ses événements en images."
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "home": {
+    "hero": {
+      "alt": "Corredor de trail mirando su reloj en una cresta sobre Chamonix",
+      "lead": "Ciencia de datos aplicada al rendimiento en resistencia, para cada atleta, desde la primera carrera hasta una final olímpica.",
+      "ctaDashboard": "Descubrir el dashboard",
+      "ctaServices": "Ver nuestros servicios",
+      "line1": "Turning raw data",
+      "line2": "into relevant",
+      "line3": "analysis"
+    },
+    "dashboard": {
+      "title": "Tu entrenamiento, leído como en un laboratorio",
+      "text": "Conecta Strava. Tus sesiones se leen y tu Runner Matrix puntúa seis dimensiones de tu carrera.",
+      "cta": "Ver el dashboard",
+      "alt": "Vista general del dashboard de Enduraw: actividades, Runner Matrix, planes de carrera y tests",
+      "altToday": "Dashboard de Enduraw en el móvil: la pantalla Hoy, con la silueta del atleta y la puntuación de su matriz",
+      "altMatrix": "Runner Matrix en el móvil: seis dimensiones puntuadas sobre 100, en radar"
+    },
+    "testing": {
+      "title": "Mide tu fisiología",
+      "text": "VO₂max, umbrales ventilatorios y velocidad aeróbica máxima, medidos en Chamonix o en París y explicados con lo que importa para tu entrenamiento.",
+      "cta": "Ver los tests",
+      "alt": "Atleta corriendo con una máscara de análisis de gases durante un test de VO2max",
+      "caption": "Test de VO2max, análisis de gases"
+    },
+    "field": {
+      "title": "La exigencia de la élite, para todos",
+      "text": "Preparamos los briefings de carrera de atletas de élite. El mismo trabajo minucioso alimenta cada plan y cada coaching.",
+      "cta": "Descubrir el coaching",
+      "alt": "Tom Evans durante una toma de lactato en la meta de una carrera",
+      "caption": "Toma de lactato en la meta"
+    },
+    "athletes": {
+      "label": "Trabajan con nosotros",
+      "tom": "Ganador del UTMB y de la Western States",
+      "petter": "Ganador de la CCC",
+      "casimir": "25.º en el Campeonato del Mundo Ironman 70.3 2026, 2 veces ganador de Ironman 70.3",
+      "theo": "Ganador de los 90 km del Mont-Blanc",
+      "duncan": "Maratoniano francés"
+    },
+    "latest": {
+      "title": "Últimos contenidos",
+      "all": "Todos los contenidos",
+      "follow": "Análisis de carreras cada semana en Instagram:"
+    },
+    "cta": {
+      "title": "Tu próxima carrera empieza aquí",
+      "text": "Conecta Strava y obtén tu perfil Runner Matrix en unos minutos.",
+      "button": "Crear mi cuenta"
+    }
+  },
+  "figures": {
+    "aria": "Enduraw en cifras",
+    "users": "Usuarios de Enduraw Report en el mundo",
+    "activities": "Actividades procesadas y analizadas",
+    "distance": "Kilómetros analizados"
+  }
+}

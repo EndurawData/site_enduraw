@@ -1,0 +1,19 @@
+{
+  "content": {
+    "newTab": "（新しいタブで開きます）",
+    "kinds": {
+      "analysis": "分析",
+      "press": "掲載記事",
+      "guide": "ガイド",
+      "athlete": "選手紹介"
+    },
+    "items": {
+      "utmb2026": "UTMB 2026の各レースを、Endurawチームがレースデータから振り返ります。",
+      "torDesGlaciers": "アオスタ渓谷で行われるトル・デ・グラシエのレース分析。Instagramで公開。",
+      "teamRankings": "Distances+が公開したトレイルチーム国際ランキングの第2版。1位はHoka、2位はSalomon。男女のスコアを比較可能にする計算式をEndurawが作成しました。",
+      "nutritionGuide": "トレーニングとレースの補給ガイド。ダッシュボードで閲覧できます。",
+      "paris2024": "Anthony SaliouとJoseph MestralletがWorld Athleticsに寄稿。起伏のあるコースでパリ2024五輪のマラソンがなぜ速かったのかを、ペース戦略、気象、シューズから解説します。",
+      "blanchard": "Mathieu Blanchardのパフォーマンス紹介。Instagramで公開。"
+    }
+  }
+}

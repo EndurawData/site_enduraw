@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="color-scheme" content="dark" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Titre de repli, pour le serveur de développement. Le prérendu le
+       remplace, avec la description, le canonical, Open Graph et le JSON-LD
+       de chaque page (src/routes/head.ts). -->
+  <title>Enduraw</title>
+  <!--app-head-->
+
+  <!-- Langue du visiteur ≠ langue du HTML prérendu : le contenu est masqué le
+       temps que React le rende dans la bonne langue (au plus 1,5 s), au lieu
+       d'afficher un texte qui change sous les yeux. Sans prérendu (dev), ne
+       fait rien. Même logique que src/i18n/languages.ts. -->
+  <script>
+  (function () {
+    try {
+      var d = document.documentElement, p = d.getAttribute("data-prerender-lang");
+      if (!p) return;
+      var L = ["en", "fr", "es", "de", "ja"], l = null, s = null;
+      var n = function (c) { if (!c) return null; c = c.toLowerCase().split("-")[0]; return L.indexOf(c) > -1 ? c : null; };
+      try { s = localStorage.getItem("i18nextLng"); } catch (e) {}
+      l = n(s);
+      var a = navigator.languages || [navigator.language];
+      for (var i = 0; !l && i < a.length; i++) l = n(a[i]);
+      if ((l || "en") !== p) {
+        d.classList.add("ep-lang-pending");
+        setTimeout(function () { d.classList.remove("ep-lang-pending"); }, 1500);
+      }
+    } catch (e) {}
+  })();
+  </script>
+
+  <!-- Meta Pixel. La file `fbq` est posée tout de suite (les appels sont mis
+       en attente), mais le script de Facebook (≈ 250 Ko avec sa configuration)
+       ne part qu'après le chargement de la page, au repos du navigateur : il ne
+       dispute plus la bande passante à la photo du premier écran. -->
+  <script>
+  !function(f,b,e,v,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];
+  var go=function(){var t=b.createElement(e);t.async=!0;t.src=v;b.head.appendChild(t)};
+  f.addEventListener('load',function(){setTimeout(go,3000)});
+  }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1500297748362721');
+  fbq('track', 'PageView');
+  </script>
+</head>
+
+<body>
+  <!-- Meta Pixel (sans JavaScript) : une image n'est pas autorisée dans un <noscript> du <head> -->
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1500297748362721&ev=PageView&noscript=1"
+  /></noscript>
+  <div id="root"><!--app-html--></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

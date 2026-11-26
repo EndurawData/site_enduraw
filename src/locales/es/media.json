@@ -1,0 +1,19 @@
+{
+  "mediaPage": {
+    "hero": {
+      "alt": "Estudio de pódcast del Performance Center, micrófonos Enduraw sobre la mesa",
+      "title": "La carrera, leída con datos",
+      "lead": "Análisis de carreras, estudios publicados y guías: hacemos que los datos de resistencia sean accesibles y legibles."
+    },
+    "all": {
+      "title": "Todos los contenidos",
+      "follow": "Análisis de carreras cada semana en Instagram:"
+    },
+    "cta": {
+      "title": "Nuestros datos para tus medios",
+      "text": "Estadísticas de carrera, análisis de rendimiento, estudios técnicos: nuestros datos pueden dar profundidad científica a tu cobertura.",
+      "button": "Escribir al equipo de medios",
+      "subject": "Solicitud de prensa"
+    }
+  }
+}

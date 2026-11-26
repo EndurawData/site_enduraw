@@ -1,0 +1,101 @@
+{
+  "dashboardPage": {
+    "hero": {
+      "title": "Pro-level models, in your own profile",
+      "lead": "Every day, the dashboard models your running with the algorithms we use with elite athletes: the Enduraw Report after each run, your Runner Matrix, pacing plans, lab results. One ecosystem, open to every runner.",
+      "ctaPrimary": "Create my account",
+      "ctaSecondary": "Log in",
+      "alt": "Enduraw pacing plan on a laptop, fictitious data: course map and elevation profile coloured by gradient",
+      "altMobile": "Today view of the Enduraw dashboard on a phone, with sample data"
+    },
+    "report": {
+      "title": "The Enduraw Report",
+      "free": "free",
+      "lead": "Connect Strava: the Enduraw Report recalculates the pace of every new run for the conditions of the day, so you can compare your sessions with each other.",
+      "cta": "Create my account",
+      "heat": "Heat",
+      "heatDesc": "About 0.27% of pace per degree above 15.6 °C, to show what the session is worth in cool weather.",
+      "wind": "Wind",
+      "windDesc": "Headwind and tailwind, taken along your route, to isolate their effect on the effort.",
+      "altitude": "Altitude",
+      "altitudeDesc": "Less oxygen, more effort for the same pace: the correction accounts for it.",
+      "elevation": "Elevation",
+      "elevationDesc": "Climbs and descents brought back to an equivalent pace on the flat.",
+      "deep": "On demand, the in-depth session analysis goes further: cardiac drift, climbing efficiency, share of walking, consistency of your repetitions. Every chart explains how it is built and how to read it.",
+      "article": "Read the technical article",
+      "alt": "Trail run analysis in the dashboard, with sample data: weather of the run, elevation profile, pace and adjusted pace"
+    },
+    "weather": {
+      "title": "Weather, before and after",
+      "lead": "Conditions weigh on every pace. Enduraw records them after each run and gives you the forecast for race day.",
+      "afterLabel": "After each run",
+      "afterText": "Temperature, wind speed and direction, humidity: the conditions of the run appear in its analysis. Heat and wind go into the adjusted pace.",
+      "beforeLabel": "Before the race",
+      "beforeText": "In the pacing plan, the forecast for the hour you will pass each point of the course: temperature, humidity, wind, precipitation, cloud cover, UV index, day and night.",
+      "alt": "Forecast along an ultra-trail course, aid station by aid station, with sample data: temperature, wind and precipitation",
+      "caption": "Forecast along the course, sample data"
+    },
+    "matrix": {
+      "title": "Your runner profile",
+      "lead": "The Runner Matrix scores six dimensions out of 100: endurance, uphill, downhill, speed, resilience, physiology. It is built from your Strava history and, with Starter, updates after every run.",
+      "alt": "Runner Matrix radar on six dimensions, with sample data",
+      "altPacing": "Pacing plan on a phone: target time, moving time, distance and elevation"
+    },
+    "pacing": {
+      "title": "A plan for race day",
+      "lead": "Your pace section by section on the real course, your split times at every aid station, and your nutrition plan: carbs, water and sodium per hour.",
+      "target": "Your goal",
+      "targetDesc": "The time you are aiming for, turned into a sustainable pace on each section.",
+      "course": "The course",
+      "courseDesc": "Gradient and technicality of the terrain: ease off on climbs, push on descents.",
+      "altitude": "Altitude",
+      "altitudeDesc": "The extra effort at the top of the passes.",
+      "delivery": "Prepared by the Enduraw team and delivered to your dashboard within 5 working days, with a PDF export for race day. After the finish, compare the plan with your actual race, straight from Strava.",
+      "ctaDemo": "See a demo plan",
+      "ctaOrder": "Order a plan",
+      "altLaptop": "Pacing plan overview on a laptop, fictitious data: target time, moving time, distance, elevation and pace curve"
+    },
+    "plans": {
+      "title": "Start for free",
+      "lead": "The Enduraw Report and the Runner Matrix are free. Paid plans add continuous updates and in-depth analyses. No commitment, cancel at any time.",
+      "cta": "Choose a plan",
+      "price": "€{{value}}",
+      "perMonth": "per month",
+      "free": {
+        "name": "Free",
+        "f1": "The Enduraw Report and activity list",
+        "f2": "Summary of every session, unlimited",
+        "f3": "Runner Matrix: identity card and Performance Lab",
+        "f4": "One in-depth session analysis included"
+      },
+      "starter": {
+        "name": "Starter",
+        "intro": "Everything in Free, plus:",
+        "f1": "Runner Matrix updated after every run",
+        "f2": "2 in-depth analyses per month"
+      },
+      "pro": {
+        "name": "Pro",
+        "intro": "Everything in Starter, plus:",
+        "f1": "30 in-depth analyses per month",
+        "f2": "2 pacing plans included per year",
+        "f3": "Stroop test"
+      },
+      "elite": "The Elite plan is not open yet."
+    },
+    "api": {
+      "symbols": {
+        "hr": "HR",
+        "rest": "rest"
+      },
+      "contact": "API access for a platform, a club or a team",
+      "cta": "Write to the team",
+      "subject": "Enduraw API access"
+    },
+    "cta": {
+      "title": "Your next race starts here",
+      "text": "Create your account and connect Strava: your new sessions come through to the dashboard.",
+      "button": "Create my account"
+    }
+  }
+}

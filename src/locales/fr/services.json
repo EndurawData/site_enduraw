@@ -1,0 +1,36 @@
+{
+  "servicesPage": {
+    "hero": {
+      "title": "Trois façons de travailler avec nous",
+      "lead": "En laboratoire, sur le terrain ou sur scène : la même lecture de la performance, appliquée à votre besoin.",
+      "alt": "Chalet en bois face à des sommets enneigés"
+    },
+    "lab": {
+      "title": "Labo & tests",
+      "text": "VO₂max, seuils ventilatoires et vitesse maximale aérobie mesurés à Chamonix ou à Paris. À Chamonix, le Performance Center accueille aussi stages, séminaires et coworking.",
+      "cta": "Voir les tests et le lieu",
+      "alt": "Salle de test du Performance Center, tapis de course et écran"
+    },
+    "coaching": {
+      "title": "Coaching",
+      "text": "Un coach scientifique pour toute votre saison : planification mensuelle, analyse de vos données et stratégie pour vos courses objectifs.",
+      "cta": "Découvrir le coaching",
+      "alt": "Traileur en course sur un sentier, sommets enneigés derrière lui"
+    },
+    "conferences": {
+      "title": "Conférences",
+      "text": "Nos experts interviennent lors d'événements sportifs, en entreprise et dans les écoles, sur la data, la physiologie et la performance.",
+      "cta": "Voir les conférences",
+      "alt": "Joseph Mestrallet sur scène devant un auditorium"
+    },
+    "dashboard": {
+      "text": "L'analyse de vos séances Strava, votre Runner Matrix et vos plans de course sont dans le dashboard.",
+      "cta": "Voir le dashboard"
+    },
+    "contact": {
+      "title": "Écrire à la bonne équipe",
+      "lab": "Un test, un séjour ou le coaching :",
+      "conferences": "Une conférence :"
+    }
+  }
+}

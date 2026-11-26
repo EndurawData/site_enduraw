@@ -1,204 +1,166 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import LatestContent from '../components/LatestContent';
-import { useSwipe } from '../hooks/useSwipe';
-import { Link } from 'react-router-dom';
-import { FinalCta } from '../components/HomeShowcase';
-import { HomeHero, ProofBand, FeatureTabs, TestingSection, FieldSection, EpcSection } from '../components/HomeHero';
-import '../styles/fancy.css';
+import { useTranslation } from "react-i18next";
+import { PhotoHero } from "@/components/ui/PhotoHero";
+import { SectionHead } from "@/components/ui/SectionHead";
+import { Action } from "@/components/ui/Action";
+import { Frame } from "@/components/ui/Frame";
+import { FinalCta } from "@/components/sections/FinalCta";
+import { Figures } from "@/components/sections/Figures";
+import { PhoneShots } from "@/components/sections/PhoneShots";
+import { ContentList, ContentRow, NewTab } from "@/components/sections/ContentRow";
+import { PeopleList } from "@/components/sections/PeopleList";
+import { latestContent } from "@/data/latestContent";
+import { LINKS } from "@/lib/links";
+import { trackLead } from "@/lib/tracking";
 
-interface HomePageProps {
-  activeSection?: string;
-}
+const ATHLETES = [
+  { name: "Tom Evans", key: "tom" },
+  { name: "Petter Engdahl", key: "petter" },
+  { name: "Casimir Moine", key: "casimir" },
+  { name: "Théo Detienne", key: "theo" },
+  { name: "Duncan Perrillat", key: "duncan" },
+] as const;
 
-
-const HomePage: React.FC<HomePageProps> = ({ activeSection }) => {
+export default function HomePage() {
   const { t } = useTranslation();
-  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
-  const [athletePos, setAthletePos] = useState(0);
-  const [athleteAnimate, setAthleteAnimate] = useState(true);
-
-  useEffect(() => {
-    if (activeSection && sectionRefs.current[activeSection]) {
-      sectionRefs.current[activeSection]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, [activeSection]);
-
-  const athletes = [
-    { name: 'Tom Evans', title: t('home.tom_title'), img: '/images/athletes/tomevans.webp' },
-    { name: 'Petter Engdahl', title: t('home.petter_title'), img: '/images/athletes/petterengdahl.webp' },
-    { name: 'Duncan Perrillat', title: t('home.duncan_title'), img: '/images/athletes/duncan.webp' },
-    { name: 'Casimir Moine', title: t('home.casimir_title'), img: '/images/athletes/casimir.webp' },
-    { name: 'Théo Detienne', title: t('home.theo_title'), img: '/images/athletes/theodetienne.webp' },
-  ];
-
-  const ecosystem = [
-    {
-      step: 'Dashboard',
-      verb: t('homeV2.verb_dashboard'),
-      link: '/services/enduraw-dashboard',
-      desc: t('home.eco_dashboard'),
-      icon: (
-        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-      ),
-    },
-    {
-      step: 'Testing',
-      verb: t('homeV2.verb_testing'),
-      link: '/services/testing',
-      desc: t('home.eco_testing'),
-      icon: (
-        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-    },
-    {
-      step: 'Pacing Plan',
-      verb: t('homeV2.verb_pp'),
-      link: '/services/pacing-plan',
-      desc: t('home.eco_pacing'),
-      icon: (
-        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-        </svg>
-      ),
-    },
-    {
-      step: 'Coaching',
-      verb: t('homeV2.verb_coaching'),
-      link: '/services/coaching',
-      desc: t('home.eco_support'),
-      icon: (
-        <svg className="w-4 h-4 text-[#6CDCFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
-    },
-  ];
-
-  // Endless carousel moving one card at a time: the first 3 cards are repeated at the end,
-  // and once the clones are reached we jump back to the start without animation.
-  const VISIBLE = 3;
-  const athleteCount = athletes.length;
-  const athleteTrack = [...athletes, ...athletes.slice(0, VISIBLE)];
-
-  const nextAthlete = () => { setAthleteAnimate(true); setAthletePos((p) => p + 1); };
-  const prevAthlete = () => {
-    if (athletePos > 0) { setAthleteAnimate(true); setAthletePos((p) => p - 1); return; }
-    setAthleteAnimate(false);
-    setAthletePos(athleteCount);
-    requestAnimationFrame(() => requestAnimationFrame(() => { setAthleteAnimate(true); setAthletePos(athleteCount - 1); }));
-  };
-
-  // athletePos in deps: autoplay timer restarts after a manual swipe
-  useEffect(() => {
-    if (athleteCount <= VISIBLE) return;
-    const interval = setInterval(nextAthlete, 3000);
-    return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [athleteCount, athletePos]);
-
-  // Once the cloned cards are on screen, jump back to the real ones without animation.
-  // A timer rather than onTransitionEnd, which never fires if transitions are disabled or the tab is in the background.
-  useEffect(() => {
-    if (athletePos < athleteCount) return;
-    const id = setTimeout(() => {
-      setAthleteAnimate(false);
-      setAthletePos((p) => p % athleteCount);
-    }, 750);
-    return () => clearTimeout(id);
-  }, [athletePos, athleteCount]);
-
-  const athleteSwipe = useSwipe(prevAthlete, nextAthlete);
 
   return (
-    <div className="text-white min-h-screen">
+    <>
+      <PhotoHero
+        image="/images/workshop/workshop1.jpg"
+        alt={t("home.hero.alt")}
+        position="50% 30%"
+        title={
+          // Le slogan de la marque reste en anglais dans toutes les langues.
+          <span lang="en">
+            <span className="block">{t("home.hero.line1")}</span> <span className="block">{t("home.hero.line2")}</span>{" "}
+            <span className="block">{t("home.hero.line3")}</span>
+          </span>
+        }
+        lead={t("home.hero.lead")}
+        actions={
+          <>
+            <Action to="/dashboard">
+              {t("home.hero.ctaDashboard")}
+            </Action>
+            <Action to="/services" variant="ghost">
+              {t("home.hero.ctaServices")}
+            </Action>
+          </>
+        }
+      />
 
-      <HomeHero />
+      <Figures />
 
-      <FeatureTabs />
-
-      <TestingSection />
-
-      <FieldSection />
-
-      <EpcSection />
-
-      {/* ── WHAT WE DO: the 4 products as one journey ── */}
-      <section id="offers" className="scroll-mt-20 max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade">
-        <p className="label-enduraw mb-5">
-          {t('home.ecosystem_label')}
-        </p>
-        <h2 className="text-title-h2 text-white mb-10">{t('home.ecosystem_title')}</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.06] rounded-lg overflow-hidden">
-          {ecosystem.map((item, i) => (
-            <Link key={item.link} to={item.link} className="bg-black p-5 md:p-6 hover:bg-white/[0.03] transition-colors duration-150 group flex flex-col">
-              <div className="flex items-center gap-3 mb-3">
-                {item.icon}
-                <span className="text-body-uppercase text-gray-500">0{i + 1} · {item.verb}</span>
-              </div>
-              <p className="text-subtitle text-white mb-1.5">{item.step}</p>
-              <p className="text-paragraph text-gray-300 text-xs leading-relaxed mb-4 flex-1">{item.desc}</p>
-              <span className="text-body-uppercase text-[#6CDCFF] inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                {t('homeV2.discover')}
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </Link>
-          ))}
+      {/* Dashboard : titre, texte, lien, une capture. */}
+      <section className="ep-section">
+        <div className="ep-wrap grid items-center gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
+          <div className="ep-reveal">
+            <SectionHead title={t("home.dashboard.title")} lead={t("home.dashboard.text")} />
+            <div className="mt-8">
+              <Action to="/dashboard" variant="link">
+                {t("home.dashboard.cta")}
+              </Action>
+            </div>
+          </div>
+          <PhoneShots
+            className="mx-auto w-full max-w-[560px]"
+            shots={[
+              { src: "/images/captures/aujourdhui-mobile.png", alt: t("home.dashboard.altToday") },
+              { src: "/images/captures/matrice-mobile.png", alt: t("home.dashboard.altMatrix") },
+            ]}
+          />
         </div>
       </section>
 
-      {/* ── PROOF: figures, athletes and partners in one band ── */}
-      <section
-        ref={(el) => { sectionRefs.current['athletes'] = el; }}
-        className="max-w-5xl mx-auto px-6 sm:px-8 py-16 section-fade"
-      >
-        <p className="label-enduraw mb-8">
-          {t('homeV2.proof_label')}
-        </p>
-        <div className="relative overflow-hidden select-none cursor-grab active:cursor-grabbing rounded-lg" {...athleteSwipe}>
-          {/* -mr-px pushes the last visible card's right border out of view: lines only between athletes */}
-          <div
-            className={`-mr-px flex ${athleteAnimate ? 'transition-transform duration-700 ease-in-out' : ''}`}
-            style={{ transform: `translateX(-${athletePos * (100 / VISIBLE)}%)` }}
-          >
-            {athleteTrack.map((a, i) => (
-              <div key={i} className="w-1/3 flex-shrink-0 bg-black border-r border-white/[0.06] hover:bg-white/[0.02] transition-colors duration-150">
-                <div className="w-full h-44 bg-black flex items-end justify-center overflow-hidden">
-                  <img
-                    loading="lazy"
-                    decoding="async"
-                    src={a.img}
-                    alt={a.name}
-                    className="h-full w-auto object-contain opacity-90"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
-                  />
-                </div>
-                <div className="p-4">
-                  <p className="text-subtitle text-white mb-0.5">{a.name}</p>
-                  <p className="text-paragraph text-gray-300 text-xs leading-relaxed">{a.title}</p>
-                </div>
-              </div>
-            ))}
+      {/* Tests : la photo de l'athlète porte la section, pas une capture. */}
+      <section className="ep-section pt-0">
+        <div className="ep-wrap grid items-center gap-12 lg:grid-cols-[7fr_5fr] lg:gap-16">
+          <Frame
+            src="/images/testing/vo2-mask-profile.jpg"
+            alt={t("home.testing.alt")}
+            caption={t("home.testing.caption")}
+            side="left"
+            ratio="4 / 3"
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            position="center"
+            className="max-lg:order-2"
+          />
+          <div className="ep-reveal">
+            <SectionHead title={t("home.testing.title")} lead={t("home.testing.text")} />
+            <div className="mt-8">
+              <Action to="/services/testing" variant="link">
+                {t("home.testing.cta")}
+              </Action>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Sur le terrain : un seul point d'attention, la photo. */}
+      <section className="ep-section pt-0">
+        <div className="ep-wrap">
+          <div className="grid items-end gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
+            <div className="ep-reveal">
+              <SectionHead title={t("home.field.title")} lead={t("home.field.text")} />
+              <div className="mt-8">
+                <Action to="/services/coaching" variant="link">
+                  {t("home.field.cta")}
+                </Action>
+              </div>
+            </div>
+            <Frame
+              src="/images/photos/tom-lactate.jpg"
+              alt={t("home.field.alt")}
+              caption={t("home.field.caption")}
+              ratio="16 / 10"
+              sizes="(min-width: 1024px) 58vw, 100vw"
+              position="center 30%"
+            />
+          </div>
 
-      <ProofBand />
+          {/* Athlètes : des noms et des résultats, pas des silhouettes détourées. */}
+          <div className="ep-reveal mt-24">
+            <h3 id="athletes" className="ep-label">{t("home.athletes.label")}</h3>
+            <PeopleList
+              labelledBy="athletes"
+              className="mt-6"
+              people={ATHLETES.map((a) => ({ name: a.name, detail: t(`home.athletes.${a.key}`) }))}
+            />
+          </div>
+        </div>
+      </section>
 
-      {/* ── LATEST CONTENT ── */}
-      <LatestContent />
+      {/* Derniers contenus : rangées éditoriales. */}
+      <section className="ep-section pt-0">
+        <div className="ep-wrap">
+          <SectionHead
+            title={t("home.latest.title")}
+            aside={
+              <Action to="/media" variant="link">
+                {t("home.latest.all")}
+              </Action>
+            }
+          />
+          <ContentList className="mt-12">
+            {latestContent.slice(0, 3).map((item) => (
+              <ContentRow key={item.url} item={item} />
+            ))}
+          </ContentList>
+          <p className="ep-body mt-6 text-[14px]">
+            {t("home.latest.follow")}{" "}
+            <a href={LINKS.instagram} target="_blank" rel="noopener noreferrer" className="ep-inline-link">
+              @enduraw.data
+              <NewTab />
+            </a>
+          </p>
+        </div>
+      </section>
 
-      <FinalCta />
-
-    </div>
+      <FinalCta
+        title={t("home.cta.title")}
+        text={t("home.cta.text")}
+        action={{ to: LINKS.register, label: t("home.cta.button"), onClick: trackLead }}
+      />
+    </>
   );
-};
-
-export default HomePage;
+}

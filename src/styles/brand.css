@@ -1,0 +1,3972 @@
+/* Copie de dashboard/frontend/src/styles/brand.css au commit 926c59f3 (2026-11-25). Ne pas éditer ici. */
+/* ════════════════════════════════════════════════════════════════════════
+   Enduraw — couche de marque, source de vérité unique
+   Charte graphique V1 (20251017) :
+     · couleurs 6.1 — noir #000000, blanc #FFFFFF, bleu ciel #6CDCFF,
+       bleu foncé #2054A8. Aucune autre couleur de marque.
+     · typographies 7.1 / 7.2 / 7.3 — Inter Tight Bold Italic MAJ pour les
+       titres, Space Grotesk Medium MAJ pour les sous-titres et libellés,
+       Space Grotesk Light pour les paragraphes.
+     · principe graphique — le tiret incliné (skewX(-12deg)), décliné en
+       ouverture de section, badge, bouton, pastille et repère de courbe.
+
+   ─── DEUX ÉCHELLES, UN SEUL SYSTÈME ───────────────────────────────────
+
+   `.ep-shell`  surfaces de marque — landing, pages de compte.
+                Respiration large : 17 px, tiret 30×7, boutons 50 px.
+   `.ep-app`    surface d'instrument — intérieur du dashboard.
+                Densité de travail : 15 px, tiret 26×6, boutons 42 px.
+
+   Les couleurs, les opacités, la courbe d'animation et les formes sont
+   IDENTIQUES. Seules les mesures changent, et elles passent toutes par des
+   variables : une primitive est écrite une fois et se redimensionne selon le
+   conteneur qui la porte.
+
+   Tout est préfixé `ep-`. Rien ici ne s'applique sans `.ep-shell` ou
+   `.ep-app` sur un ancêtre.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ─── tokens partagés — jamais surchargés ────────────────────────────── */
+
+/* ─── couleurs : portée document ──────────────────────────────────────
+
+   Elles étaient déclarées sur `.ep-shell, .ep-app`. Or Radix monte ses
+   boîtes de dialogue, infobulles, menus et toasts dans un portail attaché
+   à `body`, donc HORS de ces conteneurs : `var(--ep-s2)` n'y résolvait
+   rien, et la propriété retombait sur sa valeur initiale.
+
+   Concrètement, le bouton de confirmation du changement de formule était un
+   rectangle blanc SANS LIBELLÉ VISIBLE — sur un parcours d'abonnement
+   payant. Toutes les modales de l'application étaient dans ce cas.
+
+   Les couleurs sont identiques sur les deux échelles, l'en-tête de ce
+   fichier le dit : elles n'avaient aucune raison d'être portées par un
+   conteneur. Seule la densité reste scopée. */
+:root {
+  /* Indique au navigateur que l'interface est sombre.
+
+     Sans cette déclaration, la liste déroulante NATIVE d'un `<select>` est
+     peinte par le système avec sa palette claire : le texte des options
+     ressortait blanc sur blanc, quels que soient les styles posés sur
+     `option`. C'est le cas classique où styler l'élément ne suffit pas, parce
+     que le rendu de la liste n'appartient pas à la page.
+
+     Elle corrige au passage les barres de défilement, les sélecteurs de date
+     et les cases à cocher natives. */
+  color-scheme: dark;
+
+  --ep-black: #000000;
+  --ep-white: #ffffff;
+  --ep-sky: #6cdcff;
+  --ep-deep: #2054a8;
+  --ep-mid: #4a93d6;
+  --ep-s1: #0a0b0c;
+  --ep-s2: #101214;
+  --ep-s3: #15181b;
+  --ep-line: rgba(255, 255, 255, 0.1);
+  --ep-line-2: rgba(255, 255, 255, 0.18);
+  --ep-dim: rgba(255, 255, 255, 0.62);
+  /* Plancher de contraste : 0.38 donnait 3,39:1 sur noir, sous le seuil AA
+     de 4,5:1 pour du texte courant. 0.55 donne 6,27:1. */
+  --ep-faint: rgba(255, 255, 255, 0.55);
+  --ep-strava: #fc4c02;
+  --ep-danger: #ff6b5c;
+  --ep-danger-ink: #ffb3aa;
+  --ep-warn: #ffb547;
+  --ep-good: #4fd18b;
+  --ep-ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.ep-shell,
+.ep-app {
+
+  /* Milieu du dégradé ciel → foncé, que la charte sanctionne pour les badges.
+     Sert de deuxième série quand une figure en demande plus d'une, et surtout
+     quand `--ep-deep` serait trop sombre : sur un trait fin posé sur du noir,
+     le foncé est à 2,6:1, donc à la limite du visible. Miroir JS : MID_BLUE. */
+
+  /* surfaces dérivées du noir, pas de teinte inventée */
+
+  /* Exception de marque : Strava impose ses couleurs sur ce qui touche a
+     Strava. Bouton de connexion, etat et bandeau de synchronisation. Nulle
+     part ailleurs — ce n'est pas une couleur d'accent Enduraw. */
+
+  /* Signalement fonctionnel, pas une couleur de marque : la charte ne couvre
+     pas l'erreur ni l'action destructrice, et les règles d'interface exigent
+     de les distinguer. Introduit de fait dès `.ep-status--error`, formalisé
+     ici. À faire arbitrer. */
+  /* Signalement d'erreur. Deux valeurs, et le partage n'est pas négociable :
+     `--ep-danger` est un aplat et un tracé — mesuré, du blanc posé dessus
+     tombe à 2,8:1, donc il ne porte JAMAIS de texte. `--ep-danger-ink` est
+     la forme lisible, 12,3:1 sur noir. Même règle que `--ep-deep`. */
+  /* Position par rapport à une médiane (radar de comparaison de groupe) :
+     `--ep-danger` en dessous, `--ep-warn` autour, `--ep-good` au-dessus.
+     Aplats et tracés uniquement, comme `--ep-danger`. À faire arbitrer. */
+
+  color: var(--ep-white);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: var(--ep-t-base);
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── échelle de marque ──────────────────────────────────────────────── */
+
+.ep-shell {
+  --ep-container: 1280px;
+  --ep-t-base: 17px;
+
+  --ep-tiret-w: 30px;
+  --ep-tiret-h: 7px;
+
+  --ep-btn-h: 50px;
+  --ep-btn-pad: 26px;
+  --ep-btn-fs: 14px;
+  --ep-btn-h-sm: 40px;
+  --ep-btn-pad-sm: 18px;
+  --ep-btn-fs-sm: 12px;
+
+  --ep-label-fs: 11px;
+  --ep-label-track: 0.15em;
+
+  --ep-badge-fs: 11px;
+  --ep-badge-track: 0.06em;
+
+  --ep-card-pad: 30px;
+  --ep-num: 44px;
+  --ep-input-h: 48px;
+
+  /* Le titre du hero est composé en trois lignes explicites : le maximum est
+     calé pour qu'aucune ne se casse toute seule dans la colonne 7fr. */
+  --ep-t-display: clamp(2.5rem, 5vw, 4.4rem);
+  --ep-t-h2: clamp(1.9rem, 3.7vw, 3.2rem);
+  --ep-t-h3: clamp(1.15rem, 1.5vw, 1.4rem);
+  --ep-t-lead: clamp(1.0625rem, 1.3vw, 1.25rem);
+
+  --ep-glow: radial-gradient(
+    ellipse 90% 70% at 50% 118%,
+    rgba(32, 84, 168, 0.85) 0%,
+    rgba(108, 220, 255, 0.22) 38%,
+    rgba(0, 0, 0, 0) 72%
+  );
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  background: var(--ep-black);
+  overflow-x: clip;
+}
+
+@media (max-width: 767px) {
+  .ep-shell {
+    --ep-t-base: 16px;
+  }
+}
+
+/* ─── échelle d'instrument ───────────────────────────────────────────── */
+
+.ep-app {
+  --ep-container: 1440px;
+  --ep-t-base: 15px;
+
+  --ep-tiret-w: 26px;
+  --ep-tiret-h: 6px;
+
+  --ep-btn-h: 42px;
+  --ep-btn-pad: 20px;
+  --ep-btn-fs: 12.5px;
+  --ep-btn-h-sm: 34px;
+  --ep-btn-pad-sm: 14px;
+  --ep-btn-fs-sm: 11px;
+
+  --ep-label-fs: 10.5px;
+  --ep-label-track: 0.16em;
+
+  --ep-badge-fs: 10px;
+  --ep-badge-track: 0.07em;
+
+  --ep-card-pad: 24px;
+  --ep-num: 44px;
+  --ep-input-h: 42px;
+
+  /* Titres d'écran, pas de titres d'affiche : l'échelle est resserrée. */
+  --ep-t-display: clamp(1.7rem, 3vw, 2.3rem);
+  --ep-t-h2: clamp(1.35rem, 2vw, 1.65rem);
+  --ep-t-h3: clamp(1.05rem, 1.3vw, 1.2rem);
+  --ep-t-lead: 14.5px;
+
+  /* Lueur d'ambiance de l'application : plus discrète que celle de la
+     marque, et posée par le fond global, pas par la section. */
+  --ep-glow: radial-gradient(
+    ellipse 90% 60% at 50% 118%,
+    rgba(32, 84, 168, 0.55) 0%,
+    rgba(108, 220, 255, 0.14) 40%,
+    rgba(0, 0, 0, 0) 74%
+  );
+}
+
+/* Le halo de marque : la seule couleur d'ambiance de la page. Il se pose dans
+   une section (`position: relative; overflow: clip`), jamais sur toute la page —
+   sinon il se retrouve à des milliers de pixels du contenu. */
+/* Hauteur fixe, pas un pourcentage : le cœur du dégradé doit rester juste
+   sous le bord de la section, quelle que soit la longueur de celle-ci. */
+.ep-glow {
+  position: absolute;
+  inset: auto -20% 0 -20%;
+  height: 640px;
+  background: var(--ep-glow);
+  pointer-events: none;
+  /* z-index négatif dans un contexte d'empilement isolé : le halo passe
+     au-dessus du fond noir et sous le contenu, sans qu'aucun enfant du shell
+     n'ait besoin d'être repositionné. */
+  z-index: -1;
+}
+
+.ep-glow--top {
+  inset: 0 -20% auto -20%;
+  transform: rotate(180deg);
+}
+
+.ep-glowfield {
+  position: relative;
+  overflow: clip;
+  isolation: isolate;
+}
+
+/* Grain — même texture que l'intérieur du dashboard, pour la continuité. */
+.ep-shell__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── mise en page ───────────────────────────────────────────────────── */
+
+.ep-wrap {
+  max-width: var(--ep-container);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.ep-section {
+  padding-block: 132px;
+  position: relative;
+}
+
+.ep-section--xl {
+  padding-block: 184px;
+}
+
+.ep-rule {
+  border-top: 1px solid var(--ep-line);
+}
+
+/* La nav collante mesure 68px : les ancres se calent dessous. */
+.ep-shell [id] {
+  scroll-margin-top: 88px;
+}
+
+html:has(.ep-shell) {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.ep-shell) {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 1023px) {
+  .ep-section {
+    padding-block: 92px;
+  }
+  .ep-section--xl {
+    padding-block: 108px;
+  }
+}
+
+@media (max-width: 767px) {
+  .ep-wrap {
+    padding: 0 20px;
+  }
+}
+
+/* ─── le logo ────────────────────────────────────────────────────────────
+   `LOGO_ENDURAW_HORIZONTAL_WHITE.png` (8554×3178) est livré avec de la marge
+   transparente cuite dans le fichier. L'écran affiche sa copie réduite
+   `…_ECRAN.png` (969×360, mêmes proportions et mêmes marges) : l'original
+   pèse 240 Ko et reste réservé aux exports (PDF, visuels partagés). Mesuré le 2026-08-12 sur la boîte alpha :
+   22,8 % de vide en haut ET en bas, 8,3 % à gauche, 7,6 % à droite. L'encre ne
+   remplit donc que 54,5 % de la hauteur de la boîte.
+
+   Conséquence : régler la hauteur de l'image ne règle PAS la taille perçue.
+   Une boîte de 24 px (`h-6`) ne montrait que 13 px de mot — plus petit que les
+   libellés de nav à 19 px, dans une barre de 69 px, et l'encre démarrait 5 px
+   à droite de la colonne de texte.
+
+   Cette classe raisonne donc en hauteur d'ENCRE, la seule chose que l'œil
+   compare à ses voisins, et rattrape la marge gauche pour aligner le mot sur la
+   grille. Les trois constantes décrivent le FICHIER : elles ne bougent que si
+   le fichier change. Régler `--ep-brand-ink` et rien d'autre.                */
+
+.ep-brand {
+  --ep-brand-ink: 22px;
+
+  --ep-brand-fill: 0.545; /* part d'encre dans la hauteur */
+  --ep-brand-aspect: 2.692; /* largeur / hauteur de la boîte */
+  --ep-brand-void-left: 0.083; /* marge transparente à gauche */
+
+  --ep-brand-box: calc(var(--ep-brand-ink) / var(--ep-brand-fill));
+
+  height: var(--ep-brand-box);
+  width: auto;
+  margin-left: calc(
+    -1 * var(--ep-brand-box) * var(--ep-brand-aspect) * var(--ep-brand-void-left)
+  );
+}
+
+/* Pied de page : le logo y signe, il n'annonce pas. */
+.ep-brand--sm {
+  --ep-brand-ink: 18px;
+}
+
+/* ─── typographie ────────────────────────────────────────────────────── */
+
+.ep-display {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 0.94;
+}
+
+.ep-h1 {
+  font-size: var(--ep-t-display);
+}
+.ep-h2 {
+  font-size: var(--ep-t-h2);
+}
+.ep-h3 {
+  font-size: var(--ep-t-h3);
+  line-height: 1.05;
+}
+
+/* Sous-titre / libellé : Space Grotesk Medium MAJ (7.3) */
+.ep-label {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--ep-label-fs, 10.5px);
+  letter-spacing: var(--ep-label-track, 0.16em);
+  text-transform: uppercase;
+  color: var(--ep-faint);
+}
+
+.ep-label--bright {
+  color: var(--ep-dim);
+}
+
+/* Accent : la seule façon de mettre du bleu ciel sur du texte. Évite les
+   `text-[#6CDCFF]` en dur, que la garde de lint refuse à juste titre. */
+.ep-accent {
+  color: var(--ep-sky);
+}
+
+/* Surfaces nommées, pour ne pas réécrire les hex dans les className. */
+.ep-surface-1 {
+  background: var(--ep-s1);
+}
+.ep-surface-2 {
+  background: var(--ep-s2);
+}
+.ep-surface-3 {
+  background: var(--ep-s3);
+}
+/* Fond clair des relevés posés sur une section en polarité inversée. */
+.ep-surface-light {
+  background: #f4f5f6;
+}
+
+.ep-lead {
+  font-weight: 300;
+  font-size: var(--ep-t-lead);
+  line-height: 1.55;
+  color: var(--ep-dim);
+}
+
+.ep-body {
+  font-weight: 300;
+  color: var(--ep-dim);
+}
+
+.ep-mini {
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--ep-faint);
+}
+
+/* ─── échelle de lecture des écrans de la matrice ────────────────────────
+   Quatre rôles, pas un de plus. Les trois rôles de texte vont de 1,2 à 1,25
+   l'un de l'autre ; la valeur clé est à deux pas au-dessus du titre
+   (17,5 × 1,25² ≈ 28) : posée à un seul pas, le score se lisait après la
+   typologie au lieu d'avant.
+
+     légende      12    statut, unité, aide, libellé d'une ligne
+     texte        14    ce qu'on lit : description, étiquettes de données
+     titre        17,5  ce qu'on nomme : la typologie, une zone, un chiffre de ligne
+     valeur clé   28    le score, une fois par écran
+
+   La graisse et l'encre portent la hiérarchie autant que la taille : un
+   libellé est en légende semi-grasse, un titre de section aussi — il nomme,
+   il ne domine pas. Aucun texte qui porte un sens sous 12 px, aucune encre
+   sous 4,5:1 sur le noir (`--ep-ink-caption` en est le plancher). */
+
+:root {
+  --ep-fs-caption: 12px;
+  --ep-fs-body: 14px;
+  --ep-fs-title: 17.5px;
+  --ep-fs-key: 28px;
+
+  /* 7:1 et 12:1 sur `--ep-black`. */
+  --ep-ink-caption: rgba(255, 255, 255, 0.6);
+  --ep-ink-body: rgba(255, 255, 255, 0.82);
+}
+
+.ep-tx-caption {
+  font-size: var(--ep-fs-caption);
+  line-height: 1.4;
+}
+
+/* Libellé et titre de section : casse normale, la voix de l'outil. */
+.ep-tx-label {
+  font-size: var(--ep-fs-caption);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  color: var(--ep-ink-caption);
+}
+
+.ep-tx-body {
+  font-size: var(--ep-fs-body);
+  line-height: 1.45;
+}
+
+.ep-tx-title {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-size: var(--ep-fs-title);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.ep-tx-key {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-size: var(--ep-fs-key);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── le tiret : principe graphique de la charte ─────────────────────── */
+
+.ep-tiret {
+  display: block;
+  width: var(--ep-tiret-w);
+  height: var(--ep-tiret-h);
+  background: var(--ep-white);
+  transform: skewX(-12deg);
+}
+
+.ep-tiret--sky {
+  background: var(--ep-sky);
+}
+.ep-tiret--dark {
+  background: var(--ep-black);
+}
+.ep-tiret--sm {
+  width: 18px;
+  height: 5px;
+}
+/* Repère d'un titre de carte : plus discret que celui d'une section. */
+.ep-tiret--xs {
+  width: 12px;
+  height: 4px;
+}
+
+.ep-badge {
+  display: inline-block;
+  padding: 5px 14px 6px;
+  transform: skewX(-12deg);
+  background: linear-gradient(100deg, var(--ep-sky), var(--ep-deep));
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: var(--ep-badge-fs);
+  letter-spacing: var(--ep-badge-track);
+  text-transform: uppercase;
+  color: #00121f;
+}
+
+.ep-badge > span {
+  display: inline-block;
+  transform: skewX(12deg);
+}
+
+/* Badge de rang : le 01 · 02 · 03 des étapes du produit, sur la vue d'ensemble.
+   Mêmes règles que le badge, à la taille d'un chiffre. Chiffres tabulaires,
+   comme partout ailleurs dans la charte. */
+.ep-badge--micro {
+  padding: 2px 7px 3px;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  /* Sur 22 px de large, le dégradé complet met le second chiffre en plein sur
+     --deep, à 2,4:1. Même correction que `.ep-btn--brand`. */
+  background: linear-gradient(100deg, var(--ep-sky), var(--ep-mid));
+}
+
+/* ─── actions ────────────────────────────────────────────────────────── */
+
+/* Les tailles viennent de `.ep-shell` ou `.ep-app`. Une modale Radix se rend
+   dans un portail, hors des deux : sans repli, ces variables ne resolvent pas
+   et le bouton retombe sur la taille par defaut du navigateur — un libelle
+   italique majuscule de 16 px qui deborde. Les replis valent l'echelle
+   applicative, la plus frequente pour une modale. */
+.ep-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--ep-btn-h, 42px);
+  padding: 0 var(--ep-btn-pad, 20px);
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: var(--ep-btn-fs, 12.5px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  cursor: pointer;
+  /* L'écart vit sur le bouton, pas sur un enfant précis. Il était posé sur
+     `.ep-btn > span` seulement : une icône placée en enfant direct, à côté du
+     libellé, se retrouvait collée au texte ET restée en italique, faute de
+     contre-inclinaison. Deux défauts pour la même cause — une règle qui
+     supposait une structure au lieu de la couvrir. */
+  gap: 10px;
+  transform: skewX(-12deg);
+  transition: transform 0.16s var(--ep-ease), background 0.16s var(--ep-ease),
+    border-color 0.16s var(--ep-ease), color 0.16s var(--ep-ease);
+}
+
+/* Chaque enfant direct est contre-incliné : l'icône comme le libellé. */
+.ep-btn > * {
+  transform: skewX(12deg);
+}
+
+/* Un enfant peut lui-même porter une icône et son texte. */
+.ep-btn > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ep-btn--primary {
+  background: var(--ep-white);
+  color: var(--ep-black);
+}
+.ep-btn--primary:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(--ep-sky);
+  transform: skewX(-12deg) translateY(-2px);
+}
+
+/* Le dégradé de marque sur une action qu'on veut voir de loin.
+   ⚠ Extension de charte, demandée le 2026-08-17 : « aucun autre dégradé hors
+   badges » interdisait ce bouton. La règle visait les aplats décoratifs ; le
+   dégradé sky → deep est la signature de la marque, et le porter sur l'action
+   que l'écran demande n'est pas une décoration. Même encre que `.ep-badge`.
+   À poser avec parcimonie : deux suffisent à peupler un écran, quatre le
+   rendent illisible. */
+.ep-btn--brand {
+  /* S'arrête au bleu intermédiaire, pas au foncé. Le badge va jusqu'à --deep,
+     où l'encre sombre tombe à 2,4:1 — tolérable sur un mot de quatre lettres
+     tenu court, pas sur un libellé de bouton dont la fin traverse justement la
+     partie sombre du dégradé. Sur --ep-mid l'encre tient 5,7:1. */
+  background: linear-gradient(100deg, var(--ep-sky), var(--ep-mid));
+  color: #00121f;
+}
+.ep-btn--brand:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(--ep-sky);
+  transform: skewX(-12deg) translateY(-2px);
+}
+
+.ep-btn--ghost {
+  border-color: var(--ep-line-2);
+  color: var(--ep-white);
+  background: transparent;
+}
+.ep-btn--ghost:hover:not(:disabled, [aria-disabled="true"]) {
+  border-color: var(--ep-white);
+  background: rgba(255, 255, 255, 0.06);
+  transform: skewX(-12deg) translateY(-2px);
+}
+
+/* Orange Strava : réservé au bouton qui déclenche une action Strava, comme
+   l'exigent leurs conditions de marque. Nulle part ailleurs.
+
+   ⚠ Extension arbitrée le 2026-08-18 : la liste fermée de CLAUDE.md — bouton de
+   connexion, état et bandeau de synchronisation — n'incluait pas le lien qui
+   envoie l'athlète demander son archive sur strava.com (`/upload-fit`). Il y est
+   ajouté : le lien mène chez Strava, et c'est justement sa visibilité qui était
+   le problème à résoudre. La règle reste « rien qui ne touche pas à Strava ». */
+.ep-btn--strava {
+  background: var(--ep-strava);
+  color: var(--ep-white);
+}
+.ep-btn--strava:hover:not(:disabled, [aria-disabled="true"]) {
+  background: #e34502;
+  transform: skewX(-12deg) translateY(-2px);
+}
+
+.ep-btn--light {
+  background: var(--ep-black);
+  color: var(--ep-white);
+}
+.ep-btn--light:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(--ep-deep);
+  transform: skewX(-12deg) translateY(-2px);
+}
+
+/* Action destructrice. Contour seulement au repos : elle ne doit pas rivaliser
+   avec l'action principale de l'écran. */
+/* Google en contour : présent, sans voler la place de l'action. Fond et
+   contour repris du bouton sombre de leur charte. */
+.ep-btn--google {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+.ep-btn--google:hover:not(:disabled, [aria-disabled="true"]) {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.ep-btn--danger {
+  border-color: color-mix(in srgb, var(--ep-danger) 40%, transparent);
+  color: var(--ep-danger-ink);
+  background: transparent;
+}
+.ep-btn--danger:hover:not(:disabled, [aria-disabled="true"]) {
+  border-color: var(--ep-danger);
+  background: color-mix(in srgb, var(--ep-danger) 12%, transparent);
+  transform: skewX(-12deg) translateY(-2px);
+}
+
+/* Choix parmi une liste : un bouton par option, avec sa description. Le
+   motif revenait cinq fois dans l'assistant de commande et deux fois dans la
+   suppression de compte, chaque fois redéclaré. */
+.ep-choice {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  text-align: left;
+  border: 1px solid var(--ep-line);
+  background: transparent;
+  color: var(--ep-dim);
+  cursor: pointer;
+  transition: border-color 0.16s var(--ep-ease), background 0.16s var(--ep-ease),
+    color 0.16s var(--ep-ease);
+}
+.ep-choice:hover:not([aria-checked="true"]) {
+  border-color: var(--ep-line-2);
+  color: var(--ep-white);
+}
+.ep-choice[aria-checked="true"] {
+  border-color: var(--ep-sky);
+  background: color-mix(in srgb, var(--ep-sky) 8%, transparent);
+  color: var(--ep-white);
+}
+.ep-choice__title {
+  display: block;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--ep-white);
+}
+.ep-choice__desc {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--ep-faint);
+}
+
+/* ─── Questionnaire pas à pas ─────────────────────────────────────────
+   Le passage d'une question à la suivante est automatique, sur le clic d'une
+   réponse. Sans glissement, le bloc suivant apparaît au même endroit et rien
+   ne dit qu'on a avancé.
+
+   `gels.css` porte une copie de ces deux animations, sous le préfixe
+   `gels-`. Celles-ci sont la version de charte : même durée, la courbe
+   d'animation unique `--ep-ease`, et un nom qui n'appartient à aucune
+   fonctionnalité. Le comparateur de gels devrait les reprendre le jour où on
+   y retouchera. */
+@keyframes ep-step-in {
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes ep-step-in-back {
+  from { opacity: 0; transform: translateX(-28px); }
+  to { opacity: 1; transform: none; }
+}
+.ep-step-forward { animation: ep-step-in 260ms var(--ep-ease) both; }
+.ep-step-back { animation: ep-step-in-back 260ms var(--ep-ease) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ep-step-forward,
+  .ep-step-back { animation: none; }
+}
+
+/* Jauge de progression d'un assistant : une barre par étape, l'étape en
+   cours deux fois plus large. */
+.ep-steps {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ep-steps i {
+  height: 2px;
+  flex: 1;
+  background: var(--ep-line);
+  transition: flex 0.3s var(--ep-ease), background 0.3s var(--ep-ease);
+}
+.ep-steps i[data-state="done"] {
+  background: color-mix(in srgb, var(--ep-sky) 50%, transparent);
+}
+.ep-steps i[data-state="current"] {
+  background: var(--ep-sky);
+  flex: 2;
+}
+
+/* Case à cocher présentée en pastille. La case reste un vrai `input`, masqué
+   visuellement : c'est lui qui porte le focus, l'état et l'annonce. */
+.ep-check {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid var(--ep-line);
+  color: var(--ep-faint);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: skewX(-12deg);
+  transition: border-color 0.16s var(--ep-ease), color 0.16s var(--ep-ease);
+}
+.ep-check > span {
+  display: block;
+  transform: skewX(12deg);
+}
+.ep-check input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.ep-check:has(input:checked) {
+  border-color: var(--ep-sky);
+  color: var(--ep-sky);
+}
+.ep-check:hover:not(:has(input:checked)) {
+  color: var(--ep-white);
+}
+.ep-check:has(input:focus-visible) {
+  outline: 2px solid var(--ep-sky);
+  outline-offset: 3px;
+}
+
+.ep-btn--sm {
+  height: var(--ep-btn-h-sm, 34px);
+  padding: 0 var(--ep-btn-pad-sm, 14px);
+  font-size: var(--ep-btn-fs-sm, 11px);
+}
+
+.ep-btn--block {
+  width: 100%;
+}
+
+/* Bouton flottant posé par-dessus le contenu — le lanceur du parcours guidé.
+
+   Le fond vit ICI et non dans un utilitaire Tailwind : `.ep-btn--ghost`
+   déclare `background: transparent`, et l'ordre des feuilles diffère entre
+   développement et production. Un `bg-black/70` posé par-dessus gagnerait en
+   prod et perdrait en dev — ou l'inverse. La charte prescrit une classe
+   dédiée pour ce cas précis, et les deux règles vivant dans ce fichier,
+   l'ordre est décidé ici, pas par un bundler.
+
+   Il lui faut un fond : posé sur un graphique, un bouton fantôme n'est plus
+   lisible du tout. */
+.ep-fab {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(12px);
+  border-color: var(--ep-line-2);
+}
+.ep-fab:hover:not(:disabled, [aria-disabled="true"]) {
+  background: rgba(0, 0, 0, 0.85);
+  border-color: var(--ep-sky);
+  color: var(--ep-sky);
+}
+
+/* Au téléphone, le bouton flottant (« Guide ») passe en icône seule : libellé,
+   il recouvrait la ligne qu'il surplombait, juste au-dessus de la barre basse.
+   Le libellé reste le nom accessible. */
+@media (max-width: 899px) {
+  .ep-fab {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    padding: 0;
+    gap: 0;
+  }
+  .ep-fab > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+.ep-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Pas encore prêt, mais il répond au clic — pour dire ce qui manque.
+
+   Même retrait que `:disabled`, sans le curseur interdit : le clic n'est pas
+   refusé, il explique. Un vrai `disabled` avalait le clic en silence, et
+   l'athlète qui visait le bouton avant d'avoir tout rempli ne savait pas
+   pourquoi rien ne se passait. Le survol est coupé dans chaque variante : se
+   teinter en bleu promettrait une action qui n'aura pas lieu. */
+.ep-btn[aria-disabled="true"] {
+  opacity: 0.45;
+}
+
+.ep-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ep-link__arrow {
+  display: inline-block;
+  transition: transform 0.14s var(--ep-ease);
+}
+.ep-link:hover .ep-link__arrow {
+  transform: translateX(4px);
+}
+
+/* Focus visible partout — et la garantie doit tenir contre `outline-none`.
+
+   La pseudo-classe est répétée volontairement. `:focus-visible` compte une fois
+   par occurrence : `.ep-app :focus-visible:focus-visible` pèse 0-3-0, contre
+   0-2-0 pour `.focus\:outline-none:focus`. La règle gagne donc par spécificité,
+   sans `!important` et sans dépendre de l'ordre des feuilles.
+
+   Ce détail n'est pas cosmétique : dans le bundle de production, `brand.css`
+   sort AVANT les utilitaires Tailwind (mesuré : offset 8,5 k contre 128 k). À
+   spécificité égale, c'était Tailwind qui gagnait, donc l'anneau de focus était
+   bel et bien supprimé sur les 23 éléments portant `outline-none`. En
+   développement l'ordre est inverse, parce que Vite injecte le CSS importé par
+   un composant après `index.css` — le défaut ne se voyait pas en local. */
+.ep-shell :focus-visible:focus-visible,
+.ep-app :focus-visible:focus-visible,
+.ep-invert :focus-visible:focus-visible {
+  outline: 2px solid var(--ep-sky);
+  outline-offset: 3px;
+}
+
+/* ─── panneau : la surface « instrument » ────────────────────────────── */
+
+.ep-panel {
+  background: var(--ep-s1);
+  border: 1px solid var(--ep-line);
+  padding: 20px;
+  position: relative;
+}
+
+/* Le repère ciel en haut à gauche : ce panneau est un relevé, pas une carte. */
+.ep-panel::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 56px;
+  height: 2px;
+  background: var(--ep-sky);
+}
+
+.ep-panel__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--ep-line);
+}
+
+.ep-panel__foot {
+  border-top: 1px solid var(--ep-line);
+  padding-top: 16px;
+}
+
+.ep-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--ep-sky);
+  animation: ep-pulse 2.4s var(--ep-ease) infinite;
+}
+
+@keyframes ep-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Deux rangées fixes : les trois valeurs restent alignées même quand un
+   libellé passe sur deux lignes — ce qui arrive selon la langue. */
+.ep-metric {
+  display: grid;
+  grid-template-rows: 2.6em auto;
+  align-content: start;
+  padding-left: 18px;
+  border-left: 1px solid var(--ep-line);
+}
+.ep-metric:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+.ep-metric b {
+  display: block;
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 24px;
+  margin-top: 5px;
+}
+.ep-metric b span {
+  color: var(--ep-sky);
+}
+
+/* ─── carte de contenu ───────────────────────────────────────────────── */
+
+.ep-card {
+  background: var(--ep-s1);
+  border: 1px solid var(--ep-line);
+  padding: var(--ep-card-pad);
+  position: relative;
+  transition: border-color 0.2s var(--ep-ease), background 0.2s var(--ep-ease);
+}
+/* Le survol est opt-in : une carte qui réagit est une carte cliquable. */
+.ep-card--hover:hover,
+.ep-card--hover:focus-visible {
+  border-color: var(--ep-line-2);
+  background: var(--ep-s2);
+}
+/* Repère ciel : cette carte porte l'action principale de son groupe. */
+.ep-card--mark::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 2px;
+  background: var(--ep-sky);
+}
+
+.ep-pill {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 11px;
+  border: 1px solid var(--ep-line);
+  color: var(--ep-faint);
+  transform: skewX(-12deg);
+}
+.ep-pill > span {
+  display: block;
+  transform: skewX(12deg);
+}
+.ep-pill--on {
+  border-color: var(--ep-sky);
+  color: var(--ep-sky);
+}
+
+/* ─── inversion de polarité (charte : pages blanches) ────────────────── */
+
+.ep-invert {
+  background: var(--ep-white);
+  color: var(--ep-black);
+}
+.ep-invert .ep-label {
+  color: rgba(0, 0, 0, 0.45);
+}
+.ep-invert .ep-body,
+.ep-invert .ep-lead {
+  color: rgba(0, 0, 0, 0.66);
+}
+.ep-invert .ep-link {
+  color: var(--ep-black);
+}
+
+/* Croix de repère — 7.4 des applications typographiques */
+.ep-cross {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  opacity: 0.28;
+}
+.ep-cross::before,
+.ep-cross::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+.ep-cross::before {
+  left: 5px;
+  top: 0;
+  width: 1px;
+  height: 11px;
+}
+.ep-cross::after {
+  top: 5px;
+  left: 0;
+  height: 1px;
+  width: 11px;
+}
+
+/* ─── index des outils ───────────────────────────────────────────────── */
+
+.ep-index {
+  border-top: 1px solid var(--ep-line);
+}
+
+.ep-row {
+  display: grid;
+  grid-template-columns: 132px 1fr 1.1fr;
+  gap: 26px;
+  align-items: center;
+  min-height: 92px;
+  padding: 20px;
+  border-bottom: 1px solid var(--ep-line);
+  position: relative;
+  transition: background 0.16s var(--ep-ease), opacity 0.16s var(--ep-ease);
+}
+.ep-row:hover,
+.ep-row:focus-visible {
+  background: rgba(255, 255, 255, 0.04);
+}
+.ep-index:hover .ep-row {
+  opacity: 0.5;
+}
+.ep-index:hover .ep-row:hover,
+.ep-index .ep-row:focus-visible {
+  opacity: 1;
+}
+
+.ep-row__name {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 21px;
+  line-height: 1.05;
+}
+.ep-row:hover .ep-row__name,
+.ep-row:focus-visible .ep-row__name {
+  color: var(--ep-sky);
+}
+
+@media (max-width: 767px) {
+  .ep-row {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 22px 0;
+  }
+}
+
+/* ─── formulaires ────────────────────────────────────────────────────── */
+
+.ep-field__label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.ep-input {
+  width: 100%;
+  height: var(--ep-input-h);
+  padding: 0 14px;
+  background: var(--ep-s1);
+  border: 1px solid var(--ep-line-2);
+  color: var(--ep-white);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  transition: border-color 0.16s var(--ep-ease), background 0.16s var(--ep-ease);
+}
+.ep-input::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+.ep-input:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.ep-input:focus {
+  outline: none;
+  border-color: var(--ep-sky);
+  background: var(--ep-s2);
+}
+.ep-input:focus-visible {
+  outline: 2px solid var(--ep-sky);
+  outline-offset: 2px;
+}
+.ep-input[aria-invalid="true"] {
+  border-color: var(--ep-danger);
+}
+.ep-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ep-input--with-toggle {
+  padding-right: 52px;
+}
+
+.ep-field__toggle {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  width: 48px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ep-faint);
+  background: transparent;
+  transition: color 0.16s var(--ep-ease);
+}
+.ep-field__toggle:hover {
+  color: var(--ep-white);
+}
+
+.ep-hint {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ep-faint);
+  margin-top: 7px;
+}
+
+/* Classe dédiée plutôt qu'un utilitaire Tailwind par-dessus : à spécificité
+   égale, l'ordre des feuilles décide, et l'erreur repassait en gris. */
+.ep-hint--error {
+  color: var(--ep-danger-ink);
+  font-weight: 400;
+}
+
+/* Liste déroulante : même boîte que le champ, plus le chevron dessiné à la
+   main. `appearance: none` retire le chrome natif, qui ignore la charte. */
+.ep-select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 38px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--ep-faint) 50%),
+    linear-gradient(135deg, var(--ep-faint) 50%, transparent 50%);
+  background-position: calc(100% - 20px) calc(50% + 2px), calc(100% - 14px) calc(50% + 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+.ep-select option {
+  background: var(--ep-s2);
+  color: var(--ep-white);
+}
+
+/* Unité collée au champ : « cm », « kg », « m ». Elle n'est pas saisissable,
+   donc elle ne prend pas de place dans le flux — le champ se réserve la
+   marge par `padding-right`. Le repère est le champ lui-même, pas tout le
+   bloc : une aide ou une erreur sous le champ ne fait plus descendre l'unité. */
+.ep-field {
+  position: relative;
+}
+.ep-field__control {
+  position: relative;
+}
+.ep-field__unit {
+  position: absolute;
+  right: 14px;
+  bottom: 0;
+  height: var(--ep-input-h);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--ep-faint);
+}
+.ep-input--with-unit {
+  padding-right: 48px;
+}
+
+textarea.ep-input {
+  height: auto;
+  min-height: calc(var(--ep-input-h) * 2);
+  padding: 12px 14px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* Groupe de champs. La légende porte le tiret : c'est une section. */
+.ep-fieldset {
+  border: 1px solid var(--ep-line);
+  background: var(--ep-s1);
+  padding: var(--ep-card-pad);
+}
+.ep-fieldset__legend {
+  display: block;
+  padding: 0;
+}
+
+/* Statuts : couleur + icône + texte, jamais la couleur seule. */
+.ep-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.45;
+}
+.ep-status--error {
+  border-color: color-mix(in srgb, var(--ep-danger) 40%, transparent);
+  background: color-mix(in srgb, var(--ep-danger) 8%, transparent);
+  color: var(--ep-danger-ink);
+}
+.ep-status--success {
+  border-color: rgba(108, 220, 255, 0.4);
+  background: rgba(108, 220, 255, 0.08);
+  color: var(--ep-sky);
+}
+.ep-status svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ep-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.ep-divider::before,
+.ep-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--ep-line);
+}
+
+/* ─── rail de la boucle (élément signature) ──────────────────────────── */
+
+/* Le rail passait sous la barre haute : `z-index: 30` contre `z-50` pour une
+   barre à fond opaque, et un départ à 12vh qui ignorait sa hauteur — l'étiquette
+   verticale s'y faisait rogner, « SESSION » se lisant « SESSIO ».
+
+   Il démarre désormais sous la barre, en pixels et non en pourcentage de
+   viewport : la barre a une hauteur fixe, pas proportionnelle. Et il passe
+   au-dessus, sans quoi sa tête disparaît en haut de course. */
+.ep-rail {
+  --ep-rail-top: 108px;
+  --ep-rail-len: calc(100vh - var(--ep-rail-top) - 96px);
+  position: fixed;
+  left: 26px;
+  top: 0;
+  height: 100vh;
+  width: 44px;
+  z-index: 55;
+  pointer-events: none;
+  display: none;
+}
+
+@media (min-width: 1320px) {
+  .ep-rail {
+    display: block;
+  }
+}
+
+.ep-rail__track,
+.ep-rail__fill {
+  position: absolute;
+  left: 14px;
+  top: var(--ep-rail-top);
+  width: 1px;
+  height: var(--ep-rail-len);
+}
+.ep-rail__track {
+  background: var(--ep-line);
+}
+.ep-rail__fill {
+  background: var(--ep-sky);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.12s linear;
+}
+
+.ep-rail__head {
+  position: absolute;
+  left: 14px;
+  top: var(--ep-rail-top);
+  transform: translate(-50%, -50%) skewX(-12deg);
+  width: 13px;
+  height: 4px;
+  background: var(--ep-sky);
+  transition: top 0.12s linear;
+}
+
+.ep-rail__label {
+  position: absolute;
+  left: -2px;
+  /* Position de départ portée par la feuille, plus par un style inline : avant
+     l'exécution du script, l'étiquette retombait sinon en haut de page, sous la
+     barre. */
+  top: var(--ep-rail-top);
+  transform: translate(-50%, -50%) rotate(-90deg);
+  white-space: nowrap;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ep-faint);
+  transition: top 0.12s linear, opacity 0.2s var(--ep-ease);
+}
+
+/* Le retour de boucle : l'arc se ferme quand on atteint le bas de la page. */
+.ep-rail__loop {
+  position: absolute;
+  left: 14px;
+  bottom: 8vh;
+  width: 22px;
+  height: 34px;
+  border: 1px solid var(--ep-sky);
+  border-left: 0;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.4s var(--ep-ease), transform 0.4s var(--ep-ease);
+}
+.ep-rail.is-closed .ep-rail__loop {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── courbes ────────────────────────────────────────────────────────── */
+
+.ep-trace {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.ep-axl {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  fill: var(--ep-faint);
+}
+
+.ep-invert .ep-axl {
+  fill: rgba(0, 0, 0, 0.45);
+}
+
+/* Annotation posée sur un graphique clair */
+.ep-note {
+  position: absolute;
+  background: var(--ep-black);
+  color: var(--ep-white);
+  padding: 6px 10px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s var(--ep-ease), transform 0.4s var(--ep-ease);
+}
+.is-revealed .ep-note {
+  opacity: 1;
+  transform: translateY(0);
+}
+.is-revealed .ep-note:nth-of-type(2) {
+  transition-delay: 0.14s;
+}
+.is-revealed .ep-note:nth-of-type(3) {
+  transition-delay: 0.28s;
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   PRIMITIVES APPLICATIVES — phase 2, tranche 1
+   Barre d'application, en-tête de page, onglets, contrôle segmenté.
+   Écrites d'après le POC applicatif, avec trois écarts assumés, tous en
+   faveur de l'accessibilité :
+     · les cibles tactiles atteignent 44 px, par extension de la zone de clic
+       et non par grossissement du visuel ;
+     · les onglets et le contrôle segmenté portent une sémantique ARIA que le
+       POC n'avait pas ;
+     · le focus reste visible malgré le défilement horizontal de la nav.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ─── barre d'application ────────────────────────────────────────────── */
+
+/* ─── échelle d'empilement ────────────────────────────────────────────────
+
+   Une seule échelle, écrite ici, pour éviter la surenchère de `z-50` contre
+   `z-60` qu'on trouve dans tout projet où personne ne l'a fixée.
+
+     -1   lueur et grain de fond
+     30   barre d'application, rails, en-têtes collants
+     50   superpositions modales — dialogues Radix, panneaux de réservation
+     60   info-bulles et menus flottants posés au-dessus d'une modale
+
+   La barre d'application était à 60, au-dessus des modales à 50 : le panneau
+   de réservation d'un test passait SOUS le bandeau, qui lui mangeait son
+   en-tête et son bouton de fermeture. Ce n'était pas propre au panneau — les
+   quinze superpositions de l'application et tous les dialogues shadcn sont à
+   50, donc tous étaient concernés.
+
+   Une modale couvre le chrome : c'est ce qui la rend modale.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.ep-appbar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: stretch;
+  /* 52 px : la hauteur d'une barre d'outil, pas d'un en-tête de site. À 72,
+     la barre et l'en-tête de page prenaient un sixième d'un écran de portable
+     avant la première donnée. Toute la hauteur se règle ici. */
+  height: var(--ep-appbar-h);
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--ep-line);
+}
+/* Menu du compte ouvert : la barre passe devant le tiroir d'analyse (z 50),
+   sinon le menu s'ouvrait dessous. */
+.ep-appbar:has(.ep-menu) {
+  z-index: 60;
+}
+
+.ep-app {
+  --ep-appbar-h: 52px;
+  /* Hauteur du chrome collant : la barre, plus la sous-barre quand l'écran en
+     a une (voir `app-ui.css`). C'est sur elle que se calent les rails. */
+  --ep-chrome-h: var(--ep-appbar-h);
+  /* Gouttière commune à la barre et au contenu : jusqu'à 1440 px, le logo et
+     le premier bloc de la page tombent sur la même verticale. */
+  --ep-gutter: 24px;
+}
+
+.ep-appbar__inner {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  width: 100%;
+  padding: 0 var(--ep-gutter);
+}
+
+/* La marque se détache de la navigation par un filet court, à mi-hauteur.
+
+   Sans séparation, le logo se lit comme la première entrée du menu. Le filet
+   pleine hauteur d'avant cloisonnait la barre ; à 18 px il sépare sans
+   dessiner de case. */
+.ep-appbar__brand {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 20px;
+}
+.ep-appbar__brand::after {
+  content: "";
+  width: 1px;
+  height: 18px;
+  background: var(--ep-line-2);
+}
+
+.ep-appbar__brand img {
+  display: block;
+  width: auto;
+}
+
+/* Le lien qui porte le logo est une cible tactile de 44 px sous 768 px (voir
+   `index.css`) : sans centrage, l'image restait collée en haut de cette boîte
+   et le logo paraissait poussé vers le haut de la barre. */
+.ep-appbar__brand a {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo réglé en hauteur d'ENCRE (voir `.ep-brand`) : 18 px dans une barre de
+   52 — un cran au-dessus des libellés de la barre (14 px), pour que la marque
+   ouvre la ligne. Le téléphone garde ses 14 px (règle sous 900 px). */
+.ep-appbar__brand .ep-brand {
+  --ep-brand-ink: 18px;
+  height: var(--ep-brand-box);
+}
+
+/* Le contenu prend la même gouttière que la barre : le logo et le premier
+   bloc de la page tombent sur la même verticale, et l'écran gagne 32 px de
+   largeur utile. */
+.ep-app .ep-wrap {
+  padding-inline: var(--ep-gutter);
+}
+
+/* ─── navigation principale ──────────────────────────────────────────────
+   Casse normale, icône et libellé, comme dans un outil : les capitales
+   espacées étaient la voix de la marque, elles criaient dans le chrome.
+
+   Les entrées occupent toute la hauteur de la barre pour que le trait de
+   l'écran courant se pose sur sa bordure basse ; le fond de survol, lui, est
+   une pastille de 32 px dessinée par `::before`. */
+.ep-mainnav {
+  display: flex;
+  align-items: stretch;
+  gap: 2px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ep-mainnav::-webkit-scrollbar {
+  display: none;
+}
+
+.ep-mainnav__item {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  /* Sans ceci, les entrées rétrécissent sous leur largeur intrinsèque et le
+     texte en `nowrap` déborde sur la voisine. C'est au conteneur de défiler. */
+  flex: 0 0 auto;
+  padding: 0 11px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  /* La barre de l'app est le premier niveau : un cran au-dessus des
+     sous-barres (12,5 px) et un texte au repos un peu plus clair. À taille
+     égale, la barre et la sous-barre se lisaient comme deux rangées du même
+     menu. */
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: rgba(255, 255, 255, 0.68);
+  white-space: nowrap;
+  transition: color 0.16s var(--ep-ease);
+}
+.ep-mainnav__item svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.75;
+  opacity: 0.75;
+  transition: color 0.16s var(--ep-ease), opacity 0.16s var(--ep-ease);
+}
+.ep-mainnav__item::before {
+  content: "";
+  position: absolute;
+  inset: calc((var(--ep-appbar-h) - 32px) / 2) 0;
+  z-index: -1;
+  background: transparent;
+  transition: background 0.16s var(--ep-ease);
+}
+.ep-mainnav__item:hover {
+  color: var(--ep-white);
+}
+.ep-mainnav__item:hover::before {
+  background: rgba(255, 255, 255, 0.06);
+}
+/* `overflow-x: auto` sur le parent rogne tout ce qui dépasse : l'anneau de
+   focus se dessine donc sur la pastille, à l'intérieur de l'entrée. */
+.ep-app .ep-mainnav__item:focus-visible:focus-visible {
+  outline: none;
+}
+.ep-mainnav__item:focus-visible::before {
+  outline: 2px solid var(--ep-sky);
+  outline-offset: -2px;
+}
+
+/* L'entrée courante NOMME l'écran — le titre de page est en lecture d'écran
+   seulement. Texte et icône au ciel, et un trait de 2 px sur la bordure
+   basse. Quand l'écran a une sous-barre, le trait descend sur l'onglet
+   sélectionné (`ChromeIndicator`) et l'entrée garde sa couleur : la couleur
+   dit le chemin, le trait dit où l'on est. `aria-current="page"` reste la
+   source pour les lecteurs d'écran. */
+.ep-mainnav__item[aria-current="page"] {
+  color: var(--ep-sky);
+}
+.ep-mainnav__item[aria-current="page"] svg {
+  color: var(--ep-sky);
+  opacity: 1;
+}
+.ep-mainnav__item[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 0;
+  height: 2px;
+  background: var(--ep-sky);
+}
+
+/* ─── commandes de droite ───────────────────────────────────────────── */
+
+.ep-appbar__actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.ep-appbar__sep {
+  width: 1px;
+  height: 18px;
+  margin: 0 8px;
+  background: var(--ep-line-2);
+}
+
+/* Bouton icône. Visuel 32 px, zone de clic 44 px. */
+/* Sans cadre : un bouton-icône encadré, posé dans une carte, faisait un cadre
+   dans le cadre (retour du 2026-11-24). Le survol pose un fond, l'état actif
+   prend l'accent. */
+.ep-icobtn {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--ep-dim);
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.16s var(--ep-ease), color 0.16s var(--ep-ease),
+    background 0.16s var(--ep-ease);
+}
+.ep-icobtn::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+}
+.ep-icobtn:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ep-white);
+}
+.ep-icobtn[aria-pressed="true"],
+.ep-icobtn[aria-expanded="true"],
+.ep-icobtn[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ep-sky);
+}
+
+/* Sans cadre dans la barre : un fond au survol suffit à dire « cliquable ». */
+.ep-icobtn--bare,
+.ep-icobtn--bare:hover,
+.ep-icobtn--bare[aria-expanded="true"],
+.ep-icobtn--bare[aria-current="page"] {
+  border-color: transparent;
+}
+.ep-icobtn--bare:hover,
+.ep-icobtn--bare[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Menu de compte : l'avatar et un chevron. Le nom se lit dans le menu. */
+.ep-userchip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 2px;
+  cursor: pointer;
+}
+.ep-userchip:hover .ep-avatar,
+.ep-userchip[aria-expanded="true"] .ep-avatar {
+  border-color: rgba(108, 220, 255, 0.55);
+}
+
+.ep-avatar {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(108, 220, 255, 0.12);
+  border: 1px solid rgba(108, 220, 255, 0.28);
+  color: var(--ep-sky);
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: border-color 0.16s var(--ep-ease);
+}
+
+@media (max-width: 899px) {
+  .ep-app {
+    --ep-gutter: 16px;
+  }
+  .ep-appbar__brand::after {
+    display: none;
+  }
+  .ep-appbar__brand .ep-brand {
+    --ep-brand-ink: 14px;
+    height: var(--ep-brand-box);
+  }
+  .ep-appbar__sep {
+    margin: 0 4px;
+  }
+  /* La dernière commande s'arrête sur le bord du contenu ; seule sa zone de
+     clic déborde dans la marge. */
+  .ep-appbar__actions {
+    margin-right: -4px;
+  }
+}
+
+/* ─── en-tête de page ────────────────────────────────────────────────── */
+
+.ep-pagehead {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.ep-pagehead__lead {
+  color: var(--ep-dim);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 8px;
+  max-width: 62ch;
+}
+
+.ep-pagehead__aside {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* En-tête qui porte aussi une mention — un compteur, une allocation — et pas
+   seulement des commandes. La mention reste à gauche, dans le flux de lecture,
+   les commandes à droite : `margin-left: auto` sur l'aside les rassemblait
+   toutes contre le bord droit, mention comprise, ce qui la donnait à lire à
+   l'endroit où l'œil cherche un bouton. */
+.ep-pagehead--spread {
+  /* Le titre est dans le chrome : la colonne de gauche ne porte que le tiret,
+     6 px face à une rangée de commandes de 34. Aligné en haut il flottait au
+     ras du bord ; centré, il tient la ligne. À réserver donc aux en-têtes sans
+     titre ni phrase de contexte visibles. */
+  align-items: center;
+}
+
+.ep-pagehead--spread .ep-pagehead__aside {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+
+.ep-pagehead__note {
+  margin-right: auto;
+  min-width: 0;
+}
+
+@media (max-width: 639px) {
+  .ep-pagehead__note {
+    margin-right: 0;
+    width: 100%;
+  }
+}
+
+/* Sur écran étroit, `margin-left: auto` renvoyait les commandes contre le bord
+   droit, chacune sur sa ligne : trois cents pixels de gouttière vide avant le
+   premier contenu. Elles reviennent à gauche, sous la phrase de contexte, dans
+   le flux de lecture. */
+@media (max-width: 639px) {
+  .ep-pagehead {
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .ep-pagehead__aside {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* ─── onglets ────────────────────────────────────────────────────────── */
+
+.ep-tabs {
+  display: flex;
+  gap: 26px;
+  border-bottom: 1px solid var(--ep-line);
+  margin-bottom: 32px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ep-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/* Sous 640 px, trois libelles en capitales espacees ne tiennent pas dans la
+   largeur : la rangee defile. Elle doit alors le DIRE. `.ep-chartscroll` a
+   deja tranche la question — la barre de defilement reste visible plutot que
+   masquee, c'est le seul indice honnete de ce qui reste hors champ — et cette
+   rangee la contredisait : `scrollbar-width: none` masquait purement et
+   simplement l'EXISTENCE des onglets suivants. Mesure a 390 px sur /matrix :
+   « Athlete Lab » commencait a x=354 pour une fenetre de 390.
+   Au-dela de 640 px les onglets tiennent : il n'y a rien a signaler. */
+@media (max-width: 639px) {
+  .ep-tabs {
+    gap: 18px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  }
+  .ep-tabs::-webkit-scrollbar {
+    display: block;
+    height: 3px;
+  }
+  .ep-tabs::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .ep-tabs::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+.ep-tabs__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  /* Même raison que pour la nav : l'onglet garde sa largeur intrinsèque,
+     c'est la barre qui défile. Sinon le libellé déborde sur le voisin. */
+  flex: 0 0 auto;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  /* 44 px de haut au total, dont 14 px sous le texte pour le soulignement. */
+  padding: 15px 0 14px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ep-faint);
+  cursor: pointer;
+  transition: color 0.16s var(--ep-ease), border-color 0.16s var(--ep-ease);
+}
+.ep-tabs__tab:hover:not(:disabled) {
+  color: var(--ep-white);
+}
+/* Même raison que pour la nav : la barre d'onglets défile, l'anneau rentre. */
+.ep-tabs__tab:focus-visible {
+  outline-offset: -3px;
+}
+.ep-tabs__tab[aria-selected="true"] {
+  color: var(--ep-white);
+  border-bottom-color: var(--ep-sky);
+}
+.ep-tabs__tab:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Onglets posés dans un en-tête qui porte déjà le filet : la rangée n'a plus
+   ni trait ni marge propres. Sinon le filet s'arrêtait au premier onglet, et
+   les 32 px de marge comptaient dans le centrage vertical — le titre et le
+   logo voisins tombaient 16 px sous les libellés. */
+.ep-tabs--bare {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+.ep-tabs--bare .ep-tabs__tab {
+  margin-bottom: 0;
+}
+
+/* Libellé court : réservé à la grille ci-dessous. */
+.ep-tabs__short {
+  display: none;
+}
+
+/* Rangée serrée — les onglets de la matrice : six entrées dans la sous-barre,
+   à côté du partenaire. Mesuré dans la sous-barre : les libellés complets
+   tiennent dès 1280 px ; à 1024 px il manquait 31 px. Entre 1024 et 1279 px,
+   les libellés courts prennent le relais (sous 1024, la grille). */
+.ep-tabs--tight {
+  gap: 20px;
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .ep-tabs--tight .ep-tabs__label {
+    display: none;
+  }
+  .ep-tabs--tight .ep-tabs__short {
+    display: inline;
+  }
+}
+
+/* ─── onglets en grille, sous 1024 px ──────────────────────────────────
+
+   Même constat que pour la navigation de l'app : une rangée qui défile cache
+   la moitié de ses entrées à qui ne pense pas à la pousser. Sous 1024 px, les
+   onglets marqués `--fit` se partagent la largeur en cases égales, icône
+   au-dessus d'un libellé court, toutes visibles d'un coup. Le code de l'onglet
+   actif est celui de la barre basse — couleur, voile et trait — le trait étant
+   ici en bas, le bord par lequel la rangée touche le contenu. */
+@media (max-width: 1023px) {
+  .ep-tabs--fit {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    gap: 0;
+    overflow: visible;
+  }
+  .ep-tabs--fit .ep-tabs__tab {
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    min-height: 58px;
+    padding: 9px 2px 8px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+  }
+  .ep-tabs--fit .ep-tabs__tab svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+  .ep-tabs--fit .ep-tabs__tab[aria-selected="true"] {
+    color: var(--ep-sky);
+    background: linear-gradient(
+      to bottom,
+      rgba(108, 220, 255, 0.03),
+      rgba(108, 220, 255, 0.13)
+    );
+  }
+  .ep-tabs--fit .ep-tabs__label {
+    display: none;
+  }
+  .ep-tabs--fit .ep-tabs__short {
+    display: inline;
+  }
+}
+
+/* ─── contrôle segmenté ──────────────────────────────────────────────── */
+
+.ep-seg {
+  display: inline-flex;
+  border: 1px solid var(--ep-line);
+  padding: 3px;
+}
+
+.ep-seg__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: none;
+  border: 0;
+  min-height: 38px;
+  padding: 8px 16px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ep-faint);
+  cursor: pointer;
+  transition: color 0.16s var(--ep-ease), background 0.16s var(--ep-ease);
+}
+.ep-seg__option[aria-checked="true"],
+.ep-seg__option[aria-selected="true"] {
+  background: rgba(108, 220, 255, 0.12);
+  color: var(--ep-sky);
+}
+
+/* `hover: hover` : sans cette garde, un appui tactile laisse l'état de survol
+   collé sur l'option touchée, et deux options paraissent actives jusqu'au
+   prochain appui ailleurs.
+
+   L'option inactive montait à blanc pur — plus lumineux que le ciel de la
+   sélection, si bien que survoler « Analysis » le faisait paraître choisi et
+   « Plan » abandonné. Elle s'arrête à 72 % : lisible, franchement en dessous
+   de la sélection. La surface blanche à 6 % dit où finit la cible, invisible
+   sinon dans une barre inclinée et collée.
+
+   L'option active répond aussi, d'un cran de ciel : sans quoi la moitié du
+   contrôle paraît morte au passage du curseur. */
+@media (hover: hover) {
+  .ep-seg__option:hover:not(:disabled):not([aria-checked="true"]):not([aria-selected="true"]) {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.72);
+  }
+  .ep-seg__option[aria-checked="true"]:hover:not(:disabled),
+  .ep-seg__option[aria-selected="true"]:hover:not(:disabled) {
+    background: rgba(108, 220, 255, 0.18);
+  }
+}
+
+/* Retour d'appui : la seule confirmation immédiate au doigt, où il n'y a pas
+   de survol pour préparer le geste. */
+.ep-seg__option:active:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ep-seg__option[aria-checked="true"]:active:not(:disabled),
+.ep-seg__option[aria-selected="true"]:active:not(:disabled) {
+  background: rgba(108, 220, 255, 0.22);
+}
+
+.ep-seg__option:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Pleine largeur, colonnes égales : pour un choix qui structure un panneau
+   (format, modèle) plutôt qu'une bascule d'unité posée dans un coin. Le
+   libellé peut passer sur deux lignes : quatre options tiennent ainsi sur un
+   téléphone sans défiler ni rogner. */
+.ep-seg--fill {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  width: 100%;
+}
+.ep-seg--fill .ep-seg__option {
+  padding: 8px 6px;
+  white-space: normal;
+  line-height: 1.25;
+  text-align: center;
+}
+/* ─── variante à pastille coulissante ───────────────────────────────────────
+   Reprise de la branche pacing route : la pastille glisse d'une option à
+   l'autre au lieu d'apparaître, ce qui dit d'où l'on vient. Colonnes égales,
+   sans quoi la translation d'un multiple de 100 % ne tombe pas juste.
+
+   `display` est déclaré ici et non par un utilitaire Tailwind : les deux
+   porteraient la même propriété à spécificité égale, et l'ordre des feuilles
+   s'inverse entre développement et production. */
+.ep-seg--slide {
+  display: inline-grid;
+  position: relative;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ep-seg__pill {
+  position: absolute;
+  inset-block: 3px;
+  left: 3px;
+  pointer-events: none;
+  background: rgba(108, 220, 255, 0.12);
+  border: 1px solid rgba(108, 220, 255, 0.28);
+  transition: transform 0.3s var(--ep-ease);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ep-seg__pill {
+    transition: none;
+  }
+}
+
+/* La pastille porte déjà l'état actif : un second fond sous l'option ferait
+   deux marques pour une seule information. */
+.ep-seg--slide .ep-seg__option[aria-checked="true"] {
+  background: none;
+}
+
+/* Dans la barre inclinée, la pastille est un enfant non transformé du
+   conteneur penché : elle hérite de l'angle sans rien de plus. */
+.ep-segbar .ep-seg--slide {
+  padding: 2px;
+}
+.ep-segbar .ep-seg__pill {
+  inset-block: 2px;
+  left: 2px;
+}
+
+/* Sous 768 px : pleine largeur plutôt que débordement, et 44 px de haut.
+   38 px suffit à la souris, pas au doigt — la contrainte tactile ne
+   s'applique que là où il y a un doigt. */
+@media (max-width: 767px) {
+  .ep-seg {
+    display: flex;
+    width: 100%;
+  }
+  .ep-seg__option {
+    flex: 1;
+    min-height: 44px;
+    padding: 8px 10px;
+  }
+}
+
+/* Variante serrée : un réglage logé dans l'en-tête d'une carte, à la hauteur
+   de son titre. Dès 768 px seulement — au doigt, la règle des 44 px ci-dessus
+   reste la bonne. */
+@media (min-width: 768px) {
+  .ep-seg--sm {
+    padding: 2px;
+  }
+  .ep-seg--sm .ep-seg__option {
+    min-height: 26px;
+    padding: 0 10px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   PRIMITIVES APPLICATIVES — phase 2, tranche 2
+   Chiffres, bandeaux, listes, rail latéral, tableau, jauges, cadres de
+   graphique, grille de scores, carte produit, état vide, squelette.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ─── chiffre clé ────────────────────────────────────────────────────── */
+
+.ep-num {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--ep-num);
+  line-height: 0.9;
+}
+.ep-num--sm {
+  font-size: calc(var(--ep-num) * 0.68);
+}
+.ep-num--xs {
+  font-size: calc(var(--ep-num) * 0.5);
+}
+/* L'unité ne prend ni l'italique ni la casse du chiffre : elle l'accompagne. */
+.ep-num u {
+  text-decoration: none;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.42em;
+  letter-spacing: 0.06em;
+  text-transform: none;
+  color: var(--ep-faint);
+  margin-left: 8px;
+}
+/* Au petit chiffre, 0.42em tombait à 9 px : l'unité ne se lisait plus. */
+.ep-num--xs u {
+  font-size: 0.55em;
+  margin-left: 4px;
+}
+.ep-num--accent {
+  color: var(--ep-sky);
+}
+
+/* ─── bande d'indicateurs ────────────────────────────────────────────── */
+
+.ep-kpis {
+  display: grid;
+  grid-template-columns: repeat(var(--ep-kpi-cols, 5), 1fr);
+  border: 1px solid var(--ep-line);
+  background: var(--ep-s1);
+}
+
+.ep-kpi {
+  padding: 22px 24px;
+  border-left: 1px solid var(--ep-line);
+}
+.ep-kpi:first-child {
+  border-left: 0;
+}
+.ep-kpi .ep-num {
+  margin-top: 10px;
+  font-size: calc(var(--ep-num) * 0.77);
+}
+/* Première case : elle nomme la période, elle ne porte pas de chiffre. */
+.ep-kpi--intro {
+  background: var(--ep-s2);
+}
+
+@media (max-width: 1199px) {
+  .ep-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ep-kpi {
+    border-left: 0;
+    border-top: 1px solid var(--ep-line);
+  }
+  .ep-kpi:first-child,
+  .ep-kpi:nth-child(2) {
+    border-top: 0;
+  }
+}
+@media (max-width: 599px) {
+  .ep-kpis {
+    grid-template-columns: 1fr;
+  }
+  .ep-kpi:nth-child(2) {
+    border-top: 1px solid var(--ep-line);
+  }
+}
+
+/* Variante serrée : deux colonnes jusque sur téléphone. Pour une bande de
+   chiffres courts qu'on lit d'un coup d'œil — le résultat du Stroop — où une
+   case par ligne poussait le dernier chiffre hors de l'écran. */
+@media (max-width: 599px) {
+  .ep-kpis--tight {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ep-kpis--tight .ep-kpi {
+    padding: 14px 16px;
+  }
+  .ep-kpis--tight .ep-kpi:nth-child(2) {
+    border-top: 0;
+  }
+  .ep-kpis--tight .ep-kpi:nth-child(even) {
+    border-left: 1px solid var(--ep-line);
+  }
+}
+
+/* ─── bandeau et note ────────────────────────────────────────────────── */
+
+.ep-banner {
+  display: flex;
+  /* Aligné sur la première ligne, pas sur le bloc : sur mobile le message
+     passe à quatre lignes et un tiret centré se retrouvait au milieu du
+     paragraphe. Le décalage cale le tiret sur l'axe optique de la 1re ligne. */
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  border: 1px solid var(--ep-line);
+  background: var(--ep-s1);
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ep-dim);
+}
+.ep-banner b {
+  font-weight: 500;
+  color: var(--ep-white);
+}
+/* Variante d'alerte : le ton passe par le tiret et le libellé, pas par un
+   aplat rouge. La charte n'a pas de rouge. */
+.ep-banner--alert {
+  border-color: var(--ep-line-2);
+  background: var(--ep-s2);
+}
+
+/* `ep-callout` et non `ep-note` : ce dernier est déjà pris par les
+   annotations posées sur les graphiques clairs de la landing. */
+.ep-callout {
+  border: 1px solid var(--ep-line);
+  padding: 14px 18px;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ep-faint);
+}
+
+/* ─── liste ──────────────────────────────────────────────────────────── */
+
+.ep-list {
+  border-top: 1px solid var(--ep-line);
+}
+
+.ep-li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 20px 6px;
+  border-bottom: 1px solid var(--ep-line);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.16s var(--ep-ease), padding-left 0.16s var(--ep-ease);
+}
+.ep-li:hover,
+.ep-li:focus-visible {
+  background: rgba(255, 255, 255, 0.035);
+  padding-left: 14px;
+}
+.ep-li__title {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 17px;
+  line-height: 1.1;
+}
+.ep-li:hover .ep-li__title,
+.ep-li:focus-visible .ep-li__title {
+  color: var(--ep-sky);
+}
+.ep-li__meta {
+  color: var(--ep-faint);
+  font-size: 12.5px;
+  margin-top: 3px;
+}
+.ep-li__aside {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--ep-faint);
+  flex-shrink: 0;
+}
+
+.ep-year {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 38px 0 4px;
+}
+.ep-year b {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 26px;
+}
+
+/* ─── champ de recherche en ligne ────────────────────────────────────── */
+
+.ep-search {
+  width: 100%;
+  min-height: 48px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--ep-line);
+  padding: 14px 0;
+  color: var(--ep-white);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+}
+.ep-search::placeholder {
+  color: var(--ep-faint);
+}
+.ep-search:focus {
+  outline: 0;
+  border-bottom-color: var(--ep-sky);
+}
+.ep-search:focus-visible {
+  outline: 2px solid var(--ep-sky);
+  outline-offset: 4px;
+}
+
+/* ─── rail latéral ───────────────────────────────────────────────────── */
+
+.ep-side {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.ep-sidenav {
+  display: grid;
+  gap: 2px;
+}
+.ep-sidenav__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 12px 14px;
+  background: none;
+  border: 0;
+  text-align: left;
+  color: var(--ep-dim);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.16s var(--ep-ease), color 0.16s var(--ep-ease);
+}
+.ep-sidenav__item:hover {
+  color: var(--ep-white);
+}
+.ep-sidenav__item[aria-current="true"] {
+  background: var(--ep-s2);
+  color: var(--ep-white);
+}
+.ep-sidenav__count {
+  margin-left: auto;
+  color: var(--ep-faint);
+}
+
+@media (max-width: 899px) {
+  .ep-side {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .ep-sidenav {
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .ep-sidenav::-webkit-scrollbar {
+    display: none;
+  }
+  .ep-sidenav__item:focus-visible {
+    outline-offset: -3px;
+  }
+}
+
+/* ─── tableau ────────────────────────────────────────────────────────── */
+
+.ep-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ep-table th {
+  text-align: left;
+  padding: 0 12px 14px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: var(--ep-label-fs, 10.5px);
+  font-weight: 500;
+  letter-spacing: var(--ep-label-track, 0.16em);
+  text-transform: uppercase;
+  color: var(--ep-faint);
+  border-bottom: 1px solid var(--ep-line);
+  white-space: nowrap;
+}
+.ep-table td {
+  padding: 18px 12px;
+  border-bottom: 1px solid var(--ep-line);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--ep-dim);
+}
+.ep-table tbody tr {
+  transition: background 0.16s var(--ep-ease);
+}
+.ep-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+.ep-table td b {
+  display: block;
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 15.5px;
+  color: var(--ep-white);
+}
+.ep-table td small {
+  display: block;
+  color: var(--ep-faint);
+  font-size: 12px;
+  margin-top: 2px;
+}
+/* Colonne de chiffres : blanc et chasse fixe, pour que ça s'aligne à l'œil. */
+.ep-table .ep-tnum {
+  color: var(--ep-white);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Le tableau déborde plutôt que de se comprimer : on le fait défiler. */
+.ep-table-scroll {
+  overflow-x: auto;
+}
+
+/* ─── jauge et rangée de barres ──────────────────────────────────────── */
+
+.ep-gauge {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.ep-gauge > i {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--ep-sky);
+  transition: width 0.4s var(--ep-ease);
+}
+
+/* Jauge sans valeur : quelque chose avance, on ne dit pas où on en est.
+   Un trait de bleu ciel traverse un rail plus fin, lentement, et repart. Une
+   courbe symétrique et non la courbe de sortie de la charte : en boucle, un
+   départ brusque se verrait à chaque passage. Immobile si l'athlète a demandé
+   moins d'animations — le rail plein, éteint, dit encore « en cours ». */
+.ep-gauge--sweep {
+  height: 2px;
+}
+.ep-gauge--sweep > i {
+  width: 28%;
+  transition: none;
+  animation: ep-sweep 2.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes ep-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(360%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ep-gauge--sweep > i {
+    width: 100%;
+    opacity: 0.35;
+    animation: none;
+  }
+}
+
+/* Jauge d'un envoi qu'on regarde : plus épaisse, parce qu'elle est l'objet
+   de l'écran le temps du transfert, pas un détail sous un bouton. */
+.ep-gauge--lg {
+  height: 6px;
+}
+
+.ep-brow {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  font-size: 13px;
+}
+.ep-brow .ep-gauge {
+  height: 6px;
+}
+
+@media (max-width: 599px) {
+  .ep-brow {
+    grid-template-columns: 1fr auto;
+  }
+  .ep-brow .ep-gauge {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+}
+
+/* ─── cadres de graphique et de carte ────────────────────────────────── */
+
+.ep-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Une seule légende pour les deux échelles. Sur la surface de marque elle se
+   compose en libellés capitales, sur la surface d'instrument en texte courant :
+   même composant, deux densités, comme le reste du système. */
+.ep-legend {
+  display: flex;
+  gap: 8px 20px;
+  flex-wrap: wrap;
+}
+.ep-legend > li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11.5px;
+  color: var(--ep-faint);
+}
+/* Section inversée : `--ep-faint` est du blanc à 38 %, illisible sur fond
+   clair. La légende y prend une encre noire de même densité. */
+.ep-invert .ep-legend > li {
+  color: rgba(0, 0, 0, 0.55);
+}
+.ep-shell .ep-legend > li {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: var(--ep-label-fs, 10.5px);
+  letter-spacing: var(--ep-label-track, 0.16em);
+  text-transform: uppercase;
+}
+.ep-legend__key {
+  width: 10px;
+  height: 4px;
+  flex-shrink: 0;
+  transform: skewX(-12deg);
+}
+.ep-shell .ep-legend__key {
+  width: 14px;
+  height: 3px;
+}
+
+.ep-mapframe {
+  background: var(--ep-s2);
+  border: 1px solid var(--ep-line);
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+.ep-mapframe__label {
+  position: absolute;
+  left: 18px;
+  top: 16px;
+  z-index: 2;
+}
+
+/* ─── grille de scores ───────────────────────────────────────────────── */
+
+.ep-scores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px 30px;
+}
+.ep-score b {
+  display: block;
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 30px;
+  margin-top: 4px;
+}
+
+@media (max-width: 899px) {
+  .ep-scores {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ─── carte produit ──────────────────────────────────────────────────── */
+
+.ep-product {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.ep-product__thumb {
+  height: 150px;
+  background: var(--ep-s3);
+  border-bottom: 1px solid var(--ep-line);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.ep-product__body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.ep-product__price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 22px;
+}
+.ep-product__price b {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+/* ─── état vide ──────────────────────────────────────────────────────── */
+
+/* Absent du POC. Parti pris : pas de grande icône centrée ni de ton désolé.
+   Un cadre en filet, le tiret, ce qu'il n'y a pas encore, et l'action qui y
+   remédie. Un écran vide est une invitation, pas une excuse. */
+.ep-empty {
+  border: 1px solid var(--ep-line);
+  background: var(--ep-s1);
+  padding: 40px var(--ep-card-pad);
+  max-width: 62ch;
+}
+.ep-empty__title {
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--ep-t-h3);
+  line-height: 1.05;
+  margin-top: 16px;
+}
+.ep-empty__body {
+  color: var(--ep-dim);
+  font-weight: 300;
+  font-size: 14.5px;
+  margin-top: 10px;
+}
+
+/* ─── squelette de chargement ────────────────────────────────────────── */
+
+/* Absent du POC. Pas de balayage dégradé : la charte n'autorise qu'un seul
+   dégradé, la lueur. Un bloc au repos qui respire suffit à dire « ça vient ». */
+.ep-skeleton {
+  display: block;
+  background: rgba(255, 255, 255, 0.06);
+  animation: ep-breathe 1.6s var(--ep-ease) infinite;
+}
+@keyframes ep-breathe {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* ─── mouvement réduit ───────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Portée volontairement globale, pas limitée à `.ep-shell` / `.ep-app` : les
+     modales, infobulles et menus de Radix sont détachés dans `body`, donc hors
+     de ces conteneurs. Une préférence d'accessibilité ne peut pas dépendre de
+     l'endroit du DOM où un composant a choisi de se monter. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .ep-trace {
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Mouvement réduit
+
+   34 fichiers déclarent une animation (`animate-spin`, `animate-pulse`…) sans
+   garde-fou. Les traiter un par un aurait laissé passer le suivant : la règle
+   est posée une fois, ici, et couvre tout ce qui viendra.
+
+   On neutralise, on ne supprime pas : les indicateurs de chargement gardent une
+   fin (`animation-iteration-count: 1`) plutôt que de disparaître, sinon un
+   `animate-spin` figé devient un élément muet à l'écran. Les transitions
+   passent sous le seuil de perception au lieu d'être coupées net, ce qui évite
+   les sauts de mise en page.
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  /* Portée volontairement globale, pas limitée à `.ep-shell` / `.ep-app` : les
+     modales, infobulles et menus de Radix sont détachés dans `body`, donc hors
+     de ces conteneurs. Une préférence d'accessibilité ne peut pas dépendre de
+     l'endroit du DOM où un composant a choisi de se monter. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* La lueur de fond est fixe et sans animation : rien à neutraliser. En
+     revanche les décalages d'apparition de framer-motion arrivent en style
+     inline, donc hors de portée du CSS — les composants concernés doivent
+     lire `useReducedMotion()`. Recensés dans design/MIGRATION_LOG.md. */
+}
+
+
+/* ─── listes déroulantes ──────────────────────────────────────────────────
+
+   Portée volontairement globale, sur `select` et non sur `.ep-select` : dix-
+   sept `<select>` de l'application ne portent pas la classe, et la lisibilité
+   d'une liste d'options n'est pas une question de style mais de lecture. Les
+   deux règles se cumulent sans conflit — `.ep-select` ajoute la flèche et le
+   gabarit, celle-ci garantit qu'on voit les options.
+
+   `option` n'accepte qu'une poignée de propriétés, et pas les mêmes selon les
+   navigateurs : on s'en tient au fond et à la couleur, les seules qui soient
+   honorées partout. Le reste passe par `color-scheme`.
+   ──────────────────────────────────────────────────────────────────────── */
+
+.ep-app select,
+.ep-shell select,
+select.ep-select {
+  color-scheme: dark;
+}
+
+.ep-app select option,
+.ep-shell select option,
+select.ep-select option {
+  background-color: var(--ep-s2);
+  color: var(--ep-white);
+}
+
+.ep-app select option:checked,
+.ep-shell select option:checked,
+select.ep-select option:checked {
+  background-color: var(--ep-s3);
+  color: var(--ep-sky);
+}
+
+/* Un groupe d'options porte son intitulé comme un libellé de la charte. */
+.ep-app select optgroup,
+.ep-shell select optgroup,
+select.ep-select optgroup {
+  background-color: var(--ep-s1);
+  color: var(--ep-faint);
+  font-style: normal;
+  font-weight: 500;
+}
+
+
+/* ─── casse d'affichage des options ───────────────────────────────────────
+
+   Les libellés d'options du panneau de commande arrivaient dans trois casses
+   différentes selon la famille de questions : « Faible » et « Élevé » en
+   capitale initiale, « peu » et « finir / gestion » tout en bas de casse,
+   « Je digère bien » en phrase. Trois conventions pour une même rangée de
+   boutons.
+
+   La correction est ici et non dans les traductions : la charte veut que la
+   casse d'affichage soit portée par le CSS, et les clés i18n ne se touchent
+   pas. On ne force que la PREMIÈRE lettre — un `text-transform: capitalize`
+   donnerait « Système Digestif », faux en français, et un `lowercase` écraserait
+   les sigles au passage. */
+.ep-optioncase::first-letter {
+  text-transform: uppercase;
+}
+
+
+.ep-icobtn {
+  position: relative;
+}
+
+/* Badge d'alerte — Strava non connecté.
+
+   Il s'appelait `.ep-dot`, comme l'accent du hero de la landing déclaré 1 600
+   lignes plus haut. Venant après, il en écrasait la couleur, la taille et le
+   positionnement, mais pas l'animation : l'accent ciel du hero devenait un
+   badge rouge épinglé en haut à droite, clignotant. Deux composants sans
+   rapport ne partagent pas un nom de classe.
+
+   Statique : un badge d'alerte n'a pas à pulser, et rien ici ne bouge. */
+.ep-alertdot {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 8px;
+  height: 8px;
+  background: var(--ep-danger);
+  border: 2px solid var(--ep-black);
+  transform: skewX(-12deg);
+  pointer-events: none;
+}
+
+
+/* Contrôle segmenté accolé à un bouton : même inclinaison, même hauteur, et
+   les deux se touchent. Un groupe droit posé contre un gabarit incliné laisse
+   un coin vide qui se voit — soit on incline les deux, soit on les sépare. */
+.ep-segbar {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.ep-segbar .ep-seg {
+  transform: skewX(-12deg);
+  border-color: var(--ep-line-2);
+  padding: 2px;
+}
+
+/* La contre-inclinaison porte sur le contenu, pas sur le bouton.
+   Posée sur le bouton, elle redressait sa boîte en même temps que son texte :
+   le fond de l'option sélectionnée se dessinait en rectangle droit à
+   l'intérieur d'un conteneur en biais. Le bouton garde donc l'inclinaison de
+   son parent — son fond épouse la forme — et seul le libellé revient à
+   l'endroit. Même technique que `.ep-btn > *`. */
+.ep-segbar .ep-seg__option {
+  transform: none;
+  min-height: var(--ep-btn-h-sm, 34px);
+  padding: 0 16px;
+}
+
+.ep-segbar .ep-seg__option > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transform: skewX(12deg);
+}
+
+.ep-segbar .ep-btn {
+  height: auto;
+  min-height: calc(var(--ep-btn-h-sm, 34px) + 4px);
+}
+
+/* La règle tactile générique pose 44 px sur `.ep-seg__option` ; à specificité
+   égale, `.ep-segbar .ep-seg__option` la reprenait à 34 px et le CTA à 38 px —
+   sous le minimum tactile, dans le contrôle principal de l'écran.
+   Ce bloc doit rester APRÈS `.ep-segbar .ep-btn` : à 0-2-0 des deux côtés,
+   c'est l'ordre qui tranche, et une media query n'ajoute pas de spécificité. */
+@media (max-width: 767px) {
+  .ep-segbar .ep-seg__option,
+  .ep-segbar .ep-btn {
+    min-height: 44px;
+  }
+}
+
+/* Sous 640 px, les deux pièces se décollent.
+   Collées, l'onglet réclamait ses deux libellés et il restait une centaine de
+   pixels à l'action : « ORDER A PLAN » se cassait sur trois lignes, en italique
+   et en biais. La navigation garde sa ligne, l'action prend la sienne — elle est
+   l'action principale de l'écran, elle mérite la pleine largeur. */
+@media (max-width: 639px) {
+  .ep-segbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ep-segbar > * {
+    flex: none;
+    width: 100%;
+  }
+  .ep-segbar .ep-btn {
+    justify-content: center;
+  }
+}
+
+
+/* Menu utilisateur : réglages, tutoriel, retour, déconnexion.
+
+   Six commandes s'alignaient en haut à droite, chacune avec son icône. Un
+   utilisateur ne les distingue pas d'un coup d'œil, et rien ne dit lesquelles
+   touchent son compte. Elles se regroupent sous son nom, qui est le seul
+   libellé lisible de la zone. */
+.ep-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 60;
+  min-width: 248px;
+  padding: 6px;
+  background: var(--ep-s2);
+  border: 1px solid var(--ep-line-2);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* Panneau « à quoi sert cette page ».
+   Surface seulement : sa position et sa largeur sont posées en ligne, calculées
+   sur le bouton. `.ep-menu` s'ancre en `absolute; right: 0`, ce qui marche pour
+   lui parce qu'il pend du menu de compte, toujours collé au bord droit. Le
+   bouton du guide, lui, se retrouve au milieu de la barre sous 900 px — le même
+   ancrage envoyait alors le panneau à 174 px HORS de l'écran, par la gauche. */
+.ep-guide {
+  position: fixed;
+  z-index: 60;
+  padding: 18px;
+  background: var(--ep-s2);
+  border: 1px solid var(--ep-line-2);
+}
+
+.ep-menu__item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 12px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--ep-dim);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.16s var(--ep-ease), color 0.16s var(--ep-ease);
+}
+
+.ep-menu__item:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ep-white);
+}
+
+.ep-menu__item:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.ep-menu__head {
+  padding: 8px 12px 10px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--ep-line);
+}
+.ep-menu__name {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ep-white);
+  line-height: 1.35;
+}
+.ep-menu__email {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ep-faint);
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Ligne qui porte ses propres commandes : pas de survol sur la ligne. */
+.ep-menu__item--static {
+  cursor: default;
+}
+.ep-menu__item--static:hover:not(:disabled) {
+  background: transparent;
+  color: var(--ep-dim);
+}
+.ep-menu__seg {
+  display: inline-flex;
+  margin-left: auto;
+  border: 1px solid var(--ep-line-2);
+}
+.ep-menu__seg button {
+  min-width: 34px;
+  height: 24px;
+  padding: 0 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ep-dim);
+  transition: background 0.16s var(--ep-ease), color 0.16s var(--ep-ease);
+}
+.ep-menu__seg button:hover {
+  color: var(--ep-white);
+}
+.ep-menu__seg button[aria-checked="true"] {
+  background: var(--ep-white);
+  color: var(--ep-black);
+}
+
+/* La déconnexion se détache du reste : c'est la seule commande qui sort. */
+.ep-menu__item--danger {
+  margin-top: 6px;
+  border-top: 1px solid var(--ep-line);
+  padding-top: 0;
+  color: var(--ep-danger-ink);
+}
+
+.ep-menu__item--danger:hover:not(:disabled) {
+  background: rgba(255, 107, 92, 0.1);
+  color: var(--ep-danger-ink);
+}
+
+/* Dans une ligne de menu, la pastille suit le texte au lieu de flotter. */
+.ep-alertdot--inline {
+  position: static;
+  margin-left: auto;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Navigation basse — sous 900 px
+
+   Quatre-vingts pour cent des sessions sont mobiles. La barre haute y faisait
+   défiler ses neuf entrées : la moitié de la navigation n'existait que pour qui
+   pensait à pousser la liste horizontalement.
+
+   La barre basse règle trois choses d'un coup : elle est atteignable au pouce,
+   elle rend l'écran courant lisible en permanence, et elle rend au contenu les
+   150 px que le chrome haut prenait sur 844.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.ep-bottomnav {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 30;
+  display: none;
+  align-items: stretch;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--ep-line);
+  /* La barre gestuelle d'iOS mange le bas de l'écran : sans cette réserve, la
+     dernière rangée de cibles tombe dessous et devient inatteignable. */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Hauteur de la barre, filet compris : ce qui se colle au-dessus d'elle (les
+   actions du studio social) s'y cale au lieu de la deviner. */
+:root {
+  --ep-bottomnav-h: 61px;
+}
+
+.ep-bottomnav__item {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Icônes alignées en haut : un libellé sur deux lignes ne décale plus
+     son icône par rapport à celles des voisins. */
+  justify-content: flex-start;
+  gap: 4px;
+  /* 60 px + la réserve : au-dessus du minimum de 44 px, et confortable au
+     pouce. Assez pour un libellé de deux lignes. */
+  min-height: 60px;
+  padding: 7px 2px 5px;
+  color: var(--ep-faint);
+  background: none;
+  border: 0;
+  border-top: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.16s var(--ep-ease), background 0.16s var(--ep-ease);
+}
+
+.ep-bottomnav__label {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  /* « Vue d'ensemble » ne tient pas sur une ligne dans un cinquième de
+     téléphone : forcé sur une ligne, il débordait et le « V » sortait de
+     l'écran. Il passe sur deux lignes, centrées. */
+  line-height: 1.1;
+  text-align: center;
+  white-space: normal;
+}
+
+@media (max-width: 359px) {
+  .ep-bottomnav__label {
+    letter-spacing: 0.04em;
+  }
+}
+
+.ep-bottomnav__item:hover,
+.ep-bottomnav__item.is-open {
+  color: var(--ep-white);
+}
+
+/* Trois signaux et non un : la couleur, le fond et le trait. Le trait est en
+   haut — c'est le bord par lequel la barre touche la page. */
+.ep-bottomnav__item[aria-current="page"] {
+  color: var(--ep-sky);
+  background: linear-gradient(
+    to top,
+    rgba(108, 220, 255, 0.03),
+    rgba(108, 220, 255, 0.14)
+  );
+  border-top-color: var(--ep-sky);
+}
+
+/* ─── visite d'accueil ───────────────────────────────────────────────────── */
+
+/* Au-dessus des modales (50) et du flottant (60) : une visite recouvre tout,
+   c'est sa raison d'être. */
+.ep-tour {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+}
+/* Largeur ET hauteur : un <svg> sans hauteur prend 150 px par défaut, et le
+   voile ne couvrait que le haut de l'écran — le reste de la page restait
+   allumé sous la carte. */
+.ep-tour__scrim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Le cadre de la découpe. Angles droits, comme la découpe elle-même. */
+.ep-tour__ring {
+  position: absolute;
+  border: 2px solid var(--ep-sky);
+  pointer-events: none;
+}
+
+/* Zone plus haute que l'écran : le cadre s'ouvre en bas. Une bordure basse
+   affirmerait une fin que la zone n'a pas. */
+.ep-tour__ring--open {
+  border-bottom: 0;
+}
+
+.ep-tour__card {
+  position: absolute;
+  background: var(--ep-s2);
+  border: 1px solid var(--ep-line-2);
+  padding: 18px 18px 16px;
+  outline: none;
+}
+
+.ep-tour__card--anchored {
+  width: 360px;
+  max-width: calc(100vw - 24px);
+}
+
+/* Sous 768 px : feuille basse, posée au-dessus de la barre de navigation et de
+   la zone gestuelle. Ancrée, elle recouvrait la tuile qu'elle présentait. */
+.ep-tour__card--sheet {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 88px);
+}
+
+@media (min-width: 768px) {
+  .ep-tour__card--sheet {
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    top: 50%;
+    width: 360px;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.ep-tour__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ep-tour__progress {
+  display: flex;
+  gap: 4px;
+  margin-top: 16px;
+}
+.ep-tour__tick {
+  height: 4px;
+  width: 14px;
+  transform: skewX(-12deg);
+  background: rgba(255, 255, 255, 0.12);
+  transition: background 0.16s var(--ep-ease), width 0.16s var(--ep-ease);
+}
+.ep-tour__tick.is-done {
+  background: rgba(255, 255, 255, 0.34);
+}
+.ep-tour__tick.is-current {
+  width: 26px;
+  background: var(--ep-sky);
+}
+
+.ep-tour__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin-top: 18px;
+}
+/* L'action principale à droite, quel que soit le nombre de boutons. */
+.ep-tour__actions .ep-btn--primary {
+  margin-left: auto;
+}
+
+/* Retour et abandon en texte, pas en bouton encadré.
+   Trois blocs inclinés côte à côte dans une carte de 360 px pesaient plus que
+   le propos : le parallélogramme, l'aplat et l'italique capitale se cumulaient
+   sur des commandes secondaires. Seule l'action qui fait avancer garde le
+   bouton plein — c'est ce qui la désigne. La zone tactile reste entière : le
+   rembourrage porte les 44 px, pas la bordure. */
+.ep-tour__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 0 8px;
+  background: none;
+  border: 0;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ep-faint);
+  cursor: pointer;
+  transition: color 0.16s var(--ep-ease);
+}
+@media (hover: hover) {
+  .ep-tour__link:hover {
+    color: var(--ep-white);
+  }
+}
+
+/* Le bouton d'avancée descend d'un cran : dans une carte, 42 px de haut et une
+   capitale de 13 px écrasaient le titre qu'ils étaient censés suivre. */
+.ep-tour__actions .ep-btn {
+  min-height: 36px;
+  height: 36px;
+  padding: 0 18px;
+  font-size: 11.5px;
+}
+
+/* ─── graphique défilant ─────────────────────────────────────────────────── */
+
+/* `overscroll-behavior-x: contain` empêche le geste latéral de remonter au
+   navigateur : sans lui, arriver au bout du tracé déclenche le retour arrière
+   sur iOS et l'écran disparaît sous le doigt. */
+.ep-chartscroll {
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  /* `thin` et non `none` : c'est CETTE déclaration qui rétablit la barre, la
+     règle globale de `index.css` mettant tout le reste à `none`. Les navigateurs
+     récents ignorent `::-webkit-scrollbar` dès que `scrollbar-width` est posé —
+     la hauteur effective est donc celle de leur « thin », une dizaine de pixels,
+     et les règles WebKit qui suivent ne servent plus que Safari. */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+/* Une des deux seules barres qui restent peintes (avec `.ep-listscroll`), et
+   pour une raison : celle-ci est HORIZONTALE, sous un graphique plus large que l'écran, et sur
+   mobile c'est le seul signe qu'il y a du tracé à droite. */
+.ep-chartscroll::-webkit-scrollbar {
+  height: 4px;
+}
+.ep-chartscroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+}
+.ep-chartscroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Au-delà de 900 px il n'y a plus rien à faire défiler : le tracé reprend la
+   largeur de son conteneur, sinon un écran large hériterait d'une barre de
+   défilement pour rien. */
+@media (min-width: 900px) {
+  .ep-chartscroll__inner {
+    min-width: 0 !important;
+  }
+}
+
+/* ─── liste défilante ────────────────────────────────────────────────────── */
+
+/* Deuxième exception à la règle globale de `index.css` : une liste de choix
+   coupée à hauteur fixe (les courses du panneau de commande) doit montrer
+   qu'il y a des lignes plus bas, sinon la dernière ligne visible, à moitié
+   coupée, se lit comme la fin de la liste. Même réglage que `.ep-chartscroll`,
+   à la verticale.
+   Pas d'`overscroll-behavior: contain` ici : la liste vit dans une colonne qui
+   défile elle aussi, et c'est en bout de liste que la molette doit pouvoir
+   passer la main à la colonne pour amener le bas de la liste à l'écran. */
+.ep-listscroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+}
+.ep-listscroll::-webkit-scrollbar {
+  width: 6px;
+}
+.ep-listscroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 3px;
+}
+.ep-listscroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ─── feuille de débordement ─────────────────────────────────────────────── */
+
+.ep-sheet__scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.ep-sheet {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 45;
+  max-height: 72dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ep-s2);
+  border-top: 1px solid var(--ep-line-2);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 56px);
+  animation: ep-sheet-in 0.22s var(--ep-ease);
+}
+
+@keyframes ep-sheet-in {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+}
+
+.ep-sheet__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--ep-line);
+}
+
+.ep-sheet__body {
+  overflow-y: auto;
+  padding: 8px 12px 16px;
+}
+
+.ep-sheet__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 12px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 14px;
+  color: var(--ep-dim);
+  transition: background 0.16s var(--ep-ease), color 0.16s var(--ep-ease);
+}
+
+.ep-sheet__link:hover,
+.ep-sheet__link[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--ep-white);
+}
+
+.ep-sheet__link[aria-current="page"] {
+  color: var(--ep-sky);
+}
+
+@media (max-width: 899px) {
+  .ep-bottomnav {
+    display: flex;
+  }
+
+
+  /* La barre haute perd sa navigation : elle est en bas. Reste la marque et
+     les deux commandes de compte. */
+  .ep-appbar .ep-mainnav {
+    display: none;
+  }
+
+  /* La réserve se pose sur la coque, pas sur `main` : c'est le dernier bloc
+     de la colonne — la ligne légale — qui passerait sous la barre. */
+  .ep-app {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 76px);
+  }
+}
+
+/* Filet : la feuille n'est ouvrable que par un bouton lui-même caché au-delà de
+   900 px, mais un redimensionnement la laisserait ouverte sans barre dessous. */
+@media (min-width: 900px) {
+  .ep-sheet,
+  .ep-sheet__scrim {
+    display: none;
+  }
+}
+
+/* ─── appel à l'action collé, mobile ────────────────────────────────────────
+
+   Le bouton de la barre haute est en `hidden sm:block` : sous 640 px il ne
+   restait qu'un hamburger, donc aucune action visible sur un produit dont
+   quatre sessions sur cinq sont mobiles et dont la page a un objectif unique.
+
+   Plutôt que de le comprimer dans une barre déjà occupée par la marque, la
+   langue et le menu, il prend le bas de l'écran — là où le pouce est. La zone
+   sûre est réservée : sur iOS la barre gestuelle mange sinon le bouton. */
+.ep-stickycta {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 45;
+  display: none;
+  padding: 12px 20px calc(env(safe-area-inset-bottom, 0px) + 12px);
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--ep-line);
+  transition: transform 0.22s var(--ep-ease), opacity 0.22s var(--ep-ease);
+}
+
+/* Le même bouton est déjà à l'écran (hero) : la barre glisse hors champ. */
+.ep-stickycta--hidden {
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ep-stickycta {
+    transition: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .ep-stickycta {
+    display: block;
+  }
+  /* Menu mobile ouvert : il porte déjà l'inscription, la barre ferait doublon. */
+  .ep-shell:has(#ep-nav-drawer) .ep-stickycta {
+    display: none;
+  }
+  /* Le dernier bloc de la page passerait sous la barre. */
+  .ep-shell:has(.ep-stickycta) {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 76px);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   Analyse et carnet d'activités — primitifs partagés
+   Titre de section, carte d'analyse, lectures, rangée de métriques, message
+   d'état. Ils remplacent les copies de classes ad hoc des composants de
+   `components/activities/` : une seule forme carrée, une échelle de texte.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Titre de section : tiret ciel, libellé, filet jusqu'au bord. */
+.ep-sectitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.ep-sectitle__text {
+  margin: 0;
+  flex: none;
+  color: var(--ep-dim);
+}
+.ep-sectitle::after {
+  content: "";
+  order: 2;
+  flex: 1;
+  height: 1px;
+  background: var(--ep-line);
+}
+.ep-sectitle__aside {
+  order: 3;
+  flex: none;
+}
+
+/* Partie d'analyse : plus de carte dans la carte. Un titre numéroté (02, 03…,
+   repris par le sommaire) sur un filet, puis les graphes posés à même la
+   page. Le titre mesure 48 px et le corps commence 16 px dessous : la note de
+   méthode d'un graphe sans légende (ChartFigure) remonte sur la ligne du titre
+   — corps 16 + demi-titre 24 + demi-bouton 10. Changer l'une de ces mesures,
+   c'est la décaler. */
+.ep-acard {
+  position: relative;
+  scroll-margin-top: 16px;
+}
+.ep-acard__title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-height: 48px;
+  margin: 0;
+  padding: 8px 0 10px;
+  border-bottom: 1px solid var(--ep-line-2);
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--ep-white);
+}
+.ep-acard__num {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ep-sky);
+}
+.ep-acard__meta {
+  margin-left: auto;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 11.5px;
+  color: var(--ep-faint);
+}
+.ep-acard__body {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+  padding: 16px 0 0;
+  --ep-method-lift: 50px;
+}
+/* Seul le premier graphe de la partie touche le titre ; les suivants gardent
+   l'écart d'origine, sur leur propre ligne. */
+.ep-acard__body > .ep-figread ~ .ep-figread,
+.ep-acard__body > section {
+  --ep-method-lift: 38px;
+}
+/* Un graphe se pose dans la page, sans cadre. */
+.ep-chartframe {
+  position: relative;
+  min-width: 0;
+}
+
+/* Un graphe et les lectures qui le commentent forment une unité ; deux
+   unités d'une même carte se séparent d'un filet. */
+.ep-figread {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  padding-bottom: 20px;
+}
+.ep-figread:last-child {
+  padding-bottom: 0;
+}
+.ep-figread + .ep-figread {
+  border-top: 1px solid var(--ep-line);
+  padding-top: 24px;
+}
+
+/* Lectures : une ampoule devant chacune, sous le graphe qu'elle commente. */
+.ep-readings {
+  display: grid;
+}
+.ep-reading {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  column-gap: 12px;
+  row-gap: 4px;
+  max-width: 84ch;
+  padding: 12px 0;
+  border-top: 1px solid var(--ep-line);
+}
+.ep-reading > :not(.ep-reading__icon) {
+  grid-column: 2;
+}
+.ep-reading__icon {
+  grid-row: 1 / span 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* L'ampoule seule, sur la ligne du constat : sans pastille, comme les numéros des répétitions. */
+  align-self: start;
+  width: 28px;
+  height: 22px;
+  color: var(--ep-sky);
+}
+.ep-reading__icon svg {
+  width: 15px;
+  height: 15px;
+}
+.ep-readings > .ep-reading:first-child {
+  border-top: 0;
+  padding-top: 4px;
+}
+.ep-reading:last-child {
+  padding-bottom: 2px;
+}
+.ep-reading__obs {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ep-white);
+}
+.ep-reading__int {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ep-dim);
+}
+.ep-reading__sug {
+  margin: 4px 0 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ep-white);
+}
+.ep-reading__sug .ep-label {
+  color: var(--ep-sky);
+}
+.ep-reading__ctx {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ep-faint);
+}
+
+/* Rangée de métriques : filets d'un pixel tirés par l'espacement de la grille,
+   justes quel que soit le nombre de cases et de rangées. */
+.ep-mrow {
+  display: grid;
+  grid-template-columns: repeat(var(--ep-mrow-n, 4), minmax(0, 1fr));
+  gap: 1px;
+  background: var(--ep-line);
+  border: 1px solid var(--ep-line);
+}
+.ep-mrow__cell,
+.ep-mrow__foot {
+  background: var(--ep-s2);
+  min-width: 0;
+}
+.ep-mrow__cell {
+  padding: 14px 18px 16px;
+}
+.ep-mrow__label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ep-mrow__key {
+  display: block;
+  flex: none;
+  width: 10px;
+  height: 3px;
+  transform: skewX(-12deg);
+}
+.ep-mrow__value {
+  display: block;
+  margin-top: 10px;
+  white-space: nowrap;
+  font-size: 26px !important;
+}
+@media (max-width: 899px) {
+  .ep-mrow__value {
+    font-size: 22px !important;
+  }
+}
+.ep-mrow__foot {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 22px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--ep-dim);
+}
+.ep-mrow__foot b {
+  font-weight: 500;
+  color: var(--ep-white);
+}
+@media (max-width: 899px) {
+  .ep-mrow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* Nombre impair : la première case prend la rangée, aucune ne reste seule. */
+  .ep-mrow--odd > .ep-mrow__cell:first-child {
+    grid-column: 1 / -1;
+  }
+  .ep-mrow__cell {
+    padding: 10px 14px 12px;
+  }
+  .ep-mrow__foot {
+    padding: 10px 14px;
+    gap: 6px 16px;
+  }
+}
+
+/* Colonne gauche du tiroir d'analyse ouvert : la carte en haut, décollée des
+   bords, puis la séance, sa précision, ses chiffres et le sommaire. La colonne
+   (fond noir) couvre toute la hauteur ; la carte flotte dessus. Préfixées par
+   `.ep-app` pour l'emporter sur les hauteurs Tailwind du cadre de carte, quel
+   que soit l'ordre des feuilles (dev ≠ prod). */
+.ep-deepdive-toc {
+  display: none;
+}
+/* Modification des intervalles : sa barre « Valider » occupe le bas du tiroir. */
+.ep-app:has([data-interval-actions]) .ep-backtotop {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .ep-app {
+    --ep-rail-w: calc(100vw - min(1320px, 70vw));
+    --ep-rail-map-h: clamp(170px, 27vh, 260px);
+  }
+  .ep-app .ep-deepdive-map {
+    position: fixed;
+    z-index: 41;
+    top: calc(var(--ep-chrome-h, 52px) + 16px);
+    left: 16px;
+    width: calc(var(--ep-rail-w) - 32px);
+    height: var(--ep-rail-map-h);
+    border-radius: 0;
+    overflow: hidden;
+    border: 1px solid var(--ep-line);
+  }
+  .ep-app .ep-deepdive-toc {
+    position: fixed;
+    z-index: 40;
+    left: 0;
+    width: var(--ep-rail-w);
+    display: block;
+    /* Rendu dans une pile `space-y-*` : sa marge de pile le décalait de 12 px. */
+    margin: 0 !important;
+    top: var(--ep-chrome-h, 52px);
+    bottom: 0;
+    padding-top: calc(var(--ep-rail-map-h) + 16px);
+    /* La colonne tient dans l'écran : seul le sommaire défile s'il déborde. */
+    overflow: hidden;
+    background: var(--ep-black);
+    border-right: 1px solid var(--ep-line);
+  }
+}
+
+/* Lien d'action dans le texte : « Pourquoi ? », « Modifier le type ».
+   Au doigt, la cible monte à 44 px sans changer le dessin. */
+.ep-textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 12.5px;
+  color: var(--ep-dim);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: color 0.16s var(--ep-ease);
+}
+.ep-textlink:hover:not(:disabled) {
+  color: var(--ep-white);
+}
+.ep-textlink:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.ep-textlink svg {
+  width: 12px;
+  height: 12px;
+  flex: none;
+}
+@media (max-width: 639px) {
+  .ep-textlink {
+    min-height: 44px;
+  }
+}
+
+/* Message d'état : chargement, erreur, quota, données absentes. */
+.ep-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 18px 20px;
+  background: var(--ep-s2);
+  border: 1px solid var(--ep-line);
+}
+.ep-state__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  max-width: 64ch;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ep-dim);
+}
+.ep-state__line svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+  color: var(--ep-faint);
+}
+.ep-state--alert {
+  border-color: var(--ep-line-2);
+}
+.ep-state--alert .ep-state__line svg {
+  color: var(--ep-danger-ink);
+}
+
+/* Bouton « Guide » dans la barre (voir `GuideButton`) : icône et libellé au
+   bureau, icône seule au téléphone, où la barre n'a que la marque et le compte. */
+.ep-guidebtn {
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  font-size: 13px;
+  color: var(--ep-dim);
+}
+.ep-guidebtn:hover {
+  color: var(--ep-sky);
+}
+@media (max-width: 899px) {
+  .ep-guidebtn {
+    width: 32px;
+    padding: 0;
+    justify-content: center;
+  }
+  .ep-guidebtn > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+/* Chevron collé à une entrée de la barre (voir `MainNavMenu`) : il ouvre ce
+   qui est rangé sous l'entrée, sans lui prendre son clic. */
+.ep-mainnav__more {
+  padding: 0 6px;
+  margin-left: -8px;
+}
+.ep-mainnav__more svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.16s var(--ep-ease), opacity 0.16s var(--ep-ease);
+}
+.ep-mainnav__more[aria-expanded="true"] {
+  color: var(--ep-white);
+}
+/* Le menu d'une entrée : même boîte que le menu de compte, en position fixe. */
+.ep-menu--nav {
+  position: fixed;
+  right: auto;
+  z-index: 70;
+  width: 248px;
+}
+.ep-menu--nav .ep-menu__item svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+.ep-menu--nav .ep-menu__item[aria-current="page"] {
+  color: var(--ep-sky);
+}
+.ep-menu__group {
+  margin: 6px 0 2px;
+  padding: 10px 12px 4px;
+  border-top: 1px solid var(--ep-line);
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ep-dim);
+}
+
+/* Intitulé de groupe dans la feuille « Menu » de la barre basse. Vide, il ne
+   garde que son filet et sépare le groupe de ce qui suit. */
+.ep-sheet__group {
+  margin: 8px 0 2px;
+  padding: 12px 12px 4px;
+  border-top: 1px solid var(--ep-line);
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ep-dim);
+}
+.ep-sheet__group:empty {
+  padding: 0;
+}

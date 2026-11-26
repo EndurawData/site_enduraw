@@ -1,0 +1,19 @@
+{
+  "mediaPage": {
+    "hero": {
+      "alt": "Podcast studio at the Performance Center, Enduraw microphones on the table",
+      "title": "Racing, read through data",
+      "lead": "Race analyses, published studies and guides: we make endurance data accessible and readable."
+    },
+    "all": {
+      "title": "All content",
+      "follow": "Race analyses every week on Instagram:"
+    },
+    "cta": {
+      "title": "Our data for your coverage",
+      "text": "Race statistics, performance analyses, technical studies: our data can bring scientific depth to your coverage.",
+      "button": "Contact the media team",
+      "subject": "Media request"
+    }
+  }
+}

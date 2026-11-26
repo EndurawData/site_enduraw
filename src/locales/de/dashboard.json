@@ -1,0 +1,101 @@
+{
+  "dashboardPage": {
+    "hero": {
+      "title": "Profi-Modelle in deinem Profil",
+      "lead": "Jeden Tag modelliert das Dashboard dein Laufen mit den Algorithmen, die wir mit Elite-Athleten nutzen: der Enduraw Report nach jedem Lauf, deine Runner Matrix, Pacing-Pläne, Laborergebnisse. Ein Ökosystem, offen für alle Läufer.",
+      "ctaPrimary": "Konto erstellen",
+      "ctaSecondary": "Anmelden",
+      "alt": "Enduraw-Pacing-Plan auf dem Laptop, fiktive Daten: Streckenkarte und Höhenprofil nach Steigung eingefärbt",
+      "altMobile": "Tagesansicht des Enduraw-Dashboards auf dem Smartphone, mit Beispieldaten"
+    },
+    "report": {
+      "title": "Enduraw Report",
+      "free": "kostenlos",
+      "lead": "Verbinde Strava: Enduraw Report berechnet das Tempo jedes neuen Laufs nach den Bedingungen des Tages neu, damit du deine Einheiten miteinander vergleichen kannst.",
+      "cta": "Konto erstellen",
+      "heat": "Hitze",
+      "heatDesc": "Etwa 0,27 % Tempo pro Grad über 15,6 °C, damit du siehst, was die Einheit bei kühlem Wetter wert wäre.",
+      "wind": "Wind",
+      "windDesc": "Gegen- und Rückenwind entlang deiner Strecke, um ihren Einfluss auf die Anstrengung zu isolieren.",
+      "altitude": "Höhe",
+      "altitudeDesc": "Weniger Sauerstoff, mehr Anstrengung bei gleichem Tempo: Die Korrektur berücksichtigt das.",
+      "elevation": "Höhenmeter",
+      "elevationDesc": "Anstiege und Abstiege, umgerechnet in ein gleichwertiges Tempo in der Ebene.",
+      "deep": "Auf Anfrage geht die Tiefenanalyse einer Einheit weiter: kardiale Drift, Effizienz am Berg, Gehanteil, Gleichmäßigkeit der Wiederholungen. Jede Grafik erklärt, wie sie entsteht und wie man sie liest.",
+      "article": "Den technischen Artikel lesen",
+      "alt": "Analyse eines Traillaufs im Dashboard, mit Beispieldaten: Wetter des Laufs, Höhenprofil, Tempo und angepasstes Tempo"
+    },
+    "weather": {
+      "title": "Das Wetter, davor und danach",
+      "lead": "Die Bedingungen wirken auf jedes Tempo. Enduraw erfasst sie nach jedem Lauf und gibt dir die Vorhersage für den Renntag.",
+      "afterLabel": "Nach jedem Lauf",
+      "afterText": "Temperatur, Windstärke und Windrichtung, Luftfeuchtigkeit: Die Bedingungen des Laufs erscheinen in seiner Analyse. Hitze und Wind fließen in das angepasste Tempo ein.",
+      "beforeLabel": "Vor dem Rennen",
+      "beforeText": "Im Pacing-Plan die Vorhersage für die Uhrzeit, zu der du jeden Punkt der Strecke passierst: Temperatur, Luftfeuchtigkeit, Wind, Niederschlag, Bewölkung, UV-Index, Tag und Nacht.",
+      "alt": "Wettervorhersage entlang einer Ultratrail-Strecke, von Verpflegungsstelle zu Verpflegungsstelle, mit Beispieldaten: Temperatur, Wind und Niederschlag",
+      "caption": "Vorhersage entlang der Strecke, Beispieldaten"
+    },
+    "matrix": {
+      "title": "Dein Läuferprofil",
+      "lead": "Die Runner Matrix bewertet sechs Dimensionen auf 100: Ausdauer, Bergauf, Bergab, Tempo, Resilienz, Physiologie. Sie entsteht aus deiner Strava-Historie und wird mit Starter nach jedem Lauf aktualisiert.",
+      "alt": "Radar der Runner Matrix mit sechs Dimensionen, mit Beispieldaten",
+      "altPacing": "Pacing-Plan auf dem Smartphone: Zielzeit, Bewegungszeit, Distanz und Höhenmeter"
+    },
+    "pacing": {
+      "title": "Ein Plan für den Renntag",
+      "lead": "Dein Tempo Abschnitt für Abschnitt auf der echten Strecke, deine Durchgangszeiten an jeder Verpflegung und dein Ernährungsplan: Kohlenhydrate, Wasser und Natrium pro Stunde.",
+      "target": "Dein Ziel",
+      "targetDesc": "Die angestrebte Zeit, übersetzt in ein haltbares Tempo auf jedem Abschnitt.",
+      "course": "Die Strecke",
+      "courseDesc": "Steigung und Technik des Geländes: bergauf zurücknehmen, bergab wieder anziehen.",
+      "altitude": "Die Höhe",
+      "altitudeDesc": "Die zusätzliche Anstrengung oben an den Pässen.",
+      "delivery": "Vom Enduraw-Team erstellt und innerhalb von 5 Werktagen in deinem Dashboard bereitgestellt, als PDF für den Renntag exportierbar. Nach dem Ziel vergleichst du den Plan direkt über Strava mit deinem tatsächlichen Rennen.",
+      "ctaDemo": "Einen Demo-Plan ansehen",
+      "ctaOrder": "Einen Plan bestellen",
+      "altLaptop": "Übersicht eines Pacing-Plans auf dem Laptop, fiktive Daten: Zielzeit, Bewegungszeit, Distanz, Höhenmeter und Tempokurve"
+    },
+    "plans": {
+      "title": "Kostenlos starten",
+      "lead": "Enduraw Report und die Runner Matrix sind kostenlos. Die Abos ergänzen laufende Aktualisierung und Tiefenanalysen. Ohne Mindestlaufzeit, jederzeit kündbar.",
+      "cta": "Abo wählen",
+      "price": "{{value}} €",
+      "perMonth": "pro Monat",
+      "free": {
+        "name": "Kostenlos",
+        "f1": "Enduraw Report und Aktivitätenliste",
+        "f2": "Zusammenfassung jeder Einheit, unbegrenzt",
+        "f3": "Runner Matrix: Steckbrief und Performance-Labor",
+        "f4": "Eine Tiefenanalyse einer Einheit inklusive"
+      },
+      "starter": {
+        "name": "Starter",
+        "intro": "Alles aus Kostenlos, dazu:",
+        "f1": "Runner Matrix nach jedem Lauf aktualisiert",
+        "f2": "2 Tiefenanalysen pro Monat"
+      },
+      "pro": {
+        "name": "Pro",
+        "intro": "Alles aus Starter, dazu:",
+        "f1": "30 Tiefenanalysen pro Monat",
+        "f2": "2 Pacing-Pläne pro Jahr inklusive",
+        "f3": "Stroop-Test"
+      },
+      "elite": "Das Elite-Abo ist noch nicht verfügbar."
+    },
+    "api": {
+      "symbols": {
+        "hr": "HF",
+        "rest": "Ruhe"
+      },
+      "contact": "Ein API-Zugang für eine Plattform, einen Verein oder ein Team",
+      "cta": "Dem Team schreiben",
+      "subject": "Enduraw API-Zugang"
+    },
+    "cta": {
+      "title": "Dein nächstes Rennen beginnt hier",
+      "text": "Erstelle dein Konto und verbinde Strava: Deine neuen Einheiten erscheinen im Dashboard.",
+      "button": "Konto erstellen"
+    }
+  }
+}

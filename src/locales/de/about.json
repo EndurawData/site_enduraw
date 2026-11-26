@@ -1,0 +1,52 @@
+{
+  "aboutPage": {
+    "hero": {
+      "alt": "Ein Mitglied des Enduraw-Teams zwischen zwei ASICS-Athleten im Zielbereich eines Rennens",
+      "title": "Ein Labor für sportliche Leistung",
+      "lead": "Dich als Athlet und als Mensch zu verstehen, bringt dich auf die nächste Stufe. Wir gehen dafür von den Daten aus.",
+      "cta": "Unsere Services ansehen"
+    },
+    "story": {
+      "title": "Entstanden in Chamonix",
+      "text": "Alles beginnt in einem Zimmer in Chamonix: Joseph Mestrallet baut dort nachts Rennpläne aus Streckenprofil und Bedingungen. Dann folgt der Enduraw-Report, später das Dashboard.",
+      "milestones": {
+        "idea": "Erste Idee des Projekts",
+        "launch": "Offizieller Start des Enduraw-Reports",
+        "v2": "Zweite Version: eine Formel auf Basis deiner Daten, dazu Radsport und Trail",
+        "dashboard": "Aus dem Report wird ein vollständiges Dashboard",
+        "pacing": "Die Rennpläne kommen ins Dashboard",
+        "testing": "Testergebnisse kommen ins Dashboard",
+        "matrix": "Start der Runner Matrix"
+      }
+    },
+    "team": {
+      "title": "Ingenieure und Sportwissenschaftler",
+      "text": "Physik, Data Science, Ernährung, Finanzen und Bild: ein kleines Team mit Sitz in Chamonix.",
+      "careers": "Zum Team kommen",
+      "linkedin": "{{name}} auf LinkedIn",
+      "roles": {
+        "joseph": "Gründer, Leistungswissenschaftler",
+        "anthony": "Geschäftsführer",
+        "lucas": "Finanzverantwortlicher",
+        "valentin": "Technischer Leiter",
+        "kyllian": "Leistungswissenschaftler",
+        "charline": "Ernährungsspezialistin",
+        "antoine": "Data Scientist",
+        "alex": "Sportfotograf"
+      },
+      "label": "Das Enduraw-Team",
+      "play": "Automatisches Scrollen fortsetzen",
+      "pause": "Automatisches Scrollen pausieren",
+      "bios": {
+        "joseph": "Von seinem Schlafzimmer in Chamonix aus verbrachte Joseph die Nacht damit, die perfekten Tempopläne zu erstellen, indem er das Rennprofil und die Umgebungsbedingungen analysierte.",
+        "anthony": "Anthony leitet die Strategie und den Betrieb von Enduraw, gestützt auf einen Doktortitel in Physik und eine tiefe Leidenschaft für Leistungswissenschaft.",
+        "lucas": "Lucas leitet das Finanzmanagement von Enduraw und strukturiert dessen Wachstum, um die Ambitionen des Teams auf solidem finanziellem Fundament zu unterstützen.",
+        "valentin": "Valentin leitet die technische Entwicklung des Dashboards: Er entwirft die Produktarchitektur, koordiniert die technischen Teams und sorgt für die Zuverlässigkeit der Plattform.",
+        "charline": "Als Ingenieurin bringt Charline ihre Expertise in Verpflegungsstrategien und Energieoptimierung in den Dienst der Leistung unserer Athletinnen und Athleten ein.",
+        "antoine": "Er begeistert sich für Leistungsanalysen und bringt wertvolle Erfahrungen aus seiner Zeit bei Tudor Cycling mit, mitten im Profi-Radsport.",
+        "kyllian": "Kyllian setzt seine wissenschaftliche Expertise in den Dienst der Athletenleistung, indem er sorgfältige Datenanalyse mit konsequenter Begleitung vor Ort verbindet.",
+        "alex": "Er widmet sich der Erstellung professioneller und wirkungsvoller Bilder und fängt die Essenz von Enduraw, seinen Athleten und seinen Veranstaltungen durch hochwertige Fotografie ein."
+      }
+    }
+  }
+}

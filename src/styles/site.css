@@ -1,0 +1,687 @@
+/* ════════════════════════════════════════════════════════════════════════
+   enduraw.co — extensions propres au site
+
+   `brand.css` est une copie du dashboard et ne s'édite pas. Ce fichier porte
+   seulement ce que le site a et que le dashboard n'a pas : photo de tête,
+   colonne de lecture légale, rangées éditoriales. Mêmes tokens, même courbe,
+   même préfixe `ep-`.
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Canaux RVB des tokens de brand.css (qui ne les expose pas) : à garder
+   alignés sur --ep-sky, --ep-deep, --ep-mid, --ep-s1/2/3. */
+:root {
+  --ep-sky-rgb: 74 147 214; /* --ep-sky du site = bleu Enduraw (#4A93D6) */
+  --ep-deep-rgb: 32 84 168;
+  --ep-mid-rgb: 74 147 214;
+  --ep-s1-rgb: 10 11 12;
+  --ep-s2-rgb: 16 18 20;
+  --ep-s3-rgb: 21 24 27;
+  --ep-nav-h: 68px;
+}
+
+html,
+body {
+  background: var(--ep-black);
+}
+
+/* Aucun texte qui porte un sens sous 12 px : le libellé de la charte (11 px à
+   l'échelle marketing) passe à 12, comme dans la barre du dashboard. */
+.ep-shell {
+  --ep-label-fs: 12px;
+
+  /* ─── Bleu Enduraw plutôt que ciel (choix du dashboard, 2026-11-24) ────
+     L'accent de l'outil est passé du ciel #6CDCFF au bleu intermédiaire de
+     la charte, #4A93D6 (6,4:1 sur noir) : il se lit comme la marque sans
+     allumer l'écran. Le site suit : tout ce qui portait le ciel (tiret,
+     actif, focus, chiffre clé) porte ce bleu. Le halo ne garde que le bleu
+     foncé, comme l'horizon des pages de compte. */
+  --ep-sky: var(--ep-mid);
+  --ep-glow: radial-gradient(
+    ellipse 60% 100% at 50% 100%,
+    rgba(32, 84, 168, 0.34) 0%,
+    rgba(32, 84, 168, 0.12) 45%,
+    rgba(32, 84, 168, 0) 75%
+  );
+
+  /* Trois rôles de texte nettement distincts (100, 70, 50 %) et deux
+     filets (7 %, 12 %), comme l'intérieur du dashboard. */
+  --ep-dim: rgba(255, 255, 255, 0.7);
+  --ep-faint: rgba(255, 255, 255, 0.5);
+  --ep-line: rgba(255, 255, 255, 0.07);
+  --ep-line-2: rgba(255, 255, 255, 0.12);
+
+  /* Titres : la voix de la marque (italique, capitales) reste, à un volume
+     plus bas. Le titre de tête garde sa taille sur desktop ; les titres de
+     section descendent d'un tiers. */
+  --ep-t-display: clamp(2.1rem, 5vw, 4.2rem);
+  --ep-t-h2: clamp(1.45rem, 2.4vw, 2.15rem);
+  --ep-t-h3: clamp(1.05rem, 1.25vw, 1.2rem);
+}
+
+/* ─── boutons : la langue de la nouvelle version du dashboard ──────────
+   Aplat droit, casse normale, Space Grotesk 600, 44 px. Le biais et
+   l'italique restent aux titres, seul endroit où la marque parle fort.
+   Action principale en blanc cassé. Repris de auth.css (dashboard). */
+.ep-shell .ep-btn {
+  height: 44px;
+  padding: 0 18px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0;
+  text-transform: none;
+  gap: 8px;
+  transform: none;
+  transition: background-color 0.16s var(--ep-ease), color 0.16s var(--ep-ease),
+    border-color 0.16s var(--ep-ease), transform 0.12s var(--ep-ease);
+}
+.ep-shell .ep-btn > * {
+  transform: none;
+}
+.ep-shell .ep-btn--primary {
+  background: rgba(255, 255, 255, 0.95);
+  color: rgba(0, 0, 0, 0.96);
+}
+.ep-shell .ep-btn--primary:hover:not(:disabled, [aria-disabled="true"]) {
+  background: var(--ep-white);
+  transform: none;
+}
+.ep-shell .ep-btn--ghost:hover:not(:disabled, [aria-disabled="true"]) {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  transform: none;
+}
+.ep-shell .ep-btn:active:not(:disabled, [aria-disabled="true"]) {
+  transform: scale(0.98);
+}
+@media (max-width: 767px) {
+  .ep-shell .ep-btn {
+    height: 42px;
+    padding: 0 16px;
+    font-size: 13.5px;
+  }
+}
+
+.ep-shell .ep-btn--sm {
+  height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
+/* Lien d'action : casse normale, comme les boutons. */
+.ep-shell .ep-link {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* <main> reçoit le focus après une navigation, pour les lecteurs d'écran :
+   pas de cadre autour de toute la page. */
+.ep-shell main:focus-visible:focus-visible {
+  outline: none;
+}
+
+body {
+  overflow-x: clip;
+}
+
+/* Le contenu est masqué le temps de basculer vers la langue du visiteur
+   (index.html pose la classe, main.tsx la retire). */
+.ep-lang-pending #root {
+  visibility: hidden;
+}
+
+/* ─── japonais : pas de glyphes CJK dans les deux familles ───────────── */
+:lang(ja) .ep-display,
+:lang(ja) .ep-btn,
+:lang(ja) .ep-badge {
+  font-style: normal;
+}
+:lang(ja) .ep-display {
+  line-height: 1.2;
+}
+
+/* ─── lien d'évitement ───────────────────────────────────────────────── */
+.ep-skip {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--ep-white);
+  color: var(--ep-black);
+  font-weight: 500;
+}
+.ep-skip:focus {
+  top: 12px;
+}
+
+/* ─── photo de tête ──────────────────────────────────────────────────────
+   La photo occupe le premier écran et se fond au noir vers le bas, là où le
+   titre se pose. On voit le haut de la section suivante : la page invite à
+   défiler. Deux fondus : un vers le bas (titre), un léger à gauche (lecture
+   sur desktop). Pas de flou : la photo reste nette. */
+.ep-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(88svh, 900px);
+  padding-block: calc(var(--ep-nav-h) + 48px) 72px;
+}
+.ep-hero--short {
+  min-height: min(72svh, 760px);
+}
+@media (max-width: 1023px) {
+  .ep-hero,
+  .ep-hero--short {
+    min-height: 0;
+    padding-top: max(42svh, 300px);
+    padding-bottom: 56px;
+  }
+}
+/* Mobile : la photo occupe le haut, le texte se pose dessous, sur le fondu.
+   Desktop : la photo occupe les deux tiers droits, le texte la gauche, sur le
+   noir. Le sujet n'est jamais sous le titre. */
+.ep-hero__media {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: max(60svh, 420px);
+  z-index: -1;
+}
+.ep-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ep-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 18%),
+    linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.6) 22%, rgba(0, 0, 0, 0) 50%);
+}
+@media (min-width: 1024px) {
+  .ep-hero__media {
+    inset: 0 0 0 32%;
+    height: auto;
+    overflow: hidden;
+  }
+  .ep-hero__media img {
+    transform: scale(var(--ep-hero-zoom, 1));
+    transform-origin: var(--ep-hero-origin, center);
+  }
+  .ep-hero__media::after {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 18%),
+      linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.55) 18%, rgba(0, 0, 0, 0) 45%),
+      linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 30%);
+  }
+}
+
+/* Entrée unique de la page : le texte du hero monte, une fois. */
+@media (prefers-reduced-motion: no-preference) {
+  .ep-rise {
+    animation: ep-rise 0.6s var(--ep-ease) both;
+  }
+  .ep-rise--2 {
+    animation-delay: 0.08s;
+  }
+  .ep-rise--3 {
+    animation-delay: 0.16s;
+  }
+}
+@keyframes ep-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+/* ─── média ──────────────────────────────────────────────────────────── */
+.ep-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--ep-s1);
+}
+
+/* Capture du dashboard : un cadre fixe, une ligne, rien d'autre. */
+.ep-capture {
+  border: 1px solid var(--ep-line);
+  background: var(--ep-s1);
+}
+
+/* ─── rangée éditoriale : titre à gauche, texte à droite ──────────────── */
+.ep-split {
+  display: grid;
+  gap: 24px 64px;
+}
+@media (min-width: 1024px) {
+  .ep-split {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+
+/* Liste à filets : remplace les grilles de cartes. */
+.ep-lines > * {
+  border-top: 1px solid var(--ep-line);
+  padding-block: 28px;
+}
+.ep-lines--tight > * {
+  padding-block: 20px;
+}
+.ep-lines--loose > * {
+  padding-block: 32px;
+}
+.ep-lines > *:last-child {
+  border-bottom: 1px solid var(--ep-line);
+}
+
+/* ─── navigation ─────────────────────────────────────────────────────── */
+.ep-navlink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.16s var(--ep-ease);
+}
+.ep-navlink:hover,
+.ep-navlink[aria-current="page"],
+.ep-navlink[data-active="true"] {
+  color: var(--ep-white);
+}
+.ep-navlink[aria-current="page"]::after,
+.ep-navlink[data-active="true"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+  height: 2px;
+  background: var(--ep-sky);
+}
+@media (forced-colors: active) {
+  .ep-navlink[aria-current="page"]::after,
+  .ep-navlink[data-active="true"]::after {
+    background: CanvasText;
+  }
+}
+
+/* ─── lecture longue : pages légales ─────────────────────────────────── */
+.ep-legal {
+  max-width: 72ch;
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.78);
+}
+.ep-legal h2 {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--ep-black);
+}
+.ep-legal h3 {
+  margin-top: 20px;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ep-black);
+}
+.ep-legal p,
+.ep-legal ul {
+  margin-bottom: 10px;
+}
+.ep-legal ul {
+  padding-left: 18px;
+  list-style: disc;
+}
+.ep-legal a {
+  color: var(--ep-black);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.ep-legal table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-block: 12px 20px;
+}
+.ep-legal th,
+.ep-legal td {
+  text-align: left;
+  padding: 8px 12px 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  vertical-align: top;
+}
+.ep-legal th {
+  font-weight: 500;
+  color: var(--ep-black);
+}
+
+/* Texte souligné accessible dans une phrase (liens en ligne). */
+.ep-inline-link {
+  color: var(--ep-white);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.35);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.16s var(--ep-ease);
+}
+.ep-inline-link:hover {
+  text-decoration-color: var(--ep-sky);
+}
+
+/* Sections claires : les libellés de la charte (noir à 45 %) tombent à
+   3,4:1 sur blanc, sous le seuil AA. 62 % donne 5,9:1. */
+.ep-invert .ep-label {
+  color: rgba(0, 0, 0, 0.62);
+}
+.ep-invert .ep-inline-link {
+  color: var(--ep-black);
+  text-decoration-color: rgba(0, 0, 0, 0.35);
+}
+.ep-invert .ep-inline-link:hover {
+  text-decoration-color: var(--ep-black);
+}
+
+/* Titres allemands : mots composés longs, césure autorisée. */
+:lang(de) .ep-display {
+  hyphens: auto;
+}
+/* Japonais : pas d'espaces, on ne coupe pas au milieu d'un mot. */
+:lang(ja) .ep-display {
+  word-break: keep-all;
+  line-break: strict;
+}
+
+/* ─── habillage des images ──────────────────────────────────────────────
+   Une photo n'est pas posée brute : elle tient dans un cadre d'imprimeur.
+   Un filet décalé derrière l'image, deux croix de repère de la charte (7.4)
+   aux coins opposés, une légende courte ouverte par le tiret. Angles droits,
+   aucune ombre. */
+.ep-frame {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+}
+.ep-frame__box {
+  position: relative;
+}
+.ep-frame__box::before {
+  content: "";
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  border: 1px solid var(--ep-line-2);
+  z-index: -1;
+  pointer-events: none;
+}
+.ep-frame--left .ep-frame__box::before {
+  inset: 16px 16px -16px -16px;
+}
+.ep-frame .ep-cross {
+  color: var(--ep-white);
+  opacity: 0.4;
+}
+.ep-frame__cross-a {
+  top: -22px;
+  left: -5px;
+}
+.ep-frame__cross-b {
+  bottom: -38px;
+  right: -21px;
+}
+.ep-frame--left .ep-frame__cross-a {
+  left: auto;
+  right: -5px;
+}
+.ep-frame--left .ep-frame__cross-b {
+  right: auto;
+  left: -21px;
+}
+.ep-frame figcaption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ep-faint);
+}
+.ep-frame figcaption::before {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 3px;
+  transform: skewX(-12deg);
+  background: var(--ep-sky);
+}
+@media (max-width: 767px) {
+  .ep-frame__box::before {
+    inset: 10px -10px -10px 10px;
+  }
+  .ep-frame--left .ep-frame__box::before {
+    inset: 10px 10px -10px -10px;
+  }
+  .ep-frame__cross-b {
+    bottom: -30px;
+    right: -15px;
+  }
+  .ep-frame--left .ep-frame__cross-b {
+    left: -15px;
+  }
+}
+
+/* ─── apparitions au défilement ─────────────────────────────────────────
+   Animations pilotées par le défilement, en CSS seul et en amélioration
+   progressive : sans prise en charge (ou avec « réduire les animations »),
+   tout est simplement affiché. Opacité et transformations seulement. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes ep-in {
+      from {
+        opacity: 0;
+        translate: 0 32px;
+      }
+    }
+    @keyframes ep-settle {
+      from {
+        scale: 1.12;
+      }
+    }
+    @keyframes ep-line-in {
+      from {
+        opacity: 0;
+        translate: -16px 16px;
+      }
+    }
+    .ep-reveal {
+      animation: ep-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+    .ep-frame {
+      animation: ep-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+    .ep-frame .ep-media img {
+      animation: ep-settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+    .ep-frame__box::before {
+      animation: ep-line-in linear both;
+      animation-timeline: view();
+      animation-range: entry 20% entry 100%;
+    }
+  }
+}
+
+/* ─── hero inversé : photo à gauche, texte à droite ─────────────────── */
+@media (min-width: 1024px) {
+  .ep-hero--left .ep-hero__media {
+    inset: 0 40% 0 0;
+  }
+  .ep-hero--left .ep-hero__media::after {
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 18%),
+      linear-gradient(270deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.55) 18%, rgba(0, 0, 0, 0) 45%),
+      linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 30%);
+  }
+  .ep-hero--left .ep-hero__text {
+    margin-left: auto;
+    max-width: min(560px, 42%);
+  }
+}
+
+/* ─── appareils : téléphone et ordinateur portable ──────────────────────
+   Les seuls arrondis du site : ceux de l'objet, jamais de l'interface. Le
+   corps est un dégradé de gris neutre (un seul ton, pas de couleur), le
+   contour un filet intérieur. Aucune ombre portée. */
+.ep-phone {
+  position: relative;
+  padding: 7px;
+  border-radius: 34px;
+  background: linear-gradient(160deg, #23262a 0%, #121416 55%, #1b1e21 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+.ep-phone__screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 27px;
+  background: var(--ep-black);
+}
+/* Île de l'écran : posée au-dessus de la barre de l'app, centrée. */
+.ep-phone__screen::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  z-index: 1;
+  width: 28%;
+  height: 16px;
+  translate: -50% 0;
+  border-radius: 10px;
+  background: var(--ep-black);
+}
+.ep-phone__screen .ep-media {
+  background: var(--ep-black);
+}
+/* Le bouton latéral : un trait sur le bord droit. */
+.ep-phone::after {
+  content: "";
+  position: absolute;
+  top: 22%;
+  right: -2px;
+  width: 2px;
+  height: 11%;
+  border-radius: 0 2px 2px 0;
+  background: #2a2d31;
+}
+@media (max-width: 639px) {
+  .ep-laptop__base {
+    margin-inline: -4%;
+  }
+  .ep-phone {
+    padding: 5px;
+    border-radius: 24px;
+  }
+  .ep-phone__screen {
+    border-radius: 19px;
+  }
+  .ep-phone__screen::before {
+    top: 5px;
+    height: 11px;
+  }
+}
+
+.ep-laptop {
+  position: relative;
+}
+.ep-laptop__lid {
+  padding: 2.2% 2.2% 3.2%;
+  border-radius: 16px 16px 0 0;
+  background: linear-gradient(180deg, #1d2023 0%, #111315 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+.ep-laptop__screen {
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--ep-black);
+}
+.ep-laptop__base {
+  position: relative;
+  height: clamp(8px, 1.4vw, 16px);
+  margin-inline: -6%;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(180deg, #34383d 0%, #1a1c1f 70%, #101113 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+/* L'encoche d'ouverture, au centre du bord avant. */
+.ep-laptop__base::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 16%;
+  height: 40%;
+  translate: -50% 0;
+  border-radius: 0 0 8px 8px;
+  background: #0e0f11;
+}
+
+/* ─── équipe : pages de quatre qui se succèdent en fondu ─────────────── */
+.ep-team-page {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s var(--ep-ease), visibility 0s linear 0.6s;
+}
+.ep-team-page.is-on {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s var(--ep-ease);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ep-team-page,
+  .ep-team-page.is-on {
+    transition: none;
+  }
+}
+
+/* Portrait de l'équipe : carré, cadre d'imprimeur, croix de repère. */
+.ep-portrait {
+  min-width: 0;
+}
+.ep-portrait__img {
+  position: relative;
+  max-width: 132px;
+  border: 1px solid var(--ep-line-2);
+  padding: 4px;
+}
+.ep-portrait__img .ep-media img {
+  transition: scale 0.5s var(--ep-ease);
+}
+.ep-portrait:hover .ep-portrait__img .ep-media img {
+  scale: 1.04;
+}
+.ep-portrait .ep-cross {
+  color: var(--ep-white);
+  opacity: 0.4;
+}
+.ep-portrait__initials {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  background: var(--ep-s2);
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.4);
+}

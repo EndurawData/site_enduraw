@@ -1,0 +1,47 @@
+{
+  "nav": {
+    "primary": "Main navigation",
+    "home": "Home",
+    "media": "Media",
+    "dashboard": "Dashboard",
+    "services": "Services",
+    "about": "About",
+    "lab": "Lab & Testing",
+    "coaching": "Coaching",
+    "conferences": "Conferences",
+    "servicesMenu": "Show services",
+    "shop": "Shop",
+    "language": "Language",
+    "menu": "Menu",
+    "login": "Log in",
+    "signup": "Create account"
+  },
+  "footer": {
+    "tagline": "A sport performance laboratory in Chamonix. We turn training and lab data into analysis you can act on.",
+    "site": "Site",
+    "contact": "Contact",
+    "follow": "Follow",
+    "careers": "Careers",
+    "mentions": "Legal notice",
+    "privacy": "Privacy policy",
+    "cgu": "Terms of use",
+    "subprocessors": "Subprocessors"
+  },
+  "a11y": {
+    "skip": "Skip to content"
+  },
+  "seo": {
+    "tagline": "Endurance performance laboratory",
+    "og_alt": "Enduraw, sport performance laboratory",
+    "home": "Enduraw analyses endurance training and lab data: a dashboard for runners, lab testing in Chamonix, coaching and conferences.",
+    "media": "Race analyses, articles and studies by Enduraw on trail running, marathon and endurance performance.",
+    "dashboard": "The Enduraw dashboard analyses every session synced from Strava, builds your Runner Matrix and race pacing plans.",
+    "services": "Lab testing in Chamonix, individual coaching and conferences: Enduraw's services for athletes, teams and companies.",
+    "lab": "VO2max, ventilatory threshold and running economy tests, optional lactate, in Chamonix or Paris. The Performance Center also hosts camps and seminars.",
+    "coaching": "Season-long individual coaching by Enduraw's sport scientists, for every level.",
+    "conferences": "Talks and workshops on endurance performance and sport data, for companies, schools and events.",
+    "about": "Who we are: Enduraw, a team of engineers and sport scientists based in Chamonix.",
+    "careers": "Join Enduraw: open positions and spontaneous applications.",
+    "legal": "Legal information about enduraw.co."
+  }
+}

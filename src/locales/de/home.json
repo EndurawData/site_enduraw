@@ -1,0 +1,59 @@
+{
+  "home": {
+    "hero": {
+      "alt": "Trailläufer blickt auf einem Grat über Chamonix auf seine Uhr",
+      "lead": "Datenwissenschaft für die Ausdauerleistung, für jeden Athleten, vom ersten Rennen bis zum olympischen Finale.",
+      "ctaDashboard": "Dashboard entdecken",
+      "ctaServices": "Unsere Leistungen",
+      "line1": "Turning raw data",
+      "line2": "into relevant",
+      "line3": "analysis"
+    },
+    "dashboard": {
+      "title": "Dein Training, gelesen wie im Labor",
+      "text": "Verbinde Strava. Deine Einheiten werden gelesen, und deine Runner Matrix bewertet sechs Dimensionen deines Laufens.",
+      "cta": "Zum Dashboard",
+      "alt": "Übersicht des Enduraw-Dashboards: Aktivitäten, Runner Matrix, Rennpläne und Labortests",
+      "altToday": "Enduraw-Dashboard auf dem Smartphone: der Heute-Bildschirm mit Athletensilhouette und Matrix-Score",
+      "altMatrix": "Runner Matrix auf dem Smartphone: sechs Dimensionen mit bis zu 100 Punkten im Radar"
+    },
+    "testing": {
+      "title": "Miss deine Physiologie",
+      "text": "VO₂max, ventilatorische Schwellen und maximale aerobe Geschwindigkeit, gemessen in Chamonix oder Paris und erklärt mit dem, was für dein Training zählt.",
+      "cta": "Zu den Tests",
+      "alt": "Athlet läuft mit Atemgasmaske während eines VO2max-Tests",
+      "caption": "VO2max-Test mit Atemgasanalyse"
+    },
+    "field": {
+      "title": "Der Anspruch der Elite, für alle",
+      "text": "Wir erstellen Rennbriefings für Elite-Athleten. Dieselbe sorgfältige Arbeit steckt in jedem Plan und jedem Coaching.",
+      "cta": "Coaching entdecken",
+      "alt": "Tom Evans bei einer Laktatmessung im Ziel eines Rennens",
+      "caption": "Laktatmessung im Ziel"
+    },
+    "athletes": {
+      "label": "Diese Athleten arbeiten mit uns",
+      "tom": "Sieger des UTMB und der Western States",
+      "petter": "Sieger des CCC",
+      "casimir": "25. der Ironman-70.3-Weltmeisterschaft 2026, 2-facher Ironman-70.3-Sieger",
+      "theo": "Sieger der 90 km du Mont-Blanc",
+      "duncan": "Französischer Marathonläufer"
+    },
+    "latest": {
+      "title": "Neueste Inhalte",
+      "all": "Alle Inhalte",
+      "follow": "Rennanalysen jede Woche auf Instagram:"
+    },
+    "cta": {
+      "title": "Dein nächstes Rennen beginnt hier",
+      "text": "Verbinde Strava und erhalte dein Runner-Matrix-Profil in wenigen Minuten.",
+      "button": "Konto erstellen"
+    }
+  },
+  "figures": {
+    "aria": "Enduraw in Zahlen",
+    "users": "Nutzer von Enduraw Report weltweit",
+    "activities": "Verarbeitete und analysierte Aktivitäten",
+    "distance": "Analysierte Kilometer"
+  }
+}

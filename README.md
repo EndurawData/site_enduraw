@@ -1,81 +1,49 @@
-# Enduraw Website
+# Enduraw · site vitrine
 
-A modern React TypeScript website for Enduraw - Performance Experience, built with Tailwind CSS.
+Site de [enduraw.co](https://enduraw.co), dans la direction artistique du dashboard Enduraw.
+React 19, TypeScript, Vite, Tailwind 3, react-i18next (5 langues), prérendu statique, GitHub Pages.
 
-## Overview
+## Démarrer
 
-Enduraw is a performance science consultancy specializing in endurance sports optimization. This website showcases our services, values, and expertise in data-driven performance analysis.
+Node 20.19 ou plus récent.
 
-## Technology Stack
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # images → types → lint → build client → build serveur → prérendu, dans build/
+npm run preview    # sert build/
+```
 
-- **React 19** with TypeScript
-- **React Router** for navigation
-- **Tailwind CSS** for styling
-- **Create React App** as build system
+| Script | Rôle |
+|---|---|
+| `npm run lint` | ESLint, dont la garde de la charte (couleurs, polices, angles, ombres, `vh`) |
+| `npm run check:i18n` | Vérifie que chaque clé `t("…")` existe dans les 5 langues |
+| `npm run images` | Variantes WebP et manifeste des dimensions (lancé par `dev` et `build`) |
 
-## Getting Started
-
-### Prerequisites
-- Node.js (v16 or higher)
-- npm
-
-### Installation
-
-1. Clone or navigate to the project directory
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm start
-   ```
-
-The website will be available at `http://localhost:3000`
-
-### Available Scripts
-
-- `npm start` - Runs the development server
-- `npm build` - Creates production build
-- `npm test` - Runs test suite
-- `npm run eject` - Ejects from Create React App (irreversible)
-
-## Project Structure
+## Où sont les choses
 
 ```
 src/
-├── components/          # Reusable React components
-│   ├── Navigation.tsx   # Main navigation bar
-│   ├── Footer.tsx       # Site footer
-│   └── ...
-├── pages/               # Page components
-│   ├── HomePage.tsx     # Landing page
-│   ├── ServicesPage.tsx # Services overview
-│   ├── AboutPage.tsx    # About Enduraw
-│   └── ContactPage.tsx  # Contact information
-├── App.tsx             # Main application component
-└── index.tsx           # Application entry point
+├── routes/manifest.ts     # LA liste des routes et des redirections d'anciennes URL
+├── routes/head.ts         # title, description, canonical, Open Graph, JSON-LD
+├── components/layout/     # barre, pied de page
+├── components/ui/         # primitives : PhotoHero, SectionHead, Action, Media, Capture
+├── components/sections/   # sections partagées : FinalCta, Figures, LegalLayout
+├── pages/                 # une page par route
+├── styles/brand.css       # COPIE de la couche ep-* du dashboard, ne pas éditer ici
+├── styles/site.css        # extensions propres au site
+└── locales/<langue>/*.json  # un fichier par page, fusionnés au chargement
 ```
 
-## Features
+## Règles
 
-- **Responsive Design** - Optimized for all devices
-- **Dark Theme** - Professional dark color scheme with teal accents
-- **Smooth Navigation** - React Router with smooth scrolling
-- **Performance Focused** - Built with optimization in mind
+- Couleurs, polices, formes : celles de la charte, via les classes `ep-*` et les tokens Tailwind `ep-*`. La garde ESLint refuse le reste.
+- Tout texte affiché passe par `t()` et existe dans les 5 langues. La casse vient du CSS.
+- Une nouvelle page : un fichier dans `src/pages/`, une entrée dans `src/routes/manifest.ts`. Une page supprimée : son URL passe dans `REDIRECTS`.
 
-## Deployment
+## Déploiement
 
-The website is configured to be deployed to `https://enduraw.co`
+Chaque push sur `main` déploie `build/` sur GitHub Pages (`.github/workflows/deploy-react.yml`).
+Chaque route est prérendue en `route.html` et `route/index.html` ; les anciennes URL ont une page de redirection ; `404.html` est une vraie page 404.
 
-To create a production build:
-```bash
-npm run build
-```
-
-## Contact
-
-For questions or support:
-- Email: enduraw.data@gmail.com
-- Website: enduraw.co
+**Ne jamais déplacer ni modifier** `public/images/signatures/` et `public/images/logos/` : les signatures mail chargent ces fichiers depuis le dépôt.

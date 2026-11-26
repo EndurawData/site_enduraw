@@ -1,0 +1,36 @@
+{
+  "servicesPage": {
+    "hero": {
+      "title": "Tres formas de trabajar con nosotros",
+      "lead": "En el laboratorio, en el terreno o en el escenario: la misma lectura del rendimiento, aplicada a lo que necesitas.",
+      "alt": "Chalé de madera frente a cumbres nevadas"
+    },
+    "lab": {
+      "title": "Laboratorio y tests",
+      "text": "VO₂máx, umbrales ventilatorios y velocidad aeróbica máxima medidos en Chamonix o en París. En Chamonix, el Performance Center acoge también stages, seminarios y coworking.",
+      "cta": "Ver los tests y el lugar",
+      "alt": "Sala de pruebas del Performance Center, cinta de correr y pantalla"
+    },
+    "coaching": {
+      "title": "Coaching",
+      "text": "Un coach científico para toda tu temporada: planificación mensual, análisis de tus datos y estrategia para tus carreras objetivo.",
+      "cta": "Descubrir el coaching",
+      "alt": "Corredor de trail en un sendero, cumbres nevadas detrás"
+    },
+    "conferences": {
+      "title": "Conferencias",
+      "text": "Nuestros expertos intervienen en eventos deportivos, empresas y escuelas sobre datos, fisiología y rendimiento.",
+      "cta": "Ver las conferencias",
+      "alt": "Joseph Mestrallet en el escenario ante un auditorio"
+    },
+    "dashboard": {
+      "text": "El análisis de tus sesiones de Strava, tu Runner Matrix y tus planes de carrera están en el dashboard.",
+      "cta": "Ver el dashboard"
+    },
+    "contact": {
+      "title": "Escribe al equipo adecuado",
+      "lab": "Una prueba, una estancia o el coaching:",
+      "conferences": "Una conferencia:"
+    }
+  }
+}

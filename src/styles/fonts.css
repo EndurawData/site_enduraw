@@ -1,0 +1,70 @@
+/* ════════════════════════════════════════════════════════════════════════
+   Polices de la charte, auto-hébergées (7.1 / 7.2)
+
+   Le site chargeait Inter Tight en 700 DROIT seulement : chaque titre en
+   `font-style: italic` était un faux italique, une oblique calculée par le
+   navigateur. Space Grotesk n'existait qu'en 300 et 500 ; les 400 et 600 de
+   l'interface étaient synthétisés.
+
+   Ici, les vrais fichiers :
+     · Inter Tight Bold Italic, instance statique 700 extraite de la police
+       variable @fontsource-variable/inter-tight (fontTools,
+       src/assets/fonts/) — la charte n'emploie Inter Tight qu'en Bold Italic
+       (titres, boutons, chiffres) : 24 Ko sur le chemin critique au lieu
+       des 48 Ko de l'axe complet ;
+     · Space Grotesk, axe 300 → 700, droit (Light, Regular, Medium, SemiBold).
+
+   Les familles sont déclarées sous leur nom de charte, « Inter Tight » et
+   « Space Grotesk », pour que `brand.css` — copie du dashboard — s'applique
+   sans retouche. Seuls les sous-ensembles latin et latin-ext sont servis :
+   les cinq langues du site, japonais excepté (voir `site.css`, :lang(ja)).
+
+   Fichiers : @fontsource-variable, sans appel à Google Fonts (RGPD, et un
+   aller-retour vers un domaine tiers en moins sur le chemin critique).
+   ════════════════════════════════════════════════════════════════════════ */
+
+@font-face {
+  font-family: "Inter Tight";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src: url("../assets/fonts/inter-tight-700-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Inter Tight";
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src: url("../assets/fonts/inter-tight-700-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url("@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2")
+    format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url("@fontsource-variable/space-grotesk/files/space-grotesk-latin-ext-wght-normal.woff2")
+    format("woff2-variations");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}

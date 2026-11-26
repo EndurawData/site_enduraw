@@ -1,0 +1,80 @@
+{
+  "coachingPage": {
+    "contactSubject": "Coaching",
+    "hero": {
+      "title": "Un coach científico para tu temporada",
+      "lead": "Primero, el análisis de tus sesiones en el dashboard. Para ir más lejos, un seguimiento de tus datos o un coach para toda la temporada, del primer maratón al podio.",
+      "cta": "Hablar de tu temporada",
+      "ctaOffers": "Ver las dos ofertas",
+      "alt": "Corredor de trail en un sendero de montaña, cumbres nevadas detrás"
+    },
+    "analysis": {
+      "title": "Lo que dice una sesión",
+      "lead": "Conecta Strava: tus sesiones aparecen en la pestaña Actividades del dashboard. El análisis en profundidad de una sesión, bajo demanda, muestra el detalle.",
+      "items": {
+        "type": {
+          "title": "Tipo de sesión",
+          "text": "detectado automáticamente, por ejemplo 4 × 8 min en umbral, recuperación de 2 min"
+        },
+        "intensity": {
+          "title": "Intensidad",
+          "text": "el nivel de esfuerzo de la sesión, legible de un vistazo"
+        },
+        "reps": {
+          "title": "Repeticiones",
+          "text": "el ritmo y la frecuencia cardiaca de cada una"
+        },
+        "weather": {
+          "title": "Meteo",
+          "text": "temperatura, viento y humedad durante la sesión"
+        },
+        "adjusted": {
+          "title": "Ritmo ajustado",
+          "text": "trazado junto a tu ritmo, bajo el perfil del recorrido"
+        }
+      },
+      "cta": "Ver el dashboard",
+      "testing": "¿Quieres conocer primero tus zonas?",
+      "testingCta": "Ver los tests",
+      "captureAlt": "Análisis de una sesión en el dashboard de Enduraw: intervalos en umbral 2 detectados automáticamente, 4 × 8 min, intensidad muy alta, meteo, ritmo ajustado y cada repetición con su ritmo y su frecuencia cardiaca",
+      "caption": "Análisis de una sesión en la pestaña Actividades, datos ficticios"
+    },
+    "offers": {
+      "title": "Para ir más lejos",
+      "lead": "Dos formas de acompañarte: la mirada de un experto sobre tus datos, o un coach para toda la temporada.",
+      "photoAlt": "Triatleta en bicicleta de contrarreloj durante una carrera"
+    },
+    "data": {
+      "title": "Un seguimiento de datos personalizado",
+      "text": "Tus datos de entrenamiento y de carrera leídos por el equipo de Enduraw, para entender lo que dicen de tu forma y de tus carreras. El formato se define contigo: escríbenos qué quieres seguir.",
+      "cta": "Pedir un seguimiento de datos",
+      "subject": "Seguimiento de datos personalizado"
+    },
+    "coaching": {
+      "title": "El coaching de Enduraw",
+      "text": "Un formato construido en torno a tus objetivos y tu calendario de carreras. Seguimos el rendimiento en su conjunto: entrenamiento, nutrición, avituallamiento, sueño.",
+      "items": {
+        "planning": "Una planificación mensual adaptada a tus objetivos",
+        "advice": "Consejos científicos para optimizar tu entrenamiento",
+        "feedback": "Un análisis semanal de tus datos de entrenamiento",
+        "support": "Seguimiento por teléfono y correo, con respuesta en 48 h",
+        "pacing": "Una estrategia de ritmo para tus carreras principales",
+        "call": "Una videollamada al mes sobre un tema técnico: optimización del entrenamiento, análisis de carrera"
+      },
+      "priceLabel": "Seguimiento de temporada",
+      "price": "350 €",
+      "period": "al mes"
+    },
+    "elite": {
+      "title": "Acompañamiento élite, bajo petición",
+      "text": "Para atletas de alto nivel: un acompañamiento a medida y cercano, construido contigo en torno a tus objetivos de temporada y tus grandes carreras. Las plazas son limitadas.",
+      "cta": "Solicitar el acompañamiento élite",
+      "subject": "Acompañamiento élite"
+    },
+    "cta": {
+      "title": "Construyamos juntos tu temporada",
+      "text": "Cuéntanos tus objetivos y tu calendario de carreras: te propondremos el acompañamiento más adecuado.",
+      "button": "Hablar de tu temporada"
+    }
+  }
+}

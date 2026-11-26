@@ -1,0 +1,80 @@
+{
+  "coachingPage": {
+    "contactSubject": "Coaching",
+    "hero": {
+      "title": "Un coach scientifique pour votre saison",
+      "lead": "D'abord l'analyse de vos séances dans le dashboard. Pour aller plus loin, un suivi de vos données ou un coach pour toute la saison, du premier marathon au podium.",
+      "cta": "Parler de votre saison",
+      "ctaOffers": "Voir les deux offres",
+      "alt": "Traileur en course sur un sentier de montagne, sommets enneigés derrière lui"
+    },
+    "analysis": {
+      "title": "Ce que dit une séance",
+      "lead": "Connectez Strava : vos séances remontent dans l'onglet Activités du dashboard. L'analyse approfondie d'une séance, à la demande, en montre le détail.",
+      "items": {
+        "type": {
+          "title": "Type de séance",
+          "text": "détecté automatiquement, par exemple 4 × 8 min au seuil, récupération 2 min"
+        },
+        "intensity": {
+          "title": "Intensité",
+          "text": "le niveau d'effort de la séance, lisible d'un coup d'œil"
+        },
+        "reps": {
+          "title": "Répétitions",
+          "text": "l'allure et la fréquence cardiaque de chacune"
+        },
+        "weather": {
+          "title": "Météo",
+          "text": "température, vent et humidité pendant la séance"
+        },
+        "adjusted": {
+          "title": "Allure ajustée",
+          "text": "tracée à côté de votre allure, sous le profil du parcours"
+        }
+      },
+      "cta": "Voir le dashboard",
+      "testing": "Vous voulez d'abord connaître vos zones ?",
+      "testingCta": "Voir les tests",
+      "captureAlt": "Analyse d'une séance dans le dashboard Enduraw : intervalles au seuil 2 détectés automatiquement, 4 × 8 min, intensité très intense, météo, allure ajustée et chaque répétition avec son allure et sa fréquence cardiaque",
+      "caption": "Analyse d'une séance dans l'onglet Activités, données fictives"
+    },
+    "offers": {
+      "title": "Pour aller plus loin",
+      "lead": "Deux façons d'être accompagné : un regard d'expert sur vos données, ou un coach pour toute la saison.",
+      "photoAlt": "Triathlète sur un vélo de contre-la-montre en course"
+    },
+    "data": {
+      "title": "Un suivi data personnalisé",
+      "text": "Vos données d'entraînement et de course lues par l'équipe Enduraw, pour comprendre ce qu'elles disent de votre forme et de vos courses. Le format se définit avec vous : écrivez-nous ce que vous voulez suivre.",
+      "cta": "Demander un suivi data",
+      "subject": "Suivi data personnalisé"
+    },
+    "coaching": {
+      "title": "Le coaching Enduraw",
+      "text": "Un format construit autour de vos objectifs et de votre calendrier de courses. Nous suivons la performance en entier : entraînement, nutrition, ravitaillement, sommeil.",
+      "items": {
+        "planning": "Une planification mensuelle adaptée à vos objectifs",
+        "advice": "Des conseils scientifiques pour optimiser votre entraînement",
+        "feedback": "Un retour chaque semaine sur vos données d'entraînement",
+        "support": "Un suivi par téléphone et par e-mail, avec réponse sous 48 h",
+        "pacing": "Une stratégie d'allure pour vos courses principales",
+        "call": "Une visioconférence par mois sur un sujet technique : optimisation de l'entraînement, analyse de course"
+      },
+      "priceLabel": "Support saisonnier",
+      "price": "350 €",
+      "period": "par mois"
+    },
+    "elite": {
+      "title": "Accompagnement élite, sur demande",
+      "text": "Pour les athlètes de haut niveau : un accompagnement sur mesure et rapproché, construit avec vous autour de vos objectifs de saison et de vos courses majeures. Les places sont limitées.",
+      "cta": "Candidater à l'accompagnement élite",
+      "subject": "Accompagnement élite"
+    },
+    "cta": {
+      "title": "Construisons votre saison ensemble",
+      "text": "Parlez-nous de vos objectifs et de votre calendrier de courses : nous vous proposerons l'accompagnement le plus adapté.",
+      "button": "Parler de votre saison"
+    }
+  }
+}

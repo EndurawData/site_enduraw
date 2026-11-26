@@ -1,0 +1,19 @@
+{
+  "content": {
+    "newTab": "(nouvel onglet)",
+    "kinds": {
+      "analysis": "Analyse",
+      "press": "Publication",
+      "guide": "Guide",
+      "athlete": "Portrait"
+    },
+    "items": {
+      "utmb2026": "Le bilan des courses de l'UTMB 2026, relu par l'équipe Enduraw à partir des données de course.",
+      "torDesGlaciers": "Notre analyse de course du Tor des Glaciers, en Vallée d'Aoste, publiée sur Instagram.",
+      "teamRankings": "Deuxième édition du classement international des équipes de trail, publiée par Distances+ : Hoka en tête, Salomon deuxième. Enduraw a construit la formule qui rend comparables les scores des hommes et des femmes.",
+      "nutritionGuide": "Notre guide pour s'alimenter à l'entraînement et en course, disponible dans le dashboard.",
+      "paris2024": "Écrit par Anthony Saliou et Joseph Mestrallet pour World Athletics : pourquoi les marathons olympiques de Paris 2024 ont été si rapides sur un parcours vallonné, entre stratégie d'allure, météo et chaussures.",
+      "blanchard": "Le portrait de performance de Mathieu Blanchard, publié sur Instagram."
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "home": {
+    "hero": {
+      "alt": "Trail runner checking his watch on a ridge above Chamonix",
+      "lead": "Data science applied to endurance performance, for every athlete, from a first race to an Olympic final.",
+      "ctaDashboard": "Discover the dashboard",
+      "ctaServices": "See our services",
+      "line1": "Turning raw data",
+      "line2": "into relevant",
+      "line3": "analysis"
+    },
+    "dashboard": {
+      "title": "Your training, read like a lab would",
+      "text": "Connect Strava. Your sessions are read and your Runner Matrix scores six dimensions of your running.",
+      "cta": "See the dashboard",
+      "alt": "Enduraw dashboard overview: activities, Runner Matrix, pacing plans and lab tests",
+      "altToday": "Enduraw dashboard on a phone: the Today screen with the athlete silhouette and matrix score",
+      "altMatrix": "Runner Matrix on a phone: six dimensions scored out of 100 on a radar"
+    },
+    "testing": {
+      "title": "Measure your physiology",
+      "text": "VO₂max, ventilatory thresholds and maximal aerobic speed, measured in Chamonix or Paris and explained with the points that matter for your training.",
+      "cta": "See the tests",
+      "alt": "Athlete running with a gas exchange mask during a VO2max test",
+      "caption": "VO2max test, gas exchange analysis"
+    },
+    "field": {
+      "title": "Elite standards, for everyone",
+      "text": "We prepare race briefings for elite athletes. The same meticulous work goes into every plan and every coaching.",
+      "cta": "Discover coaching",
+      "alt": "Tom Evans during a lactate sample at the finish of a race",
+      "caption": "Lactate sample at the finish line"
+    },
+    "athletes": {
+      "label": "They work with us",
+      "tom": "UTMB and Western States winner",
+      "petter": "CCC winner",
+      "casimir": "25th at the 2026 Ironman 70.3 World Championship, 2× Ironman 70.3 winner",
+      "theo": "Winner of the 90 km du Mont-Blanc",
+      "duncan": "French marathon runner"
+    },
+    "latest": {
+      "title": "Latest content",
+      "all": "All content",
+      "follow": "Race analyses every week on Instagram:"
+    },
+    "cta": {
+      "title": "Your next race starts here",
+      "text": "Connect Strava and get your Runner Matrix profile in a few minutes.",
+      "button": "Create my account"
+    }
+  },
+  "figures": {
+    "aria": "Enduraw in figures",
+    "users": "Enduraw Report users worldwide",
+    "activities": "Activities processed and analysed",
+    "distance": "Kilometres analysed"
+  }
+}

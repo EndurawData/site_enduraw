@@ -1,0 +1,80 @@
+{
+  "coachingPage": {
+    "contactSubject": "Coaching",
+    "hero": {
+      "title": "Ein wissenschaftlicher Coach für deine Saison",
+      "lead": "Zuerst die Analyse deiner Einheiten im Dashboard. Wenn du weiter gehen willst: eine Begleitung deiner Daten oder ein Coach für die ganze Saison, vom ersten Marathon bis aufs Podium.",
+      "cta": "Über deine Saison sprechen",
+      "ctaOffers": "Beide Angebote ansehen",
+      "alt": "Trailläufer auf einem Bergpfad, verschneite Gipfel im Hintergrund"
+    },
+    "analysis": {
+      "title": "Was eine Einheit zeigt",
+      "lead": "Verbinde Strava: Deine Einheiten erscheinen im Tab Aktivitäten des Dashboards. Die Tiefenanalyse einer Einheit, auf Abruf, zeigt die Details.",
+      "items": {
+        "type": {
+          "title": "Art der Einheit",
+          "text": "automatisch erkannt, zum Beispiel 4 × 8 min an der Schwelle, 2 min Pause"
+        },
+        "intensity": {
+          "title": "Intensität",
+          "text": "wie hart die Einheit war, auf einen Blick"
+        },
+        "reps": {
+          "title": "Wiederholungen",
+          "text": "Pace und Herzfrequenz jeder einzelnen"
+        },
+        "weather": {
+          "title": "Wetter",
+          "text": "Temperatur, Wind und Luftfeuchtigkeit während der Einheit"
+        },
+        "adjusted": {
+          "title": "Angepasste Pace",
+          "text": "neben deiner Pace, unter dem Streckenprofil"
+        }
+      },
+      "cta": "Dashboard ansehen",
+      "testing": "Willst du zuerst deine Zonen kennen?",
+      "testingCta": "Tests ansehen",
+      "captureAlt": "Analyse einer Einheit im Enduraw-Dashboard: Intervalle an der Schwelle 2 automatisch erkannt, 4 × 8 min, sehr hohe Intensität, Wetter, angepasste Pace und jede Wiederholung mit Pace und Herzfrequenz",
+      "caption": "Analyse einer Einheit im Tab Aktivitäten, Beispieldaten"
+    },
+    "offers": {
+      "title": "Weiter gehen",
+      "lead": "Zwei Arten der Begleitung: ein Expertenblick auf deine Daten oder ein Coach für die ganze Saison.",
+      "photoAlt": "Triathlet auf dem Zeitfahrrad im Rennen"
+    },
+    "data": {
+      "title": "Persönliche Datenbegleitung",
+      "text": "Deine Trainings- und Wettkampfdaten, gelesen vom Enduraw-Team, um zu verstehen, was sie über deine Form und deine Rennen sagen. Das Format legen wir mit dir fest: Schreib uns, was du verfolgen willst.",
+      "cta": "Datenbegleitung anfragen",
+      "subject": "Persönliche Datenbegleitung"
+    },
+    "coaching": {
+      "title": "Das Enduraw-Coaching",
+      "text": "Ein Format rund um deine Ziele und deinen Rennkalender. Wir begleiten die Leistung als Ganzes: Training, Ernährung, Verpflegung, Schlaf.",
+      "items": {
+        "planning": "Monatliche Planung, abgestimmt auf deine Ziele",
+        "advice": "Wissenschaftliche Ratschläge, um dein Training zu optimieren",
+        "feedback": "Wöchentliches Feedback zu deinen Trainingsdaten",
+        "support": "Betreuung per Telefon und E-Mail, Antwort innerhalb von 48 h",
+        "pacing": "Eine Pacing-Strategie für deine wichtigsten Rennen",
+        "call": "Ein Videocall pro Monat zu einem technischen Thema: Trainingsoptimierung, Rennanalyse"
+      },
+      "priceLabel": "Saisonbetreuung",
+      "price": "350 €",
+      "period": "pro Monat"
+    },
+    "elite": {
+      "title": "Elite-Betreuung, auf Anfrage",
+      "text": "Für Athleten auf hohem Niveau: eine maßgeschneiderte, enge Betreuung, mit dir aufgebaut rund um deine Saisonziele und wichtigsten Rennen. Die Plätze sind begrenzt.",
+      "cta": "Für die Elite-Betreuung bewerben",
+      "subject": "Elite-Betreuung"
+    },
+    "cta": {
+      "title": "Lass uns deine Saison gemeinsam aufbauen",
+      "text": "Erzähl uns von deinen Zielen und deinem Rennkalender: Wir schlagen dir die passende Betreuung vor.",
+      "button": "Über deine Saison sprechen"
+    }
+  }
+}

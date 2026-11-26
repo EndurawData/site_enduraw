@@ -1,0 +1,19 @@
+{
+  "mediaPage": {
+    "hero": {
+      "alt": "Studio podcast du Performance Center, micros Enduraw sur la table",
+      "title": "La course, lue par les données",
+      "lead": "Analyses de course, études publiées et guides : nous rendons la donnée d'endurance accessible et lisible."
+    },
+    "all": {
+      "title": "Tous les contenus",
+      "follow": "Des analyses de course chaque semaine sur Instagram :"
+    },
+    "cta": {
+      "title": "Nos données pour vos médias",
+      "text": "Statistiques de course, analyses de performance, études techniques : nos données peuvent donner de la profondeur scientifique à votre couverture.",
+      "button": "Écrire à l'équipe média",
+      "subject": "Demande média"
+    }
+  }
+}

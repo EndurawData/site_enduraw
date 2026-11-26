@@ -1,0 +1,80 @@
+{
+  "coachingPage": {
+    "contactSubject": "Coaching",
+    "hero": {
+      "title": "A scientific coach for your season",
+      "lead": "First, the analysis of your sessions in the dashboard. To go further, a follow-up of your data or a coach for the whole season, from a first marathon to the podium.",
+      "cta": "Talk about your season",
+      "ctaOffers": "See both offers",
+      "alt": "Trail runner on a mountain path, snowy peaks behind"
+    },
+    "analysis": {
+      "title": "What a session tells you",
+      "lead": "Connect Strava: your sessions show up in the Activities tab of the dashboard. The in-depth analysis of a session, on demand, shows the detail.",
+      "items": {
+        "type": {
+          "title": "Session type",
+          "text": "detected automatically, for example 4 × 8 min at threshold, 2 min recovery"
+        },
+        "intensity": {
+          "title": "Intensity",
+          "text": "how hard the session was, readable at a glance"
+        },
+        "reps": {
+          "title": "Repetitions",
+          "text": "the pace and heart rate of each one"
+        },
+        "weather": {
+          "title": "Weather",
+          "text": "temperature, wind and humidity during the session"
+        },
+        "adjusted": {
+          "title": "Adjusted pace",
+          "text": "plotted next to your pace, under the course profile"
+        }
+      },
+      "cta": "See the dashboard",
+      "testing": "Want to know your zones first?",
+      "testingCta": "See the tests",
+      "captureAlt": "Session analysis in the Enduraw dashboard: threshold 2 intervals detected automatically, 4 × 8 min, very hard intensity, weather, adjusted pace and each repetition with its pace and heart rate",
+      "caption": "Session analysis in the Activities tab, sample data"
+    },
+    "offers": {
+      "title": "To go further",
+      "lead": "Two ways to be supported: an expert eye on your data, or a coach for the whole season.",
+      "photoAlt": "Triathlete on a time-trial bike during a race"
+    },
+    "data": {
+      "title": "Personal data follow-up",
+      "text": "Your training and racing data read by the Enduraw team, to understand what they say about your form and your races. The format is set with you: tell us what you want to follow.",
+      "cta": "Ask for a data follow-up",
+      "subject": "Personal data follow-up"
+    },
+    "coaching": {
+      "title": "Enduraw coaching",
+      "text": "A format built around your goals and your race calendar. We follow performance as a whole: training, nutrition, refuelling, sleep.",
+      "items": {
+        "planning": "Monthly planning tailored to your goals",
+        "advice": "Scientific advice to optimise your training",
+        "feedback": "Weekly feedback on your training data",
+        "support": "Phone and email support, with replies within 48 h",
+        "pacing": "A pacing strategy for your main races",
+        "call": "One video call a month on a technical topic: training optimisation, race analysis"
+      },
+      "priceLabel": "Seasonal support",
+      "price": "€350",
+      "period": "per month"
+    },
+    "elite": {
+      "title": "Elite support, on request",
+      "text": "For high-level athletes: close, tailored support built with you around your season goals and major races. Places are limited.",
+      "cta": "Apply for elite support",
+      "subject": "Elite support"
+    },
+    "cta": {
+      "title": "Let's build your season together",
+      "text": "Tell us about your goals and race calendar, and we'll suggest the support that fits you best.",
+      "button": "Talk about your season"
+    }
+  }
+}

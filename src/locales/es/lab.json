@@ -1,0 +1,140 @@
+{
+  "labPage": {
+    "book": "Reservar una prueba",
+    "hero": {
+      "alt": "Atleta haciendo una prueba en cinta con máscara de análisis de gases, bajo una estructura de madera",
+      "title": "Tu fisiología, medida en el laboratorio",
+      "lead": "VO2max, umbrales y economía de carrera, medidos en laboratorio en Chamonix o París, para conocer tus zonas de entrenamiento reales. Para todos los niveles.",
+      "seeTests": "Ver las pruebas"
+    },
+    "process": {
+      "title": "Una prueba, paso a paso",
+      "lead": "De la reserva al informe, en Chamonix o en París.",
+      "steps": {
+        "book": {
+          "title": "Reservar",
+          "text": "Eliges la prueba y el lugar, y reservas en línea. Te confirmamos el horario por correo.",
+          "chamonix": "Chamonix",
+          "paris": "París",
+          "chamonixText": "El Performance Center, nuestro laboratorio.",
+          "chamonixLink": "Ver el lugar",
+          "parisText": "La sala Rune, {{address}}. Allí alquilamos una cinta durante la prueba.",
+          "captionChamonix": "Chamonix, Performance Center",
+          "captionParis": "París, sala Rune",
+          "altChamonix": "Sala de pruebas del Performance Center en Chamonix: cinta de correr, pantalla y paredes de piedra",
+          "altParis": "La sala Rune en París: zona de entrenamiento, máquinas y cintas de correr"
+        },
+        "fitting": {
+          "title": "Acogida y colocación de la máscara",
+          "text": "Una conversación sobre tu salud, tu práctica y tu objetivo define el protocolo. Después colocamos la máscara de análisis de gases y el pulsómetro.",
+          "alt": "Un miembro del equipo ajusta las correas de la máscara de análisis de gases en la cabeza de un atleta"
+        },
+        "test": {
+          "title": "La prueba en cinta",
+          "text": "El esfuerzo en cinta, con tomas de lactato si las elegiste. Según tu práctica, uno de nuestros dos protocolos:",
+          "alt": "Atleta durante una prueba de VO2max en cinta, máscara de análisis de gases conectada al analizador, sala Rune en París",
+          "caption": "Prueba de VO2max en París, sala Rune",
+          "vo2": {
+            "title": "Protocolo VO2max",
+            "items": "Frecuencia cardiaca máxima, VO2max, umbrales ventilatorios 1 y 2, velocidad aeróbica máxima, zonas de entrenamiento, oxigenación muscular, temperatura corporal, lactato opcional."
+          },
+          "runWalk": {
+            "title": "Protocolo carrera y marcha",
+            "items": "Economía de carrera, de marcha y con bastones, pendiente crítica de marcha, velocidad crítica de carrera, VO2 y ventilación, frecuencia cardiaca, gasto energético."
+          }
+        },
+        "debrief": {
+          "title": "Los resultados, comentados",
+          "text": "Al final de la sesión, una primera lectura en caliente contigo. El análisis completo llega después por videollamada con un sport scientist del equipo, una vez analizados los datos.",
+          "alt": "Un coach sigue a un atleta en pleno esfuerzo en cinta, con máscara de análisis de gases"
+        },
+        "report": {
+          "title": "El informe, en el dashboard y en PDF",
+          "text": "Tus umbrales ventilatorios, tu VO₂máx, tu VAM y tus tres zonas de entrenamiento, con recomendaciones para seguir. El informe se descarga en PDF, y puedes comparar dos pruebas para medir tu progreso.",
+          "altPdf": "Primera página de un informe de prueba de VO2max en PDF: VO2max, VAM, umbrales, perfil y lectura rápida",
+          "caption": "Informe PDF y dashboard en el teléfono, datos ficticios",
+          "altPhone": "Informe de una prueba en el dashboard de Enduraw: VO2max, frecuencia cardíaca máxima, velocidad aeróbica máxima y umbrales"
+        }
+      }
+    },
+    "offer": {
+      "title": "Pruebas y precios",
+      "lead": "Todas las pruebas se hacen en Chamonix o en París, salvo la durabilidad en trail, solo en Chamonix.",
+      "onRequest": "Bajo petición",
+      "lactate": "+ 30 € con lactato",
+      "tests": {
+        "flat": {
+          "name": "Flat test",
+          "price": "190 €",
+          "short": "Zonas, VO2max, umbrales y economía de carrera. Ruta, pista, Hyrox, deportes colectivos, trail."
+        },
+        "uphill": {
+          "name": "Uphill test",
+          "price": "190 €",
+          "short": "Las mismas medidas en subida, con tus velocidades ascensionales. Trail."
+        },
+        "runwalk": {
+          "name": "Prueba carrera y marcha",
+          "price": "190 €",
+          "short": "Correr o caminar: la mejor opción según la pendiente. Trail."
+        },
+        "durability": {
+          "name": "Prueba de durabilidad",
+          "price": "250 €",
+          "short": "Tu perfil en un esfuerzo largo a intensidad fija. Trail, maratón, ultra."
+        },
+        "premium": {
+          "name": "Perfil trail premium",
+          "price": "575 €",
+          "short": "El perfil completo del corredor de trail en todas las pendientes, nuestra prueba más completa."
+        }
+      },
+      "business": "Empresas: pruebas en el laboratorio o en tus instalaciones, tarifa de grupo a partir de 5 personas y un resumen de equipo para tus responsables de RR. HH. y bienestar.",
+      "businessCta": "Pedir un presupuesto",
+      "businessSubject": "Pruebas para un equipo: solicitud de presupuesto"
+    },
+    "place": {
+      "title": "El Performance Center",
+      "p1": "Un chalet de madera y piedra frente al Mont Blanc, donde el equipo Enduraw evalúa y sigue a sus atletas.",
+      "p2": "También acoge stages, seminarios, coworking y grabaciones, que verás a continuación.",
+      "alt": "Gran espacio común del Performance Center, pilares de piedra y entreplanta de madera",
+      "access": "estación de tren a 150 m, autobús a 120 m, aparcamiento a 250 m, centro de Chamonix a 15 minutos"
+    },
+    "uses": {
+      "camp": {
+        "title": "Training camp",
+        "text": "De 4 a 7 días para entrenar, hacerte pruebas y recuperar, con el equipo Enduraw: pruebas, salidas de trail guiadas, fisioterapia y estrategia de carrera. Todos los niveles, plazas limitadas.",
+        "cta": "Pedir las próximas fechas",
+        "subject": "Training camp: solicitud de inscripción",
+        "alt": "Terraza de madera del chalet al atardecer, macizo del Mont Blanc nevado al fondo"
+      },
+      "seminar": {
+        "title": "Seminarios",
+        "text": "Hasta 12 personas, de media jornada a varios días, con sala de reuniones, pantalla 4K y comidas en el lugar. Por la tarde, una salida de trail o una prueba fisiológica con nuestros expertos.",
+        "cta": "Organizar un seminario",
+        "subject": "Seminario en el Performance Center",
+        "alt": "Presentación ante un grupo sentado en la sala principal del chalet"
+      },
+      "coworking": {
+        "title": "Coworking",
+        "text": "Un puesto compartido o una oficina cerrada, por día o para una estancia, con sala de reuniones, impresora, duchas y bar. Los senderos del UTMB salen del pie del chalet.",
+        "cta": "Reservar un puesto",
+        "subject": "Coworking en el Performance Center",
+        "alt": "Espacio de trabajo bajo la estructura de madera del chalet"
+      },
+      "podcast": {
+        "title": "Estudio de pódcast",
+        "text": "Una sala dedicada a la grabación, con micrófonos, cámaras e iluminación LED. Para un pódcast, una entrevista o contenido de marca, solo o durante una estancia en el centro.",
+        "cta": "Reservar el estudio",
+        "subject": "Estudio de pódcast: solicitud de reserva",
+        "alt": "Estudio de pódcast con cámara, softboxes y mesa de grabación bajo la estructura de madera"
+      }
+    },
+    "cta": {
+      "title": "Reserva tu prueba",
+      "text": "En Chamonix o en París, te confirmamos el horario por correo. Si tienes una pregunta antes, escríbenos.",
+      "secondary": "Escribir al equipo",
+      "subject": "Pregunta sobre las pruebas"
+    }
+  }
+}
