@@ -1,15 +1,14 @@
+import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { PhotoHero } from "@/components/ui/PhotoHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Action } from "@/components/ui/Action";
-import { PhoneShots } from "@/components/sections/PhoneShots";
 import { Media } from "@/components/ui/Media";
 import { Frame } from "@/components/ui/Frame";
+import { Phone } from "@/components/ui/Device";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { ADDRESS, EMAILS, LINKS, mailto } from "@/lib/links";
-
-/** Une séance en trois temps. */
-const STEPS = ["before", "during", "after"] as const;
+import { cn } from "@/lib/utils";
 
 /** Les deux protocoles : ce que chacun mesure, en une phrase. */
 const PROTOCOLS = ["vo2", "runWalk"] as const;
@@ -34,23 +33,59 @@ const USES = [
   { id: "podcast", key: "podcast", image: "/images/epc/web/podcast2.jpg", position: "center 60%" },
 ] as const;
 
+/** Adresse de la salle Rune, où Enduraw loue un tapis le temps du test (CGV du dashboard). */
+const RUNE_ADDRESS = "14 rue Martel, 75010 Paris";
+
+/**
+ * Une étape du test : le numéro, le titre, le texte, et la photo réelle de
+ * l'étape. `flip` met le visuel à gauche sur desktop (alternance).
+ */
+function Step({
+  n,
+  title,
+  text,
+  visual,
+  flip = false,
+  children,
+}: {
+  n: number;
+  title: string;
+  text: string;
+  visual: ReactNode;
+  flip?: boolean;
+  children?: ReactNode;
+}) {
+  return (
+    <li className="grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
+      <div className={cn("ep-reveal", flip && "lg:order-2")}>
+        <span className="ep-num ep-num--sm block text-white/40 tabular-nums" aria-hidden="true">
+          {String(n).padStart(2, "0")}
+        </span>
+        <h3 className="ep-display ep-h3 mt-4">{title}</h3>
+        <p className="ep-body mt-4 max-w-[52ch] text-[15px] leading-relaxed">{text}</p>
+        {children}
+      </div>
+      <div className={cn(flip && "lg:order-1")}>{visual}</div>
+    </li>
+  );
+}
+
 export default function LabPage() {
   const { t } = useTranslation();
+  const step = (key: string) => `labPage.process.steps.${key}`;
 
   return (
     <>
       <PhotoHero
         side="left"
-        image="/images/epc/web/A7408201.jpg"
+        image="/images/testing/vo2-mask-treadmill.jpg"
         alt={t("labPage.hero.alt")}
-        position="70% center"
+        position="45% center"
         title={t("labPage.hero.title")}
         lead={t("labPage.hero.lead")}
         actions={
           <>
-            <Action to={LINKS.shopTesting}>
-              {t("labPage.book")}
-            </Action>
+            <Action to={LINKS.shopTesting}>{t("labPage.book")}</Action>
             <Action to="#tests" variant="ghost">
               {t("labPage.hero.seeTests")}
             </Action>
@@ -58,38 +93,139 @@ export default function LabPage() {
         }
       />
 
-      {/* Un test : la séance en trois temps, les deux protocoles, le compte rendu. */}
-      <section className="ep-section">
-        <div className="ep-wrap grid items-start gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
-          <div>
-            <SectionHead title={t("labPage.measure.title")} lead={t("labPage.measure.lead")} />
-            <ol className="ep-lines ep-lines--tight mt-10">
-              {STEPS.map((step) => (
-                <li key={step} className="grid gap-1 sm:grid-cols-[88px_1fr] sm:gap-6">
-                  <span className="ep-label pt-1">{t(`labPage.measure.steps.${step}.label`)}</span>
-                  <p className="ep-body text-[15px]">{t(`labPage.measure.steps.${step}.text`)}</p>
-                </li>
-              ))}
-            </ol>
-            <dl className="mt-10 space-y-5">
-              {PROTOCOLS.map((p) => (
-                <div key={p}>
-                  <dt className="text-[15px] font-medium text-white">{t(`labPage.measure.${p}.title`)}</dt>
-                  <dd className="ep-body mt-1.5 text-[15px] leading-relaxed">{t(`labPage.measure.${p}.items`)}</dd>
+      {/* Le déroulé d'un test : une vraie séquence, une photo réelle par étape, en alternance. */}
+      <section id="deroule" className="ep-section">
+        <div className="ep-wrap">
+          <SectionHead title={t("labPage.process.title")} lead={t("labPage.process.lead")} />
+          <ol className="mt-16 space-y-20 lg:mt-20 lg:space-y-28">
+            <Step
+              n={1}
+              title={t(`${step("book")}.title`)}
+              text={t(`${step("book")}.text`)}
+              visual={
+                <div className="grid grid-cols-2 items-start gap-8 sm:gap-12">
+                  <Frame
+                    src="/images/epc/web/A7408201.jpg"
+                    alt={t(`${step("book")}.altChamonix`)}
+                    caption={t(`${step("book")}.captionChamonix`)}
+                    side="left"
+                    ratio="4 / 5"
+                    position="72% center"
+                    sizes="(min-width: 1024px) 24vw, 46vw"
+                  />
+                  <Frame
+                    src="/images/testing/rune-salle-paris.jpg"
+                    alt={t(`${step("book")}.altParis`)}
+                    caption={t(`${step("book")}.captionParis`)}
+                    ratio="4 / 5"
+                    position="center"
+                    sizes="(min-width: 1024px) 24vw, 46vw"
+                    className="mt-12 sm:mt-20"
+                  />
                 </div>
-              ))}
-            </dl>
-          </div>
-          <figure className="lg:sticky lg:top-[calc(var(--ep-nav-h)+40px)]">
-            <PhoneShots
-              className="mx-auto w-full max-w-[560px]"
-              shots={[
-                { src: "/images/captures/testing-resultats-mobile.png", alt: t("labPage.measure.captureAlt") },
-                { src: "/images/captures/testing-evolution-mobile.png", alt: t("labPage.measure.altEvolution") },
-              ]}
+              }
+            >
+              <dl className="ep-lines ep-lines--tight mt-8 max-w-[52ch] text-[15px]">
+                <div className="grid gap-1 sm:grid-cols-[96px_1fr] sm:gap-6">
+                  <dt className="font-medium text-white">{t(`${step("book")}.chamonix`)}</dt>
+                  <dd className="ep-body">
+                    {t(`${step("book")}.chamonixText`)}{" "}
+                    <a href="#performance-center" className="ep-inline-link">
+                      {t(`${step("book")}.chamonixLink`)}
+                    </a>
+                  </dd>
+                </div>
+                <div className="grid gap-1 sm:grid-cols-[96px_1fr] sm:gap-6">
+                  <dt className="font-medium text-white">{t(`${step("book")}.paris`)}</dt>
+                  <dd className="ep-body">{t(`${step("book")}.parisText`, { address: RUNE_ADDRESS })}</dd>
+                </div>
+              </dl>
+            </Step>
+
+            <Step
+              n={2}
+              flip
+              title={t(`${step("fitting")}.title`)}
+              text={t(`${step("fitting")}.text`)}
+              visual={
+                <Frame
+                  src="/images/testing/mask-fitting.jpg"
+                  alt={t(`${step("fitting")}.alt`)}
+                  side="left"
+                  ratio="3 / 2"
+                  position="center 35%"
+                  sizes="(min-width: 1024px) 48vw, 100vw"
+                />
+              }
             />
-            <figcaption className="mx-auto mt-4 max-w-[560px] text-[13px] text-white/50">{t("labPage.measure.caption")}</figcaption>
-          </figure>
+
+            <Step
+              n={3}
+              title={t(`${step("test")}.title`)}
+              text={t(`${step("test")}.text`)}
+              visual={
+                <Frame
+                  src="/images/testing/rune-vo2-masque-tapis.jpg"
+                  alt={t(`${step("test")}.alt`)}
+                  caption={t(`${step("test")}.caption`)}
+                  ratio="3 / 2"
+                  position="40% center"
+                  sizes="(min-width: 1024px) 48vw, 100vw"
+                />
+              }
+            >
+              <dl className="mt-8 max-w-[52ch] space-y-5">
+                {PROTOCOLS.map((p) => (
+                  <div key={p}>
+                    <dt className="text-[15px] font-medium text-white">{t(`${step("test")}.${p}.title`)}</dt>
+                    <dd className="ep-body mt-1.5 text-[15px] leading-relaxed">{t(`${step("test")}.${p}.items`)}</dd>
+                  </div>
+                ))}
+              </dl>
+            </Step>
+
+            <Step
+              n={4}
+              flip
+              title={t(`${step("debrief")}.title`)}
+              text={t(`${step("debrief")}.text`)}
+              visual={
+                <Frame
+                  src="/images/testing/rune-tapis-coach.jpg"
+                  alt={t(`${step("debrief")}.alt`)}
+                  side="left"
+                  ratio="3 / 2"
+                  position="center 30%"
+                  sizes="(min-width: 1024px) 48vw, 100vw"
+                />
+              }
+            />
+
+            <Step
+              n={5}
+              title={t(`${step("report")}.title`)}
+              text={t(`${step("report")}.text`)}
+              visual={
+                <figure className="ep-reveal mx-auto w-full max-w-[560px]">
+                  <div className="grid grid-cols-[1.3fr_1fr] items-start gap-6 sm:gap-10">
+                    <Media
+                      src="/images/testing/rendu-synthese-pdf.webp"
+                      alt={t(`${step("report")}.altPdf`)}
+                      ratio="1120 / 1600"
+                      sizes="(min-width: 1024px) 300px, 54vw"
+                    />
+                    <Phone
+                      src="/images/captures/testing-resultats-mobile.png"
+                      alt={t(`${step("report")}.altPhone`)}
+                      sizes="(min-width: 1024px) 230px, 40vw"
+                      className="mt-12 sm:mt-20"
+                    />
+                  </div>
+                  <figcaption className="mt-5 text-[13px] text-white/50">{t(`${step("report")}.caption`)}</figcaption>
+                </figure>
+              }
+            />
+          </ol>
         </div>
       </section>
 
@@ -139,7 +275,7 @@ export default function LabPage() {
       {/* Le lieu : une photo, deux paragraphes, l'accès en une ligne. */}
       <section id="performance-center" className="ep-section pt-0">
         <div className="ep-wrap grid items-center gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
-          <div>
+          <div className="ep-reveal">
             <SectionHead title={t("labPage.place.title")} />
             <p className="ep-lead mt-5 max-w-[56ch]">{t("labPage.place.p1")}</p>
             <p className="ep-body mt-4 max-w-[56ch] text-[15px] leading-relaxed">{t("labPage.place.p2")}</p>
@@ -156,26 +292,24 @@ export default function LabPage() {
           />
         </div>
 
-        {/* Ses usages : une rangée chacun, pas de cartes. */}
-        <div className="ep-wrap mt-14">
-          <ul className="ep-lines">
+        {/* Ses usages : une rangée chacun, pas de cartes ; deux colonnes sur desktop pour rester court. */}
+        <div className="ep-wrap mt-16">
+          <ul className="ep-lines lg:grid lg:grid-cols-2 lg:gap-x-12 lg:[&>*:nth-last-child(2)]:border-b lg:[&>*:nth-last-child(2)]:border-[color:var(--ep-line)]">
             {USES.map((use) => (
               <li
                 key={use.id}
                 id={use.id}
-                className="grid grid-cols-[96px_1fr] items-start gap-5 sm:grid-cols-[176px_1fr] sm:gap-8"
+                className="grid grid-cols-[96px_1fr] items-start gap-5 sm:grid-cols-[176px_1fr] sm:gap-8 lg:grid-cols-[144px_1fr] lg:gap-6"
               >
                 <Media
                   src={use.image}
                   alt={t(`labPage.uses.${use.key}.alt`)}
                   ratio="4 / 3"
-                  sizes="(min-width: 640px) 176px, 96px"
+                  sizes="(min-width: 1024px) 144px, (min-width: 640px) 176px, 96px"
                   position={use.position}
                 />
                 <div>
-                  <h3 className="text-[17px] font-medium text-white">
-                    {t(`labPage.uses.${use.key}.title`)}
-                  </h3>
+                  <h3 className="text-[17px] font-medium text-white">{t(`labPage.uses.${use.key}.title`)}</h3>
                   <p className="ep-body mt-2 max-w-[64ch] text-[15px] leading-relaxed">{t(`labPage.uses.${use.key}.text`)}</p>
                   <div className="mt-3">
                     <Action to={mailto(EMAILS.performance, t(`labPage.uses.${use.key}.subject`))} variant="link">

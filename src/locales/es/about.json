@@ -33,7 +33,10 @@
         "charline": "Especialista en nutrición",
         "antoine": "Data scientist",
         "alex": "Fotógrafo deportivo"
-      }
+      },
+      "label": "El equipo de Enduraw",
+      "play": "Reanudar el desplazamiento",
+      "pause": "Pausar el desplazamiento"
     }
   }
 }

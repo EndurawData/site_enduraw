@@ -19,10 +19,10 @@
     },
     "testing": {
       "title": "Mesurez votre physiologie",
-      "text": "VO₂max, seuils ventilatoires et vitesse maximale aérobie, mesurés dans notre Performance Center à Chamonix et expliqués avec ce qui compte pour votre entraînement.",
+      "text": "VO₂max, seuils ventilatoires et vitesse maximale aérobie, mesurés à Chamonix ou à Paris et expliqués avec ce qui compte pour votre entraînement.",
       "cta": "Voir les tests",
-      "alt": "Athlète qui court sur tapis avec un masque d'analyse des gaz",
-      "caption": "Test d'effort sur tapis, analyse des gaz"
+      "alt": "Athlète en course avec un masque d'analyse des gaz pendant un test VO2max",
+      "caption": "Test VO2max, analyse des gaz"
     },
     "field": {
       "title": "L'exigence de l'élite, pour tous",

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { PhotoHero } from "@/components/ui/PhotoHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Action } from "@/components/ui/Action";
-import { PeopleList } from "@/components/sections/PeopleList";
+import { TeamMarquee } from "@/components/sections/TeamMarquee";
 
 /** Jalons repris des « mises à jour » de l'ancienne page Enduraw Dashboard. */
 const MILESTONES = [
@@ -15,17 +15,17 @@ const MILESTONES = [
   { date: "2026-04", key: "matrix" },
 ] as const;
 
-/** L'équipe du site en ligne. Pas de portraits détourés : des noms et des rôles. */
-const TEAM = [
-  { name: "Joseph Mestrallet", key: "joseph", linkedin: "https://www.linkedin.com/in/joseph-mestrallet-770279a7/" },
-  { name: "Anthony Saliou", key: "anthony", linkedin: "https://www.linkedin.com/in/anthony-saliou-085286158/" },
-  { name: "Lucas Guillot", key: "lucas", linkedin: "https://www.linkedin.com/in/lucas-guillot01/" },
-  { name: "Valentin Templé", key: "valentin", linkedin: "https://www.linkedin.com/in/valentin-templ%C3%A9/" },
+/** L'équipe du site en ligne. Portraits LinkedIn carrés (`/images/equipe/`) ; Kyllian sans photo : ses initiales. */
+const TEAM: readonly { name: string; key: string; linkedin: string; photo?: string }[] = [
+  { name: "Joseph Mestrallet", key: "joseph", linkedin: "https://www.linkedin.com/in/joseph-mestrallet-770279a7/", photo: "/images/equipe/joseph.jpg" },
+  { name: "Anthony Saliou", key: "anthony", linkedin: "https://www.linkedin.com/in/anthony-saliou-085286158/", photo: "/images/equipe/anthony.jpg" },
+  { name: "Lucas Guillot", key: "lucas", linkedin: "https://www.linkedin.com/in/lucas-guillot01/", photo: "/images/equipe/lucas.jpg" },
+  { name: "Valentin Templé", key: "valentin", linkedin: "https://www.linkedin.com/in/valentin-templ%C3%A9/", photo: "/images/equipe/valentin.jpg" },
   { name: "Kyllian Gricourt", key: "kyllian", linkedin: "https://www.linkedin.com/in/kyllian-gricourt-candelier-57856b25a/" },
-  { name: "Charline Batel", key: "charline", linkedin: "https://www.linkedin.com/in/charline-batel/" },
-  { name: "Antoine Figula", key: "antoine", linkedin: "https://www.linkedin.com/in/antoine-figula-b518192b1/" },
-  { name: "Alexandre Pichon", key: "alex", linkedin: "https://www.linkedin.com/in/alexandre-pichon1/" },
-] as const;
+  { name: "Charline Batel", key: "charline", linkedin: "https://www.linkedin.com/in/charline-batel/", photo: "/images/equipe/charline.jpg" },
+  { name: "Antoine Figula", key: "antoine", linkedin: "https://www.linkedin.com/in/antoine-figula-b518192b1/", photo: "/images/equipe/antoine.jpg" },
+  { name: "Alexandre Pichon", key: "alex", linkedin: "https://www.linkedin.com/in/alexandre-pichon1/", photo: "/images/equipe/alex.jpg" },
+];
 
 export default function AboutPage() {
   const { t, i18n } = useTranslation();
@@ -66,7 +66,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Équipe : une liste typographique, le lien vers le recrutement en regard. */}
+      {/* Équipe : le titre dans le conteneur, les portraits en bandeau pleine largeur.
+          Le bouton pause du bandeau et la rangée statique (mouvement réduit) se calent
+          sur le bord du conteneur, comme le titre. */}
       <section className="ep-section pt-0">
         <div className="ep-wrap">
           <SectionHead
@@ -78,13 +80,15 @@ export default function AboutPage() {
               </Action>
             }
           />
-          <PeopleList
-            className="mt-12"
-            people={TEAM.map((p) => ({
+        </div>
+        <div className="ep-reveal mt-12 [--team-edge:20px] md:[--team-edge:max(40px,calc((100%-var(--ep-container))/2+40px))] [&_.ep-marquee]:py-3 [&>div>button]:ms-[var(--team-edge)] motion-reduce:[&_.ep-marquee]:scroll-px-[var(--team-edge)] motion-reduce:[&_.ep-marquee\_\_track]:px-[var(--team-edge)]">
+          <TeamMarquee
+            label={t("aboutPage.team.label")}
+            members={TEAM.map((p) => ({
               name: p.name,
-              detail: t(`aboutPage.team.roles.${p.key}`),
-              href: p.linkedin,
-              linkLabel: t("aboutPage.team.linkedin", { name: p.name }),
+              role: t(`aboutPage.team.roles.${p.key}`),
+              photo: p.photo,
+              linkedin: p.linkedin,
             }))}
           />
         </div>

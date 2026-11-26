@@ -3,46 +3,56 @@
     "contactSubject": "Coaching",
     "hero": {
       "title": "Un coach científico para tu temporada",
-      "lead": "Planificación mensual, análisis de tus datos de entrenamiento y estrategia para tus carreras objetivo, tanto si preparas tu primer maratón como un podio.",
+      "lead": "Primero, el análisis de tus sesiones en el dashboard. Para ir más lejos, un seguimiento de tus datos o un coach para toda la temporada, del primer maratón al podio.",
       "cta": "Hablar de tu temporada",
-      "ctaSeason": "Ver qué incluye",
+      "ctaOffers": "Ver las dos ofertas",
       "alt": "Corredor de trail en un sendero de montaña, cumbres nevadas detrás"
     },
-    "areas": {
-      "title": "Más que un plan de entrenamiento",
-      "lead": "Del primer maratón al podio, el mismo método: seguimos el rendimiento en su conjunto, del entrenamiento al sueño.",
-      "training": {
-        "title": "Análisis del entrenamiento",
-        "text": "Tus sesiones analizadas y seguidas durante toda la temporada."
+    "analysis": {
+      "title": "Lo que dice una sesión",
+      "lead": "Conecta Strava: tus sesiones aparecen en la pestaña Actividades del dashboard. El análisis en profundidad de una sesión, bajo demanda, muestra el detalle.",
+      "items": {
+        "type": {
+          "title": "Tipo de sesión",
+          "text": "detectado automáticamente, por ejemplo 4 × 8 min en umbral, recuperación de 2 min"
+        },
+        "intensity": {
+          "title": "Intensidad",
+          "text": "el nivel de esfuerzo de la sesión, legible de un vistazo"
+        },
+        "reps": {
+          "title": "Repeticiones",
+          "text": "el ritmo y la frecuencia cardiaca de cada una"
+        },
+        "weather": {
+          "title": "Meteo",
+          "text": "temperatura, viento y humedad durante la sesión"
+        },
+        "adjusted": {
+          "title": "Ritmo ajustado",
+          "text": "trazado junto a tu ritmo, bajo el perfil del recorrido"
+        }
       },
-      "history": {
-        "title": "Perfil histórico",
-        "text": "Tu perfil construido a partir de tus datos pasados de entrenamiento y competición."
-      },
-      "factors": {
-        "title": "Factores de rendimiento",
-        "text": "Tus carreras comparadas para aislar lo que marca la diferencia."
-      },
-      "nutrition": {
-        "title": "Nutrición",
-        "text": "Tu alimentación en entrenamiento y en carrera."
-      },
-      "refueling": {
-        "title": "Avituallamiento",
-        "text": "Los electrolitos y las fuentes de agua adecuados para avituallarte mejor."
-      },
-      "sleep": {
-        "title": "Sueño",
-        "text": "Tu sueño seguido y analizado para recuperar mejor."
-      },
+      "cta": "Ver el dashboard",
       "testing": "¿Quieres conocer primero tus zonas?",
       "testingCta": "Ver los tests",
-      "captureAlt": "Análisis de una sesión de umbral de 4 × 8 minutos en el dashboard de Enduraw: ritmo, frecuencia cardiaca, condiciones y regularidad de las repeticiones",
-      "caption": "Análisis de una sesión en el dashboard, datos ficticios"
+      "captureAlt": "Análisis de una sesión en el dashboard de Enduraw: intervalos en umbral 2 detectados automáticamente, 4 × 8 min, intensidad muy alta, meteo, ritmo ajustado y cada repetición con su ritmo y su frecuencia cardiaca",
+      "caption": "Análisis de una sesión en la pestaña Actividades, datos ficticios"
     },
-    "season": {
-      "title": "Qué incluye la temporada",
-      "lead": "Un formato pensado en torno a tus objetivos, tu calendario de carreras y el nivel de seguimiento que quieres.",
+    "offers": {
+      "title": "Para ir más lejos",
+      "lead": "Dos formas de acompañarte: la mirada de un experto sobre tus datos, o un coach para toda la temporada.",
+      "photoAlt": "Triatleta en bicicleta de contrarreloj durante una carrera"
+    },
+    "data": {
+      "title": "Un seguimiento de datos personalizado",
+      "text": "Tus datos de entrenamiento y de carrera leídos por el equipo de Enduraw, para entender lo que dicen de tu forma y de tus carreras. El formato se define contigo: escríbenos qué quieres seguir.",
+      "cta": "Pedir un seguimiento de datos",
+      "subject": "Seguimiento de datos personalizado"
+    },
+    "coaching": {
+      "title": "El coaching de Enduraw",
+      "text": "Un formato construido en torno a tus objetivos y tu calendario de carreras. Seguimos el rendimiento en su conjunto: entrenamiento, nutrición, avituallamiento, sueño.",
       "items": {
         "planning": "Una planificación mensual adaptada a tus objetivos",
         "advice": "Consejos científicos para optimizar tu entrenamiento",

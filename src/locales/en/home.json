@@ -19,10 +19,10 @@
     },
     "testing": {
       "title": "Measure your physiology",
-      "text": "VO₂max, ventilatory thresholds and maximal aerobic speed, measured at our Performance Center in Chamonix and explained with the points that matter for your training.",
+      "text": "VO₂max, ventilatory thresholds and maximal aerobic speed, measured in Chamonix or Paris and explained with the points that matter for your training.",
       "cta": "See the tests",
-      "alt": "Athlete running on a treadmill with a gas analysis mask",
-      "caption": "Treadmill test with gas exchange analysis"
+      "alt": "Athlete running with a gas exchange mask during a VO2max test",
+      "caption": "VO2max test, gas exchange analysis"
     },
     "field": {
       "title": "Elite standards, for everyone",

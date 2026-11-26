@@ -19,10 +19,10 @@
     },
     "testing": {
       "title": "Miss deine Physiologie",
-      "text": "VO₂max, ventilatorische Schwellen und maximale aerobe Geschwindigkeit, gemessen in unserem Performance Center in Chamonix und erklärt mit dem, was für dein Training zählt.",
+      "text": "VO₂max, ventilatorische Schwellen und maximale aerobe Geschwindigkeit, gemessen in Chamonix oder Paris und erklärt mit dem, was für dein Training zählt.",
       "cta": "Zu den Tests",
-      "alt": "Athlet läuft mit Atemgasmaske auf dem Laufband",
-      "caption": "Belastungstest auf dem Laufband mit Atemgasanalyse"
+      "alt": "Athlet läuft mit Atemgasmaske während eines VO2max-Tests",
+      "caption": "VO2max-Test mit Atemgasanalyse"
     },
     "field": {
       "title": "Der Anspruch der Elite, für alle",

@@ -2,43 +2,64 @@
   "labPage": {
     "book": "Réserver un test",
     "hero": {
-      "alt": "Salle de test du Performance Center : tapis de course, écran et murs de pierre",
+      "alt": "Athlète en test sur tapis, masque d'analyse des gaz, sous une charpente en bois",
       "title": "Votre physiologie, mesurée au labo",
-      "lead": "VO2max, seuils et économie de course, mesurés en laboratoire à Chamonix et à Paris, pour connaître vos vraies zones d'entraînement. Pour tous les niveaux.",
+      "lead": "VO2max, seuils et économie de course, mesurés en laboratoire à Chamonix ou à Paris, pour connaître vos vraies zones d'entraînement. Pour tous les niveaux.",
       "seeTests": "Voir les tests"
     },
-    "measure": {
-      "title": "Ce que mesure un test",
-      "lead": "Une séance en trois temps, sur l'un de nos deux protocoles selon votre pratique.",
+    "process": {
+      "title": "Un test, étape par étape",
+      "lead": "De la réservation au compte rendu, à Chamonix ou à Paris.",
       "steps": {
-        "before": {
-          "label": "Avant",
-          "text": "Un échange sur votre santé, votre pratique et votre objectif, pour choisir le bon protocole."
+        "book": {
+          "title": "Réserver",
+          "text": "Vous choisissez le test et le lieu, puis vous l'achetez en ligne. Nous confirmons le créneau par e-mail.",
+          "chamonix": "Chamonix",
+          "paris": "Paris",
+          "chamonixText": "Le Performance Center, notre labo.",
+          "chamonixLink": "Voir le lieu",
+          "parisText": "La salle Rune, {{address}}. Nous y louons un tapis le temps du test.",
+          "captionChamonix": "Chamonix, Performance Center",
+          "captionParis": "Paris, salle Rune",
+          "altChamonix": "Salle de test du Performance Center à Chamonix : tapis de course, écran et murs de pierre",
+          "altParis": "La salle Rune à Paris : plateau d'entraînement, machines et tapis de course"
         },
-        "during": {
-          "label": "Pendant",
-          "text": "L'effort sur tapis, masque d'analyse des gaz et cardiofréquencemètre, avec prélèvements de lactate si vous les avez choisis."
+        "fitting": {
+          "title": "Accueil et pose du masque",
+          "text": "Un échange sur votre santé, votre pratique et votre objectif fixe le protocole. Puis nous posons le masque d'analyse des gaz et le cardiofréquencemètre.",
+          "alt": "Un membre de l'équipe ajuste les sangles du masque d'analyse des gaz sur la tête d'un athlète"
         },
-        "after": {
-          "label": "Après",
-          "text": "Un compte rendu détaillé : vos seuils, vos zones d'entraînement et des recommandations pour la suite."
+        "test": {
+          "title": "Le test sur tapis",
+          "text": "L'effort sur tapis, avec prélèvements de lactate si vous les avez choisis. Selon votre pratique, l'un de nos deux protocoles :",
+          "alt": "Athlète en test VO2max sur tapis, masque d'analyse des gaz relié à l'analyseur, salle Rune à Paris",
+          "caption": "Test VO2max à Paris, salle Rune",
+          "vo2": {
+            "title": "Protocole VO2max",
+            "items": "Fréquence cardiaque maximale, VO2max, seuils ventilatoires 1 et 2, vitesse maximale aérobie, zones d'entraînement, oxygénation musculaire, température corporelle, lactate en option."
+          },
+          "runWalk": {
+            "title": "Protocole course et marche",
+            "items": "Économie de course, de marche et avec bâtons, pente critique de marche, vitesse critique de course, VO2 et ventilation, fréquence cardiaque, dépense énergétique."
+          }
+        },
+        "debrief": {
+          "title": "Les résultats commentés",
+          "text": "À la fin du créneau, une première lecture à chaud avec vous. Le débrief complet suit en visio avec un sport scientist de l'équipe, une fois les données analysées.",
+          "alt": "Un coach suit un athlète en plein effort sur tapis, masque d'analyse des gaz"
+        },
+        "report": {
+          "title": "Le compte rendu, dans le dashboard et en PDF",
+          "text": "Vos seuils ventilatoires, votre VO₂max, votre VMA et vos trois zones d'entraînement, avec des recommandations pour la suite. Le rapport se télécharge en PDF, et deux tests se comparent pour mesurer votre progression.",
+          "altPdf": "Première page d'un rapport de test VO2max en PDF : VO2max, VMA, seuils, profil et lecture rapide",
+          "caption": "Rapport PDF et dashboard sur téléphone, données fictives",
+          "altPhone": "Compte rendu d'un test dans le dashboard Enduraw : VO2max, fréquence cardiaque maximale, vitesse maximale aérobie et seuils"
         }
-      },
-      "vo2": {
-        "title": "Protocole VO2max",
-        "items": "Fréquence cardiaque maximale, VO2max, seuils ventilatoires 1 et 2, vitesse maximale aérobie, zones d'entraînement, oxygénation musculaire, température corporelle, lactate en option."
-      },
-      "runWalk": {
-        "title": "Protocole course et marche",
-        "items": "Économie de course, de marche et avec bâtons, pente critique de marche, vitesse critique de course, VO2 et ventilation, fréquence cardiaque, dépense énergétique."
-      },
-      "captureAlt": "Compte rendu d'un test dans le dashboard Enduraw : VO2max, fréquence cardiaque maximale, vitesse maximale aérobie et seuils",
-      "caption": "Résultats d'un test dans le dashboard, données fictives",
-      "altEvolution": "Test labo sur téléphone : évolution entre deux tests, VO2max, VMA et seuils"
+      }
     },
     "offer": {
       "title": "Tests et tarifs",
-      "lead": "Achetez votre test en ligne, nous confirmons le créneau par e-mail. Tests à Chamonix ou à Paris ; durabilité en trail à Chamonix seulement.",
+      "lead": "Tous les tests se font à Chamonix ou à Paris, sauf la durabilité en trail, à Chamonix seulement.",
       "onRequest": "Sur demande",
       "lactate": "+ 30 € avec lactate",
       "tests": {
@@ -111,7 +132,7 @@
     },
     "cta": {
       "title": "Réservez votre test",
-      "text": "Achetez votre test en ligne, nous confirmons le créneau par e-mail. Une question avant : écrivez-nous.",
+      "text": "À Chamonix ou à Paris, le créneau est confirmé par e-mail. Une question avant : écrivez-nous.",
       "secondary": "Écrire à l'équipe",
       "subject": "Question sur les tests"
     }

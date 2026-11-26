@@ -5,11 +5,14 @@
       "lead": "Enduraw report corrects every run for the conditions of the day, the Runner Matrix maps your profile, and the pacing plan is built on the course, your goal and your conditions.",
       "ctaPrimary": "Create my account",
       "ctaSecondary": "Log in",
-      "alt": "Enduraw dashboard overview with sample data: activities, Runner Matrix, pacing plans, lab tests and Stroop test"
+      "alt": "Enduraw pacing plan on a laptop, fictitious data: course map and elevation profile coloured by gradient",
+      "altMobile": "Today view of the Enduraw dashboard on a phone, with sample data"
     },
     "report": {
-      "title": "Every run, corrected for the conditions of the day",
-      "lead": "Connect Strava: Enduraw report recalculates the pace of every new activity. It is free.",
+      "title": "Enduraw report",
+      "free": "free",
+      "lead": "Connect Strava: Enduraw report recalculates the pace of every new run for the conditions of the day, so you can compare your sessions with each other.",
+      "cta": "Create my account",
       "heat": "Heat",
       "heatDesc": "About 0.27% of pace per degree above 15.6 °C, to show what the session is worth in cool weather.",
       "wind": "Wind",
@@ -20,7 +23,17 @@
       "elevationDesc": "Climbs and descents brought back to an equivalent pace on the flat.",
       "deep": "On demand, the in-depth session analysis goes further: cardiac drift, climbing efficiency, share of walking, consistency of your repetitions. Every chart explains how it is built and how to read it.",
       "article": "Read the technical article",
-      "alt": "Analysis of a trail run with sample data: grade-adjusted speed retained per section, climbs, flats and descents"
+      "alt": "Trail run analysis in the dashboard, with sample data: weather of the run, elevation profile, pace and adjusted pace"
+    },
+    "weather": {
+      "title": "Weather, before and after",
+      "lead": "Conditions weigh on every pace. Enduraw records them after each run and gives you the forecast for race day.",
+      "afterLabel": "After each run",
+      "afterText": "Temperature, wind speed and direction, humidity: the conditions of the run appear in its analysis. Heat and wind go into the adjusted pace.",
+      "beforeLabel": "Before the race",
+      "beforeText": "In the pacing plan, the forecast for the hour you will pass each point of the course: temperature, humidity, wind, precipitation, cloud cover, UV index, day and night.",
+      "alt": "Forecast along an ultra-trail course, aid station by aid station, with sample data: temperature, wind and precipitation",
+      "caption": "Forecast along the course, sample data"
     },
     "matrix": {
       "title": "Your runner profile",
@@ -30,21 +43,17 @@
     },
     "pacing": {
       "title": "A plan for race day",
-      "lead": "Your pace section by section on the real course, your split times at every aid station, the forecast for the hour you will pass each point, and your nutrition plan: carbohydrates, water and sodium per hour.",
-      "alt": "Pacing plan with sample data: target pace over the course profile, aid stations marked",
-      "inputsLabel": "What the plan accounts for",
+      "lead": "Your pace section by section on the real course, your split times at every aid station, and your nutrition plan: carbs, water and sodium per hour.",
       "target": "Your goal",
       "targetDesc": "The time you are aiming for, turned into a sustainable pace on each section.",
       "course": "The course",
       "courseDesc": "Gradient and technicality of the terrain: ease off on climbs, push on descents.",
       "altitude": "Altitude",
       "altitudeDesc": "The extra effort at the top of the passes.",
-      "weather": "The weather",
-      "weatherDesc": "Forecast temperature, wind and humidity along the course, to choose your gear.",
       "delivery": "Prepared by the Enduraw team and delivered to your dashboard within 5 working days, with a PDF export for race day. After the finish, compare the plan with your actual race, straight from Strava.",
       "ctaDemo": "See a demo plan",
       "ctaOrder": "Order a plan",
-      "altMap": "Pacing plan: course map and elevation profile coloured by gradient"
+      "altLaptop": "Pacing plan overview on a laptop, fictitious data: target time, moving time, distance, elevation and pace curve"
     },
     "plans": {
       "title": "Start for free",
@@ -75,35 +84,11 @@
       "elite": "The Elite plan is not open yet."
     },
     "api": {
-      "title": "The maths under the hood",
-      "lead": "The models we use with elite trail runners are the ones running in your dashboard. Here they are, written out.",
       "symbols": {
         "hr": "HR",
         "rest": "rest"
       },
-      "rows": {
-        "gap": {
-          "name": "Grade-adjusted pace",
-          "text": "On a 10% gradient, 3 m/s is worth 4.3 m/s on the flat.",
-          "legend": "vc: corrected speed, its equivalent on the flat; v: measured speed; p: gradient in %, between −20 and +20%."
-        },
-        "drift": {
-          "name": "Cardiac decoupling",
-          "text": "Both thirds are compared at equal gradient, in 2% bands: a climb at the end of a run is not read as a slowdown.",
-          "legend": "D: decoupling in %; EF₁, EF₃: speed per heartbeat (v / HR) over the first and last third of the effort."
-        },
-        "vam": {
-          "name": "Vertical speed (VAM)",
-          "text": "In m/h, read gradient band by gradient band in the Runner Matrix.",
-          "legend": "D+: elevation gain in metres; t: climbing time in hours."
-        },
-        "load": {
-          "name": "Training load",
-          "text": "Banister TRIMP, for example a = 0.64 and b = 1.92 for a man.",
-          "legend": "t: duration in minutes; Δ: heart rate reserve (Karvonen); HR: heart rate; a, b: coefficients depending on the profile."
-        }
-      },
-      "contact": "We can look into API access for platforms, clubs and teams. Describe your use case and we will get back to you.",
+      "contact": "API access for a platform, a club or a team",
       "cta": "Write to the team",
       "subject": "Enduraw API access"
     },

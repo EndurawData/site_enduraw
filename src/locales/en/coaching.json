@@ -3,46 +3,56 @@
     "contactSubject": "Coaching",
     "hero": {
       "title": "A scientific coach for your season",
-      "lead": "Monthly planning, analysis of your training data and strategy for your goal races, whether you are preparing your first marathon or a podium.",
+      "lead": "First, the analysis of your sessions in the dashboard. To go further, a follow-up of your data or a coach for the whole season, from a first marathon to the podium.",
       "cta": "Talk about your season",
-      "ctaSeason": "See what's included",
+      "ctaOffers": "See both offers",
       "alt": "Trail runner on a mountain path, snowy peaks behind"
     },
-    "areas": {
-      "title": "More than a training plan",
-      "lead": "From a first marathon to the podium, the same method: we follow performance as a whole, from training to sleep.",
-      "training": {
-        "title": "Training analysis",
-        "text": "Your sessions analysed and monitored throughout the season."
+    "analysis": {
+      "title": "What a session tells you",
+      "lead": "Connect Strava: your sessions show up in the Activities tab of the dashboard. The in-depth analysis of a session, on demand, shows the detail.",
+      "items": {
+        "type": {
+          "title": "Session type",
+          "text": "detected automatically, for example 4 × 8 min at threshold, 2 min recovery"
+        },
+        "intensity": {
+          "title": "Intensity",
+          "text": "how hard the session was, readable at a glance"
+        },
+        "reps": {
+          "title": "Repetitions",
+          "text": "the pace and heart rate of each one"
+        },
+        "weather": {
+          "title": "Weather",
+          "text": "temperature, wind and humidity during the session"
+        },
+        "adjusted": {
+          "title": "Adjusted pace",
+          "text": "plotted next to your pace, under the course profile"
+        }
       },
-      "history": {
-        "title": "Historical profile",
-        "text": "Your profile built from your past training and racing data."
-      },
-      "factors": {
-        "title": "Performance factors",
-        "text": "Your races compared to isolate what makes the difference."
-      },
-      "nutrition": {
-        "title": "Nutrition",
-        "text": "What you eat in training and racing."
-      },
-      "refueling": {
-        "title": "Refuelling",
-        "text": "The right electrolytes and water sources to refuel better."
-      },
-      "sleep": {
-        "title": "Sleep",
-        "text": "Your sleep monitored and analysed for better recovery."
-      },
+      "cta": "See the dashboard",
       "testing": "Want to know your zones first?",
       "testingCta": "See the tests",
-      "captureAlt": "Analysis of a 4 × 8 minute threshold session in the Enduraw dashboard: pace, heart rate, conditions and consistency of the repetitions",
-      "caption": "Session analysis in the dashboard, sample data"
+      "captureAlt": "Session analysis in the Enduraw dashboard: threshold 2 intervals detected automatically, 4 × 8 min, very hard intensity, weather, adjusted pace and each repetition with its pace and heart rate",
+      "caption": "Session analysis in the Activities tab, sample data"
     },
-    "season": {
-      "title": "What the season includes",
-      "lead": "A format built around your goals, your race calendar and the level of follow-up you want.",
+    "offers": {
+      "title": "To go further",
+      "lead": "Two ways to be supported: an expert eye on your data, or a coach for the whole season.",
+      "photoAlt": "Triathlete on a time-trial bike during a race"
+    },
+    "data": {
+      "title": "Personal data follow-up",
+      "text": "Your training and racing data read by the Enduraw team, to understand what they say about your form and your races. The format is set with you: tell us what you want to follow.",
+      "cta": "Ask for a data follow-up",
+      "subject": "Personal data follow-up"
+    },
+    "coaching": {
+      "title": "Enduraw coaching",
+      "text": "A format built around your goals and your race calendar. We follow performance as a whole: training, nutrition, refuelling, sleep.",
       "items": {
         "planning": "Monthly planning tailored to your goals",
         "advice": "Scientific advice to optimise your training",

@@ -2,43 +2,64 @@
   "labPage": {
     "book": "Reservar una prueba",
     "hero": {
-      "alt": "Sala de pruebas del Performance Center: cinta de correr, pantalla y paredes de piedra",
+      "alt": "Atleta haciendo una prueba en cinta con máscara de análisis de gases, bajo una estructura de madera",
       "title": "Tu fisiología, medida en el laboratorio",
-      "lead": "VO2max, umbrales y economía de carrera, medidos en laboratorio en Chamonix y París, para conocer tus zonas de entrenamiento reales. Para todos los niveles.",
+      "lead": "VO2max, umbrales y economía de carrera, medidos en laboratorio en Chamonix o París, para conocer tus zonas de entrenamiento reales. Para todos los niveles.",
       "seeTests": "Ver las pruebas"
     },
-    "measure": {
-      "title": "Qué mide una prueba",
-      "lead": "Una sesión en tres pasos, con uno de nuestros dos protocolos según tu deporte.",
+    "process": {
+      "title": "Una prueba, paso a paso",
+      "lead": "De la reserva al informe, en Chamonix o en París.",
       "steps": {
-        "before": {
-          "label": "Antes",
-          "text": "Una conversación sobre tu salud, tu entrenamiento y tu objetivo, para elegir el protocolo adecuado."
+        "book": {
+          "title": "Reservar",
+          "text": "Eliges la prueba y el lugar, y la compras en línea. Te confirmamos el horario por correo.",
+          "chamonix": "Chamonix",
+          "paris": "París",
+          "chamonixText": "El Performance Center, nuestro laboratorio.",
+          "chamonixLink": "Ver el lugar",
+          "parisText": "La sala Rune, {{address}}. Allí alquilamos una cinta durante la prueba.",
+          "captionChamonix": "Chamonix, Performance Center",
+          "captionParis": "París, sala Rune",
+          "altChamonix": "Sala de pruebas del Performance Center en Chamonix: cinta de correr, pantalla y paredes de piedra",
+          "altParis": "La sala Rune en París: zona de entrenamiento, máquinas y cintas de correr"
         },
-        "during": {
-          "label": "Durante",
-          "text": "El esfuerzo en cinta, con mascarilla de análisis de gases y pulsómetro, y tomas de lactato si las has elegido."
+        "fitting": {
+          "title": "Acogida y colocación de la máscara",
+          "text": "Una conversación sobre tu salud, tu práctica y tu objetivo define el protocolo. Después colocamos la máscara de análisis de gases y el pulsómetro.",
+          "alt": "Un miembro del equipo ajusta las correas de la máscara de análisis de gases en la cabeza de un atleta"
         },
-        "after": {
-          "label": "Después",
-          "text": "Un informe detallado: tus umbrales, tus zonas de entrenamiento y recomendaciones para lo que viene."
+        "test": {
+          "title": "La prueba en cinta",
+          "text": "El esfuerzo en cinta, con tomas de lactato si las elegiste. Según tu práctica, uno de nuestros dos protocolos:",
+          "alt": "Atleta durante una prueba de VO2max en cinta, máscara de análisis de gases conectada al analizador, sala Rune en París",
+          "caption": "Prueba de VO2max en París, sala Rune",
+          "vo2": {
+            "title": "Protocolo VO2max",
+            "items": "Frecuencia cardiaca máxima, VO2max, umbrales ventilatorios 1 y 2, velocidad aeróbica máxima, zonas de entrenamiento, oxigenación muscular, temperatura corporal, lactato opcional."
+          },
+          "runWalk": {
+            "title": "Protocolo carrera y marcha",
+            "items": "Economía de carrera, de marcha y con bastones, pendiente crítica de marcha, velocidad crítica de carrera, VO2 y ventilación, frecuencia cardiaca, gasto energético."
+          }
+        },
+        "debrief": {
+          "title": "Los resultados, comentados",
+          "text": "Al final de la sesión, una primera lectura en caliente contigo. El análisis completo llega después por videollamada con un sport scientist del equipo, una vez analizados los datos.",
+          "alt": "Un coach sigue a un atleta en pleno esfuerzo en cinta, con máscara de análisis de gases"
+        },
+        "report": {
+          "title": "El informe, en el dashboard y en PDF",
+          "text": "Tus umbrales ventilatorios, tu VO₂máx, tu VAM y tus tres zonas de entrenamiento, con recomendaciones para seguir. El informe se descarga en PDF, y puedes comparar dos pruebas para medir tu progreso.",
+          "altPdf": "Primera página de un informe de prueba de VO2max en PDF: VO2max, VAM, umbrales, perfil y lectura rápida",
+          "caption": "Informe PDF y dashboard en el teléfono, datos ficticios",
+          "altPhone": "Informe de una prueba en el dashboard de Enduraw: VO2max, frecuencia cardíaca máxima, velocidad aeróbica máxima y umbrales"
         }
-      },
-      "vo2": {
-        "title": "Protocolo VO2max",
-        "items": "Frecuencia cardiaca máxima, VO2max, umbrales ventilatorios 1 y 2, velocidad aeróbica máxima, zonas de entrenamiento, oxigenación muscular, temperatura corporal, lactato opcional."
-      },
-      "runWalk": {
-        "title": "Protocolo carrera y marcha",
-        "items": "Economía de carrera, de marcha y con bastones, pendiente crítica de marcha, velocidad crítica de carrera, VO2 y ventilación, frecuencia cardiaca, gasto energético."
-      },
-      "captureAlt": "Informe de una prueba en el dashboard de Enduraw: VO2max, frecuencia cardíaca máxima, velocidad aeróbica máxima y umbrales",
-      "caption": "Resultados de un test en el dashboard, datos ficticios",
-      "altEvolution": "Test de laboratorio en el móvil: evolución entre dos tests, VO2max, VAM y umbrales"
+      }
     },
     "offer": {
       "title": "Pruebas y precios",
-      "lead": "Compra tu prueba en línea y te confirmamos el horario por correo. Pruebas en Chamonix o París; durabilidad en trail solo en Chamonix.",
+      "lead": "Todas las pruebas se hacen en Chamonix o en París, salvo la durabilidad en trail, solo en Chamonix.",
       "onRequest": "Bajo petición",
       "lactate": "+ 30 € con lactato",
       "tests": {
@@ -111,7 +132,7 @@
     },
     "cta": {
       "title": "Reserva tu prueba",
-      "text": "Compra tu prueba en línea y te confirmamos el horario por correo. Si tienes una pregunta antes, escríbenos.",
+      "text": "En Chamonix o en París, te confirmamos el horario por correo. Si tienes una pregunta antes, escríbenos.",
       "secondary": "Escribir al equipo",
       "subject": "Pregunta sobre las pruebas"
     }

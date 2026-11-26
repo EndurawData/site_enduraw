@@ -533,3 +533,189 @@ body {
     max-width: min(560px, 42%);
   }
 }
+
+/* ─── appareils : téléphone et ordinateur portable ──────────────────────
+   Les seuls arrondis du site : ceux de l'objet, jamais de l'interface. Le
+   corps est un dégradé de gris neutre (un seul ton, pas de couleur), le
+   contour un filet intérieur. Aucune ombre portée. */
+.ep-phone {
+  position: relative;
+  padding: 7px;
+  border-radius: 34px;
+  background: linear-gradient(160deg, #23262a 0%, #121416 55%, #1b1e21 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+.ep-phone__screen {
+  position: relative;
+  overflow: hidden;
+  border-radius: 27px;
+  background: var(--ep-black);
+}
+/* Île de l'écran : posée au-dessus de la barre de l'app, centrée. */
+.ep-phone__screen::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  z-index: 1;
+  width: 28%;
+  height: 16px;
+  translate: -50% 0;
+  border-radius: 10px;
+  background: var(--ep-black);
+}
+.ep-phone__screen .ep-media {
+  background: var(--ep-black);
+}
+/* Le bouton latéral : un trait sur le bord droit. */
+.ep-phone::after {
+  content: "";
+  position: absolute;
+  top: 22%;
+  right: -2px;
+  width: 2px;
+  height: 11%;
+  border-radius: 0 2px 2px 0;
+  background: #2a2d31;
+}
+@media (max-width: 639px) {
+  .ep-laptop__base {
+    margin-inline: -4%;
+  }
+  .ep-phone {
+    padding: 5px;
+    border-radius: 24px;
+  }
+  .ep-phone__screen {
+    border-radius: 19px;
+  }
+  .ep-phone__screen::before {
+    top: 5px;
+    height: 11px;
+  }
+}
+
+.ep-laptop {
+  position: relative;
+}
+.ep-laptop__lid {
+  padding: 2.2% 2.2% 3.2%;
+  border-radius: 16px 16px 0 0;
+  background: linear-gradient(180deg, #1d2023 0%, #111315 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+.ep-laptop__screen {
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--ep-black);
+}
+.ep-laptop__base {
+  position: relative;
+  height: clamp(8px, 1.4vw, 16px);
+  margin-inline: -6%;
+  border-radius: 0 0 14px 14px;
+  background: linear-gradient(180deg, #34383d 0%, #1a1c1f 70%, #101113 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+/* L'encoche d'ouverture, au centre du bord avant. */
+.ep-laptop__base::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 16%;
+  height: 40%;
+  translate: -50% 0;
+  border-radius: 0 0 8px 8px;
+  background: #0e0f11;
+}
+
+/* ─── bandeau de l'équipe ─────────────────────────────────────────────── */
+.ep-marquee {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.ep-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 24px;
+}
+.ep-marquee__group {
+  display: flex;
+  gap: 24px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ep-marquee__track {
+    animation: ep-marquee 60s linear infinite;
+  }
+  .ep-marquee:hover .ep-marquee__track,
+  .ep-marquee:focus-within .ep-marquee__track,
+  .ep-marquee[data-paused="true"] .ep-marquee__track {
+    animation-play-state: paused;
+  }
+}
+/* Mouvement réduit : la rangée se fait défiler à la main, sans doublon. */
+@media (prefers-reduced-motion: reduce) {
+  .ep-marquee {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    mask-image: none;
+  }
+  .ep-marquee__group > * {
+    scroll-snap-align: start;
+  }
+  .ep-marquee__group[aria-hidden="true"] {
+    display: none;
+  }
+}
+/* Focus clavier dans le bandeau : l'animation s'arrête et la rangée devient
+   défilable, pour que le navigateur amène le portrait focalisé à l'écran
+   (WCAG 2.4.11). */
+.ep-marquee:focus-within {
+  overflow-x: auto;
+  mask-image: none;
+}
+.ep-marquee:focus-within .ep-marquee__track {
+  animation: none;
+}
+@keyframes ep-marquee {
+  to {
+    translate: calc(-50% - 12px) 0;
+  }
+}
+
+/* Portrait de l'équipe : carré, cadre d'imprimeur, croix de repère. */
+.ep-portrait {
+  width: clamp(180px, 22vw, 240px);
+  flex: none;
+}
+.ep-portrait__img {
+  position: relative;
+  border: 1px solid var(--ep-line-2);
+  padding: 6px;
+}
+.ep-portrait__img .ep-media img {
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.4s var(--ep-ease);
+}
+.ep-portrait:hover .ep-portrait__img .ep-media img,
+.ep-portrait:focus-within .ep-portrait__img .ep-media img {
+  filter: none;
+}
+.ep-portrait .ep-cross {
+  color: var(--ep-white);
+  opacity: 0.4;
+}
+.ep-portrait__initials {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  background: var(--ep-s2);
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 44px;
+  color: rgba(255, 255, 255, 0.4);
+}

@@ -5,11 +5,14 @@
       "lead": "Enduraw report corrige cada salida según las condiciones del día, la Runner Matrix traza tu perfil y el plan de pacing se construye sobre el recorrido, tu objetivo y tus condiciones.",
       "ctaPrimary": "Crear mi cuenta",
       "ctaSecondary": "Iniciar sesión",
-      "alt": "Vista general del dashboard Enduraw con datos ficticios: actividades, Runner Matrix, planes de pacing, tests de laboratorio y test de Stroop"
+      "alt": "Plan de pacing de Enduraw en un portátil, datos ficticios: mapa del recorrido y perfil de altitud coloreado por la pendiente",
+      "altMobile": "Vista del día del dashboard Enduraw en el teléfono, con datos ficticios"
     },
     "report": {
-      "title": "Cada salida, corregida según las condiciones del día",
-      "lead": "Conecta Strava: Enduraw report recalcula el ritmo de cada nueva actividad. Es gratuito.",
+      "title": "Enduraw report",
+      "free": "gratis",
+      "lead": "Conecta Strava: Enduraw report recalcula el ritmo de cada nueva salida según las condiciones del día, para comparar tus sesiones entre sí.",
+      "cta": "Crear mi cuenta",
       "heat": "Calor",
       "heatDesc": "Alrededor de un 0,27 % de ritmo por grado por encima de 15,6 °C, para ver lo que vale la sesión con tiempo fresco.",
       "wind": "Viento",
@@ -20,7 +23,17 @@
       "elevationDesc": "Subidas y bajadas convertidas en un ritmo equivalente en llano.",
       "deep": "Bajo demanda, el análisis en profundidad de una sesión va más allá: deriva cardíaca, rendimiento en subida, parte caminada, regularidad de las repeticiones. Cada gráfico explica cómo se construye y cómo leerlo.",
       "article": "Leer el artículo técnico",
-      "alt": "Análisis de una salida de trail con datos ficticios: velocidad corregida por la pendiente conservada por tramo, subidas, llanos y bajadas"
+      "alt": "Análisis de una salida de trail en el dashboard, con datos ficticios: tiempo de la salida, perfil, ritmo y ritmo ajustado"
+    },
+    "weather": {
+      "title": "El tiempo, antes y después",
+      "lead": "Las condiciones pesan en cada ritmo. Enduraw las registra después de cada salida y te da la previsión para el día de la carrera.",
+      "afterLabel": "Después de cada salida",
+      "afterText": "Temperatura, fuerza y dirección del viento, humedad: las condiciones de la salida aparecen en su análisis. El calor y el viento entran en el ritmo ajustado.",
+      "beforeLabel": "Antes de la carrera",
+      "beforeText": "En el plan de pacing, el tiempo previsto a la hora en que pasarás por cada punto del recorrido: temperatura, humedad, viento, precipitaciones, nubes, índice UV, día y noche.",
+      "alt": "Previsión meteorológica a lo largo de un recorrido de ultra trail, avituallamiento por avituallamiento, con datos ficticios: temperatura, viento y precipitaciones",
+      "caption": "Previsión a lo largo del recorrido, datos ficticios"
     },
     "matrix": {
       "title": "Tu perfil de corredor",
@@ -30,21 +43,17 @@
     },
     "pacing": {
       "title": "Un plan para el día D",
-      "lead": "Tu ritmo tramo a tramo en el recorrido real, tus tiempos de paso en cada avituallamiento, la previsión meteorológica a la hora en que pasarás y tu plan de nutrición: hidratos, agua y sodio por hora.",
-      "alt": "Plan de pacing con datos ficticios: ritmo objetivo sobre el perfil del recorrido, avituallamientos marcados",
-      "inputsLabel": "Lo que el plan tiene en cuenta",
+      "lead": "Tu ritmo tramo a tramo en el recorrido real, tus tiempos de paso en cada avituallamiento y tu plan de nutrición: hidratos, agua y sodio por hora.",
       "target": "Tu objetivo",
       "targetDesc": "El tiempo que buscas, traducido en un ritmo sostenible en cada tramo.",
       "course": "El recorrido",
       "courseDesc": "Pendiente y técnica del terreno: frenar en subida, relanzar en bajada.",
       "altitude": "La altitud",
       "altitudeDesc": "El esfuerzo adicional en lo alto de los collados.",
-      "weather": "La meteo",
-      "weatherDesc": "Temperatura, viento y humedad previstos a lo largo del recorrido, para elegir tu equipo.",
       "delivery": "Preparado por el equipo Enduraw y entregado en tu dashboard en un plazo de 5 días laborables, exportable en PDF para la carrera. Tras la meta, compara el plan con tu carrera real, directamente desde Strava.",
       "ctaDemo": "Ver un plan de demostración",
       "ctaOrder": "Pedir un plan",
-      "altMap": "Plan de pacing: mapa del recorrido y perfil de altitud coloreado por la pendiente"
+      "altLaptop": "Resumen de un plan de pacing en un portátil, datos ficticios: tiempo objetivo, tiempo en movimiento, distancia, desnivel y curva de ritmo"
     },
     "plans": {
       "title": "Empieza gratis",
@@ -75,35 +84,11 @@
       "elite": "El plan Elite aún no está abierto."
     },
     "api": {
-      "title": "Las matemáticas por dentro",
-      "lead": "Los modelos que usamos con la élite del trail son los que funcionan en tu dashboard. Aquí están, escritos con claridad.",
       "symbols": {
         "hr": "FC",
         "rest": "reposo"
       },
-      "rows": {
-        "gap": {
-          "name": "Ritmo corregido por la pendiente",
-          "text": "Con un 10 % de pendiente, 3 m/s equivalen a 4,3 m/s en llano.",
-          "legend": "vc: velocidad corregida, equivalente en llano; v: velocidad medida; p: pendiente en %, entre −20 y +20 %."
-        },
-        "drift": {
-          "name": "Desacoplamiento cardíaco",
-          "text": "Los dos tercios se comparan a igual pendiente, por tramos del 2 %: una cuesta al final de la salida no se interpreta como una pérdida de ritmo.",
-          "legend": "D: desacoplamiento en %; EF₁, EF₃: velocidad por latido (v / FC) en el primer y el último tercio del esfuerzo."
-        },
-        "vam": {
-          "name": "Velocidad ascensional",
-          "text": "En m/h, leída por tramos de pendiente en la Runner Matrix.",
-          "legend": "D+: desnivel positivo en metros; t: tiempo de subida en horas."
-        },
-        "load": {
-          "name": "Carga de entrenamiento",
-          "text": "TRIMP de Banister, por ejemplo a = 0,64 y b = 1,92 para un hombre.",
-          "legend": "t: duración en minutos; Δ: reserva de frecuencia cardíaca (Karvonen); FC: frecuencia cardíaca; a, b: coeficientes según el perfil."
-        }
-      },
-      "contact": "Podemos estudiar un acceso por API para plataformas, clubes y equipos. Describe tu caso de uso y te responderemos.",
+      "contact": "Un acceso API para una plataforma, un club o un equipo",
       "cta": "Escribir al equipo",
       "subject": "Acceso API Enduraw"
     },

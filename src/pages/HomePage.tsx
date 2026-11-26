@@ -76,13 +76,13 @@ export default function HomePage() {
       <section className="ep-section pt-0">
         <div className="ep-wrap grid items-center gap-12 lg:grid-cols-[7fr_5fr] lg:gap-16">
           <Frame
-            src="/images/workshop/workshop2.JPG"
+            src="/images/testing/vo2-mask-profile.jpg"
             alt={t("home.testing.alt")}
             caption={t("home.testing.caption")}
             side="left"
             ratio="4 / 3"
             sizes="(min-width: 1024px) 58vw, 100vw"
-            position="70% center"
+            position="center"
             className="max-lg:order-2"
           />
           <div className="ep-reveal">

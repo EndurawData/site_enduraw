@@ -2,43 +2,64 @@
   "labPage": {
     "book": "Test buchen",
     "hero": {
-      "alt": "Testraum des Performance Center: Laufband, Bildschirm und Steinwände",
+      "alt": "Athlet beim Laufbandtest mit Atemgasmaske unter einem Holzdachstuhl",
       "title": "Deine Physiologie, im Labor gemessen",
-      "lead": "VO2max, Schwellen und Laufökonomie, im Labor in Chamonix und Paris gemessen, damit du deine echten Trainingszonen kennst. Für jedes Niveau.",
+      "lead": "VO2max, Schwellen und Laufökonomie, im Labor in Chamonix oder Paris gemessen, damit du deine echten Trainingszonen kennst. Für jedes Niveau.",
       "seeTests": "Tests ansehen"
     },
-    "measure": {
-      "title": "Was ein Test misst",
-      "lead": "Ein Termin in drei Schritten, mit einem unserer zwei Protokolle je nach Sportart.",
+    "process": {
+      "title": "Ein Test, Schritt für Schritt",
+      "lead": "Von der Buchung bis zum Bericht, in Chamonix oder Paris.",
       "steps": {
-        "before": {
-          "label": "Vorher",
-          "text": "Ein Gespräch über deine Gesundheit, dein Training und dein Ziel, um das passende Protokoll zu wählen."
+        "book": {
+          "title": "Buchen",
+          "text": "Du wählst Test und Ort und kaufst ihn online. Wir bestätigen den Termin per E-Mail.",
+          "chamonix": "Chamonix",
+          "paris": "Paris",
+          "chamonixText": "Das Performance Center, unser Labor.",
+          "chamonixLink": "Zum Ort",
+          "parisText": "Das Studio Rune, {{address}}. Dort mieten wir für den Test ein Laufband.",
+          "captionChamonix": "Chamonix, Performance Center",
+          "captionParis": "Paris, Studio Rune",
+          "altChamonix": "Testraum des Performance Center in Chamonix: Laufband, Bildschirm und Steinwände",
+          "altParis": "Das Studio Rune in Paris: Trainingsfläche, Geräte und Laufbänder"
         },
-        "during": {
-          "label": "Währenddessen",
-          "text": "Die Belastung auf dem Laufband, mit Atemgasmaske und Herzfrequenzmesser, dazu Laktatproben, wenn du sie gewählt hast."
+        "fitting": {
+          "title": "Empfang und Anlegen der Maske",
+          "text": "Ein Gespräch über deine Gesundheit, dein Training und dein Ziel legt das Protokoll fest. Dann legen wir die Atemgasmaske und den Herzfrequenzgurt an.",
+          "alt": "Ein Teammitglied stellt die Bänder der Atemgasmaske am Kopf eines Athleten ein"
         },
-        "after": {
-          "label": "Danach",
-          "text": "Ein ausführlicher Bericht: deine Schwellen, deine Trainingszonen und Empfehlungen für die nächsten Schritte."
+        "test": {
+          "title": "Der Test auf dem Laufband",
+          "text": "Die Belastung auf dem Laufband, mit Laktatmessungen, wenn du sie gewählt hast. Je nach Sportart eines unserer zwei Protokolle:",
+          "alt": "Athletin beim VO2max-Test auf dem Laufband, Atemgasmaske am Analysegerät, Studio Rune in Paris",
+          "caption": "VO2max-Test in Paris, Studio Rune",
+          "vo2": {
+            "title": "VO2max-Protokoll",
+            "items": "Maximale Herzfrequenz, VO2max, ventilatorische Schwellen 1 und 2, maximale aerobe Geschwindigkeit, Trainingszonen, Muskelsauerstoffsättigung, Körperkerntemperatur, Laktat optional."
+          },
+          "runWalk": {
+            "title": "Lauf- und Gehprotokoll",
+            "items": "Lauf-, Geh- und Stockökonomie, kritische Gehsteigung, kritische Laufgeschwindigkeit, VO2 und Ventilation, Herzfrequenz, Energieverbrauch."
+          }
+        },
+        "debrief": {
+          "title": "Die Ergebnisse, erklärt",
+          "text": "Am Ende des Termins eine erste Auswertung direkt mit dir. Das ausführliche Debriefing folgt per Videocall mit einem Sport Scientist aus dem Team, sobald die Daten analysiert sind.",
+          "alt": "Ein Coach beobachtet einen Athleten mit Atemgasmaske bei voller Belastung auf dem Laufband"
+        },
+        "report": {
+          "title": "Der Bericht, im Dashboard und als PDF",
+          "text": "Deine ventilatorischen Schwellen, VO₂max, maximale aerobe Geschwindigkeit und drei Trainingszonen, mit Empfehlungen für die nächsten Schritte. Der Bericht lässt sich als PDF herunterladen, und zwei Tests lassen sich vergleichen, um deinen Fortschritt zu messen.",
+          "altPdf": "Erste Seite eines VO2max-Testberichts als PDF: VO2max, maximale aerobe Geschwindigkeit, Schwellen, Profil und Kurzüberblick",
+          "caption": "PDF-Bericht und Dashboard auf dem Handy, fiktive Daten",
+          "altPhone": "Testbericht im Enduraw-Dashboard: VO2max, maximale Herzfrequenz, maximale aerobe Geschwindigkeit und Schwellen"
         }
-      },
-      "vo2": {
-        "title": "VO2max-Protokoll",
-        "items": "Maximale Herzfrequenz, VO2max, ventilatorische Schwellen 1 und 2, maximale aerobe Geschwindigkeit, Trainingszonen, Muskelsauerstoffsättigung, Körperkerntemperatur, Laktat optional."
-      },
-      "runWalk": {
-        "title": "Lauf- und Gehprotokoll",
-        "items": "Lauf-, Geh- und Stockökonomie, kritische Gehsteigung, kritische Laufgeschwindigkeit, VO2 und Ventilation, Herzfrequenz, Energieverbrauch."
-      },
-      "captureAlt": "Testbericht im Enduraw-Dashboard: VO2max, maximale Herzfrequenz, maximale aerobe Geschwindigkeit und Schwellen",
-      "caption": "Testergebnisse im Dashboard, fiktive Daten",
-      "altEvolution": "Labortest auf dem Smartphone: Entwicklung zwischen zwei Tests, VO2max, MAS und Schwellen"
+      }
     },
     "offer": {
       "title": "Tests und Preise",
-      "lead": "Kauf deinen Test online, wir bestätigen den Termin per E-Mail. Tests in Chamonix oder Paris; Durability-Test im Trail nur in Chamonix.",
+      "lead": "Alle Tests finden in Chamonix oder Paris statt, außer dem Durability-Test im Trail, nur in Chamonix.",
       "onRequest": "Auf Anfrage",
       "lactate": "+ 30 € mit Laktat",
       "tests": {
@@ -111,7 +132,7 @@
     },
     "cta": {
       "title": "Buche deinen Test",
-      "text": "Kauf deinen Test online, wir bestätigen den Termin per E-Mail. Vorher eine Frage: schreib uns.",
+      "text": "In Chamonix oder Paris, wir bestätigen den Termin per E-Mail. Vorher eine Frage: schreib uns.",
       "secondary": "Dem Team schreiben",
       "subject": "Frage zu den Tests"
     }

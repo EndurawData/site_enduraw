@@ -5,11 +5,14 @@
       "lead": "Enduraw report corrige chaque sortie des conditions du jour, la Runner Matrix dresse votre profil, et le plan de pacing se construit sur le parcours, votre objectif et vos conditions.",
       "ctaPrimary": "Créer mon compte",
       "ctaSecondary": "Se connecter",
-      "alt": "Vue d'ensemble du dashboard Enduraw avec des données fictives : activités, Runner Matrix, plans de pacing, tests labo et test de Stroop"
+      "alt": "Plan de pacing Enduraw sur ordinateur, données fictives : carte du parcours et profil d'altitude coloré par la pente",
+      "altMobile": "Vue du jour du dashboard Enduraw sur téléphone, avec des données fictives"
     },
     "report": {
-      "title": "Chaque sortie, corrigée des conditions du jour",
-      "lead": "Connectez Strava : Enduraw report recalcule l'allure de chaque nouvelle activité. Il est gratuit.",
+      "title": "Enduraw report",
+      "free": "gratuit",
+      "lead": "Connectez Strava : Enduraw report recalcule l'allure de chaque nouvelle sortie selon les conditions du jour, pour comparer vos séances entre elles.",
+      "cta": "Créer mon compte",
       "heat": "Chaleur",
       "heatDesc": "Environ 0,27 % d'allure par degré au-dessus de 15,6 °C, pour retrouver ce que vaut la séance par temps frais.",
       "wind": "Vent",
@@ -20,7 +23,17 @@
       "elevationDesc": "Montées et descentes ramenées à une allure équivalente sur le plat.",
       "deep": "À la demande, l'analyse approfondie d'une séance va plus loin : dérive cardiaque, rendement en côte, part de marche, régularité des répétitions. Chaque graphe dit comment il est construit et comment le lire.",
       "article": "Lire l'article technique",
-      "alt": "Analyse d'une sortie trail avec des données fictives : vitesse corrigée de la pente conservée par portion, montées, replats et descentes"
+      "alt": "Analyse d'une sortie trail dans le dashboard, avec des données fictives : météo de la sortie, profil, allure et allure ajustée"
+    },
+    "weather": {
+      "title": "La météo, avant et après",
+      "lead": "Les conditions pèsent sur chaque allure. Enduraw les relève après chaque sortie et vous donne les prévisions pour le jour de la course.",
+      "afterLabel": "Après chaque sortie",
+      "afterText": "Température, force et direction du vent, humidité : les conditions de la sortie s'affichent dans son analyse. La chaleur et le vent entrent dans l'allure corrigée.",
+      "beforeLabel": "Avant la course",
+      "beforeText": "Dans le plan de pacing, la météo prévue à l'heure où vous passerez à chaque point du parcours : température, humidité, vent, précipitations, nuages, indice UV, jour et nuit.",
+      "alt": "Météo prévue le long d'un parcours d'ultra-trail, ravitaillement par ravitaillement, avec des données fictives : température, vent et précipitations",
+      "caption": "Prévisions le long du parcours, données fictives"
     },
     "matrix": {
       "title": "Votre profil de coureur",
@@ -30,21 +43,17 @@
     },
     "pacing": {
       "title": "Un plan pour le jour J",
-      "lead": "Votre allure portion par portion sur le parcours réel, vos temps de passage à chaque ravitaillement, la météo prévue à l'heure où vous y passerez, et votre plan nutrition : glucides, eau et sodium par heure.",
-      "alt": "Plan de pacing avec des données fictives : allure cible posée sur le profil du parcours, ravitaillements marqués",
-      "inputsLabel": "Ce que le plan prend en compte",
+      "lead": "Votre allure portion par portion sur le parcours réel, vos temps de passage à chaque ravitaillement, et votre plan nutrition : glucides, eau et sodium par heure.",
       "target": "Votre objectif",
       "targetDesc": "Le temps que vous visez, traduit en allure tenable sur chaque portion.",
       "course": "Le parcours",
       "courseDesc": "Pente et technicité du terrain : ralentir en montée, relancer en descente.",
       "altitude": "L'altitude",
       "altitudeDesc": "L'effort supplémentaire en haut des cols.",
-      "weather": "La météo",
-      "weatherDesc": "Température, vent et humidité prévus le long du parcours, pour choisir votre équipement.",
       "delivery": "Préparé par l'équipe Enduraw et livré sur votre dashboard sous 5 jours ouvrables, à exporter en PDF pour la course. Après l'arrivée, comparez le plan à votre course réelle, directement depuis Strava.",
       "ctaDemo": "Voir un plan de démonstration",
       "ctaOrder": "Commander un plan",
-      "altMap": "Plan de pacing : carte du parcours et profil d'altitude coloré par la pente"
+      "altLaptop": "Aperçu d'un plan de pacing sur ordinateur, données fictives : temps cible, temps en mouvement, distance, dénivelé et courbe d'allure"
     },
     "plans": {
       "title": "Commencez gratuitement",
@@ -75,35 +84,11 @@
       "elite": "La formule Elite n'est pas encore ouverte."
     },
     "api": {
-      "title": "Les maths sous le capot",
-      "lead": "Les modèles que nous utilisons avec les élites du trail sont ceux qui tournent dans votre dashboard. Les voici, écrits en clair.",
       "symbols": {
         "hr": "FC",
         "rest": "repos"
       },
-      "rows": {
-        "gap": {
-          "name": "Allure corrigée de la pente",
-          "text": "À 10 % de pente, 3 m/s valent 4,3 m/s sur le plat.",
-          "legend": "vc : vitesse corrigée, équivalente sur le plat ; v : vitesse mesurée ; p : pente en %, entre −20 et +20 %."
-        },
-        "drift": {
-          "name": "Découplage cardiaque",
-          "text": "Les deux tiers sont comparés à pente égale, par tranches de 2 % : une bosse en fin de sortie n'est pas lue comme un ralentissement.",
-          "legend": "D : découplage en % ; EF₁, EF₃ : vitesse par battement (v / FC) sur le premier et le dernier tiers de l'effort."
-        },
-        "vam": {
-          "name": "Vitesse ascensionnelle",
-          "text": "En m/h, lue classe de pente par classe de pente dans la Runner Matrix.",
-          "legend": "D+ : dénivelé positif en mètres ; t : temps de montée en heures."
-        },
-        "load": {
-          "name": "Charge d'entraînement",
-          "text": "TRIMP de Banister, par exemple a = 0,64 et b = 1,92 pour un homme.",
-          "legend": "t : durée en minutes ; Δ : réserve de fréquence cardiaque (Karvonen) ; FC : fréquence cardiaque ; a, b : coefficients selon le profil."
-        }
-      },
-      "contact": "Nous pouvons étudier un accès par API pour plateformes, clubs et équipes. Décrivez votre cas d'usage, nous revenons vers vous.",
+      "contact": "Un accès API pour une plateforme, un club ou une équipe",
       "cta": "Écrire à l'équipe",
       "subject": "Accès API Enduraw"
     },

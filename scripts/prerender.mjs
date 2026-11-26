@@ -49,9 +49,14 @@ const fonts = fs
 if (fonts.length !== 2) throw new Error(`Polices critiques introuvables (${fonts.length}/2)`);
 
 /** Précharge l'image marquée `fetchpriority="high"` (photo de tête). */
+/* Une page peut avoir deux images de tête, l'une masquée selon la largeur
+   (Dashboard : ordinateur sur desktop, téléphone sur mobile). Chacune est
+   préchargée avec ses `sizes` : l'appareil masqué n'en charge que la plus
+   petite variante. */
 function lcpPreload(html) {
-  const img = html.match(/<img[^>]*fetchpriority="high"[^>]*>/i)?.[0];
-  if (!img) return "";
+  return [...html.matchAll(/<img[^>]*fetchpriority="high"[^>]*>/gi)].slice(0, 2).map((m) => preloadOne(m[0])).join("\n    ");
+}
+function preloadOne(img) {
   const attr = (name) => img.match(new RegExp(`\\s${name}="([^"]*)"`, "i"))?.[1];
   const srcset = attr("srcset") ?? attr("srcSet");
   const sizes = attr("sizes");

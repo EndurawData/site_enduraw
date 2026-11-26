@@ -33,6 +33,8 @@ const SOURCES = [
   "images/team",
   "images/photos",
   "images/captures",
+  "images/testing",
+  "images/equipe",
 ];
 
 /** Largeurs servies. Une image plus étroite que la plus grande est servie à sa

@@ -3,28 +3,28 @@ import { Link } from "react-router-dom";
 import { PhotoHero } from "@/components/ui/PhotoHero";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Action } from "@/components/ui/Action";
-import { Capture } from "@/components/ui/Capture";
+import { Laptop } from "@/components/ui/Device";
+import { Frame } from "@/components/ui/Frame";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { EMAILS, mailto } from "@/lib/links";
 
-/* Ce que nous suivons, au-delà du plan. */
-const AREAS = [
-  { title: "coachingPage.areas.training.title", description: "coachingPage.areas.training.text" },
-  { title: "coachingPage.areas.history.title", description: "coachingPage.areas.history.text" },
-  { title: "coachingPage.areas.factors.title", description: "coachingPage.areas.factors.text" },
-  { title: "coachingPage.areas.nutrition.title", description: "coachingPage.areas.nutrition.text" },
-  { title: "coachingPage.areas.refueling.title", description: "coachingPage.areas.refueling.text" },
-  { title: "coachingPage.areas.sleep.title", description: "coachingPage.areas.sleep.text" },
+/* Ce que montre l'analyse d'une séance : seulement ce qui se voit sur la capture. */
+const READS = [
+  { title: "coachingPage.analysis.items.type.title", description: "coachingPage.analysis.items.type.text" },
+  { title: "coachingPage.analysis.items.intensity.title", description: "coachingPage.analysis.items.intensity.text" },
+  { title: "coachingPage.analysis.items.reps.title", description: "coachingPage.analysis.items.reps.text" },
+  { title: "coachingPage.analysis.items.weather.title", description: "coachingPage.analysis.items.weather.text" },
+  { title: "coachingPage.analysis.items.adjusted.title", description: "coachingPage.analysis.items.adjusted.text" },
 ] as const;
 
-/* Ce que comprend le support saisonnier. */
+/* Ce que comprend le coaching sur la saison. */
 const INCLUDED = [
-  { key: "coachingPage.season.items.planning" },
-  { key: "coachingPage.season.items.advice" },
-  { key: "coachingPage.season.items.feedback" },
-  { key: "coachingPage.season.items.support" },
-  { key: "coachingPage.season.items.pacing" },
-  { key: "coachingPage.season.items.call" },
+  { key: "coachingPage.coaching.items.planning" },
+  { key: "coachingPage.coaching.items.advice" },
+  { key: "coachingPage.coaching.items.feedback" },
+  { key: "coachingPage.coaching.items.support" },
+  { key: "coachingPage.coaching.items.pacing" },
+  { key: "coachingPage.coaching.items.call" },
 ] as const;
 
 export default function CoachingPage() {
@@ -42,70 +42,100 @@ export default function CoachingPage() {
         lead={t("coachingPage.hero.lead")}
         actions={
           <>
-            <Action to={contact}>
-              {t("coachingPage.hero.cta")}
-            </Action>
-            <Action to="#saison" variant="ghost">
-              {t("coachingPage.hero.ctaSeason")}
+            <Action to={contact}>{t("coachingPage.hero.cta")}</Action>
+            <Action to="#offres" variant="ghost">
+              {t("coachingPage.hero.ctaOffers")}
             </Action>
           </>
         }
       />
 
-      {/* La performance en entier, tous niveaux : une liste simple et l'analyse d'une séance. */}
+      {/* D'abord ce que le dashboard lit d'une séance : court, une capture dans l'ordinateur. */}
       <section className="ep-section">
-        <div className="ep-wrap grid items-start gap-12 lg:grid-cols-[6fr_6fr] lg:gap-16">
-          <div>
-            <SectionHead title={t("coachingPage.areas.title")} lead={t("coachingPage.areas.lead")} />
+        <div className="ep-wrap grid items-center gap-12 lg:grid-cols-[5fr_7fr] lg:gap-16">
+          <div className="ep-reveal">
+            <SectionHead title={t("coachingPage.analysis.title")} lead={t("coachingPage.analysis.lead")} />
             <ul className="ep-lines ep-lines--tight mt-10">
-              {AREAS.map((a) => (
-                <li key={a.title} className="ep-body text-[15px] leading-relaxed">
-                  <span className="font-medium text-white">{t(a.title)}</span> · {t(a.description)}
+              {READS.map((r) => (
+                <li key={r.title} className="ep-body text-[15px] leading-relaxed">
+                  <span className="font-medium text-white">{t(r.title)}</span> · {t(r.description)}
                 </li>
               ))}
             </ul>
-            <p className="ep-body mt-8 text-[15px]">
-              {t("coachingPage.areas.testing")}{" "}
-              <Link to="/services/testing" className="ep-inline-link">
-                {t("coachingPage.areas.testingCta")}
-              </Link>
-            </p>
+            <div className="mt-8 flex flex-wrap items-baseline gap-x-8 gap-y-4">
+              <Action to="/dashboard" variant="link">
+                {t("coachingPage.analysis.cta")}
+              </Action>
+              <p className="ep-body text-[15px]">
+                {t("coachingPage.analysis.testing")}{" "}
+                <Link to="/services/testing" className="ep-inline-link">
+                  {t("coachingPage.analysis.testingCta")}
+                </Link>
+              </p>
+            </div>
           </div>
-          <Capture
-            src="/images/captures/analyse-analyse-fractionne-panneau.png"
-            alt={t("coachingPage.areas.captureAlt")}
-            caption={t("coachingPage.areas.caption")}
-            sizes="(min-width: 1024px) 46vw, 100vw"
-          />
+          <figure className="ep-reveal">
+            <Laptop
+              src="/images/captures/analyse-fractionne-desktop.png"
+              alt={t("coachingPage.analysis.captureAlt")}
+              sizes="(min-width: 1360px) 700px, (min-width: 1024px) 52vw, 100vw"
+            />
+            <figcaption className="mt-5 text-[13px] text-white/[0.55]">{t("coachingPage.analysis.caption")}</figcaption>
+          </figure>
         </div>
       </section>
 
-      {/* Le contenu de la saison et son prix ; l'accompagnement élite à côté. */}
-      <section id="saison" className="ep-section pt-0">
-        <div className="ep-wrap grid items-start gap-12 lg:grid-cols-[7fr_5fr] lg:gap-16">
-          <div>
-            <SectionHead title={t("coachingPage.season.title")} lead={t("coachingPage.season.lead")} />
-            <ul className="ep-lines ep-lines--tight mt-10">
-              {INCLUDED.map((item) => (
-                <li key={item.key} className="ep-body text-[15px]">
-                  {t(item.key)}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 flex flex-wrap items-baseline gap-x-3">
-              <span className="ep-body text-[15px]">{t("coachingPage.season.priceLabel")}</span>
-              <span className="ep-display text-[22px] tabular-nums">{t("coachingPage.season.price")}</span>
-              <span className="text-[14px] text-white/[0.55]">{t("coachingPage.season.period")}</span>
-            </p>
-          </div>
+      {/* Pour aller plus loin : deux offres, la photo de terrain à côté, le prix en dernier. */}
+      <section id="offres" className="ep-section pt-0">
+        <div className="ep-wrap">
+          <SectionHead title={t("coachingPage.offers.title")} lead={t("coachingPage.offers.lead")} />
+          <div className="mt-14 grid items-start gap-16 lg:grid-cols-[5fr_7fr]">
+            <Frame
+              src="/images/photos/cyclist.jpg"
+              alt={t("coachingPage.offers.photoAlt")}
+              side="left"
+              ratio="4 / 5"
+              position="center 40%"
+              sizes="(min-width: 1024px) 38vw, 100vw"
+            />
 
-          <div className="ep-rule pt-8 lg:mt-[120px]">
-            <h3 className="text-[17px] font-medium text-white">{t("coachingPage.elite.title")}</h3>
-            <p className="ep-body mt-2 max-w-[60ch] text-[15px] leading-relaxed">{t("coachingPage.elite.text")}</p>
-            <div className="mt-5">
-              <Action to={mailto(EMAILS.performance, t("coachingPage.elite.subject"))} variant="link">
-                {t("coachingPage.elite.cta")}
-              </Action>
+            <div>
+              <article className="ep-reveal ep-rule pt-8">
+                <h3 className="ep-display ep-h3">{t("coachingPage.data.title")}</h3>
+                <p className="ep-body mt-4 max-w-[60ch] text-[15px] leading-relaxed">{t("coachingPage.data.text")}</p>
+                <div className="mt-6">
+                  <Action to={mailto(EMAILS.performance, t("coachingPage.data.subject"))} variant="link">
+                    {t("coachingPage.data.cta")}
+                  </Action>
+                </div>
+              </article>
+
+              <article id="saison" className="ep-reveal ep-rule mt-14 pt-8">
+                <h3 className="ep-display ep-h3">{t("coachingPage.coaching.title")}</h3>
+                <p className="ep-body mt-4 max-w-[60ch] text-[15px] leading-relaxed">{t("coachingPage.coaching.text")}</p>
+                <ul className="ep-lines ep-lines--tight mt-8">
+                  {INCLUDED.map((item) => (
+                    <li key={item.key} className="ep-body text-[15px]">
+                      {t(item.key)}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 flex flex-wrap items-baseline gap-x-3">
+                  <span className="ep-body text-[15px]">{t("coachingPage.coaching.priceLabel")}</span>
+                  <span className="ep-display text-[22px] tabular-nums">{t("coachingPage.coaching.price")}</span>
+                  <span className="text-[14px] text-white/[0.55]">{t("coachingPage.coaching.period")}</span>
+                </p>
+
+                <div className="mt-10">
+                  <h4 className="text-[15px] font-medium text-white">{t("coachingPage.elite.title")}</h4>
+                  <p className="ep-body mt-2 max-w-[60ch] text-[15px] leading-relaxed">{t("coachingPage.elite.text")}</p>
+                  <div className="mt-4">
+                    <Action to={mailto(EMAILS.performance, t("coachingPage.elite.subject"))} variant="link">
+                      {t("coachingPage.elite.cta")}
+                    </Action>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </div>

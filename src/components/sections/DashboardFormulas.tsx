@@ -1,8 +1,13 @@
-import { useId, type HTMLAttributes, type ReactNode } from "react";
+import { useEffect, useRef, useState, type HTMLAttributes, type MouseEvent, type PointerEvent, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
+import { cn } from "@/lib/utils";
 
 /**
- * Les modèles du dashboard, écrits en MathML (Baseline, sans bibliothèque).
+ * Les modèles du dashboard, écrits en MathML (Baseline, sans bibliothèque),
+ * et volontairement illisibles : floutés, sans titre ni légende, cachés aux
+ * lecteurs d'écran. Rien ne les annonce. Un appui long (1 s) ou un double-clic
+ * sur le bloc les rend nets quelques secondes, puis le flou revient.
+ *
  * Coefficients repris du code du dashboard :
  *   · allure corrigée de la pente : backend/activities/adjusted_speeds.py
  *   · découplage cardiaque : backend/activities/matrix_updater.py (_intra_session_drift)
@@ -33,6 +38,12 @@ declare module "react" {
 
 const ROWS = ["gap", "drift", "vam", "load"] as const;
 
+/** Durée de l'appui long, et durée pendant laquelle les formules restent nettes. */
+const HOLD_MS = 900;
+const SHOW_MS = 4000;
+/** Au-delà de ce déplacement, l'appui est un défilement, pas un appui long. */
+const MOVE_TOLERANCE = 10;
+
 /** Séparateur décimal de la langue : 0,0289 en français, 0.0289 en anglais. */
 function useNum() {
   const { i18n } = useTranslation();
@@ -50,32 +61,78 @@ function V({ children }: { children: string }) {
 }
 
 /** Une formule ; défile dans son cadre plutôt que la page, à 375 px. */
-function Formula({ children, describedBy }: { children: ReactNode; describedBy: string }) {
+function Formula({ children }: { children: ReactNode }) {
   return (
-    <div className="max-w-full overflow-x-auto">
-      <math
-        display="block"
-        aria-describedby={describedBy}
-        className="font-sans text-[20px] text-white [math-style:normal]"
-      >
+    <div tabIndex={-1} className="max-w-full overflow-x-auto">
+      <math display="block" className="font-sans text-[17px] text-white sm:text-[20px] [math-style:normal]">
         {children}
       </math>
     </div>
   );
 }
 
-export function DashboardFormulas() {
+/** Appui long ou double-clic : vrai pendant SHOW_MS, puis faux. */
+function useHiddenReveal() {
+  const [shown, setShown] = useState(false);
+  const hold = useRef<number | undefined>(undefined);
+  const hide = useRef<number | undefined>(undefined);
+  const origin = useRef<{ x: number; y: number } | null>(null);
+
+  const cancelHold = () => {
+    window.clearTimeout(hold.current);
+    origin.current = null;
+  };
+  const reveal = () => {
+    cancelHold();
+    window.clearTimeout(hide.current);
+    setShown(true);
+    hide.current = window.setTimeout(() => setShown(false), SHOW_MS);
+  };
+
+  useEffect(
+    () => () => {
+      window.clearTimeout(hold.current);
+      window.clearTimeout(hide.current);
+    },
+    [],
+  );
+
+  return {
+    shown,
+    handlers: {
+      onPointerDown: (e: PointerEvent) => {
+        if (e.button !== 0) return;
+        origin.current = { x: e.clientX, y: e.clientY };
+        window.clearTimeout(hold.current);
+        hold.current = window.setTimeout(reveal, HOLD_MS);
+      },
+      onPointerMove: (e: PointerEvent) => {
+        const o = origin.current;
+        if (o && Math.hypot(e.clientX - o.x, e.clientY - o.y) > MOVE_TOLERANCE) cancelHold();
+      },
+      onPointerUp: cancelHold,
+      onPointerCancel: cancelHold,
+      onPointerLeave: cancelHold,
+      onDoubleClick: reveal,
+      // Pas de menu contextuel au bout d'un appui long au doigt.
+      onContextMenu: (e: MouseEvent) => {
+        if (origin.current) e.preventDefault();
+      },
+    },
+  };
+}
+
+export function DashboardFormulas({ className }: { className?: string }) {
   const { t } = useTranslation();
   const n = useNum();
   const hr = t("dashboardPage.api.symbols.hr");
   const rest = t("dashboardPage.api.symbols.rest");
-  const uid = useId();
-  const legendId = (key: (typeof ROWS)[number]) => `${uid}-${key}`;
+  const { shown, handlers } = useHiddenReveal();
 
   const formulas: Record<(typeof ROWS)[number], ReactNode> = {
     gap: (
       <>
-        <Formula describedBy={legendId("gap")}>
+        <Formula>
           <mrow>
             <msub>
               <V>v</V>
@@ -104,7 +161,7 @@ export function DashboardFormulas() {
     ),
     drift: (
       <>
-        <Formula describedBy={legendId("drift")}>
+        <Formula>
           <mrow>
             <V>D</V>
             <mo>=</mo>
@@ -129,7 +186,7 @@ export function DashboardFormulas() {
             <mn>100</mn>
           </mrow>
         </Formula>
-        <Formula describedBy={legendId("drift")}>
+        <Formula>
           <mrow>
             <mtext>EF</mtext>
             <mo>=</mo>
@@ -143,7 +200,7 @@ export function DashboardFormulas() {
     ),
     vam: (
       <>
-        <Formula describedBy={legendId("vam")}>
+        <Formula>
           <mrow>
             <mtext>VAM</mtext>
             <mo>=</mo>
@@ -160,7 +217,7 @@ export function DashboardFormulas() {
     ),
     load: (
       <>
-        <Formula describedBy={legendId("load")}>
+        <Formula>
           <mrow>
             <mtext>TRIMP</mtext>
             <mo>=</mo>
@@ -179,7 +236,7 @@ export function DashboardFormulas() {
             </msup>
           </mrow>
         </Formula>
-        <Formula describedBy={legendId("load")}>
+        <Formula>
           <mrow>
             <V>Δ</V>
             <mo>=</mo>
@@ -211,19 +268,21 @@ export function DashboardFormulas() {
   };
 
   return (
-    <ul className="ep-lines">
+    <div
+      aria-hidden="true"
+      {...handlers}
+      className={cn(
+        "flex select-none flex-nowrap items-center gap-x-14 overflow-hidden whitespace-nowrap [-webkit-touch-callout:none] [mask-image:linear-gradient(90deg,#000_70%,transparent)] [touch-action:manipulation]",
+        "transition-[filter,opacity] duration-700 ease-[var(--ep-ease)] motion-reduce:transition-none",
+        shown ? "opacity-100 blur-0" : "opacity-40 blur-[3px]",
+        className,
+      )}
+    >
       {ROWS.map((key) => (
-        <li key={key} className="grid gap-5 lg:grid-cols-[4fr_5fr_5fr] lg:items-start lg:gap-10">
-          <h3 className="text-[18px] font-medium text-white">{t(`dashboardPage.api.rows.${key}.name`)}</h3>
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-3">{formulas[key]}</div>
-            <p id={legendId(key)} className="mt-4 text-[14px] leading-relaxed text-white/[0.55]">
-              {t(`dashboardPage.api.rows.${key}.legend`)}
-            </p>
-          </div>
-          <p className="ep-body text-[15px] leading-relaxed">{t(`dashboardPage.api.rows.${key}.text`)}</p>
-        </li>
+        <div key={key} className="flex shrink-0 flex-nowrap items-center gap-x-10">
+          {formulas[key]}
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }

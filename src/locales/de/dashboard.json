@@ -5,11 +5,14 @@
       "lead": "Enduraw report korrigiert jeden Lauf um die Bedingungen des Tages, die Runner Matrix zeichnet dein Profil, und der Pacing-Plan baut auf der Strecke, deinem Ziel und deinen Bedingungen auf.",
       "ctaPrimary": "Konto erstellen",
       "ctaSecondary": "Anmelden",
-      "alt": "Übersicht des Enduraw-Dashboards mit Beispieldaten: Aktivitäten, Runner Matrix, Pacing-Pläne, Labortests und Stroop-Test"
+      "alt": "Enduraw-Pacing-Plan auf dem Laptop, fiktive Daten: Streckenkarte und Höhenprofil nach Steigung eingefärbt",
+      "altMobile": "Tagesansicht des Enduraw-Dashboards auf dem Smartphone, mit Beispieldaten"
     },
     "report": {
-      "title": "Jeder Lauf, korrigiert um die Bedingungen des Tages",
-      "lead": "Verbinde Strava: Enduraw report berechnet das Tempo jeder neuen Aktivität neu. Er ist kostenlos.",
+      "title": "Enduraw report",
+      "free": "kostenlos",
+      "lead": "Verbinde Strava: Enduraw report berechnet das Tempo jedes neuen Laufs nach den Bedingungen des Tages neu, damit du deine Einheiten miteinander vergleichen kannst.",
+      "cta": "Konto erstellen",
       "heat": "Hitze",
       "heatDesc": "Etwa 0,27 % Tempo pro Grad über 15,6 °C, damit du siehst, was die Einheit bei kühlem Wetter wert wäre.",
       "wind": "Wind",
@@ -20,7 +23,17 @@
       "elevationDesc": "Anstiege und Abstiege, umgerechnet in ein gleichwertiges Tempo in der Ebene.",
       "deep": "Auf Anfrage geht die Tiefenanalyse einer Einheit weiter: kardiale Drift, Effizienz am Berg, Gehanteil, Gleichmäßigkeit der Wiederholungen. Jede Grafik erklärt, wie sie entsteht und wie man sie liest.",
       "article": "Den technischen Artikel lesen",
-      "alt": "Analyse eines Traillaufs mit Beispieldaten: steigungskorrigierte Geschwindigkeit je Abschnitt, Anstiege, flache Passagen und Abstiege"
+      "alt": "Analyse eines Traillaufs im Dashboard, mit Beispieldaten: Wetter des Laufs, Höhenprofil, Tempo und angepasstes Tempo"
+    },
+    "weather": {
+      "title": "Das Wetter, davor und danach",
+      "lead": "Die Bedingungen wirken auf jedes Tempo. Enduraw erfasst sie nach jedem Lauf und gibt dir die Vorhersage für den Renntag.",
+      "afterLabel": "Nach jedem Lauf",
+      "afterText": "Temperatur, Windstärke und Windrichtung, Luftfeuchtigkeit: Die Bedingungen des Laufs erscheinen in seiner Analyse. Hitze und Wind fließen in das angepasste Tempo ein.",
+      "beforeLabel": "Vor dem Rennen",
+      "beforeText": "Im Pacing-Plan die Vorhersage für die Uhrzeit, zu der du jeden Punkt der Strecke passierst: Temperatur, Luftfeuchtigkeit, Wind, Niederschlag, Bewölkung, UV-Index, Tag und Nacht.",
+      "alt": "Wettervorhersage entlang einer Ultratrail-Strecke, von Verpflegungsstelle zu Verpflegungsstelle, mit Beispieldaten: Temperatur, Wind und Niederschlag",
+      "caption": "Vorhersage entlang der Strecke, Beispieldaten"
     },
     "matrix": {
       "title": "Dein Läuferprofil",
@@ -30,21 +43,17 @@
     },
     "pacing": {
       "title": "Ein Plan für den Renntag",
-      "lead": "Dein Tempo Abschnitt für Abschnitt auf der echten Strecke, deine Durchgangszeiten an jeder Verpflegungsstelle, die Wettervorhersage für die Uhrzeit, zu der du dort bist, und dein Ernährungsplan: Kohlenhydrate, Wasser und Natrium pro Stunde.",
-      "alt": "Pacing-Plan mit Beispieldaten: Zieltempo über dem Streckenprofil, Verpflegungsstellen markiert",
-      "inputsLabel": "Was der Plan berücksichtigt",
+      "lead": "Dein Tempo Abschnitt für Abschnitt auf der echten Strecke, deine Durchgangszeiten an jeder Verpflegung und dein Ernährungsplan: Kohlenhydrate, Wasser und Natrium pro Stunde.",
       "target": "Dein Ziel",
       "targetDesc": "Die angestrebte Zeit, übersetzt in ein haltbares Tempo auf jedem Abschnitt.",
       "course": "Die Strecke",
       "courseDesc": "Steigung und Technik des Geländes: bergauf zurücknehmen, bergab wieder anziehen.",
       "altitude": "Die Höhe",
       "altitudeDesc": "Die zusätzliche Anstrengung oben an den Pässen.",
-      "weather": "Das Wetter",
-      "weatherDesc": "Vorhergesagte Temperatur, Wind und Luftfeuchtigkeit entlang der Strecke, für die Wahl deiner Ausrüstung.",
       "delivery": "Vom Enduraw-Team erstellt und innerhalb von 5 Werktagen in deinem Dashboard bereitgestellt, als PDF für den Renntag exportierbar. Nach dem Ziel vergleichst du den Plan direkt über Strava mit deinem tatsächlichen Rennen.",
       "ctaDemo": "Einen Demo-Plan ansehen",
       "ctaOrder": "Einen Plan bestellen",
-      "altMap": "Pacing-Plan: Streckenkarte und Höhenprofil nach Steigung eingefärbt"
+      "altLaptop": "Übersicht eines Pacing-Plans auf dem Laptop, fiktive Daten: Zielzeit, Bewegungszeit, Distanz, Höhenmeter und Tempokurve"
     },
     "plans": {
       "title": "Kostenlos starten",
@@ -75,35 +84,11 @@
       "elite": "Das Elite-Abo ist noch nicht verfügbar."
     },
     "api": {
-      "title": "Die Mathematik dahinter",
-      "lead": "Die Modelle, die wir mit der Trail-Elite einsetzen, laufen auch in deinem Dashboard. Hier sind sie, klar ausgeschrieben.",
       "symbols": {
         "hr": "HF",
         "rest": "Ruhe"
       },
-      "rows": {
-        "gap": {
-          "name": "Steigungskorrigiertes Tempo",
-          "text": "Bei 10 % Steigung entsprechen 3 m/s etwa 4,3 m/s in der Ebene.",
-          "legend": "vc: korrigierte Geschwindigkeit, ihr Gegenwert in der Ebene; v: gemessene Geschwindigkeit; p: Steigung in %, zwischen −20 und +20 %."
-        },
-        "drift": {
-          "name": "Kardiale Entkopplung",
-          "text": "Beide Drittel werden bei gleicher Steigung in 2-%-Stufen verglichen: Ein Anstieg am Ende wird nicht als Leistungsabfall gelesen.",
-          "legend": "D: Entkopplung in %; EF₁, EF₃: Geschwindigkeit pro Herzschlag (v / HF) im ersten und letzten Drittel der Belastung."
-        },
-        "vam": {
-          "name": "Vertikalgeschwindigkeit (VAM)",
-          "text": "In m/h, in der Runner Matrix nach Steigungsklassen gelesen.",
-          "legend": "D+: positive Höhenmeter; t: Steigzeit in Stunden."
-        },
-        "load": {
-          "name": "Trainingsbelastung",
-          "text": "TRIMP nach Banister, zum Beispiel a = 0,64 und b = 1,92 für einen Mann.",
-          "legend": "t: Dauer in Minuten; Δ: Herzfrequenzreserve (Karvonen); HF: Herzfrequenz; a, b: Koeffizienten je nach Profil."
-        }
-      },
-      "contact": "Wir können einen API-Zugang für Plattformen, Vereine und Teams prüfen. Beschreibe deinen Anwendungsfall, wir melden uns bei dir.",
+      "contact": "Ein API-Zugang für eine Plattform, einen Verein oder ein Team",
       "cta": "Dem Team schreiben",
       "subject": "Enduraw API-Zugang"
     },
