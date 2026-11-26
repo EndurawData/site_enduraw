@@ -13,7 +13,7 @@
       "steps": {
         "book": {
           "title": "予約",
-          "text": "テストと会場を選び、オンラインで購入します。日時はメールで確定します。",
+          "text": "テストと会場を選び、オンラインで予約します。日時はメールで確定します。",
           "chamonix": "シャモニー",
           "paris": "パリ",
           "chamonixText": "私たちのラボ、Performance Center。",

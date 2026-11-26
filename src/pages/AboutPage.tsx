@@ -87,6 +87,7 @@ export default function AboutPage() {
             members={TEAM.map((p) => ({
               name: p.name,
               role: t(`aboutPage.team.roles.${p.key}`),
+              bio: t(`aboutPage.team.bios.${p.key}`),
               photo: p.photo,
               linkedin: p.linkedin,
             }))}

@@ -103,6 +103,12 @@ body {
   }
 }
 
+.ep-shell .ep-btn--sm {
+  height: 36px;
+  padding: 0 14px;
+  font-size: 13px;
+}
+
 /* Lien d'action : casse normale, comme les boutons. */
 .ep-shell .ep-link {
   font-size: 14px;
@@ -688,8 +694,9 @@ body {
 
 /* Portrait de l'équipe : carré, cadre d'imprimeur, croix de repère. */
 .ep-portrait {
-  width: clamp(180px, 22vw, 240px);
+  width: clamp(240px, 24vw, 280px);
   flex: none;
+  white-space: normal;
 }
 .ep-portrait__img {
   position: relative;
@@ -697,12 +704,10 @@ body {
   padding: 6px;
 }
 .ep-portrait__img .ep-media img {
-  filter: grayscale(1) contrast(1.05);
-  transition: filter 0.4s var(--ep-ease);
+  transition: scale 0.5s var(--ep-ease);
 }
-.ep-portrait:hover .ep-portrait__img .ep-media img,
-.ep-portrait:focus-within .ep-portrait__img .ep-media img {
-  filter: none;
+.ep-portrait:hover .ep-portrait__img .ep-media img {
+  scale: 1.04;
 }
 .ep-portrait .ep-cross {
   color: var(--ep-white);

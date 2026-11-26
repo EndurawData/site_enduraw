@@ -36,7 +36,17 @@
       },
       "label": "El equipo de Enduraw",
       "play": "Reanudar el desplazamiento",
-      "pause": "Pausar el desplazamiento"
+      "pause": "Pausar el desplazamiento",
+      "bios": {
+        "joseph": "Desde su habitación en Chamonix, Joseph pasó la noche construyendo los planes de ritmo perfectos analizando el perfil de la raza y las condiciones ambientales.",
+        "anthony": "Anthony dirige la estrategia y las operaciones de Enduraw, respaldado por un doctorado en física y una profunda pasión por la ciencia de la performance.",
+        "lucas": "Lucas dirige la gestión financiera de Enduraw y estructura su crecimiento, garantizando la solidez necesaria para apoyar las ambiciones del equipo.",
+        "valentin": "Valentin dirige el desarrollo técnico del dashboard: diseña la arquitectura del producto, coordina los equipos técnicos y garantiza la fiabilidad de la plataforma.",
+        "charline": "Ingeniera de formación, Charline pone su experiencia en estrategias de alimentación y optimización energética al servicio del rendimiento de los atletas.",
+        "antoine": "Apasionado por el análisis de rendimiento, aporta una valiosa experiencia de su tiempo en Tudor Cycling, en el corazón del ciclismo profesional.",
+        "kyllian": "Kyllian pone su experiencia científica al servicio del rendimiento de los atletas, combinando un análisis riguroso de datos con un seguimiento exigente sobre el terreno.",
+        "alex": "Dedicado a crear imágenes profesionales e impactantes, captura la esencia de Enduraw, sus atletas y sus eventos a través de fotografías de alta calidad."
+      }
     }
   }
 }

@@ -12,7 +12,9 @@
     "servicesMenu": "Mostrar servicios",
     "shop": "Tienda",
     "language": "Idioma",
-    "menu": "Menú"
+    "menu": "Menú",
+    "login": "Iniciar sesión",
+    "signup": "Crear cuenta"
   },
   "footer": {
     "tagline": "Un laboratorio de rendimiento deportivo en Chamonix. Convertimos los datos de entrenamiento y de laboratorio en análisis útiles.",

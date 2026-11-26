@@ -13,7 +13,7 @@
       "steps": {
         "book": {
           "title": "Book",
-          "text": "Choose the test and the location, then buy it online. We confirm the slot by email.",
+          "text": "Choose the test and the location, then book it online. We confirm the slot by email.",
           "chamonix": "Chamonix",
           "paris": "Paris",
           "chamonixText": "The Performance Center, our lab.",

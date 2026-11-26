@@ -1,17 +1,17 @@
 {
   "dashboardPage": {
     "hero": {
-      "title": "Vos sorties Strava, analysées",
-      "lead": "Enduraw report corrige chaque sortie des conditions du jour, la Runner Matrix dresse votre profil, et le plan de pacing se construit sur le parcours, votre objectif et vos conditions.",
+      "title": "Les modèles des pros, dans votre profil",
+      "lead": "Chaque jour, le dashboard modélise votre course avec les algorithmes que nous utilisons pour les athlètes élites : le Enduraw Report après chaque sortie, votre Runner Matrix, vos plans de pacing, vos résultats de tests. Un seul écosystème, ouvert à tous les coureurs.",
       "ctaPrimary": "Créer mon compte",
       "ctaSecondary": "Se connecter",
       "alt": "Plan de pacing Enduraw sur ordinateur, données fictives : carte du parcours et profil d'altitude coloré par la pente",
       "altMobile": "Vue du jour du dashboard Enduraw sur téléphone, avec des données fictives"
     },
     "report": {
-      "title": "Enduraw report",
+      "title": "Le Enduraw Report",
       "free": "gratuit",
-      "lead": "Connectez Strava : Enduraw report recalcule l'allure de chaque nouvelle sortie selon les conditions du jour, pour comparer vos séances entre elles.",
+      "lead": "Connectez Strava : le Enduraw Report recalcule l'allure de chaque nouvelle sortie selon les conditions du jour, pour comparer vos séances entre elles.",
       "cta": "Créer mon compte",
       "heat": "Chaleur",
       "heatDesc": "Environ 0,27 % d'allure par degré au-dessus de 15,6 °C, pour retrouver ce que vaut la séance par temps frais.",
@@ -57,13 +57,13 @@
     },
     "plans": {
       "title": "Commencez gratuitement",
-      "lead": "Enduraw report et la Runner Matrix sont gratuits. Les formules ajoutent la mise à jour continue et les analyses approfondies. Sans engagement, résiliable à tout moment.",
+      "lead": "Le Enduraw Report et la Runner Matrix sont gratuits. Les formules ajoutent la mise à jour continue et les analyses approfondies. Sans engagement, résiliable à tout moment.",
       "cta": "Choisir une formule",
       "price": "{{value}} €",
       "perMonth": "par mois",
       "free": {
         "name": "Gratuit",
-        "f1": "Enduraw report et liste d'activités",
+        "f1": "Le Enduraw Report et liste d'activités",
         "f2": "Résumé de chaque séance, illimité",
         "f3": "Runner Matrix : carte d'identité et Labo de performance",
         "f4": "Une analyse approfondie de séance offerte"

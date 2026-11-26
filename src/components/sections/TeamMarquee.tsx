@@ -7,6 +7,8 @@ import { NewTab } from "@/components/sections/ContentRow";
 export type Member = {
   name: string;
   role: string;
+  /** La courte présentation reprise du site en ligne. */
+  bio?: string;
   /** Portrait carré ; sans photo, les initiales. */
   photo?: string;
   linkedin?: string;
@@ -32,7 +34,8 @@ function Portrait({ m, hidden }: { m: Member; hidden?: boolean }) {
         <span className="ep-cross" style={{ bottom: -6, right: -6 }} aria-hidden="true" />
       </div>
       <p className="mt-4 text-[16px] font-medium text-white">{m.name}</p>
-      <p className="ep-body mt-0.5 text-[14px]">{m.role}</p>
+      <p className="mt-0.5 text-[13px] text-ep-sky">{m.role}</p>
+      {m.bio && <p className="ep-body mt-3 text-[14px] leading-relaxed">{m.bio}</p>}
     </>
   );
   return (

@@ -12,7 +12,9 @@
     "servicesMenu": "Show services",
     "shop": "Shop",
     "language": "Language",
-    "menu": "Menu"
+    "menu": "Menu",
+    "login": "Log in",
+    "signup": "Create account"
   },
   "footer": {
     "tagline": "A sport performance laboratory in Chamonix. We turn training and lab data into analysis you can act on.",

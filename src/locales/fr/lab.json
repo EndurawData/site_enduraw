@@ -13,7 +13,7 @@
       "steps": {
         "book": {
           "title": "Réserver",
-          "text": "Vous choisissez le test et le lieu, puis vous l'achetez en ligne. Nous confirmons le créneau par e-mail.",
+          "text": "Vous choisissez le test et le lieu, puis vous réservez en ligne. Nous confirmons le créneau par e-mail.",
           "chamonix": "Chamonix",
           "paris": "Paris",
           "chamonixText": "Le Performance Center, notre labo.",

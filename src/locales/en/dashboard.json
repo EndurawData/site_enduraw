@@ -1,17 +1,17 @@
 {
   "dashboardPage": {
     "hero": {
-      "title": "Your Strava runs, analysed",
-      "lead": "Enduraw report corrects every run for the conditions of the day, the Runner Matrix maps your profile, and the pacing plan is built on the course, your goal and your conditions.",
+      "title": "Pro-level models, in your own profile",
+      "lead": "Every day, the dashboard models your running with the algorithms we use with elite athletes: the Enduraw Report after each run, your Runner Matrix, pacing plans, lab results. One ecosystem, open to every runner.",
       "ctaPrimary": "Create my account",
       "ctaSecondary": "Log in",
       "alt": "Enduraw pacing plan on a laptop, fictitious data: course map and elevation profile coloured by gradient",
       "altMobile": "Today view of the Enduraw dashboard on a phone, with sample data"
     },
     "report": {
-      "title": "Enduraw report",
+      "title": "The Enduraw Report",
       "free": "free",
-      "lead": "Connect Strava: Enduraw report recalculates the pace of every new run for the conditions of the day, so you can compare your sessions with each other.",
+      "lead": "Connect Strava: the Enduraw Report recalculates the pace of every new run for the conditions of the day, so you can compare your sessions with each other.",
       "cta": "Create my account",
       "heat": "Heat",
       "heatDesc": "About 0.27% of pace per degree above 15.6 °C, to show what the session is worth in cool weather.",
@@ -57,13 +57,13 @@
     },
     "plans": {
       "title": "Start for free",
-      "lead": "Enduraw report and the Runner Matrix are free. Paid plans add continuous updates and in-depth analyses. No commitment, cancel at any time.",
+      "lead": "The Enduraw Report and the Runner Matrix are free. Paid plans add continuous updates and in-depth analyses. No commitment, cancel at any time.",
       "cta": "Choose a plan",
       "price": "€{{value}}",
       "perMonth": "per month",
       "free": {
         "name": "Free",
-        "f1": "Enduraw report and activity list",
+        "f1": "The Enduraw Report and activity list",
         "f2": "Summary of every session, unlimited",
         "f3": "Runner Matrix: identity card and Performance Lab",
         "f4": "One in-depth session analysis included"

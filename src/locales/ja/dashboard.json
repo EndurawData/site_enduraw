@@ -1,17 +1,17 @@
 {
   "dashboardPage": {
     "hero": {
-      "title": "Strava のランを分析する",
-      "lead": "Enduraw report はその日の条件ですべてのランを補正し、Runner Matrix はあなたのプロフィールを描き、ペーシングプランはコース、目標、条件をもとに組み立てます。",
+      "title": "プロのモデルを、あなたのプロフィールに",
+      "lead": "ダッシュボードは毎日、エリートアスリートに使うアルゴリズムであなたの走りをモデル化します。毎回のラン後の Enduraw Report、Runner Matrix、ペース計画、ラボ測定結果。すべてのランナーに開かれたひとつのエコシステムです。",
       "ctaPrimary": "アカウントを作成",
       "ctaSecondary": "ログイン",
       "alt": "ノートPCに表示した Enduraw のペース計画（架空データ）：コース地図と勾配で色分けした標高プロファイル",
       "altMobile": "スマートフォンで見る Enduraw ダッシュボードの今日の画面（架空のデータ）"
     },
     "report": {
-      "title": "Enduraw report",
+      "title": "Enduraw Report",
       "free": "無料",
-      "lead": "Strava を連携すると、Enduraw report が新しいランごとにその日の条件でペースを再計算し、セッション同士を比べられるようにします。",
+      "lead": "Strava を連携すると、Enduraw Report が新しいランごとにその日の条件でペースを再計算し、セッション同士を比べられるようにします。",
       "cta": "アカウントを作成",
       "heat": "暑さ",
       "heatDesc": "15.6 °C を超える 1 度ごとにペースを約 0.27 % 補正し、涼しい日ならどう評価できたかを示します。",
@@ -57,13 +57,13 @@
     },
     "plans": {
       "title": "無料で始める",
-      "lead": "Enduraw report と Runner Matrix は無料です。有料プランでは継続的な更新と詳細分析が加わります。契約期間の縛りはなく、いつでも解約できます。",
+      "lead": "Enduraw Report と Runner Matrix は無料です。有料プランでは継続的な更新と詳細分析が加わります。契約期間の縛りはなく、いつでも解約できます。",
       "cta": "プランを選ぶ",
       "price": "€{{value}}",
       "perMonth": "／月",
       "free": {
         "name": "無料",
-        "f1": "Enduraw report とアクティビティ一覧",
+        "f1": "Enduraw Report とアクティビティ一覧",
         "f2": "各セッションのサマリー、無制限",
         "f3": "Runner Matrix：ID カードとパフォーマンスラボ",
         "f4": "セッションの詳細分析 1 回付き"

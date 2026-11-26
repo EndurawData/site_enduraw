@@ -8,10 +8,10 @@
     },
     "story": {
       "title": "Born in Chamonix",
-      "text": "It started in a bedroom in Chamonix, where Joseph Mestrallet spent his nights building pacing plans from the course profile and the conditions. The Enduraw report followed, then the dashboard.",
+      "text": "It started in a bedroom in Chamonix, where Joseph Mestrallet spent his nights building pacing plans from the course profile and the conditions. The Enduraw Report followed, then the dashboard.",
       "milestones": {
         "idea": "First idea of the project",
-        "launch": "Official launch of the Enduraw report",
+        "launch": "Official launch of the Enduraw Report",
         "v2": "Second version: a formula fitted to your data, with cycling and trail running added",
         "dashboard": "The report becomes a full dashboard",
         "pacing": "Pacing plans arrive in the dashboard",
@@ -36,7 +36,17 @@
       },
       "label": "The Enduraw team",
       "play": "Resume scrolling",
-      "pause": "Pause scrolling"
+      "pause": "Pause scrolling",
+      "bios": {
+        "joseph": "From his bedroom in Chamonix, Joseph spent night to build the perfect pacing plans by analyzing race profile and environmental conditions.",
+        "anthony": "Anthony leads Enduraw's overall strategy and day-to-day operations, backed by a Ph.D. in physics and a deep passion for performance science.",
+        "lucas": "Lucas oversees Enduraw's financial management and structures its growth, ensuring the financial stability needed to support the team's ambitions.",
+        "valentin": "Valentin leads the dashboard's technical development: he designs the product architecture, coordinates the technical teams, and ensures the platform's reliability.",
+        "charline": "An engineer by training, Charline brings her expertise in fueling strategies and energy optimization directly to the service of athlete performance.",
+        "antoine": "Passionate about performance analysis, he brings valuable experience from his time at Tudor Cycling, at the heart of professional road cycling.",
+        "kyllian": "Kyllian puts his scientific expertise at the service of athlete performance, combining thorough data analysis with rigorous, hands-on field follow-up.",
+        "alex": "Dedicated to creating professional, impactful visuals, he captures the essence of Enduraw, its athletes, and its events through striking imagery."
+      }
     }
   }
 }

@@ -13,7 +13,7 @@
       "steps": {
         "book": {
           "title": "Buchen",
-          "text": "Du wählst Test und Ort und kaufst ihn online. Wir bestätigen den Termin per E-Mail.",
+          "text": "Du wählst Test und Ort und reservierst online. Wir bestätigen den Termin per E-Mail.",
           "chamonix": "Chamonix",
           "paris": "Paris",
           "chamonixText": "Das Performance Center, unser Labor.",

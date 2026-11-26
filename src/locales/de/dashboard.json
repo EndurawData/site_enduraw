@@ -1,17 +1,17 @@
 {
   "dashboardPage": {
     "hero": {
-      "title": "Deine Strava-Läufe, analysiert",
-      "lead": "Enduraw report korrigiert jeden Lauf um die Bedingungen des Tages, die Runner Matrix zeichnet dein Profil, und der Pacing-Plan baut auf der Strecke, deinem Ziel und deinen Bedingungen auf.",
+      "title": "Profi-Modelle in deinem Profil",
+      "lead": "Jeden Tag modelliert das Dashboard dein Laufen mit den Algorithmen, die wir mit Elite-Athleten nutzen: der Enduraw Report nach jedem Lauf, deine Runner Matrix, Pacing-Pläne, Laborergebnisse. Ein Ökosystem, offen für alle Läufer.",
       "ctaPrimary": "Konto erstellen",
       "ctaSecondary": "Anmelden",
       "alt": "Enduraw-Pacing-Plan auf dem Laptop, fiktive Daten: Streckenkarte und Höhenprofil nach Steigung eingefärbt",
       "altMobile": "Tagesansicht des Enduraw-Dashboards auf dem Smartphone, mit Beispieldaten"
     },
     "report": {
-      "title": "Enduraw report",
+      "title": "Enduraw Report",
       "free": "kostenlos",
-      "lead": "Verbinde Strava: Enduraw report berechnet das Tempo jedes neuen Laufs nach den Bedingungen des Tages neu, damit du deine Einheiten miteinander vergleichen kannst.",
+      "lead": "Verbinde Strava: Enduraw Report berechnet das Tempo jedes neuen Laufs nach den Bedingungen des Tages neu, damit du deine Einheiten miteinander vergleichen kannst.",
       "cta": "Konto erstellen",
       "heat": "Hitze",
       "heatDesc": "Etwa 0,27 % Tempo pro Grad über 15,6 °C, damit du siehst, was die Einheit bei kühlem Wetter wert wäre.",
@@ -57,13 +57,13 @@
     },
     "plans": {
       "title": "Kostenlos starten",
-      "lead": "Enduraw report und die Runner Matrix sind kostenlos. Die Abos ergänzen laufende Aktualisierung und Tiefenanalysen. Ohne Mindestlaufzeit, jederzeit kündbar.",
+      "lead": "Enduraw Report und die Runner Matrix sind kostenlos. Die Abos ergänzen laufende Aktualisierung und Tiefenanalysen. Ohne Mindestlaufzeit, jederzeit kündbar.",
       "cta": "Abo wählen",
       "price": "{{value}} €",
       "perMonth": "pro Monat",
       "free": {
         "name": "Kostenlos",
-        "f1": "Enduraw report und Aktivitätenliste",
+        "f1": "Enduraw Report und Aktivitätenliste",
         "f2": "Zusammenfassung jeder Einheit, unbegrenzt",
         "f3": "Runner Matrix: Steckbrief und Performance-Labor",
         "f4": "Eine Tiefenanalyse einer Einheit inklusive"

@@ -12,7 +12,9 @@
     "servicesMenu": "Leistungen anzeigen",
     "shop": "Shop",
     "language": "Sprache",
-    "menu": "Menü"
+    "menu": "Menü",
+    "login": "Anmelden",
+    "signup": "Konto erstellen"
   },
   "footer": {
     "tagline": "Ein Labor für Sportleistung in Chamonix. Wir machen aus Trainings- und Labordaten Analysen, mit denen man arbeiten kann.",

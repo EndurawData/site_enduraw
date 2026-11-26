@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ChevronDown, Globe, Menu, ShoppingBag, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LINKS } from "@/lib/links";
+import { trackLead } from "@/lib/tracking";
 import { LANGS, LANG_LABELS, normalizeLang } from "@/i18n/languages";
 import { switchLanguage } from "@/i18n";
 import { findRoute } from "@/routes/manifest";
@@ -274,6 +275,13 @@ export function SiteNav() {
         </nav>
 
         <div className="ml-auto flex items-center gap-1 sm:gap-2">
+          {/* Accès direct au dashboard : connexion, ou création de compte. */}
+          <a href={LINKS.login} className={cn(LABEL, "hidden h-11 items-center px-2 transition-colors hover:text-white lg:flex")}>
+            {t("nav.login")}
+          </a>
+          <a href={LINKS.register} onClick={trackLead} className="ep-btn ep-btn--primary ep-btn--sm mr-2 hidden lg:inline-flex">
+            <span>{t("nav.signup")}</span>
+          </a>
           <LangSwitch />
           <a
             href={LINKS.shop}
@@ -327,6 +335,14 @@ export function SiteNav() {
               </li>
             ))}
           </ul>
+          <div className="ep-wrap flex flex-wrap gap-3 pb-8 pt-2">
+            <a href={LINKS.register} onClick={trackLead} className="ep-btn ep-btn--primary">
+              <span>{t("nav.signup")}</span>
+            </a>
+            <a href={LINKS.login} className="ep-btn ep-btn--ghost">
+              <span>{t("nav.login")}</span>
+            </a>
+          </div>
         </nav>
       )}
     </header>
