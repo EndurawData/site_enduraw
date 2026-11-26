@@ -27,7 +27,7 @@ function Portrait({ m }: { m: Member }) {
       <div className="ep-portrait__img">
         <span className="ep-cross" style={{ top: -6, left: -6 }} aria-hidden="true" />
         {m.photo ? (
-          <Media src={m.photo} alt="" ratio="1 / 1" position="center 30%" sizes="(min-width: 1024px) 200px, 40vw" />
+          <Media src={m.photo} alt="" ratio="1 / 1" position="center 30%" sizes="132px" />
         ) : (
           <div className="ep-portrait__initials" aria-hidden="true">
             {initials}
@@ -37,7 +37,7 @@ function Portrait({ m }: { m: Member }) {
       </div>
       <p className="mt-3 text-[15px] font-medium text-white">{m.name}</p>
       <p className="text-[12.5px] text-ep-sky">{m.role}</p>
-      {m.bio && <p className="ep-body mt-2 line-clamp-3 text-[13px] leading-snug">{m.bio}</p>}
+      {m.bio && <p className="ep-body mt-2 text-[13px] leading-snug">{m.bio}</p>}
     </>
   );
   return (
